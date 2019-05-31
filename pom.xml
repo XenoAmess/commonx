@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.xenoamess</groupId>
+    <artifactId>commonx</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}</name>
+    <description>Commonx, a package of Java utility classes for the classes that
+        are in java's hierarchy, or are considered to be so standard as to
+        justify existence in java.
+    </description>
+    <url>https://github.com/XenoAmess/commonx</url>
+    <licenses>
+        <license>
+            <name>GPLv2 with classpath exception</name>
+            <url>${project.url}/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Jin Xu</name>
+            <email>xenoamess@gmail.com</email>
+            <organization>XenoAmess</organization>
+            <url>https://github.com/xenoamess</url>
+        </developer>
+    </developers>
+    <scm>
+        <connection>${project.url}</connection>
+        <developerConnection>${project.url}.git</developerConnection>
+        <url>${project.url}</url>
+        <tag>${project.version}</tag>
+    </scm>
+</project>
