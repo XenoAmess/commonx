@@ -834,8 +834,8 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static <T extends Comparable<? super T>>
-    T[] parallelSort(T[] a, int fromIndex, int toIndex) {
+    public static <T extends Comparable<? super T>> T[] parallelSort(
+            T[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -919,8 +919,8 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static <T> T[] parallelSort(T[] a, int fromIndex, int toIndex,
-                                       Comparator<? super T> cmp) {
+    public static <T> T[] parallelSort(
+            T[] a, int fromIndex, int toIndex, Comparator<? super T> cmp) {
         Arrays.parallelSort(a, fromIndex, toIndex, cmp);
         return a;
     }
@@ -1147,8 +1147,8 @@ public class Arraysx {
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      */
-    public static <T> T[] sort(T[] a, int fromIndex, int toIndex,
-                               Comparator<? super T> c) {
+    public static <T> T[] sort(
+            T[] a, int fromIndex, int toIndex, Comparator<? super T> c) {
         Arrays.sort(a, fromIndex, toIndex, c);
         return a;
     }
@@ -1192,8 +1192,8 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static <T> T[] parallelPrefix(T[] array, int fromIndex,
-                                         int toIndex, BinaryOperator<T> op) {
+    public static <T> T[] parallelPrefix(
+            T[] array, int fromIndex, int toIndex, BinaryOperator<T> op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
     }
@@ -1233,8 +1233,8 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static long[] parallelPrefix(long[] array, int fromIndex,
-                                        int toIndex, LongBinaryOperator op) {
+    public static long[] parallelPrefix(
+            long[] array, int fromIndex, int toIndex, LongBinaryOperator op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
     }
@@ -1277,8 +1277,8 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static double[] parallelPrefix(double[] array, int fromIndex,
-                                          int toIndex, DoubleBinaryOperator op) {
+    public static double[] parallelPrefix(
+            double[] array, int fromIndex, int toIndex, DoubleBinaryOperator op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
     }
@@ -1318,8 +1318,8 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static int[] parallelPrefix(int[] array, int fromIndex,
-                                       int toIndex, IntBinaryOperator op) {
+    public static int[] parallelPrefix(
+            int[] array, int fromIndex, int toIndex, IntBinaryOperator op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
     }
