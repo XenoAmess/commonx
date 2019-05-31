@@ -38,8 +38,14 @@ import java.util.function.LongBinaryOperator;
  * @author XenoAmess
  */
 public class Arraysx {
-    // Suppresses default constructor, ensuring non-instantiability.
-    private Arraysx() {
+    /**
+     * <p>Instances of this class should NOT be constructed in standard programming.
+     *
+     * <p>This constructor is public to permit tools that require a JavaBean instance
+     * to operate.
+     */
+    public Arraysx() {
+        super();
     }
 
     /*
@@ -1033,15 +1039,6 @@ public class Arraysx {
     public static Object[] sort(Object[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
-    }
-
-    /**
-     * Swaps x[a] with x[b].
-     */
-    public static void swap(Object[] x, int a, int b) {
-        Object t = x[a];
-        x[a] = x[b];
-        x[b] = t;
     }
 
     /**
