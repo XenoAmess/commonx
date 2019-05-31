@@ -7,7 +7,12 @@ This code is under the [GPLv2 with classpath exception](https://github.com/XenoA
 
 Notice
 -------
-Some code of this project is from 
+Some code of this project is from others. 
+
+Thanks for their effort. 
+
+For the open source.
+
 I will point codes that from others and follow their licenses.
 
 See the `NOTICE.txt` file for required notices and attributions.
