@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for the classes that
@@ -38,8 +38,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
         <java.version>12</java.version>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -134,6 +134,11 @@
                             <name>see</name>
                         </tag>
                     </tags>
+
+                    <source>${maven.compiler.source}
+                    </source>
+                    <!--                    <javadocExecutable>${java.home}/bin/javadoc.exe-->
+                    <!--                    </javadocExecutable>-->
                 </configuration>
 
                 <executions>
@@ -173,8 +178,16 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>12</source>
-                    <target>12</target>
+                    <source>${maven.compiler.source}
+                    </source>
+                    <target>${maven.compiler.target}
+                    </target>
+                    <meminitial>128m</meminitial>
+                    <maxmem>512m</maxmem>
+                    <fork>true</fork>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <!--<compilerArgument>-verbose -bootclasspath ${java.home}\lib\rt.jar</compilerArgument>-->
+                    <!--                    <executable>${java.home}/bin/javac</executable>-->
                 </configuration>
             </plugin>
             <!-- GPG mvn clean deploy -P release -Dgpg.passphrase=YourPassphase -->

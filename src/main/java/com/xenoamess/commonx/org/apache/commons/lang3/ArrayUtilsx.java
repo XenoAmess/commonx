@@ -22,6 +22,7 @@ import java.util.Random;
 
 /**
  * @author XenoAmess
+ * @see org.apache.commons.lang3.ArrayUtils
  */
 public class ArrayUtilsx {
     /**

@@ -36,6 +36,7 @@ import java.util.function.LongBinaryOperator;
 
 /**
  * @author XenoAmess
+ * @see java.util.Arrays
  */
 public class Arraysx {
     /**
