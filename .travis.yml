@@ -15,8 +15,11 @@ matrix:
   include:
     - os: linux x64
       jdk: openjdk9
+    - os: linux x64
       jdk: openjdk10
+    - os: linux x64
       jdk: openjdk11
+    - os: linux x64
       jdk: openjdk12
 script:
   - "./mvnw clean package -Dmaven.javadoc.skip=false"
