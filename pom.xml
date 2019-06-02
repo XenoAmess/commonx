@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for the classes that
@@ -36,8 +36,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <encoding>UTF-8</encoding>
-        <java.version>9</java.version>
+        <project.reporting.outputEncoding>UTF-8
+        </project.reporting.outputEncoding>
+        <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
@@ -90,9 +91,9 @@
                     <locale>en</locale>
                     <show>private</show>
                     <reportOutputDirectory>../javadocs</reportOutputDirectory>
-                    <charset>UTF-8</charset>
-                    <encoding>UTF-8</encoding>
-                    <docencoding>UTF-8</docencoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <docencoding>${project.reporting.outputEncoding}
+                    </docencoding>
                     <additionalJOption>-J-Duser.language=en_US
                     </additionalJOption>
 
@@ -215,9 +216,9 @@
                     <locale>en</locale>
                     <show>private</show>
                     <reportOutputDirectory>../javadocs</reportOutputDirectory>
-                    <charset>UTF-8</charset>
-                    <encoding>UTF-8</encoding>
-                    <docencoding>UTF-8</docencoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <docencoding>${project.reporting.outputEncoding}
+                    </docencoding>
                     <additionalJOption>-J-Duser.language=en_US
                     </additionalJOption>
 
@@ -262,6 +263,8 @@
 
                     <source>${maven.compiler.source}
                     </source>
+                    <!--                    <javadocExecutable>${java.home}/bin/javadoc.exe-->
+                    <!--                    </javadocExecutable>-->
                 </configuration>
             </plugin>
         </plugins>

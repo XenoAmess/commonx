@@ -3,7 +3,8 @@ Commonx, a package of Java utility classes for the classes that are in java's hi
 
 License
 -------
-This code is under the [GPLv2 with classpath exception](https://github.com/XenoAmess/commonx/blob/master/LICENSE).
+In short, this project is under the [GPLv2 with classpath exception](https://github.com/XenoAmess/commonx/blob/master/LICENSE).
+But if a file in this project have a header of additional licenses, you shall follow it as well when you want to change that file.
 
 Notice
 -------
