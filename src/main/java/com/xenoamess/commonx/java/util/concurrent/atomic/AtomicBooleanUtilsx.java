@@ -29,7 +29,7 @@ public class AtomicBooleanUtilsx {
      * @return new boolean value of AtomicBoolean
      * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
      */
-    public final boolean flip(AtomicBoolean atomicBoolean) {
+    public static final boolean flip(AtomicBoolean atomicBoolean) {
         boolean prev = atomicBoolean.get(), next = false;
         for (boolean haveNext = false; ; ) {
             if (!haveNext) {
