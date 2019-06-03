@@ -1,4 +1,7 @@
 # commonx
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.xenoamess/commonx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.xenoamess.cyan_potion/cyan_potion)
+
 Commonx, a package of Java utility classes for the classes that are in java's hierarchy, or are considered to be so standard as to justify existence in java.
 
 License
