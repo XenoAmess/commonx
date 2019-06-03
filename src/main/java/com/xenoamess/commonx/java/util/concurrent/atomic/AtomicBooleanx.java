@@ -160,7 +160,7 @@ public class AtomicBooleanx implements java.io.Serializable {
      * with memory effects as specified by {@link VarHandle#setRelease}.
      *
      * @param newValue the new value
-     * @since 1.6
+     *
      */
     public final void lazySet(boolean newValue) {
         VALUE.setRelease(this, (newValue ? 1 : 0));
