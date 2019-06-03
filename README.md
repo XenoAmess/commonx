@@ -5,6 +5,7 @@ License
 -------
 In short, this project is under the [GPLv2 with classpath exception](https://github.com/XenoAmess/commonx/blob/master/LICENSE).
 But if a file in this project have a header of additional licenses, you shall follow it as well when you want to change that file.
+If you see a file which you don't think it using other [GPLv2 with classpath exception](https://github.com/XenoAmess/commonx/blob/master/LICENSE) codes/libraries, and you just want a MIT licensed copy of it, please contact me.
 
 Notice
 -------

@@ -40,6 +40,10 @@ import java.lang.annotation.*;
  * <p>
  * 2. The field shall only be set when its value equals empty value.
  * <p>
+ * This annotation is mainly used when a field shall be final, but it can't.
+ * For example, lazy build for a singleton factory, or a resource field which shall be final but have to wait after
+ * some other classes init.
+ * <p>
  * Technically this is now implemented by using AsFinalFieldUtils#asFinalFieldSet to deal with any set of any
  * AsFinalField.
  */
