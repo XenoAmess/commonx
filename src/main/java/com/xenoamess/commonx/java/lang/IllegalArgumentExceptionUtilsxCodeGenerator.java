@@ -35,8 +35,19 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
                 "generateIsAnyNullInParamsThenThrowIllegalArgumentException",
                 IllegalArgumentExceptionUtilsxCodeGenerator::generateIsAnyNullInParamsThenThrowIllegalArgumentException
         );
+        generateFile(
+                "generateIsNoneNullInParams",
+                IllegalArgumentExceptionUtilsxCodeGenerator::generateIsNoneNullInParams
+        );
+        generateFile(
+                "generateIsAllNullInParams",
+                IllegalArgumentExceptionUtilsxCodeGenerator::generateIsAllNullInParams
+        );
+        generateFile(
+                "generateIsAllNullInParamsThenThrowIllegalArgumentException",
+                IllegalArgumentExceptionUtilsxCodeGenerator::generateIsAllNullInParamsThenThrowIllegalArgumentException
+        );
     }
-
 
     public static String generateIsAnyNullInParams(String name) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -116,6 +127,136 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append(i);
         }
         stringBuilder.append(")){\\\n        throw new IllegalArgumentException(\"caused by any of the following be " +
+                "null: \"");
+
+        if (paramNum != 0) {
+            stringBuilder.append(" + ");
+        }
+
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(" + \", \" + ");
+            }
+            stringBuilder.append("param");
+            stringBuilder.append(i);
+        }
+        stringBuilder.append(");\\\n    }\\\n}\\\n");
+    }
+
+    public static String generateIsNoneNullInParams(String name) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name + " = \\n\\");
+        for (int i = 0; i < 256; i++) {
+            generateIsNoneNullInParams(stringBuilder, i);
+            stringBuilder.append("\\\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    public static void generateIsNoneNullInParams(StringBuilder stringBuilder, int paramNum) {
+        /**
+         *     public static boolean isNoneNullInParams(Object param0, Object param1) {
+         *         return !isAnyNullInParams(param0, param1);
+         *     }
+         */
+        stringBuilder.append("    public static boolean isNoneNullInParams(");
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append("final Object param");
+            stringBuilder.append(i);
+        }
+        stringBuilder.append("){\\\n        return !isAnyNullInParams(");
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append("param");
+            stringBuilder.append(i);
+        }
+        stringBuilder.append(");\\\n    }\\\n");
+    }
+
+
+    public static String generateIsAllNullInParams(String name) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name + " = \\n\\");
+        for (int i = 0; i < 256; i++) {
+            generateIsAllNullInParams(stringBuilder, i);
+            stringBuilder.append("\\\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    public static void generateIsAllNullInParams(StringBuilder stringBuilder, int paramNum) {
+        /**
+         *     public static boolean isAllNull(final Object param0, final Object param1) {
+         *         return param0 == null && param1 == null;
+         *     }
+         */
+        stringBuilder.append("    public static boolean isAllNullInParams(");
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append("final Object param");
+            stringBuilder.append(i);
+        }
+        stringBuilder.append("){\\\n        return ");
+        if (paramNum == 0) {
+            stringBuilder.append("false");
+        }
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(" && ");
+            }
+            stringBuilder.append("param");
+            stringBuilder.append(i);
+            stringBuilder.append(" == null");
+        }
+        stringBuilder.append(";\\\n    }\\\n");
+    }
+
+    public static String generateIsAllNullInParamsThenThrowIllegalArgumentException(String name) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name + " = \\n\\");
+        for (int i = 0; i < 256; i++) {
+            generateIsAllNullInParamsThenThrowIllegalArgumentException(stringBuilder, i);
+            stringBuilder.append("\\\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    public static void generateIsAllNullInParamsThenThrowIllegalArgumentException(
+            StringBuilder stringBuilder, int paramNum) {
+        /**
+         *     public static void isAllNullInParamsThenThrowIllegalArgumentException(final Object param0, final
+         *     Object param1) {
+         *         if (isAllNullInParams(param0, param1)) {
+         *             throw new IllegalArgumentException("caused by all of the following be null: " + param0 + ", "
+         *             + param1);
+         *         }
+         *     }
+         */
+        stringBuilder.append("    public static void isAllNullInParamsThenThrowIllegalArgumentException(");
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append("final Object param");
+            stringBuilder.append(i);
+        }
+        stringBuilder.append("){\\\n");
+        stringBuilder.append("    if (isAllNullInParams(");
+        for (int i = 0; i < paramNum; i++) {
+            if (i != 0) {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append("param");
+            stringBuilder.append(i);
+        }
+        stringBuilder.append(")){\\\n        throw new IllegalArgumentException(\"caused by all of the following be " +
                 "null: \"");
 
         if (paramNum != 0) {

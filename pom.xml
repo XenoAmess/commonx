@@ -97,6 +97,15 @@
                                 <file>
                                     src/main/resources/templates/generateIsAnyNullInParamsThenThrowIllegalArgumentException.template
                                 </file>
+                                <file>
+                                    src/main/resources/templates/generateIsNoneNullInParams.template
+                                </file>
+                                <file>
+                                    src/main/resources/templates/generateIsAllNullInParams.template
+                                </file>
+                                <file>
+                                    src/main/resources/templates/generateIsAllNullInParamsThenThrowIllegalArgumentException.template
+                                </file>
                             </files>
                         </configuration>
                     </execution>

@@ -41,9 +41,13 @@ public class IllegalArgumentExceptionUtilsxTest {
         super();
     }
 
+    @Test
+    public void IllegalArgumentExceptionUtilsxCodeGeneratorTest() {
+        IllegalArgumentExceptionUtilsxCodeGenerator.main(null);
+    }
 
     @Test
-    public void isAnyNullTest() {
+    public void isAnyNullInParamsTest() {
         Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams());
         Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(null));
         Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(1, null));
@@ -55,6 +59,20 @@ public class IllegalArgumentExceptionUtilsxTest {
         Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams(1, new Object[]{null}));
         Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams(1, (Object) new Object[]{null}));
     }
+
+//    @Test
+//    public void isNoneNullInParamsTest() {
+//        Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams());
+//        Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(null));
+//        Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, null));
+//        Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(2, 2, 2, null));
+//        Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(null, 4, 3, 3, 5));
+//        Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(4, null, 3, 5));
+//        Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(4, true, 3, 5));
+//        Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(new Object[]{null, null, null}));
+//        Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, new Object[]{null}));
+//        Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, (Object) new Object[]{null}));
+//    }
 
 
 //    /**
