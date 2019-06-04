@@ -1947,6 +1947,7 @@ public class Arraysx {
      *                                  or if T have no such constructor,
      *                                  or the constructor is not accessible,
      *                                  or the class cannot be instantiated.
+     * @author XenoAmess
      * @since 3.10
      */
     @SuppressWarnings("unchecked")

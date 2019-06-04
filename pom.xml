@@ -50,6 +50,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
@@ -73,6 +79,64 @@
 
 
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>
+                                    src/main/resources/templates/generateIsAnyNullInParams.template
+                                </file>
+                                <file>
+                                    src/main/resources/templates/generateIsAnyNullInParamsThenThrowIllegalArgumentException.template
+                                </file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>templating-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>filter-src</id>
+                        <goals>
+                            <goal>filter-sources</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>
+                                ${basedir}/src/main/java-templates
+                            </sourceDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/generated-sources/src/main/java
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>filter-test-src</id>
+                        <goals>
+                            <goal>filter-test-sources</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>
+                                ${basedir}/src/test/java-templates
+                            </sourceDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/generated-test-sources/src/test/java
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
