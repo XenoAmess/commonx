@@ -56,6 +56,12 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
@@ -136,12 +142,12 @@
                             <goal>filter-test-sources</goal>
                         </goals>
                         <configuration>
-                            <sourceDirectory>
+                            <testSourceDirectory>
                                 ${basedir}/src/test/java-templates
-                            </sourceDirectory>
-                            <outputDirectory>
+                            </testSourceDirectory>
+                            <testOutputDirectory>
                                 ${project.build.directory}/generated-test-sources/src/test/java
-                            </outputDirectory>
+                            </testOutputDirectory>
                         </configuration>
                     </execution>
                 </executions>
