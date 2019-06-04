@@ -46,7 +46,6 @@ import java.util.function.IntBinaryOperator;
  * Add flip function.
  *
  * @author Doug Lea
- * @author XenoAmess
  * @see AtomicBooleanx#flip()
  * @see java.util.concurrent.atomic.AtomicBoolean
  * @see java.util.concurrent.atomic.AtomicInteger
