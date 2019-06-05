@@ -24,7 +24,7 @@
  * questions.
  */
 
-package com.xenoamess.commonx.java.util;
+package com.xenoamess.commons.collections.list;
 
 import java.util.Comparator;
 
