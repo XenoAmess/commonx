@@ -21,7 +21,7 @@ public abstract class PrimitiveArrayList<E> extends AbstractList<E>
     /**
      * <p>checkIndex.</p>
      *
-     * @param index a int.
+     * @param index  a int.
      * @param length a int.
      * @return a int.
      */
@@ -32,7 +32,9 @@ public abstract class PrimitiveArrayList<E> extends AbstractList<E>
         return index;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public static void subListRangeCheck(int fromIndex, int toIndex, int size) {
         if (fromIndex < 0) {
             throw new IndexOutOfBoundsException("fromIndex = " + fromIndex);

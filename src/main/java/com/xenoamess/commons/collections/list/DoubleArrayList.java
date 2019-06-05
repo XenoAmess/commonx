@@ -100,12 +100,12 @@ import java.util.function.UnaryOperator;
  *
  * @author Josh Bloch
  * @author Neal Gafter
+ * @version 0.6.0
  * @see Collection
  * @see List
  * @see LinkedList
  * @see Vector
  * @since 1.2
- * @version 0.6.0
  */
 public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
@@ -140,7 +140,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * @param initialCapacity the initial capacity of the list
      * @throws java.lang.IllegalArgumentException if the specified initial capacity
-     *                                  is negative
+     *                                            is negative
      */
     public DoubleArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
@@ -278,7 +278,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns the number of elements in this list.
      */
     @Override
@@ -288,7 +288,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns {@code true} if this list contains no elements.
      */
     @Override
@@ -298,7 +298,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns {@code true} if this list contains the specified element.
      * More formally, returns {@code true} if and only if this list contains
      * at least one element {@code e} such that
@@ -311,7 +311,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
@@ -343,7 +343,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the highest index {@code i} such that
@@ -374,7 +374,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns a shallow copy of this {@code ArrayList} instance.  (The
      * elements themselves are not copied.)
      */
@@ -393,7 +393,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -411,7 +411,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns an array containing all of the elements in this list in proper
      * sequence (from first to last element); the runtime type of the returned
      * array is that of the specified array.  If the list fits in the
@@ -452,7 +452,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns the element at the specified position in this list.
      */
     @Override
@@ -474,7 +474,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Replaces the element at the specified position in this list with
      * the specified element.
      */
@@ -514,7 +514,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Appends the specified element to the end of this list.
      */
     @Override
@@ -536,7 +536,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Inserts the specified element at the specified position in this
      * list. Shifts the element currently at that position (if any) and
      * any subsequent elements to the right (adds one to their indices).
@@ -572,7 +572,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
@@ -601,7 +601,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return oldValue;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(Object o) {
         if (o == this) {
@@ -664,7 +666,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         int expectedModCount = modCount;
@@ -688,7 +692,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Removes the first occurrence of the specified element from this list,
      * if it is present.  If the list does not contain the element, it is
      * unchanged.  More formally, removes the element with the lowest index
@@ -737,7 +741,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Removes all of the elements from this list.  The list will
      * be empty after this call returns.
      */
@@ -752,7 +756,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Appends all of the elements in the specified collection to the end of
      * this list, in the order that they are returned by the
      * specified collection's Iterator.  The behavior of this operation is
@@ -781,7 +785,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Inserts all of the elements in the specified collection into this
      * list, starting at the specified position.  Shifts the element
      * currently at that position (if any) and any subsequent elements to
@@ -818,7 +822,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Removes from this list all of the elements whose index is between
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
      * Shifts any succeeding elements to the left (reduces their index).
@@ -872,9 +876,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Removes from this list all of its elements that are contained in the
      * specified collection.
+     *
      * @see Collection#contains(Object)
      */
     @Override
@@ -884,10 +889,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Retains only the elements in this list that are contained in the
      * specified collection.  In other words, removes from this list all
      * of its elements that are not contained in the specified collection.
+     *
      * @see Collection#contains(Object)
      */
     @Override
@@ -996,7 +1002,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
      * The specified index indicates the first element that would be
@@ -1014,11 +1020,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns a list iterator over the elements in this list (in proper
      * sequence).
      *
      * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     *
      * @see #listIterator(int)
      */
     @Override
@@ -1028,7 +1035,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns an iterator over the elements in this list in proper sequence.
      *
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
@@ -1205,7 +1212,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Returns a view of the portion of this list between the specified
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.  (If
      * {@code fromIndex} and {@code toIndex} are equal, the returned list is
@@ -1711,7 +1718,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void forEach(Consumer<? super Double> action) {
         Objects.requireNonNull(action);
@@ -1728,7 +1737,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em>
      * and <em>fail-fast</em> {@link Spliterator} over the elements in this
      * list.
@@ -1737,6 +1746,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@link Spliterator#SUBSIZED}, and {@link Spliterator#ORDERED}.
      * Overriding implementations should document the reporting of additional
      * characteristic values.
+     *
      * @since 1.8
      */
     @Override
@@ -1881,7 +1891,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return (bits[i >> 6] & (1L << i)) == 0;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean removeIf(Predicate<? super Double> filter) {
         return removeIf(filter, 0, size);
@@ -1931,7 +1943,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void replaceAll(UnaryOperator<Double> operator) {
         replaceAllRange(operator, 0, size);
@@ -1950,7 +1964,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void sort(Comparator<? super Double> c) {
         final int expectedModCount = modCount;

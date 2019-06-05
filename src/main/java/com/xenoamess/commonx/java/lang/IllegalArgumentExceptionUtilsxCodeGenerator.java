@@ -41,7 +41,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     /**
      * <p>generateFile.</p>
      *
-     * @param name a {@link java.lang.String} object.
+     * @param name                a {@link java.lang.String} object.
      * @param functionalInterface a {@link java.util.function.Function} object.
      */
     public static void generateFile(String name, Function<String, String> functionalInterface) {
@@ -107,7 +107,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * <p>generateIsAnyNullInParams.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
-     * @param paramNum a int.
+     * @param paramNum      a int.
      */
     public static void generateIsAnyNullInParams(StringBuilder stringBuilder, int paramNum) {
         /**
@@ -158,7 +158,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * <p>generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
-     * @param paramNum a int.
+     * @param paramNum      a int.
      */
     public static void generateIsAnyNullInParamsThenThrowIllegalArgumentException(
             StringBuilder stringBuilder, int paramNum) {
@@ -225,7 +225,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * <p>generateIsNoneNullInParams.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
-     * @param paramNum a int.
+     * @param paramNum      a int.
      */
     public static void generateIsNoneNullInParams(StringBuilder stringBuilder, int paramNum) {
         /**
@@ -273,7 +273,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * <p>generateIsAllNullInParams.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
-     * @param paramNum a int.
+     * @param paramNum      a int.
      */
     public static void generateIsAllNullInParams(StringBuilder stringBuilder, int paramNum) {
         /**
@@ -324,7 +324,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * <p>generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
-     * @param paramNum a int.
+     * @param paramNum      a int.
      */
     public static void generateIsAllNullInParamsThenThrowIllegalArgumentException(
             StringBuilder stringBuilder, int paramNum) {

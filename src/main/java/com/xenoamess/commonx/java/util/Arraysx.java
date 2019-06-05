@@ -28,7 +28,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.concurrent.ForkJoinPool;
 import java.util.function.BinaryOperator;
 import java.util.function.DoubleBinaryOperator;
 import java.util.function.IntBinaryOperator;
@@ -38,8 +37,8 @@ import java.util.function.LongBinaryOperator;
  * <p>Arraysx class.</p>
  *
  * @author XenoAmess
- * @see java.util.Arrays
  * @version 0.6.0
+ * @see java.util.Arrays
  */
 public class Arraysx {
     /**
@@ -777,13 +776,13 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param a   the array to be sorted
+     * @param a the array to be sorted
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are not
-     *                                  <i>mutually comparable</i> (for example, strings and integers)
+     *                                            <i>mutually comparable</i> (for example, strings and integers)
      * @throws java.lang.IllegalArgumentException (optional) if the natural
-     *                                  ordering of the array elements is found to violate the
-     *                                  {@link java.lang.Comparable} contract
+     *                                            ordering of the array elements is found to violate the
+     *                                            {@link java.lang.Comparable} contract
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
@@ -823,13 +822,13 @@ public class Arraysx {
      * @param toIndex   the index of the last element (exclusive) to be sorted
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
-     *                                        (optional) if the natural ordering of the array elements is
-     *                                        found to violate the {@link java.lang.Comparable} contract
+     *                                                  (optional) if the natural ordering of the array elements is
+     *                                                  found to violate the {@link java.lang.Comparable} contract
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @throws java.lang.ClassCastException             if the array contains elements that are
-     *                                        not <i>mutually comparable</i> (for example, strings and
-     *                                        integers).
+     *                                                  not <i>mutually comparable</i> (for example, strings and
+     *                                                  integers).
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
@@ -865,9 +864,9 @@ public class Arraysx {
      *            {@linkplain Comparable natural ordering} should be used.
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are
-     *                                  not <i>mutually comparable</i> using the specified comparator
+     *                                            not <i>mutually comparable</i> using the specified comparator
      * @throws java.lang.IllegalArgumentException (optional) if the comparator is
-     *                                  found to violate the {@link java.util.Comparator} contract
+     *                                            found to violate the {@link java.util.Comparator} contract
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
@@ -908,13 +907,13 @@ public class Arraysx {
      *                  {@linkplain Comparable natural ordering} should be used.
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
-     *                                        (optional) if the natural ordering of the array elements is
-     *                                        found to violate the {@link java.lang.Comparable} contract
+     *                                                  (optional) if the natural ordering of the array elements is
+     *                                                  found to violate the {@link java.lang.Comparable} contract
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @throws java.lang.ClassCastException             if the array contains elements that are
-     *                                        not <i>mutually comparable</i> (for example, strings and
-     *                                        integers).
+     *                                                  not <i>mutually comparable</i> (for example, strings and
+     *                                                  integers).
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
@@ -975,10 +974,10 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are not
-     *                                  <i>mutually comparable</i> (for example, strings and integers)
+     *                                            <i>mutually comparable</i> (for example, strings and integers)
      * @throws java.lang.IllegalArgumentException (optional) if the natural
-     *                                  ordering of the array elements is found to violate the
-     *                                  {@link java.lang.Comparable} contract
+     *                                            ordering of the array elements is found to violate the
+     *                                            {@link java.lang.Comparable} contract
      */
     public static Object[] sortSelf(Object[] a) {
         Arrays.sort(a);
@@ -1030,13 +1029,13 @@ public class Arraysx {
      * @param toIndex   the index of the last element (exclusive) to be sorted
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
-     *                                        (optional) if the natural ordering of the array elements is
-     *                                        found to violate the {@link java.lang.Comparable} contract
+     *                                                  (optional) if the natural ordering of the array elements is
+     *                                                  found to violate the {@link java.lang.Comparable} contract
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @throws java.lang.ClassCastException             if the array contains elements that are
-     *                                        not <i>mutually comparable</i> (for example, strings and
-     *                                        integers).
+     *                                                  not <i>mutually comparable</i> (for example, strings and
+     *                                                  integers).
      */
     public static Object[] sortSelf(Object[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -1083,9 +1082,9 @@ public class Arraysx {
      *            {@linkplain Comparable natural ordering} should be used.
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are
-     *                                  not <i>mutually comparable</i> using the specified comparator
+     *                                            not <i>mutually comparable</i> using the specified comparator
      * @throws java.lang.IllegalArgumentException (optional) if the comparator is
-     *                                  found to violate the {@link java.util.Comparator} contract
+     *                                            found to violate the {@link java.util.Comparator} contract
      */
     public static <T> T[] sortSelf(T[] a, Comparator<? super T> c) {
         Arrays.sort(a, c);
@@ -1139,12 +1138,12 @@ public class Arraysx {
      *                  {@linkplain Comparable natural ordering} should be used.
      * @return the original array
      * @throws java.lang.ClassCastException             if the array contains elements that are not
-     *                                        <i>mutually comparable</i> using the specified comparator.
+     *                                                  <i>mutually comparable</i> using the specified comparator.
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
-     *                                        (optional) if the comparator is found to violate the
-     *                                        {@link java.util.Comparator} contract
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      */
     public static <T> T[] sortSelf(
             T[] a, int fromIndex, int toIndex, Comparator<? super T> c) {
@@ -1356,7 +1355,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(long[] a, int fromIndex, int toIndex, long val)
      */
     public static long[] fillSelf(long[] a, int fromIndex, int toIndex, long val) {
@@ -1394,7 +1393,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(int[] a, int fromIndex, int toIndex, int val)
      */
     public static int[] fillSelf(int[] a, int fromIndex, int toIndex, int val) {
@@ -1432,7 +1431,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(short[] a, int fromIndex, int toIndex, short val)
      */
     public static short[] fillSelf(short[] a, int fromIndex, int toIndex, short val) {
@@ -1471,7 +1470,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(char[] a, int fromIndex, int toIndex, char val)
      */
     public static char[] fillSelf(char[] a, int fromIndex, int toIndex, char val) {
@@ -1509,7 +1508,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(byte[] a, int fromIndex, int toIndex, byte val)
      */
     public static byte[] fillSelf(byte[] a, int fromIndex, int toIndex, byte val) {
@@ -1547,7 +1546,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(boolean[] a, int fromIndex, int toIndex, boolean val)
      */
     public static boolean[] fillSelf(boolean[] a, int fromIndex, int toIndex,
@@ -1586,7 +1585,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(double[] a, int fromIndex, int toIndex, double val)
      */
     public static double[] fillSelf(double[] a, int fromIndex, int toIndex, double val) {
@@ -1624,7 +1623,7 @@ public class Arraysx {
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @see Arrays#fill(float[] a, int fromIndex, int toIndex, float val)
      */
     public static float[] fillSelf(float[] a, int fromIndex, int toIndex, float val) {
@@ -1638,11 +1637,11 @@ public class Arraysx {
      *
      * @param a   the array to be filled
      * @param val the value to be stored in all elements of the array
+     * @param <T> a T object.
      * @return the original array
      * @throws java.lang.ArrayStoreException if the specified value is not of a
-     *                             runtime type that can be stored in the specified array
+     *                                       runtime type that can be stored in the specified array
      * @see Arrays#fill(Object[] a, Object val)
-     * @param <T> a T object.
      */
     public static <T> T[] fillSelf(T[] a, T val) {
         Arrays.fill(a, val);
@@ -1662,14 +1661,14 @@ public class Arraysx {
      * @param toIndex   the index of the last element (exclusive) to be
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
+     * @param <T>       a T object.
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      * @throws java.lang.ArrayStoreException            if the specified value is not of a
-     *                                        runtime type that can be stored in the specified array
+     *                                                  runtime type that can be stored in the specified array
      * @see Arrays#fill(Object[] a, int fromIndex, int toIndex, Object val)
-     * @param <T> a T object.
      */
     public static <T> T[] fillSelf(T[] a, int fromIndex, int toIndex, T val) {
         Arrays.fill(a, fromIndex, toIndex, val);
@@ -1723,8 +1722,8 @@ public class Arraysx {
      * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
      * @throws java.lang.NullPointerException       if {@code original} is null
      * @throws java.lang.ArrayStoreException        if an element copied from
-     *                                    {@code original} is not of a runtime type that can be stored in
-     *                                    an array of class {@code newType}
+     *                                              {@code original} is not of a runtime type that can be stored in
+     *                                              an array of class {@code newType}
      * @see Arrays#copyOf(Object[] original, int newLength, Class newType)
      * @since 1.6
      */
@@ -1946,9 +1945,9 @@ public class Arraysx {
      * @param <T>   the component type of the array
      * @param array the array to be filled
      * @throws java.lang.IllegalArgumentException if array is null,
-     *                                  or if T have no such constructor,
-     *                                  or the constructor is not accessible,
-     *                                  or the class cannot be instantiated.
+     *                                            or if T have no such constructor,
+     *                                            or the constructor is not accessible,
+     *                                            or the class cannot be instantiated.
      * @author XenoAmess
      * @since 3.10
      */
@@ -2005,9 +2004,9 @@ public class Arraysx {
      * @param array the array to be filled
      * @return the original array
      * @throws java.lang.IllegalArgumentException if array is null,
-     *                                  or if T have no such constructor,
-     *                                  or the constructor is not accessible,
-     *                                  or the class cannot be instantiated.
+     *                                            or if T have no such constructor,
+     *                                            or the constructor is not accessible,
+     *                                            or the class cannot be instantiated.
      * @author XenoAmess
      * @since 3.10
      */
@@ -2022,8 +2021,8 @@ public class Arraysx {
      * the range and throws an exception if they aren't.
      *
      * @param arrayLength a int.
-     * @param fromIndex a int.
-     * @param toIndex a int.
+     * @param fromIndex   a int.
+     * @param toIndex     a int.
      */
     public static void rangeCheck(int arrayLength, int fromIndex, int toIndex) {
         if (fromIndex > toIndex) {
@@ -2082,12 +2081,12 @@ public class Arraysx {
      *                  {@code null} value indicates that the elements'
      *                  {@linkplain Comparable natural ordering} should be used.
      * @throws java.lang.ClassCastException             if the array contains elements that are not
-     *                                        <i>mutually comparable</i> using the specified comparator.
+     *                                                  <i>mutually comparable</i> using the specified comparator.
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
-     *                                        (optional) if the comparator is found to violate the
-     *                                        {@link java.util.Comparator} contract
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
-     *                                        {@code toIndex > a.length}
+     *                                                  {@code toIndex > a.length}
      */
     public static void sort(double[] a, int fromIndex, int toIndex,
                             Comparator<? super Double> c) {

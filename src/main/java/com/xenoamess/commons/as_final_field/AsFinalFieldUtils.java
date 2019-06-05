@@ -70,9 +70,9 @@ public class AsFinalFieldUtils {
      * @param fieldName  fieldName that represent an AsFinalField field in object.
      * @param emptyValue the value that thought be empty by that type.
      * @param newValue   the new value of the AsFinalField field.
+     * @param <T>        a T object.
      * @see AsFinalField
      * @see AsFinalFieldReSetException
-     * @param <T> a T object.
      */
     public static <T> void asFinalFieldSet(Object object, String fieldName, T emptyValue, T newValue) {
         if (fieldName == null) {

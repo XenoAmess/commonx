@@ -544,10 +544,10 @@ public class DoubleTimSort {
      * @param a    the array in which to search
      * @param base the index of the first element in the range
      * @param len  the length of the range; must be &gt; 0
-     * @param hint the index at which to begin the search, 0 <= hint < n.
+     * @param hint the index at which to begin the search, 0 &lt;= hint &lt; n.
      *             The closer hint is to the result, the faster this method will run.
      * @param c    the comparator used to order the range, and to search
-     * @return the int k,  0 <= k <= n such that a[b + k - 1] < key <= a[b + k],
+     * @return the int k,  0 &lt;= k &lt;= n such that a[b + k - 1] &lt; key &lt;= a[b + k],
      * pretending that a[b - 1] is minus infinity and a[b + n] is infinity.
      * In other words, key belongs at index b + k; or in other words,
      * the first k elements of a should precede key, and the last n - k
@@ -625,10 +625,10 @@ public class DoubleTimSort {
      * @param a    the array in which to search
      * @param base the index of the first element in the range
      * @param len  the length of the range; must be > 0
-     * @param hint the index at which to begin the search, 0 <= hint < n.
+     * @param hint the index at which to begin the search, 0 &lt;= hint &lt; n.
      *             The closer hint is to the result, the faster this method will run.
      * @param c    the comparator used to order the range, and to search
-     * @return the int k,  0 <= k <= n such that a[b + k - 1] <= key < a[b + k]
+     * @return the int k,  0 &lt;= k &lt;= n such that a[b + k - 1] &lt; key &lt;= a[b + k],
      */
     public static int gallopRight(double key, double[] a, int base, int len,
                                   int hint, Comparator<? super Double> c) {
@@ -706,10 +706,10 @@ public class DoubleTimSort {
      * may be called if len1 == len2.)
      *
      * @param base1 index of first element in first run to be merged
-     * @param len1  length of first run to be merged (must be > 0)
+     * @param len1  length of first run to be merged (must be &gt; 0)
      * @param base2 index of first element in second run to be merged
      *              (must be aBase + aLen)
-     * @param len2  length of second run to be merged (must be > 0)
+     * @param len2  length of second run to be merged (must be &gt; 0)
      */
     public void mergeLo(int base1, int len1, int base2, int len2) {
         assert len1 > 0 && len2 > 0 && base1 + len1 == base2;
@@ -830,10 +830,10 @@ public class DoubleTimSort {
      * may be called if len1 == len2.)
      *
      * @param base1 index of first element in first run to be merged
-     * @param len1  length of first run to be merged (must be > 0)
+     * @param len1  length of first run to be merged (must be &gt; 0)
      * @param base2 index of first element in second run to be merged
      *              (must be aBase + aLen)
-     * @param len2  length of second run to be merged (must be > 0)
+     * @param len2  length of second run to be merged (must be &gt; 0)
      */
     public void mergeHi(int base1, int len1, int base2, int len2) {
         assert len1 > 0 && len2 > 0 && base1 + len1 == base2;

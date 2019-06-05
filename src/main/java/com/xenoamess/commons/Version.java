@@ -60,7 +60,9 @@ public class Version implements Comparable<Version> {
      * current version of this component.
      */
     public static final String VERSION = loadCurrentVersion();
-    /** Constant <code>VERSION_MISSING="VersionMissing"</code> */
+    /**
+     * Constant <code>VERSION_MISSING="VersionMissing"</code>
+     */
     public static final String VERSION_MISSING = "VersionMissing";
 
     /**
@@ -99,13 +101,17 @@ public class Version implements Comparable<Version> {
         return 0;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int compareTo(Version version) {
         return compareVersions(this.versionString, version.versionString);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -118,7 +124,9 @@ public class Version implements Comparable<Version> {
         return Objects.equals(versionString, version.versionString);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(versionString);
@@ -177,7 +185,9 @@ public class Version implements Comparable<Version> {
         return res;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return this.versionString;

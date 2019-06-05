@@ -32,8 +32,8 @@ import java.util.function.IntBinaryOperator;
  * <p>AtomicBooleanUtilsx class.</p>
  *
  * @author XenoAmess
- * @see java.util.concurrent.atomic.AtomicBoolean
  * @version 0.6.0
+ * @see java.util.concurrent.atomic.AtomicBoolean
  */
 public class AtomicBooleanUtilsx {
     /**

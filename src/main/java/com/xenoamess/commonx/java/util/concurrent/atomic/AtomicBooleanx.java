@@ -45,10 +45,10 @@ import java.util.function.IntBinaryOperator;
  * Add flip function.
  *
  * @author Doug Lea
+ * @version 0.6.0
  * @see AtomicBooleanx#flip()
  * @see java.util.concurrent.atomic.AtomicBoolean
  * @see java.util.concurrent.atomic.AtomicInteger
- * @version 0.6.0
  */
 public class AtomicBooleanx extends AtomicBoolean {
     /**
