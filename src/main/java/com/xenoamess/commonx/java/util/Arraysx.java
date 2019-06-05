@@ -69,7 +69,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static int[] sort(int[] a) {
+    public static int[] sortSelf(final int[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -93,7 +93,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static int[] sort(int[] a, int fromIndex, int toIndex) {
+    public static int[] sortSelf(int[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -110,7 +110,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static long[] sort(long[] a) {
+    public static long[] sortSelf(long[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -134,7 +134,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static long[] sort(long[] a, int fromIndex, int toIndex) {
+    public static long[] sortSelf(long[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -151,7 +151,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static short[] sort(short[] a) {
+    public static short[] sortSelf(short[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -175,7 +175,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static short[] sort(short[] a, int fromIndex, int toIndex) {
+    public static short[] sortSelf(short[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -192,7 +192,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static char[] sort(char[] a) {
+    public static char[] sortSelf(char[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -216,7 +216,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static char[] sort(char[] a, int fromIndex, int toIndex) {
+    public static char[] sortSelf(char[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -233,7 +233,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static byte[] sort(byte[] a) {
+    public static byte[] sortSelf(byte[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -257,7 +257,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static byte[] sort(byte[] a, int fromIndex, int toIndex) {
+    public static byte[] sortSelf(byte[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -282,7 +282,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static float[] sort(float[] a) {
+    public static float[] sortSelf(float[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -314,7 +314,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static float[] sort(float[] a, int fromIndex, int toIndex) {
+    public static float[] sortSelf(float[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -339,7 +339,7 @@ public class Arraysx {
      * @param a the array to be sorted
      * @return the original array
      */
-    public static double[] sort(double[] a) {
+    public static double[] sortSelf(double[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -371,7 +371,7 @@ public class Arraysx {
      * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
-    public static double[] sort(double[] a, int fromIndex, int toIndex) {
+    public static double[] sortSelf(double[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -393,7 +393,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static byte[] parallelSort(byte[] a) {
+    public static byte[] parallelSortSelf(byte[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -422,7 +422,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static byte[] parallelSort(byte[] a, int fromIndex, int toIndex) {
+    public static byte[] parallelSortSelf(byte[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -444,7 +444,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static char[] parallelSort(char[] a) {
+    public static char[] parallelSortSelf(char[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -473,7 +473,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static char[] parallelSort(char[] a, int fromIndex, int toIndex) {
+    public static char[] parallelSortSelf(char[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -495,7 +495,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static short[] parallelSort(short[] a) {
+    public static short[] parallelSortSelf(short[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -524,7 +524,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static short[] parallelSort(short[] a, int fromIndex, int toIndex) {
+    public static short[] parallelSortSelf(short[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -546,7 +546,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static int[] parallelSort(int[] a) {
+    public static int[] parallelSortSelf(int[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -575,7 +575,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static int[] parallelSort(int[] a, int fromIndex, int toIndex) {
+    public static int[] parallelSortSelf(int[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -597,7 +597,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static long[] parallelSort(long[] a) {
+    public static long[] parallelSortSelf(long[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -626,7 +626,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static long[] parallelSort(long[] a, int fromIndex, int toIndex) {
+    public static long[] parallelSortSelf(long[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -655,7 +655,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static float[] parallelSort(float[] a) {
+    public static float[] parallelSortSelf(float[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -691,7 +691,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static float[] parallelSort(float[] a, int fromIndex, int toIndex) {
+    public static float[] parallelSortSelf(float[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -720,7 +720,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static double[] parallelSort(double[] a) {
+    public static double[] parallelSortSelf(double[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -757,7 +757,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static double[] parallelSort(double[] a, int fromIndex, int toIndex) {
+    public static double[] parallelSortSelf(double[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
     }
@@ -794,7 +794,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static <T extends Comparable<? super T>> T[] parallelSort(T[] a) {
+    public static <T extends Comparable<? super T>> T[] parallelSortSelf(T[] a) {
         Arrays.parallelSort(a);
         return a;
     }
@@ -841,7 +841,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static <T extends Comparable<? super T>> T[] parallelSort(
+    public static <T extends Comparable<? super T>> T[] parallelSortSelf(
             T[] a, int fromIndex, int toIndex) {
         Arrays.parallelSort(a, fromIndex, toIndex);
         return a;
@@ -879,7 +879,7 @@ public class Arraysx {
      * execute any parallel tasks.
      * @since 1.8
      */
-    public static <T> T[] parallelSort(T[] a, Comparator<? super T> cmp) {
+    public static <T> T[] parallelSortSelf(T[] a, Comparator<? super T> cmp) {
         Arrays.parallelSort(a, cmp);
         return a;
     }
@@ -926,7 +926,7 @@ public class Arraysx {
      * used to execute any parallel tasks.
      * @since 1.8
      */
-    public static <T> T[] parallelSort(
+    public static <T> T[] parallelSortSelf(
             T[] a, int fromIndex, int toIndex, Comparator<? super T> cmp) {
         Arrays.parallelSort(a, fromIndex, toIndex, cmp);
         return a;
@@ -979,7 +979,7 @@ public class Arraysx {
      *                                  ordering of the array elements is found to violate the
      *                                  {@link Comparable} contract
      */
-    public static Object[] sort(Object[] a) {
+    public static Object[] sortSelf(Object[] a) {
         Arrays.sort(a);
         return a;
     }
@@ -1037,7 +1037,7 @@ public class Arraysx {
      *                                        not <i>mutually comparable</i> (for example, strings and
      *                                        integers).
      */
-    public static Object[] sort(Object[] a, int fromIndex, int toIndex) {
+    public static Object[] sortSelf(Object[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
         return a;
     }
@@ -1086,7 +1086,7 @@ public class Arraysx {
      * @throws IllegalArgumentException (optional) if the comparator is
      *                                  found to violate the {@link Comparator} contract
      */
-    public static <T> T[] sort(T[] a, Comparator<? super T> c) {
+    public static <T> T[] sortSelf(T[] a, Comparator<? super T> c) {
         Arrays.sort(a, c);
         return a;
     }
@@ -1145,7 +1145,7 @@ public class Arraysx {
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      */
-    public static <T> T[] sort(
+    public static <T> T[] sortSelf(
             T[] a, int fromIndex, int toIndex, Comparator<? super T> c) {
         Arrays.sort(a, fromIndex, toIndex, c);
         return a;
@@ -1169,13 +1169,13 @@ public class Arraysx {
      * @throws NullPointerException if the specified array or function is null
      * @since 1.8
      */
-    public static <T> T[] parallelPrefix(T[] array, BinaryOperator<T> op) {
+    public static <T> T[] parallelPrefixSelf(T[] array, BinaryOperator<T> op) {
         Arrays.parallelPrefix(array, op);
         return array;
     }
 
     /**
-     * Performs {@link #parallelPrefix(Object[], BinaryOperator)}
+     * Performs {@link #parallelPrefixSelf(Object[], BinaryOperator)}
      * for the given subrange of the array.
      *
      * @param <T>       the class of the objects in the array
@@ -1190,7 +1190,7 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static <T> T[] parallelPrefix(
+    public static <T> T[] parallelPrefixSelf(
             T[] array, int fromIndex, int toIndex, BinaryOperator<T> op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
@@ -1211,13 +1211,13 @@ public class Arraysx {
      * @throws NullPointerException if the specified array or function is null
      * @since 1.8
      */
-    public static long[] parallelPrefix(long[] array, LongBinaryOperator op) {
+    public static long[] parallelPrefixSelf(long[] array, LongBinaryOperator op) {
         Arrays.parallelPrefix(array, op);
         return array;
     }
 
     /**
-     * Performs {@link #parallelPrefix(long[], LongBinaryOperator)}
+     * Performs {@link #parallelPrefixSelf(long[], LongBinaryOperator)}
      * for the given subrange of the array.
      *
      * @param array     the array
@@ -1231,7 +1231,7 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static long[] parallelPrefix(
+    public static long[] parallelPrefixSelf(
             long[] array, int fromIndex, int toIndex, LongBinaryOperator op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
@@ -1255,13 +1255,13 @@ public class Arraysx {
      * @throws NullPointerException if the specified array or function is null
      * @since 1.8
      */
-    public static double[] parallelPrefix(double[] array, DoubleBinaryOperator op) {
+    public static double[] parallelPrefixSelf(double[] array, DoubleBinaryOperator op) {
         Arrays.parallelPrefix(array, op);
         return array;
     }
 
     /**
-     * Performs {@link #parallelPrefix(double[], DoubleBinaryOperator)}
+     * Performs {@link #parallelPrefixSelf(double[], DoubleBinaryOperator)}
      * for the given subrange of the array.
      *
      * @param array     the array
@@ -1275,7 +1275,7 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static double[] parallelPrefix(
+    public static double[] parallelPrefixSelf(
             double[] array, int fromIndex, int toIndex, DoubleBinaryOperator op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
@@ -1296,13 +1296,13 @@ public class Arraysx {
      * @throws NullPointerException if the specified array or function is null
      * @since 1.8
      */
-    public static int[] parallelPrefix(int[] array, IntBinaryOperator op) {
+    public static int[] parallelPrefixSelf(int[] array, IntBinaryOperator op) {
         Arrays.parallelPrefix(array, op);
         return array;
     }
 
     /**
-     * Performs {@link #parallelPrefix(int[], IntBinaryOperator)}
+     * Performs {@link #parallelPrefixSelf(int[], IntBinaryOperator)}
      * for the given subrange of the array.
      *
      * @param array     the array
@@ -1316,7 +1316,7 @@ public class Arraysx {
      * @throws NullPointerException           if the specified array or function is null
      * @since 1.8
      */
-    public static int[] parallelPrefix(
+    public static int[] parallelPrefixSelf(
             int[] array, int fromIndex, int toIndex, IntBinaryOperator op) {
         Arrays.parallelPrefix(array, fromIndex, toIndex, op);
         return array;
@@ -1334,7 +1334,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(long[] a, long val)
      */
-    public static long[] fill(long[] a, long val) {
+    public static long[] fillSelf(long[] a, long val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1358,7 +1358,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(long[] a, int fromIndex, int toIndex, long val)
      */
-    public static long[] fill(long[] a, int fromIndex, int toIndex, long val) {
+    public static long[] fillSelf(long[] a, int fromIndex, int toIndex, long val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1372,7 +1372,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(int[] a, int val)
      */
-    public static int[] fill(int[] a, int val) {
+    public static int[] fillSelf(int[] a, int val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1396,7 +1396,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(int[] a, int fromIndex, int toIndex, int val)
      */
-    public static int[] fill(int[] a, int fromIndex, int toIndex, int val) {
+    public static int[] fillSelf(int[] a, int fromIndex, int toIndex, int val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1410,7 +1410,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(short[] a, short val)
      */
-    public static short[] fill(short[] a, short val) {
+    public static short[] fillSelf(short[] a, short val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1434,7 +1434,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(short[] a, int fromIndex, int toIndex, short val)
      */
-    public static short[] fill(short[] a, int fromIndex, int toIndex, short val) {
+    public static short[] fillSelf(short[] a, int fromIndex, int toIndex, short val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1449,7 +1449,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(char[] a, char val)
      */
-    public static char[] fill(char[] a, char val) {
+    public static char[] fillSelf(char[] a, char val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1473,7 +1473,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(char[] a, int fromIndex, int toIndex, char val)
      */
-    public static char[] fill(char[] a, int fromIndex, int toIndex, char val) {
+    public static char[] fillSelf(char[] a, int fromIndex, int toIndex, char val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1487,7 +1487,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(byte[] a, byte val)
      */
-    public static byte[] fill(byte[] a, byte val) {
+    public static byte[] fillSelf(byte[] a, byte val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1511,7 +1511,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(byte[] a, int fromIndex, int toIndex, byte val)
      */
-    public static byte[] fill(byte[] a, int fromIndex, int toIndex, byte val) {
+    public static byte[] fillSelf(byte[] a, int fromIndex, int toIndex, byte val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1525,7 +1525,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(boolean[] a, boolean val)
      */
-    public static boolean[] fill(boolean[] a, boolean val) {
+    public static boolean[] fillSelf(boolean[] a, boolean val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1549,8 +1549,8 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(boolean[] a, int fromIndex, int toIndex, boolean val)
      */
-    public static boolean[] fill(boolean[] a, int fromIndex, int toIndex,
-                                 boolean val) {
+    public static boolean[] fillSelf(boolean[] a, int fromIndex, int toIndex,
+                                     boolean val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1564,7 +1564,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(double[] a, double val)
      */
-    public static double[] fill(double[] a, double val) {
+    public static double[] fillSelf(double[] a, double val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1588,7 +1588,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(double[] a, int fromIndex, int toIndex, double val)
      */
-    public static double[] fill(double[] a, int fromIndex, int toIndex, double val) {
+    public static double[] fillSelf(double[] a, int fromIndex, int toIndex, double val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1602,7 +1602,7 @@ public class Arraysx {
      * @return the original array
      * @see Arrays#fill(float[] a, float val)
      */
-    public static float[] fill(float[] a, float val) {
+    public static float[] fillSelf(float[] a, float val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1626,7 +1626,7 @@ public class Arraysx {
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(float[] a, int fromIndex, int toIndex, float val)
      */
-    public static float[] fill(float[] a, int fromIndex, int toIndex, float val) {
+    public static float[] fillSelf(float[] a, int fromIndex, int toIndex, float val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1642,7 +1642,7 @@ public class Arraysx {
      *                             runtime type that can be stored in the specified array
      * @see Arrays#fill(Object[] a, Object val)
      */
-    public static <T> T[] fill(T[] a, T val) {
+    public static <T> T[] fillSelf(T[] a, T val) {
         Arrays.fill(a, val);
         return a;
     }
@@ -1668,7 +1668,7 @@ public class Arraysx {
      *                                        runtime type that can be stored in the specified array
      * @see Arrays#fill(Object[] a, int fromIndex, int toIndex, Object val)
      */
-    public static <T> T[] fill(T[] a, int fromIndex, int toIndex, T val) {
+    public static <T> T[] fillSelf(T[] a, int fromIndex, int toIndex, T val) {
         Arrays.fill(a, fromIndex, toIndex, val);
         return a;
     }
@@ -1942,7 +1942,6 @@ public class Arraysx {
      *
      * @param <T>   the component type of the array
      * @param array the array to be filled
-     * @return the original array
      * @throws IllegalArgumentException if array is null,
      *                                  or if T have no such constructor,
      *                                  or the constructor is not accessible,
@@ -1951,7 +1950,8 @@ public class Arraysx {
      * @since 3.10
      */
     @SuppressWarnings("unchecked")
-    public static <T> T[] fillNew(T[] array) {
+    public static <T> void fillNew(T[] array) {
+        com.xenoamess.commonx.java.lang.IllegalArgumentExceptionUtilsx.isAnyNullInParamsThenThrowIllegalArgumentException(array);
         if (array == null) {
             throw new IllegalArgumentException("The input array must not be null.");
         }
@@ -1983,6 +1983,135 @@ public class Arraysx {
                             + componentClass.getCanonicalName()
             );
         }
+    }
+
+    /**
+     * <p>Fill a array with creating new instances of the component class
+     * using constructor that accept 0 arguments.
+     *
+     * <pre>
+     *     private final AtomicBoolean[][] rawKeys =
+     *             new AtomicBoolean[][]{
+     *                     fillNew(new AtomicBoolean[1000]),
+     *                     fillNew(new AtomicBoolean[1000]),
+     *                     fillNew(new AtomicBoolean[1000]),
+     *                     fillNew(new AtomicBoolean[1000])};
+     * </pre>
+     *
+     * @param <T>   the component type of the array
+     * @param array the array to be filled
+     * @return the original array
+     * @throws IllegalArgumentException if array is null,
+     *                                  or if T have no such constructor,
+     *                                  or the constructor is not accessible,
+     *                                  or the class cannot be instantiated.
+     * @author XenoAmess
+     * @since 3.10
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T[] fillNewSelf(T[] array) {
+        fillNew(array);
         return array;
     }
+
+    /**
+     * Checks that {@code fromIndex} and {@code toIndex} are in
+     * the range and throws an exception if they aren't.
+     */
+    public static void rangeCheck(int arrayLength, int fromIndex, int toIndex) {
+        if (fromIndex > toIndex) {
+            throw new IllegalArgumentException(
+                    "fromIndex(" + fromIndex + ") > toIndex(" + toIndex + ")");
+        }
+        if (fromIndex < 0) {
+            throw new ArrayIndexOutOfBoundsException(fromIndex);
+        }
+        if (toIndex > arrayLength) {
+            throw new ArrayIndexOutOfBoundsException(toIndex);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws ClassCastException             if the array contains elements that are not
+     *                                        <i>mutually comparable</i> using the specified comparator.
+     * @throws IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                        (optional) if the comparator is found to violate the
+     *                                        {@link Comparator} contract
+     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                        {@code toIndex > a.length}
+     */
+    public static void sort(double[] a, int fromIndex, int toIndex,
+                            Comparator<? super Double> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            DoubleTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+
+//    public <T> T[] distinct(T[] originalArray) {
+//        return (T[]) Arrays.stream(originalArray).distinct().toArray();
+//    }
+//
+//    public long[] distinct(long[] originalArray) {
+//        return Arrays.stream(originalArray).distinct().toArray();
+//    }
+//
+//    public int[] distinct(int[] originalArray) {
+//        return Arrays.stream(originalArray).distinct().toArray();
+//    }
+//
+//    public short[] distinct(short[] originalArray) {
+//        return Arrays.stream(originalArray).distinct().toArray();
+//    }
+//
+//    public char[] distinct(char[] originalArray) {
+//        Arrays.asList()
+//        return Arrays.stream(originalArray).distinct().toArray();
+//    }
+
 }

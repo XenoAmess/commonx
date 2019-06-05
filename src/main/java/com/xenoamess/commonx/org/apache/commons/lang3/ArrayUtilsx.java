@@ -24,7 +24,7 @@ import java.util.Random;
  * @author XenoAmess
  * @see org.apache.commons.lang3.ArrayUtils
  */
-public class ArrayUtilsx {
+public class ArrayUtilsx extends ArrayUtils {
     /**
      * <p>Instances of this class should NOT be constructed in standard programming.
      *
@@ -49,7 +49,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(Object[] array)
      */
-    public static <T> T[] reverse(final T[] array) {
+    public static <T> T[] reverseSelf(final T[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -63,7 +63,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(long[] array)
      */
-    public static long[] reverse(final long[] array) {
+    public static long[] reverseSelf(final long[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -77,7 +77,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(int[] array)
      */
-    public static int[] reverse(final int[] array) {
+    public static int[] reverseSelf(final int[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -91,7 +91,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(short[] array)
      */
-    public static short[] reverse(final short[] array) {
+    public static short[] reverseSelf(final short[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -105,7 +105,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(char[] array)
      */
-    public static char[] reverse(final char[] array) {
+    public static char[] reverseSelf(final char[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -119,7 +119,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(byte[] array)
      */
-    public static byte[] reverse(final byte[] array) {
+    public static byte[] reverseSelf(final byte[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -133,7 +133,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(double[] array)
      */
-    public static double[] reverse(final double[] array) {
+    public static double[] reverseSelf(final double[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -147,7 +147,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(float[] array)
      */
-    public static float[] reverse(final float[] array) {
+    public static float[] reverseSelf(final float[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -161,7 +161,7 @@ public class ArrayUtilsx {
      * @return the original array
      * @see ArrayUtils#reverse(boolean[] array)
      */
-    public static boolean[] reverse(final boolean[] array) {
+    public static boolean[] reverseSelf(final boolean[] array) {
         ArrayUtils.reverse(array);
         return array;
     }
@@ -184,7 +184,8 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(boolean[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static boolean[] reverse(final boolean[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static boolean[] reverseSelf(final boolean[] array, final int startIndexInclusive,
+                                        final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -207,7 +208,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(byte[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static byte[] reverse(final byte[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static byte[] reverseSelf(final byte[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -230,7 +231,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(char[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static char[] reverse(final char[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static char[] reverseSelf(final char[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -253,7 +254,8 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(double[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static double[] reverse(final double[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static double[] reverseSelf(final double[] array, final int startIndexInclusive,
+                                       final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -276,7 +278,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(float[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static float[] reverse(final float[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static float[] reverseSelf(final float[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -299,7 +301,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(int[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static int[] reverse(final int[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static int[] reverseSelf(final int[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -322,7 +324,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(long[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static long[] reverse(final long[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static long[] reverseSelf(final long[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -345,7 +347,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(short[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static short[] reverse(final short[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static short[] reverseSelf(final short[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -368,7 +370,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#reverse(Object[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
-    public static <T> T[] reverse(final T[] array, final int startIndexInclusive, final int endIndexExclusive) {
+    public static <T> T[] reverseSelf(final T[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
         return array;
     }
@@ -399,7 +401,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(Object[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static <T> T[] swap(final T[] array, final int offset1, final int offset2) {
+    public static <T> T[] swapSelf(final T[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -427,7 +429,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(long[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static long[] swap(final long[] array, final int offset1, final int offset2) {
+    public static long[] swapSelf(final long[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -455,7 +457,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(int[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static int[] swap(final int[] array, final int offset1, final int offset2) {
+    public static int[] swapSelf(final int[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -483,7 +485,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(short[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static short[] swap(final short[] array, final int offset1, final int offset2) {
+    public static short[] swapSelf(final short[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -511,7 +513,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(char[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static char[] swap(final char[] array, final int offset1, final int offset2) {
+    public static char[] swapSelf(final char[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -539,7 +541,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(byte[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static byte[] swap(final byte[] array, final int offset1, final int offset2) {
+    public static byte[] swapSelf(final byte[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -567,7 +569,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(double[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static double[] swap(final double[] array, final int offset1, final int offset2) {
+    public static double[] swapSelf(final double[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -595,7 +597,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(float[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static float[] swap(final float[] array, final int offset1, final int offset2) {
+    public static float[] swapSelf(final float[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -623,7 +625,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(boolean[] array, int offset1, int offset2)
      * @since 3.5
      */
-    public static boolean[] swap(final boolean[] array, final int offset1, final int offset2) {
+    public static boolean[] swapSelf(final boolean[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
         return array;
     }
@@ -654,7 +656,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(boolean[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static boolean[] swap(final boolean[] array, int offset1, int offset2, int len) {
+    public static boolean[] swapSelf(final boolean[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -685,7 +687,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(byte[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static byte[] swap(final byte[] array, int offset1, int offset2, int len) {
+    public static byte[] swapSelf(final byte[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -716,7 +718,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(char[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static char[] swap(final char[] array, int offset1, int offset2, int len) {
+    public static char[] swapSelf(final char[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -747,7 +749,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(double[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static double[] swap(final double[] array, int offset1, int offset2, int len) {
+    public static double[] swapSelf(final double[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -778,7 +780,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(float[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static float[] swap(final float[] array, int offset1, int offset2, int len) {
+    public static float[] swapSelf(final float[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -809,7 +811,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(int[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static int[] swap(final int[] array, int offset1, int offset2, int len) {
+    public static int[] swapSelf(final int[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -840,7 +842,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(long[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static long[] swap(final long[] array, int offset1, int offset2, int len) {
+    public static long[] swapSelf(final long[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -871,7 +873,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(short[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static short[] swap(final short[] array, int offset1, int offset2, int len) {
+    public static short[] swapSelf(final short[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -902,7 +904,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#swap(Object[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
-    public static <T> T[] swap(final T[] array, int offset1, int offset2, int len) {
+    public static <T> T[] swapSelf(final T[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
         return array;
     }
@@ -925,7 +927,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(Object[] array, int offset)
      * @since 3.5
      */
-    public static <T> T[] shift(final T[] array, final int offset) {
+    public static <T> T[] shiftSelf(final T[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -944,7 +946,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(long[] array, int offset)
      * @since 3.5
      */
-    public static long[] shift(final long[] array, final int offset) {
+    public static long[] shiftSelf(final long[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -963,7 +965,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(int[] array, int offset)
      * @since 3.5
      */
-    public static int[] shift(final int[] array, final int offset) {
+    public static int[] shiftSelf(final int[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -982,7 +984,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(short[] array, int offset)
      * @since 3.5
      */
-    public static short[] shift(final short[] array, final int offset) {
+    public static short[] shiftSelf(final short[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -1001,7 +1003,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(char[] array, int offset)
      * @since 3.5
      */
-    public static char[] shift(final char[] array, final int offset) {
+    public static char[] shiftSelf(final char[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -1020,7 +1022,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(byte[] array, int offset)
      * @since 3.5
      */
-    public static byte[] shift(final byte[] array, final int offset) {
+    public static byte[] shiftSelf(final byte[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -1039,7 +1041,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(double[] array, int offset)
      * @since 3.5
      */
-    public static double[] shift(final double[] array, final int offset) {
+    public static double[] shiftSelf(final double[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -1058,7 +1060,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(float[] array, int offset)
      * @since 3.5
      */
-    public static float[] shift(final float[] array, final int offset) {
+    public static float[] shiftSelf(final float[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -1077,7 +1079,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(boolean[] array, int offset)
      * @since 3.5
      */
-    public static boolean[] shift(final boolean[] array, final int offset) {
+    public static boolean[] shiftSelf(final boolean[] array, final int offset) {
         ArrayUtils.shift(array, offset);
         return array;
     }
@@ -1102,7 +1104,8 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(boolean[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static boolean[] shift(final boolean[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static boolean[] shiftSelf(final boolean[] array, int startIndexInclusive, int endIndexExclusive,
+                                      int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1127,7 +1130,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(byte[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static byte[] shift(final byte[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static byte[] shiftSelf(final byte[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1152,7 +1155,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(char[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static char[] shift(final char[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static char[] shiftSelf(final char[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1177,7 +1180,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(double[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static double[] shift(final double[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static double[] shiftSelf(final double[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1202,7 +1205,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(float[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static float[] shift(final float[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static float[] shiftSelf(final float[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1227,7 +1230,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(int[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static int[] shift(final int[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static int[] shiftSelf(final int[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1252,7 +1255,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(long[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static long[] shift(final long[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static long[] shiftSelf(final long[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1277,7 +1280,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(Object[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static <T> T[] shift(final T[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static <T> T[] shiftSelf(final T[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1302,7 +1305,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shift(short[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
-    public static short[] shift(final short[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
+    public static short[] shiftSelf(final short[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
         return array;
     }
@@ -1319,7 +1322,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(Object[] array)
      * @since 3.6
      */
-    public static <T> T[] shuffle(final T[] array) {
+    public static <T> T[] shuffleSelf(final T[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1334,7 +1337,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(Object[] array, Random random)
      * @since 3.6
      */
-    public static <T> T[] shuffle(final T[] array, final Random random) {
+    public static <T> T[] shuffleSelf(final T[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1348,7 +1351,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(boolean[] array)
      * @since 3.6
      */
-    public static boolean[] shuffle(final boolean[] array) {
+    public static boolean[] shuffleSelf(final boolean[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1363,7 +1366,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(boolean[] array, Random random)
      * @since 3.6
      */
-    public static boolean[] shuffle(final boolean[] array, final Random random) {
+    public static boolean[] shuffleSelf(final boolean[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1377,7 +1380,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(byte[] array)
      * @since 3.6
      */
-    public static byte[] shuffle(final byte[] array) {
+    public static byte[] shuffleSelf(final byte[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1392,7 +1395,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(byte[] array, Random random)
      * @since 3.6
      */
-    public static byte[] shuffle(final byte[] array, final Random random) {
+    public static byte[] shuffleSelf(final byte[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1406,7 +1409,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(char[] array)
      * @since 3.6
      */
-    public static char[] shuffle(final char[] array) {
+    public static char[] shuffleSelf(final char[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1421,7 +1424,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(char[] array, Random random)
      * @since 3.6
      */
-    public static char[] shuffle(final char[] array, final Random random) {
+    public static char[] shuffleSelf(final char[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1435,7 +1438,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(short[] array)
      * @since 3.6
      */
-    public static short[] shuffle(final short[] array) {
+    public static short[] shuffleSelf(final short[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1450,7 +1453,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(short[] array, Random random)
      * @since 3.6
      */
-    public static short[] shuffle(final short[] array, final Random random) {
+    public static short[] shuffleSelf(final short[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1464,7 +1467,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(int[] array)
      * @since 3.6
      */
-    public static int[] shuffle(final int[] array) {
+    public static int[] shuffleSelf(final int[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1479,7 +1482,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(int[] array, Random random)
      * @since 3.6
      */
-    public static int[] shuffle(final int[] array, final Random random) {
+    public static int[] shuffleSelf(final int[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1493,7 +1496,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(long[] array)
      * @since 3.6
      */
-    public static long[] shuffle(final long[] array) {
+    public static long[] shuffleSelf(final long[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1508,7 +1511,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(long[] array, Random random)
      * @since 3.6
      */
-    public static long[] shuffle(final long[] array, final Random random) {
+    public static long[] shuffleSelf(final long[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1522,7 +1525,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(float[] array)
      * @since 3.6
      */
-    public static float[] shuffle(final float[] array) {
+    public static float[] shuffleSelf(final float[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1537,7 +1540,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(float[] array, Random random)
      * @since 3.6
      */
-    public static float[] shuffle(final float[] array, final Random random) {
+    public static float[] shuffleSelf(final float[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
@@ -1551,7 +1554,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(double[] array)
      * @since 3.6
      */
-    public static double[] shuffle(final double[] array) {
+    public static double[] shuffleSelf(final double[] array) {
         ArrayUtils.shuffle(array);
         return array;
     }
@@ -1566,7 +1569,7 @@ public class ArrayUtilsx {
      * @see ArrayUtils#shuffle(double[] array, Random random)
      * @since 3.6
      */
-    public static double[] shuffle(final double[] array, final Random random) {
+    public static double[] shuffleSelf(final double[] array, final Random random) {
         ArrayUtils.shuffle(array, random);
         return array;
     }
