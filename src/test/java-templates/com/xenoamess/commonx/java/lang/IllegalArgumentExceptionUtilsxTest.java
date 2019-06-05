@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * @author XenoAmess
- * @see ArrayUtils
+ * @see org.apache.commons.lang3.ArrayUtils
  */
 public class IllegalArgumentExceptionUtilsxTest {
     /**

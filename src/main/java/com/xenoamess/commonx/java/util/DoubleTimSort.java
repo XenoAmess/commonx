@@ -624,7 +624,7 @@ public class DoubleTimSort {
      * @param key  the key whose insertion point to search for
      * @param a    the array in which to search
      * @param base the index of the first element in the range
-     * @param len  the length of the range; must be > 0
+     * @param len  the length of the range; must be &gt; 0
      * @param hint the index at which to begin the search, 0 &lt;= hint &lt; n.
      *             The closer hint is to the result, the faster this method will run.
      * @param c    the comparator used to order the range, and to search
@@ -698,11 +698,11 @@ public class DoubleTimSort {
     /**
      * Merges two adjacent runs in place, in a stable fashion.  The first
      * element of the first run must be greater than the first element of the
-     * second run (a[base1] > a[base2]), and the last element of the first run
+     * second run (a[base1] &gt; a[base2]), and the last element of the first run
      * (a[base1 + len1-1]) must be greater than all elements of the second run.
      * <p>
-     * For performance, this method should be called only when len1 <= len2;
-     * its twin, mergeHi should be called if len1 >= len2.  (Either method
+     * For performance, this method should be called only when len1 &lt;= len2;
+     * its twin, mergeHi should be called if len1 &gt;= len2.  (Either method
      * may be called if len1 == len2.)
      *
      * @param base1 index of first element in first run to be merged
@@ -826,7 +826,7 @@ public class DoubleTimSort {
 
     /**
      * Like mergeLo, except that this method should be called only if
-     * len1 >= len2; mergeLo should be called if len1 <= len2.  (Either method
+     * len1 &gt;= len2; mergeLo should be called if len1 &lt;= len2.  (Either method
      * may be called if len1 == len2.)
      *
      * @param base1 index of first element in first run to be merged

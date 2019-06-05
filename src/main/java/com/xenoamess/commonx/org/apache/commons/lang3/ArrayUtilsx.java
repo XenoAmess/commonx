@@ -51,7 +51,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to reverse, may be {@code null}
      * @param <T>   a T object.
      * @return the original array
-     * @see ArrayUtils#reverse(Object[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(Object[] array)
      */
     public static <T> T[] reverseSelf(final T[] array) {
         ArrayUtils.reverse(array);
@@ -65,7 +65,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(long[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(long[] array)
      */
     public static long[] reverseSelf(final long[] array) {
         ArrayUtils.reverse(array);
@@ -79,7 +79,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(int[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(int[] array)
      */
     public static int[] reverseSelf(final int[] array) {
         ArrayUtils.reverse(array);
@@ -93,7 +93,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(short[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(short[] array)
      */
     public static short[] reverseSelf(final short[] array) {
         ArrayUtils.reverse(array);
@@ -107,7 +107,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(char[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(char[] array)
      */
     public static char[] reverseSelf(final char[] array) {
         ArrayUtils.reverse(array);
@@ -121,7 +121,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(byte[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(byte[] array)
      */
     public static byte[] reverseSelf(final byte[] array) {
         ArrayUtils.reverse(array);
@@ -135,7 +135,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(double[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(double[] array)
      */
     public static double[] reverseSelf(final double[] array) {
         ArrayUtils.reverse(array);
@@ -149,7 +149,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(float[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(float[] array)
      */
     public static float[] reverseSelf(final float[] array) {
         ArrayUtils.reverse(array);
@@ -163,7 +163,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
-     * @see ArrayUtils#reverse(boolean[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(boolean[] array)
      */
     public static boolean[] reverseSelf(final boolean[] array) {
         ArrayUtils.reverse(array);
@@ -185,7 +185,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(boolean[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(boolean[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static boolean[] reverseSelf(final boolean[] array, final int startIndexInclusive,
@@ -209,7 +209,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(byte[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(byte[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static byte[] reverseSelf(final byte[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -232,7 +232,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(char[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(char[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static char[] reverseSelf(final char[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -255,7 +255,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(double[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(double[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static double[] reverseSelf(final double[] array, final int startIndexInclusive,
@@ -279,7 +279,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(float[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(float[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static float[] reverseSelf(final float[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -302,7 +302,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(int[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(int[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static int[] reverseSelf(final int[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -325,7 +325,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(long[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(long[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static long[] reverseSelf(final long[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -348,7 +348,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            results in no
      *                            change. Overvalue (&gt;array.length) is demoted to array length.
      * @return the original array
-     * @see ArrayUtils#reverse(short[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(short[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static short[] reverseSelf(final short[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -372,7 +372,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            change. Over value (&gt;array.length) is demoted to array length.
      * @param <T>                 a T object.
      * @return the original array
-     * @see ArrayUtils#reverse(Object[] array, int startIndexInclusive, int endIndexExclusive)
+     * @see org.apache.commons.lang3.ArrayUtils#reverse(Object[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
      */
     public static <T> T[] reverseSelf(final T[] array, final int startIndexInclusive, final int endIndexExclusive) {
@@ -404,7 +404,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element to swap
      * @param <T>     a T object.
      * @return the original array
-     * @see ArrayUtils#swap(Object[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(Object[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static <T> T[] swapSelf(final T[] array, final int offset1, final int offset2) {
@@ -432,7 +432,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(long[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(long[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static long[] swapSelf(final long[] array, final int offset1, final int offset2) {
@@ -460,7 +460,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(int[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(int[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static int[] swapSelf(final int[] array, final int offset1, final int offset2) {
@@ -488,7 +488,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(short[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(short[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static short[] swapSelf(final short[] array, final int offset1, final int offset2) {
@@ -516,7 +516,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(char[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(char[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static char[] swapSelf(final char[] array, final int offset1, final int offset2) {
@@ -544,7 +544,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(byte[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(byte[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static byte[] swapSelf(final byte[] array, final int offset1, final int offset2) {
@@ -572,7 +572,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(double[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(double[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static double[] swapSelf(final double[] array, final int offset1, final int offset2) {
@@ -600,7 +600,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(float[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(float[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static float[] swapSelf(final float[] array, final int offset1, final int offset2) {
@@ -628,7 +628,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset1 the index of the first element to swap
      * @param offset2 the index of the second element to swap
      * @return the original array
-     * @see ArrayUtils#swap(boolean[] array, int offset1, int offset2)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(boolean[] array, int offset1, int offset2)
      * @since 3.5
      */
     public static boolean[] swapSelf(final boolean[] array, final int offset1, final int offset2) {
@@ -659,7 +659,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(boolean[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(boolean[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static boolean[] swapSelf(final boolean[] array, int offset1, int offset2, int len) {
@@ -690,7 +690,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(byte[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(byte[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static byte[] swapSelf(final byte[] array, int offset1, int offset2, int len) {
@@ -721,7 +721,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(char[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(char[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static char[] swapSelf(final char[] array, int offset1, int offset2, int len) {
@@ -752,7 +752,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(double[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(double[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static double[] swapSelf(final double[] array, int offset1, int offset2, int len) {
@@ -783,7 +783,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(float[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(float[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static float[] swapSelf(final float[] array, int offset1, int offset2, int len) {
@@ -814,7 +814,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(int[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(int[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static int[] swapSelf(final int[] array, int offset1, int offset2, int len) {
@@ -845,7 +845,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(long[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(long[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static long[] swapSelf(final long[] array, int offset1, int offset2, int len) {
@@ -876,7 +876,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param offset2 the index of the second element in the series to swap
      * @param len     the number of elements to swap starting with the given indices
      * @return the original array
-     * @see ArrayUtils#swap(short[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(short[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static short[] swapSelf(final short[] array, int offset1, int offset2, int len) {
@@ -908,7 +908,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param len     the number of elements to swap starting with the given indices
      * @param <T>     a T object.
      * @return the original array
-     * @see ArrayUtils#swap(Object[] array, int offset1, int offset2, int len)
+     * @see org.apache.commons.lang3.ArrayUtils#swap(Object[] array, int offset1, int offset2, int len)
      * @since 3.5
      */
     public static <T> T[] swapSelf(final T[] array, int offset1, int offset2, int len) {
@@ -932,7 +932,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @param <T>    a T object.
      * @return the original array
-     * @see ArrayUtils#shift(Object[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(Object[] array, int offset)
      * @since 3.5
      */
     public static <T> T[] shiftSelf(final T[] array, final int offset) {
@@ -951,7 +951,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(long[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(long[] array, int offset)
      * @since 3.5
      */
     public static long[] shiftSelf(final long[] array, final int offset) {
@@ -970,7 +970,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(int[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(int[] array, int offset)
      * @since 3.5
      */
     public static int[] shiftSelf(final int[] array, final int offset) {
@@ -989,7 +989,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(short[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(short[] array, int offset)
      * @since 3.5
      */
     public static short[] shiftSelf(final short[] array, final int offset) {
@@ -1008,7 +1008,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(char[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(char[] array, int offset)
      * @since 3.5
      */
     public static char[] shiftSelf(final char[] array, final int offset) {
@@ -1027,7 +1027,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(byte[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(byte[] array, int offset)
      * @since 3.5
      */
     public static byte[] shiftSelf(final byte[] array, final int offset) {
@@ -1046,7 +1046,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(double[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(double[] array, int offset)
      * @since 3.5
      */
     public static double[] shiftSelf(final double[] array, final int offset) {
@@ -1065,7 +1065,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(float[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(float[] array, int offset)
      * @since 3.5
      */
     public static float[] shiftSelf(final float[] array, final int offset) {
@@ -1084,7 +1084,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *               elements to
      *               rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(boolean[] array, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(boolean[] array, int offset)
      * @since 3.5
      */
     public static boolean[] shiftSelf(final boolean[] array, final int offset) {
@@ -1109,7 +1109,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(boolean[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(boolean[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static boolean[] shiftSelf(final boolean[] array, int startIndexInclusive, int endIndexExclusive,
@@ -1135,7 +1135,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(byte[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(byte[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static byte[] shiftSelf(final byte[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1160,7 +1160,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(char[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(char[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static char[] shiftSelf(final char[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1185,7 +1185,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(double[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(double[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static double[] shiftSelf(final double[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1210,7 +1210,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(float[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(float[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static float[] shiftSelf(final float[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1235,7 +1235,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(int[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(int[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static int[] shiftSelf(final int[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1260,7 +1260,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(long[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(long[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static long[] shiftSelf(final long[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1286,7 +1286,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @param <T>                 a T object.
      * @return the original array
-     * @see ArrayUtils#shift(Object[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(Object[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static <T> T[] shiftSelf(final T[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1311,7 +1311,7 @@ public class ArrayUtilsx extends ArrayUtils {
      *                            number of elements to
      *                            rotate, than the effective offset is modulo the number of elements to rotate.
      * @return the original array
-     * @see ArrayUtils#shift(short[] array, int offset, int endIndexExclusive, int offset)
+     * @see org.apache.commons.lang3.ArrayUtils#shift(short[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
      */
     public static short[] shiftSelf(final short[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
@@ -1329,7 +1329,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param <T>   a T object.
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(Object[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(Object[] array)
      * @since 3.6
      */
     public static <T> T[] shuffleSelf(final T[] array) {
@@ -1345,7 +1345,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param <T>    a T object.
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(Object[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(Object[] array, Random random)
      * @since 3.6
      */
     public static <T> T[] shuffleSelf(final T[] array, final Random random) {
@@ -1359,7 +1359,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(boolean[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(boolean[] array)
      * @since 3.6
      */
     public static boolean[] shuffleSelf(final boolean[] array) {
@@ -1374,7 +1374,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(boolean[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(boolean[] array, Random random)
      * @since 3.6
      */
     public static boolean[] shuffleSelf(final boolean[] array, final Random random) {
@@ -1388,7 +1388,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(byte[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(byte[] array)
      * @since 3.6
      */
     public static byte[] shuffleSelf(final byte[] array) {
@@ -1403,7 +1403,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(byte[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(byte[] array, Random random)
      * @since 3.6
      */
     public static byte[] shuffleSelf(final byte[] array, final Random random) {
@@ -1417,7 +1417,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(char[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(char[] array)
      * @since 3.6
      */
     public static char[] shuffleSelf(final char[] array) {
@@ -1432,7 +1432,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(char[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(char[] array, Random random)
      * @since 3.6
      */
     public static char[] shuffleSelf(final char[] array, final Random random) {
@@ -1446,7 +1446,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(short[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(short[] array)
      * @since 3.6
      */
     public static short[] shuffleSelf(final short[] array) {
@@ -1461,7 +1461,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(short[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(short[] array, Random random)
      * @since 3.6
      */
     public static short[] shuffleSelf(final short[] array, final Random random) {
@@ -1475,7 +1475,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(int[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(int[] array)
      * @since 3.6
      */
     public static int[] shuffleSelf(final int[] array) {
@@ -1490,7 +1490,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(int[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(int[] array, Random random)
      * @since 3.6
      */
     public static int[] shuffleSelf(final int[] array, final Random random) {
@@ -1504,7 +1504,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(long[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(long[] array)
      * @since 3.6
      */
     public static long[] shuffleSelf(final long[] array) {
@@ -1519,7 +1519,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(long[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(long[] array, Random random)
      * @since 3.6
      */
     public static long[] shuffleSelf(final long[] array, final Random random) {
@@ -1533,7 +1533,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(float[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(float[] array)
      * @since 3.6
      */
     public static float[] shuffleSelf(final float[] array) {
@@ -1548,7 +1548,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(float[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(float[] array, Random random)
      * @since 3.6
      */
     public static float[] shuffleSelf(final float[] array, final Random random) {
@@ -1562,7 +1562,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to shuffle
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(double[] array)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(double[] array)
      * @since 3.6
      */
     public static double[] shuffleSelf(final double[] array) {
@@ -1577,7 +1577,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param random the source of randomness used to permute the elements
      * @return the original array
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
-     * @see ArrayUtils#shuffle(double[] array, Random random)
+     * @see org.apache.commons.lang3.ArrayUtils#shuffle(double[] array, Random random)
      * @since 3.6
      */
     public static double[] shuffleSelf(final double[] array, final Random random) {
