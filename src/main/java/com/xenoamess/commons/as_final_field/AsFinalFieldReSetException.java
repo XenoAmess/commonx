@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
  * <p>AsFinalFieldReSetException class.</p>
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class AsFinalFieldReSetException extends RuntimeException {
     /**

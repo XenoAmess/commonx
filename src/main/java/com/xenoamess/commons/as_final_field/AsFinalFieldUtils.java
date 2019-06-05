@@ -32,7 +32,7 @@ import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.*;
  * <p>AsFinalFieldUtils class.</p>
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class AsFinalFieldUtils {
     /**

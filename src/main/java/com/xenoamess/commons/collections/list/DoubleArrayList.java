@@ -105,7 +105,7 @@ import java.util.function.UnaryOperator;
  * @see LinkedList
  * @see Vector
  * @since 1.2
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**

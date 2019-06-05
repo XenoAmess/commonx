@@ -33,7 +33,7 @@ import java.util.function.IntBinaryOperator;
  *
  * @author XenoAmess
  * @see java.util.concurrent.atomic.AtomicBoolean
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class AtomicBooleanUtilsx {
     /**

@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
  * <p>AsFinalFieldExceptionType class.</p>
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public enum AsFinalFieldExceptionType {
     FIELD_NOT_EXIST {

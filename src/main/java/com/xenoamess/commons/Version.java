@@ -41,7 +41,7 @@ import java.util.Objects;
  * See pom of this project for more information.
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class Version implements Comparable<Version> {
 

@@ -39,7 +39,7 @@ import java.util.function.LongBinaryOperator;
  *
  * @author XenoAmess
  * @see java.util.Arrays
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class Arraysx {
     /**

@@ -48,7 +48,7 @@ import java.lang.annotation.*;
  * AsFinalField.
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 @Documented
 @Target(ElementType.FIELD)

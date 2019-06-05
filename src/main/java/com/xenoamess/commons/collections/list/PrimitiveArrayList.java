@@ -8,7 +8,7 @@ import java.util.RandomAccess;
  * <p>Abstract PrimitiveArrayList class.</p>
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public abstract class PrimitiveArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable {

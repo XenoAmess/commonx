@@ -34,7 +34,7 @@ import java.util.function.Function;
  * <p>IllegalArgumentExceptionUtilsxCodeGenerator class.</p>
  *
  * @author XenoAmess
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class IllegalArgumentExceptionUtilsxCodeGenerator {
 

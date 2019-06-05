@@ -60,7 +60,7 @@ import java.util.Comparator;
  * TimSort. Small arrays are sorted in place, using a binary insertion sort.
  *
  * @author Josh Bloch
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class DoubleTimSort {
     /**

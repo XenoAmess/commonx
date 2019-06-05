@@ -48,7 +48,7 @@ import java.util.function.IntBinaryOperator;
  * @see AtomicBooleanx#flip()
  * @see java.util.concurrent.atomic.AtomicBoolean
  * @see java.util.concurrent.atomic.AtomicInteger
- * @version $Id: $Id
+ * @version 0.6.0
  */
 public class AtomicBooleanx extends AtomicBoolean {
     /**
