@@ -1570,4 +1570,49 @@ public class ArrayUtilsx {
         ArrayUtils.shuffle(array, random);
         return array;
     }
+
+    /**
+     * <p>Checks whether several arrays are the same length, treating
+     * {@code null} arrays as length {@code 0}.
+     *
+     * <p>Any multi-dimensional aspects of the arrays are ignored.
+     *
+     * @param arrays arrays of the arrays, must not be {@code null}
+     * @return {@code true} if length of all arrays matches, treating
+     * {@code null} as an empty array
+     */
+    public static boolean isSameLength(final Object... arrays) {
+        if (arrays.length <= 1) {
+            return true;
+        }
+        int length0 = ArrayUtils.getLength(arrays[0]);
+        for (int i = 1, len = arrays.length; i < len; i++) {
+            if (length0 != ArrayUtils.getLength(arrays[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * <p>Checks if an array is empty or {@code null}.
+     *
+     * @param array the array to test
+     * @return {@code true} if the array is empty or {@code null}
+     * @since 2.1
+     */
+    public static boolean isEmpty(final Object array) {
+        return ArrayUtils.getLength(array) == 0;
+    }
+
+    /**
+     * <p>Checks if an array of Objects is not empty and not {@code null}.
+     *
+     * @param array the array to test
+     * @return {@code true} if the array is not empty and not {@code null}
+     * @since 2.5
+     */
+    public static boolean isNotEmpty(final Object array) {
+        return !isEmpty(array);
+    }
 }
