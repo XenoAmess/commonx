@@ -69,7 +69,7 @@ import java.util.function.UnaryOperator;
  * synchronizing on some object that naturally encapsulates the list.
  * <p>
  * If no such object exists, the list should be "wrapped" using the
- * {@link Collections#synchronizedList Collections.synchronizedList}
+ * {@link java.util.Collections#synchronizedList Collections.synchronizedList}
  * method.  This is best done at creation time, to prevent accidental
  * unsynchronized access to the list:<pre>
  *   List list = Collections.synchronizedList(new ArrayList(...));</pre>
@@ -79,9 +79,9 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link ListIterator#remove() remove} or
- * {@link ListIterator#add(Object) add} methods, the iterator will throw a
- * {@link ConcurrentModificationException}.  Thus, in the face of
+ * {@link java.util.ListIterator#remove() remove} or
+ * {@link java.util.ListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
  * time in the future.
@@ -105,6 +105,7 @@ import java.util.function.UnaryOperator;
  * @see LinkedList
  * @see Vector
  * @since 1.2
+ * @version $Id: $Id
  */
 public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
@@ -138,7 +139,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Constructs an empty list with the specified initial capacity.
      *
      * @param initialCapacity the initial capacity of the list
-     * @throws IllegalArgumentException if the specified initial capacity
+     * @throws java.lang.IllegalArgumentException if the specified initial capacity
      *                                  is negative
      */
     public DoubleArrayList(int initialCapacity) {
@@ -165,7 +166,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * iterator.
      *
      * @param c the collection whose elements are to be placed into this list
-     * @throws NullPointerException if the specified collection is null
+     * @throws java.lang.NullPointerException if the specified collection is null
      */
     public DoubleArrayList(Collection<? extends Double> c) {
         elementData = ArrayUtils.toPrimitive((Double[]) c.toArray());
@@ -276,9 +277,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Returns the number of elements in this list.
+     * {@inheritDoc}
      *
-     * @return the number of elements in this list
+     * Returns the number of elements in this list.
      */
     @Override
     public int size() {
@@ -286,9 +287,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Returns {@code true} if this list contains no elements.
+     * {@inheritDoc}
      *
-     * @return {@code true} if this list contains no elements
+     * Returns {@code true} if this list contains no elements.
      */
     @Override
     public boolean isEmpty() {
@@ -296,13 +297,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns {@code true} if this list contains the specified element.
      * More formally, returns {@code true} if and only if this list contains
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
-     *
-     * @param o element whose presence in this list is to be tested
-     * @return {@code true} if this list contains the specified element
      */
     @Override
     public boolean contains(Object o) {
@@ -310,6 +310,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
@@ -340,6 +342,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
 
     /**
+     * {@inheritDoc}
+     *
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the highest index {@code i} such that
@@ -369,10 +373,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns a shallow copy of this {@code ArrayList} instance.  (The
      * elements themselves are not copied.)
-     *
-     * @return a clone of this {@code ArrayList} instance
      */
     @Override
     public Object clone() {
@@ -388,6 +392,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -397,9 +403,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
-     *
-     * @return an array containing all of the elements in this list in
-     * proper sequence
      */
     @Override
     public Object[] toArray() {
@@ -407,6 +410,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns an array containing all of the elements in this list in proper
      * sequence (from first to last element); the runtime type of the returned
      * array is that of the specified array.  If the list fits in the
@@ -420,15 +425,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code null}.  (This is useful in determining the length of the
      * list <i>only</i> if the caller knows that the list does not contain
      * any null elements.)
-     *
-     * @param a the array into which the elements of the list are to
-     *          be stored, if it is big enough; otherwise, a new array of the
-     *          same runtime type is allocated for this purpose.
-     * @return an array containing the elements of the list
-     * @throws ArrayStoreException  if the runtime type of the specified array
-     *                              is not a supertype of the runtime type of every element in
-     *                              this list
-     * @throws NullPointerException if the specified array is null
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -455,11 +451,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Returns the element at the specified position in this list.
+     * {@inheritDoc}
      *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * Returns the element at the specified position in this list.
      */
     @Override
     public Double get(int index) {
@@ -471,7 +465,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * @param index index of the element to return
      * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     public double getPrimitive(int index) {
         checkIndex(index, size);
@@ -479,13 +473,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Replaces the element at the specified position in this list with
      * the specified element.
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public Double set(int index, Double element) {
@@ -499,7 +490,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     public double setPrimitive(int index, double element) {
         checkIndex(index, size);
@@ -522,10 +513,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Appends the specified element to the end of this list.
+     * {@inheritDoc}
      *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link Collection#add})
+     * Appends the specified element to the end of this list.
      */
     @Override
     public boolean add(Double e) {
@@ -536,7 +526,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Appends the specified element to the end of this list.
      *
      * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link Collection#add})
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
      */
     public boolean addPrimitive(double e) {
         modCount++;
@@ -545,13 +535,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Inserts the specified element at the specified position in this
      * list. Shifts the element currently at that position (if any) and
      * any subsequent elements to the right (adds one to their indices).
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public void add(int index, Double element) {
@@ -565,7 +553,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     public void addPrimitive(int index, double element) {
         rangeCheckForAdd(index);
@@ -583,13 +571,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
-     *
-     * @param index the index of the element to be removed
-     * @return the element that was removed from the list
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public Double remove(int index) {
@@ -603,7 +589,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * @param index the index of the element to be removed
      * @return the element that was removed from the list
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     public double removePrimitive(int index) {
         checkIndex(index, size);
@@ -615,9 +601,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return oldValue;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (o == this) {
@@ -680,9 +664,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         int expectedModCount = modCount;
@@ -705,6 +687,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Removes the first occurrence of the specified element from this list,
      * if it is present.  If the list does not contain the element, it is
      * unchanged.  More formally, removes the element with the lowest index
@@ -713,9 +697,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * (if such an element exists).  Returns {@code true} if this list
      * contained the specified element (or equivalently, if this list
      * changed as a result of the call).
-     *
-     * @param o element to be removed from this list, if present
-     * @return {@code true} if this list contained the specified element
      */
     @Override
     public boolean remove(Object o) {
@@ -755,6 +736,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Removes all of the elements from this list.  The list will
      * be empty after this call returns.
      */
@@ -768,6 +751,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Appends all of the elements in the specified collection to the end of
      * this list, in the order that they are returned by the
      * specified collection's Iterator.  The behavior of this operation is
@@ -775,10 +760,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * is in progress.  (This implies that the behavior of this call is
      * undefined if the specified collection is this list, and this
      * list is nonempty.)
-     *
-     * @param c collection containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws NullPointerException if the specified collection is null
      */
     @Override
     public boolean addAll(Collection<? extends Double> c) {
@@ -799,19 +780,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Inserts all of the elements in the specified collection into this
      * list, starting at the specified position.  Shifts the element
      * currently at that position (if any) and any subsequent elements to
      * the right (increases their indices).  The new elements will appear
      * in the list in the order that they are returned by the
      * specified collection's iterator.
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     collection containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     * @throws NullPointerException      if the specified collection is null
      */
     @Override
     public boolean addAll(int index, Collection<? extends Double> c) {
@@ -841,17 +817,13 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Removes from this list all of the elements whose index is between
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
      * Shifts any succeeding elements to the left (reduces their index).
      * This call shortens the list by {@code (toIndex - fromIndex)} elements.
      * (If {@code toIndex==fromIndex}, this operation has no effect.)
-     *
-     * @throws IndexOutOfBoundsException if {@code fromIndex} or
-     *                                   {@code toIndex} is out of range
-     *                                   ({@code fromIndex < 0 ||
-     *                                   toIndex > size() ||
-     *                                   toIndex < fromIndex})
      */
     @Override
     protected void removeRange(int fromIndex, int toIndex) {
@@ -899,18 +871,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Removes from this list all of its elements that are contained in the
      * specified collection.
-     *
-     * @param c collection containing elements to be removed from this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws ClassCastException   if the class of an element of this list
-     *                              is incompatible with the specified collection
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if this list contains a null element and the
-     *                              specified collection does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
-     *                              or if the specified collection is null
      * @see Collection#contains(Object)
      */
     @Override
@@ -919,19 +883,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Retains only the elements in this list that are contained in the
      * specified collection.  In other words, removes from this list all
      * of its elements that are not contained in the specified collection.
-     *
-     * @param c collection containing elements to be retained in this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws ClassCastException   if the class of an element of this list
-     *                              is incompatible with the specified collection
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if this list contains a null element and the
-     *                              specified collection does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
-     *                              or if the specified collection is null
      * @see Collection#contains(Object)
      */
     @Override
@@ -1039,6 +995,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
      * The specified index indicates the first element that would be
@@ -1047,8 +1005,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * return the element with the specified index minus one.
      *
      * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public ListIterator<Double> listIterator(int index) {
@@ -1057,11 +1013,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns a list iterator over the elements in this list (in proper
      * sequence).
      *
      * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
-     *
      * @see #listIterator(int)
      */
     @Override
@@ -1070,11 +1027,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns an iterator over the elements in this list in proper sequence.
      *
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
-     *
-     * @return an iterator over the elements in this list in proper sequence
      */
     @Override
     public Iterator<Double> iterator() {
@@ -1247,6 +1204,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Returns a view of the portion of this list between the specified
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.  (If
      * {@code fromIndex} and {@code toIndex} are equal, the returned list is
@@ -1271,9 +1230,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * any way other than via the returned list.  (Structural modifications are
      * those that change the size of this list, or otherwise perturb it in such
      * a fashion that iterations in progress may yield incorrect results.)
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     * @throws IllegalArgumentException  {@inheritDoc}
      */
     @Override
     public List<Double> subList(int fromIndex, int toIndex) {
@@ -1755,9 +1711,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
-    /**
-     * @throws NullPointerException {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public void forEach(Consumer<? super Double> action) {
         Objects.requireNonNull(action);
@@ -1773,6 +1727,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em>
      * and <em>fail-fast</em> {@link Spliterator} over the elements in this
      * list.
@@ -1781,8 +1737,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@link Spliterator#SUBSIZED}, and {@link Spliterator#ORDERED}.
      * Overriding implementations should document the reporting of additional
      * characteristic values.
-     *
-     * @return a {@code Spliterator} over the elements in this list
      * @since 1.8
      */
     @Override
@@ -1927,9 +1881,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return (bits[i >> 6] & (1L << i)) == 0;
     }
 
-    /**
-     * @throws NullPointerException {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean removeIf(Predicate<? super Double> filter) {
         return removeIf(filter, 0, size);
@@ -1979,6 +1931,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void replaceAll(UnaryOperator<Double> operator) {
         replaceAllRange(operator, 0, size);
@@ -1997,6 +1950,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void sort(Comparator<? super Double> c) {
         final int expectedModCount = modCount;

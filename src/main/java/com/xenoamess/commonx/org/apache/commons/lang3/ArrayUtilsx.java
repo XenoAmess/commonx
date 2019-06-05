@@ -21,8 +21,11 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.Random;
 
 /**
+ * <p>ArrayUtilsx class.</p>
+ *
  * @author XenoAmess
  * @see org.apache.commons.lang3.ArrayUtils
+ * @version $Id: $Id
  */
 public class ArrayUtilsx extends ArrayUtils {
     /**
@@ -48,6 +51,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @param array the array to reverse, may be {@code null}
      * @return the original array
      * @see ArrayUtils#reverse(Object[] array)
+     * @param <T> a T object.
      */
     public static <T> T[] reverseSelf(final T[] array) {
         ArrayUtils.reverse(array);
@@ -369,6 +373,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @return the original array
      * @see ArrayUtils#reverse(Object[] array, int startIndexInclusive, int endIndexExclusive)
      * @since 3.2
+     * @param <T> a T object.
      */
     public static <T> T[] reverseSelf(final T[] array, final int startIndexInclusive, final int endIndexExclusive) {
         ArrayUtils.reverse(array, startIndexInclusive, endIndexExclusive);
@@ -400,6 +405,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @return the original array
      * @see ArrayUtils#swap(Object[] array, int offset1, int offset2)
      * @since 3.5
+     * @param <T> a T object.
      */
     public static <T> T[] swapSelf(final T[] array, final int offset1, final int offset2) {
         ArrayUtils.swap(array, offset1, offset2);
@@ -903,6 +909,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @return the original array
      * @see ArrayUtils#swap(Object[] array, int offset1, int offset2, int len)
      * @since 3.5
+     * @param <T> a T object.
      */
     public static <T> T[] swapSelf(final T[] array, int offset1, int offset2, int len) {
         ArrayUtils.swap(array, offset1, offset2, len);
@@ -926,6 +933,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @return the original array
      * @see ArrayUtils#shift(Object[] array, int offset)
      * @since 3.5
+     * @param <T> a T object.
      */
     public static <T> T[] shiftSelf(final T[] array, final int offset) {
         ArrayUtils.shift(array, offset);
@@ -1279,6 +1287,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @return the original array
      * @see ArrayUtils#shift(Object[] array, int offset, int endIndexExclusive, int offset)
      * @since 3.5
+     * @param <T> a T object.
      */
     public static <T> T[] shiftSelf(final T[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
         ArrayUtils.shift(array, startIndexInclusive, endIndexExclusive, offset);
@@ -1321,6 +1330,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
      * @see ArrayUtils#shuffle(Object[] array)
      * @since 3.6
+     * @param <T> a T object.
      */
     public static <T> T[] shuffleSelf(final T[] array) {
         ArrayUtils.shuffle(array);
@@ -1336,6 +1346,7 @@ public class ArrayUtilsx extends ArrayUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle algorithm</a>
      * @see ArrayUtils#shuffle(Object[] array, Random random)
      * @since 3.6
+     * @param <T> a T object.
      */
     public static <T> T[] shuffleSelf(final T[] array, final Random random) {
         ArrayUtils.shuffle(array, random);

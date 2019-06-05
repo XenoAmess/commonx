@@ -46,6 +46,9 @@ import java.lang.annotation.*;
  * <p>
  * Technically this is now implemented by using AsFinalFieldUtils#asFinalFieldSet to deal with any set of any
  * AsFinalField.
+ *
+ * @author XenoAmess
+ * @version $Id: $Id
  */
 @Documented
 @Target(ElementType.FIELD)

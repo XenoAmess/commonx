@@ -35,8 +35,11 @@ import java.util.function.IntBinaryOperator;
 import java.util.function.LongBinaryOperator;
 
 /**
+ * <p>Arraysx class.</p>
+ *
  * @author XenoAmess
  * @see java.util.Arrays
+ * @version $Id: $Id
  */
 public class Arraysx {
     /**
@@ -90,8 +93,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static int[] sortSelf(int[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -131,8 +134,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static long[] sortSelf(long[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -172,8 +175,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static short[] sortSelf(short[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -213,8 +216,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static char[] sortSelf(char[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -254,8 +257,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static byte[] sortSelf(byte[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -269,7 +272,7 @@ public class Arraysx {
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Float#compareTo}: {@code -0.0f} is treated as less than value
+     * {@link java.lang.Float#compareTo}: {@code -0.0f} is treated as less than value
      * {@code 0.0f} and {@code Float.NaN} is considered greater than any
      * other value and all {@code Float.NaN} values are considered equal.
      *
@@ -297,7 +300,7 @@ public class Arraysx {
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Float#compareTo}: {@code -0.0f} is treated as less than value
+     * {@link java.lang.Float#compareTo}: {@code -0.0f} is treated as less than value
      * {@code 0.0f} and {@code Float.NaN} is considered greater than any
      * other value and all {@code Float.NaN} values are considered equal.
      *
@@ -311,8 +314,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static float[] sortSelf(float[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -326,7 +329,7 @@ public class Arraysx {
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Double#compareTo}: {@code -0.0d} is treated as less than value
+     * {@link java.lang.Double#compareTo}: {@code -0.0d} is treated as less than value
      * {@code 0.0d} and {@code Double.NaN} is considered greater than any
      * other value and all {@code Double.NaN} values are considered equal.
      *
@@ -354,7 +357,7 @@ public class Arraysx {
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Double#compareTo}: {@code -0.0d} is treated as less than value
+     * {@link java.lang.Double#compareTo}: {@code -0.0d} is treated as less than value
      * {@code 0.0d} and {@code Double.NaN} is considered greater than any
      * other value and all {@code Double.NaN} values are considered equal.
      *
@@ -368,8 +371,8 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static double[] sortSelf(double[] a, int fromIndex, int toIndex) {
         Arrays.sort(a, fromIndex, toIndex);
@@ -384,12 +387,12 @@ public class Arraysx {
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(byte[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(byte[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(byte[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -408,17 +411,17 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(byte[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(byte[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(byte[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -435,12 +438,12 @@ public class Arraysx {
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(char[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(char[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(char[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -459,17 +462,17 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(char[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(char[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(char[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -486,12 +489,12 @@ public class Arraysx {
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(short[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(short[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(short[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -510,17 +513,17 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(short[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(short[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(short[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -537,12 +540,12 @@ public class Arraysx {
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(int[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(int[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(int[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -561,17 +564,17 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(int[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(int[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(int[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -588,12 +591,12 @@ public class Arraysx {
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(long[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(long[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(long[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -612,17 +615,17 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(long[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(long[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(long[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -640,18 +643,18 @@ public class Arraysx {
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Float#compareTo}: {@code -0.0f} is treated as less than value
+     * {@link java.lang.Float#compareTo}: {@code -0.0f} is treated as less than value
      * {@code 0.0f} and {@code Float.NaN} is considered greater than any
      * other value and all {@code Float.NaN} values are considered equal.
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(float[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(float[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(float[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -674,20 +677,20 @@ public class Arraysx {
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Float#compareTo}: {@code -0.0f} is treated as less than value
+     * {@link java.lang.Float#compareTo}: {@code -0.0f} is treated as less than value
      * {@code 0.0f} and {@code Float.NaN} is considered greater than any
      * other value and all {@code Float.NaN} values are considered equal.
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(float[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(float[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(float[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -705,18 +708,18 @@ public class Arraysx {
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Double#compareTo}: {@code -0.0d} is treated as less than value
+     * {@link java.lang.Double#compareTo}: {@code -0.0d} is treated as less than value
      * {@code 0.0d} and {@code Double.NaN} is considered greater than any
      * other value and all {@code Double.NaN} values are considered equal.
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(double[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(double[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(double[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -735,7 +738,7 @@ public class Arraysx {
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
-     * {@link Double#compareTo}: {@code -0.0d} is treated as less than value
+     * {@link java.lang.Double#compareTo}: {@code -0.0d} is treated as less than value
      * {@code 0.0d} and {@code Double.NaN} is considered greater than any
      * other value and all {@code Double.NaN} values are considered equal.
      *
@@ -743,17 +746,17 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(double[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(double[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(double[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -765,7 +768,7 @@ public class Arraysx {
     /**
      * Sorts the specified array of objects into ascending order, according
      * to the {@linkplain Comparable natural ordering} of its elements.
-     * All elements in the array must implement the {@link Comparable}
+     * All elements in the array must implement the {@link java.lang.Comparable}
      * interface.  Furthermore, all elements in the array must be
      * <i>mutually comparable</i> (that is, {@code e1.compareTo(e2)} must
      * not throw a {@code ClassCastException} for any elements {@code e1}
@@ -774,23 +777,22 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param <T> the class of the objects to be sorted
      * @param a   the array to be sorted
      * @return the original array
-     * @throws ClassCastException       if the array contains elements that are not
+     * @throws java.lang.ClassCastException       if the array contains elements that are not
      *                                  <i>mutually comparable</i> (for example, strings and integers)
-     * @throws IllegalArgumentException (optional) if the natural
+     * @throws java.lang.IllegalArgumentException (optional) if the natural
      *                                  ordering of the array elements is found to violate the
-     *                                  {@link Comparable} contract
+     *                                  {@link java.lang.Comparable} contract
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(Object[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(Object[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(Object[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -806,7 +808,7 @@ public class Arraysx {
      * elements.  The range to be sorted extends from index
      * {@code fromIndex}, inclusive, to index {@code toIndex}, exclusive.
      * (If {@code fromIndex==toIndex}, the range to be sorted is empty.)  All
-     * elements in this range must implement the {@link Comparable}
+     * elements in this range must implement the {@link java.lang.Comparable}
      * interface.  Furthermore, all elements in this range must be <i>mutually
      * comparable</i> (that is, {@code e1.compareTo(e2)} must not throw a
      * {@code ClassCastException} for any elements {@code e1} and
@@ -815,29 +817,28 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param <T>       the class of the objects to be sorted
      * @param a         the array to be sorted
      * @param fromIndex the index of the first element (inclusive) to be
      *                  sorted
      * @param toIndex   the index of the last element (exclusive) to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                        (optional) if the natural ordering of the array elements is
-     *                                        found to violate the {@link Comparable} contract
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                        found to violate the {@link java.lang.Comparable} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
-     * @throws ClassCastException             if the array contains elements that are
+     * @throws java.lang.ClassCastException             if the array contains elements that are
      *                                        not <i>mutually comparable</i> (for example, strings and
      *                                        integers).
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(Object[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(Object[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(Object[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -863,19 +864,19 @@ public class Arraysx {
      *            {@code null} value indicates that the elements'
      *            {@linkplain Comparable natural ordering} should be used.
      * @return the original array
-     * @throws ClassCastException       if the array contains elements that are
+     * @throws java.lang.ClassCastException       if the array contains elements that are
      *                                  not <i>mutually comparable</i> using the specified comparator
-     * @throws IllegalArgumentException (optional) if the comparator is
+     * @throws java.lang.IllegalArgumentException (optional) if the comparator is
      *                                  found to violate the {@link java.util.Comparator} contract
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(Object[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(Object[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(Object[]) Arrays.sort} method. The algorithm requires a
      * working space no greater than the size of the original array. The
-     * {@link ForkJoinPool#commonPool() ForkJoin common pool} is used to
+     * {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is used to
      * execute any parallel tasks.
      * @since 1.8
      */
@@ -906,23 +907,23 @@ public class Arraysx {
      *                  {@code null} value indicates that the elements'
      *                  {@linkplain Comparable natural ordering} should be used.
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                        (optional) if the natural ordering of the array elements is
-     *                                        found to violate the {@link Comparable} contract
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                        found to violate the {@link java.lang.Comparable} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
-     * @throws ClassCastException             if the array contains elements that are
+     * @throws java.lang.ClassCastException             if the array contains elements that are
      *                                        not <i>mutually comparable</i> (for example, strings and
      *                                        integers).
      * @implNote The sorting algorithm is a parallel sort-merge that breaks the
      * array into sub-arrays that are themselves sorted and then merged. When
      * the sub-array length reaches a minimum granularity, the sub-array is
-     * sorted using the appropriate {@link Arrays#sort(Object[]) Arrays.sort}
+     * sorted using the appropriate {@link java.util.Arrays#sort(Object[]) Arrays.sort}
      * method. If the length of the specified array is less than the minimum
      * granularity, then it is sorted using the appropriate {@link
      * Arrays#sort(Object[]) Arrays.sort} method. The algorithm requires a working
      * space no greater than the size of the specified range of the original
-     * array. The {@link ForkJoinPool#commonPool() ForkJoin common pool} is
+     * array. The {@link java.util.concurrent.ForkJoinPool#commonPool() ForkJoin common pool} is
      * used to execute any parallel tasks.
      * @since 1.8
      */
@@ -939,7 +940,7 @@ public class Arraysx {
     /**
      * Sorts the specified array of objects into ascending order, according
      * to the {@linkplain Comparable natural ordering} of its elements.
-     * All elements in the array must implement the {@link Comparable}
+     * All elements in the array must implement the {@link java.lang.Comparable}
      * interface.  Furthermore, all elements in the array must be
      * <i>mutually comparable</i> (that is, {@code e1.compareTo(e2)} must
      * not throw a {@code ClassCastException} for any elements {@code e1}
@@ -973,11 +974,11 @@ public class Arraysx {
      *
      * @param a the array to be sorted
      * @return the original array
-     * @throws ClassCastException       if the array contains elements that are not
+     * @throws java.lang.ClassCastException       if the array contains elements that are not
      *                                  <i>mutually comparable</i> (for example, strings and integers)
-     * @throws IllegalArgumentException (optional) if the natural
+     * @throws java.lang.IllegalArgumentException (optional) if the natural
      *                                  ordering of the array elements is found to violate the
-     *                                  {@link Comparable} contract
+     *                                  {@link java.lang.Comparable} contract
      */
     public static Object[] sortSelf(Object[] a) {
         Arrays.sort(a);
@@ -991,7 +992,7 @@ public class Arraysx {
      * elements.  The range to be sorted extends from index
      * {@code fromIndex}, inclusive, to index {@code toIndex}, exclusive.
      * (If {@code fromIndex==toIndex}, the range to be sorted is empty.)  All
-     * elements in this range must implement the {@link Comparable}
+     * elements in this range must implement the {@link java.lang.Comparable}
      * interface.  Furthermore, all elements in this range must be <i>mutually
      * comparable</i> (that is, {@code e1.compareTo(e2)} must not throw a
      * {@code ClassCastException} for any elements {@code e1} and
@@ -1028,12 +1029,12 @@ public class Arraysx {
      *                  sorted
      * @param toIndex   the index of the last element (exclusive) to be sorted
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                        (optional) if the natural ordering of the array elements is
-     *                                        found to violate the {@link Comparable} contract
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                        found to violate the {@link java.lang.Comparable} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
-     * @throws ClassCastException             if the array contains elements that are
+     * @throws java.lang.ClassCastException             if the array contains elements that are
      *                                        not <i>mutually comparable</i> (for example, strings and
      *                                        integers).
      */
@@ -1081,10 +1082,10 @@ public class Arraysx {
      *            {@code null} value indicates that the elements'
      *            {@linkplain Comparable natural ordering} should be used.
      * @return the original array
-     * @throws ClassCastException       if the array contains elements that are
+     * @throws java.lang.ClassCastException       if the array contains elements that are
      *                                  not <i>mutually comparable</i> using the specified comparator
-     * @throws IllegalArgumentException (optional) if the comparator is
-     *                                  found to violate the {@link Comparator} contract
+     * @throws java.lang.IllegalArgumentException (optional) if the comparator is
+     *                                  found to violate the {@link java.util.Comparator} contract
      */
     public static <T> T[] sortSelf(T[] a, Comparator<? super T> c) {
         Arrays.sort(a, c);
@@ -1137,12 +1138,12 @@ public class Arraysx {
      *                  {@code null} value indicates that the elements'
      *                  {@linkplain Comparable natural ordering} should be used.
      * @return the original array
-     * @throws ClassCastException             if the array contains elements that are not
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
      *                                        <i>mutually comparable</i> using the specified comparator.
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                        (optional) if the comparator is found to violate the
-     *                                        {@link Comparator} contract
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                        {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      */
     public static <T> T[] sortSelf(
@@ -1166,7 +1167,7 @@ public class Arraysx {
      * @param op    a side-effect-free, associative function to perform the
      *              cumulation
      * @return the original array
-     * @throws NullPointerException if the specified array or function is null
+     * @throws java.lang.NullPointerException if the specified array or function is null
      * @since 1.8
      */
     public static <T> T[] parallelPrefixSelf(T[] array, BinaryOperator<T> op) {
@@ -1185,9 +1186,9 @@ public class Arraysx {
      * @param op        a side-effect-free, associative function to perform the
      *                  cumulation
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
-     * @throws NullPointerException           if the specified array or function is null
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
+     * @throws java.lang.NullPointerException           if the specified array or function is null
      * @since 1.8
      */
     public static <T> T[] parallelPrefixSelf(
@@ -1208,7 +1209,7 @@ public class Arraysx {
      * @param op    a side-effect-free, associative function to perform the
      *              cumulation
      * @return the original array
-     * @throws NullPointerException if the specified array or function is null
+     * @throws java.lang.NullPointerException if the specified array or function is null
      * @since 1.8
      */
     public static long[] parallelPrefixSelf(long[] array, LongBinaryOperator op) {
@@ -1226,9 +1227,9 @@ public class Arraysx {
      * @param op        a side-effect-free, associative function to perform the
      *                  cumulation
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
-     * @throws NullPointerException           if the specified array or function is null
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
+     * @throws java.lang.NullPointerException           if the specified array or function is null
      * @since 1.8
      */
     public static long[] parallelPrefixSelf(
@@ -1252,7 +1253,7 @@ public class Arraysx {
      * @param array the array, which is modified in-place by this method
      * @param op    a side-effect-free function to perform the cumulation
      * @return the original array
-     * @throws NullPointerException if the specified array or function is null
+     * @throws java.lang.NullPointerException if the specified array or function is null
      * @since 1.8
      */
     public static double[] parallelPrefixSelf(double[] array, DoubleBinaryOperator op) {
@@ -1270,9 +1271,9 @@ public class Arraysx {
      * @param op        a side-effect-free, associative function to perform the
      *                  cumulation
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
-     * @throws NullPointerException           if the specified array or function is null
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
+     * @throws java.lang.NullPointerException           if the specified array or function is null
      * @since 1.8
      */
     public static double[] parallelPrefixSelf(
@@ -1293,7 +1294,7 @@ public class Arraysx {
      * @param op    a side-effect-free, associative function to perform the
      *              cumulation
      * @return the original array
-     * @throws NullPointerException if the specified array or function is null
+     * @throws java.lang.NullPointerException if the specified array or function is null
      * @since 1.8
      */
     public static int[] parallelPrefixSelf(int[] array, IntBinaryOperator op) {
@@ -1311,9 +1312,9 @@ public class Arraysx {
      * @param op        a side-effect-free, associative function to perform the
      *                  cumulation
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
-     * @throws NullPointerException           if the specified array or function is null
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > array.length}
+     * @throws java.lang.NullPointerException           if the specified array or function is null
      * @since 1.8
      */
     public static int[] parallelPrefixSelf(
@@ -1353,8 +1354,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(long[] a, int fromIndex, int toIndex, long val)
      */
@@ -1391,8 +1392,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(int[] a, int fromIndex, int toIndex, int val)
      */
@@ -1429,8 +1430,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(short[] a, int fromIndex, int toIndex, short val)
      */
@@ -1468,8 +1469,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(char[] a, int fromIndex, int toIndex, char val)
      */
@@ -1506,8 +1507,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(byte[] a, int fromIndex, int toIndex, byte val)
      */
@@ -1544,8 +1545,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(boolean[] a, int fromIndex, int toIndex, boolean val)
      */
@@ -1583,8 +1584,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(double[] a, int fromIndex, int toIndex, double val)
      */
@@ -1621,8 +1622,8 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      * @see Arrays#fill(float[] a, int fromIndex, int toIndex, float val)
      */
@@ -1638,9 +1639,10 @@ public class Arraysx {
      * @param a   the array to be filled
      * @param val the value to be stored in all elements of the array
      * @return the original array
-     * @throws ArrayStoreException if the specified value is not of a
+     * @throws java.lang.ArrayStoreException if the specified value is not of a
      *                             runtime type that can be stored in the specified array
      * @see Arrays#fill(Object[] a, Object val)
+     * @param <T> a T object.
      */
     public static <T> T[] fillSelf(T[] a, T val) {
         Arrays.fill(a, val);
@@ -1661,12 +1663,13 @@ public class Arraysx {
      *                  filled with the specified value
      * @param val       the value to be stored in all elements of the array
      * @return the original array
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
-     * @throws ArrayStoreException            if the specified value is not of a
+     * @throws java.lang.ArrayStoreException            if the specified value is not of a
      *                                        runtime type that can be stored in the specified array
      * @see Arrays#fill(Object[] a, int fromIndex, int toIndex, Object val)
+     * @param <T> a T object.
      */
     public static <T> T[] fillSelf(T[] a, int fromIndex, int toIndex, T val) {
         Arrays.fill(a, fromIndex, toIndex, val);
@@ -1689,8 +1692,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with nulls
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(Object[] original, int newLength)
      * @since 1.6
      */
@@ -1717,9 +1720,9 @@ public class Arraysx {
      * @param newType  the class of the copy to be returned
      * @return a copy of the original array, truncated or padded with nulls
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
-     * @throws ArrayStoreException        if an element copied from
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
+     * @throws java.lang.ArrayStoreException        if an element copied from
      *                                    {@code original} is not of a runtime type that can be stored in
      *                                    an array of class {@code newType}
      * @see Arrays#copyOf(Object[] original, int newLength, Class newType)
@@ -1744,8 +1747,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with zeros
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(byte[] original, int newLength)
      * @since 1.6
      */
@@ -1768,8 +1771,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with zeros
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(short[] original, int newLength)
      * @since 1.6
      */
@@ -1792,8 +1795,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with zeros
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(int[] original, int newLength)
      * @since 1.6
      */
@@ -1816,8 +1819,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with zeros
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(long[] original, int newLength)
      * @since 1.6
      */
@@ -1840,8 +1843,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with null characters
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(char[] original, int newLength)
      * @since 1.6
      */
@@ -1864,8 +1867,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with zeros
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(float[] original, int newLength)
      * @since 1.6
      */
@@ -1888,8 +1891,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with zeros
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(double[] original, int newLength)
      * @since 1.6
      */
@@ -1912,8 +1915,8 @@ public class Arraysx {
      * @param original the array to be copied
      * @return a copy of the original array, truncated or padded with false elements
      * to obtain the specified length
-     * @throws NegativeArraySizeException if {@code newLength} is negative
-     * @throws NullPointerException       if {@code original} is null
+     * @throws java.lang.NegativeArraySizeException if {@code newLength} is negative
+     * @throws java.lang.NullPointerException       if {@code original} is null
      * @see Arrays#copyOf(boolean[] original, int newLength)
      * @since 1.6
      */
@@ -1942,7 +1945,7 @@ public class Arraysx {
      *
      * @param <T>   the component type of the array
      * @param array the array to be filled
-     * @throws IllegalArgumentException if array is null,
+     * @throws java.lang.IllegalArgumentException if array is null,
      *                                  or if T have no such constructor,
      *                                  or the constructor is not accessible,
      *                                  or the class cannot be instantiated.
@@ -2001,7 +2004,7 @@ public class Arraysx {
      * @param <T>   the component type of the array
      * @param array the array to be filled
      * @return the original array
-     * @throws IllegalArgumentException if array is null,
+     * @throws java.lang.IllegalArgumentException if array is null,
      *                                  or if T have no such constructor,
      *                                  or the constructor is not accessible,
      *                                  or the class cannot be instantiated.
@@ -2017,6 +2020,10 @@ public class Arraysx {
     /**
      * Checks that {@code fromIndex} and {@code toIndex} are in
      * the range and throws an exception if they aren't.
+     *
+     * @param arrayLength a int.
+     * @param fromIndex a int.
+     * @param toIndex a int.
      */
     public static void rangeCheck(int arrayLength, int fromIndex, int toIndex) {
         if (fromIndex > toIndex) {
@@ -2074,12 +2081,12 @@ public class Arraysx {
      * @param c         the comparator to determine the order of the array.  A
      *                  {@code null} value indicates that the elements'
      *                  {@linkplain Comparable natural ordering} should be used.
-     * @throws ClassCastException             if the array contains elements that are not
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
      *                                        <i>mutually comparable</i> using the specified comparator.
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex} or
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                        (optional) if the comparator is found to violate the
-     *                                        {@link Comparator} contract
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                        {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                        {@code toIndex > a.length}
      */
     public static void sort(double[] a, int fromIndex, int toIndex,

@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.RandomAccess;
 
 /**
+ * <p>Abstract PrimitiveArrayList class.</p>
+ *
  * @author XenoAmess
+ * @version $Id: $Id
  */
 public abstract class PrimitiveArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable {
@@ -15,6 +18,13 @@ public abstract class PrimitiveArrayList<E> extends AbstractList<E>
      */
     public static final int DEFAULT_CAPACITY = 10;
 
+    /**
+     * <p>checkIndex.</p>
+     *
+     * @param index a int.
+     * @param length a int.
+     * @return a int.
+     */
     public static int checkIndex(int index, int length) {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException("Index out of range: " + index);
@@ -22,6 +32,7 @@ public abstract class PrimitiveArrayList<E> extends AbstractList<E>
         return index;
     }
 
+    /** {@inheritDoc} */
     public static void subListRangeCheck(int fromIndex, int toIndex, int size) {
         if (fromIndex < 0) {
             throw new IndexOutOfBoundsException("fromIndex = " + fromIndex);

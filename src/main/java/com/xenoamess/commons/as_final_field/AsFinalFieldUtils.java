@@ -29,7 +29,10 @@ import java.lang.reflect.Field;
 import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.*;
 
 /**
+ * <p>AsFinalFieldUtils class.</p>
+ *
  * @author XenoAmess
+ * @version $Id: $Id
  */
 public class AsFinalFieldUtils {
     /**
@@ -69,6 +72,7 @@ public class AsFinalFieldUtils {
      * @param newValue   the new value of the AsFinalField field.
      * @see AsFinalField
      * @see AsFinalFieldReSetException
+     * @param <T> a T object.
      */
     public static <T> void asFinalFieldSet(Object object, String fieldName, T emptyValue, T newValue) {
         if (fieldName == null) {

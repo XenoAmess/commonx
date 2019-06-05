@@ -31,10 +31,19 @@ import java.io.IOException;
 import java.util.function.Function;
 
 /**
+ * <p>IllegalArgumentExceptionUtilsxCodeGenerator class.</p>
+ *
  * @author XenoAmess
+ * @version $Id: $Id
  */
 public class IllegalArgumentExceptionUtilsxCodeGenerator {
 
+    /**
+     * <p>generateFile.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @param functionalInterface a {@link java.util.function.Function} object.
+     */
     public static void generateFile(String name, Function<String, String> functionalInterface) {
         String content = functionalInterface.apply(name);
         File file = new File("src/main/resources/templates/" + name + ".template");
@@ -50,6 +59,11 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         }
     }
 
+    /**
+     * <p>main.</p>
+     *
+     * @param args an array of {@link java.lang.String} objects.
+     */
     public static void main(String[] args) {
         generateFile(
                 "generateIsAnyNullInParams",
@@ -73,6 +87,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         );
     }
 
+    /**
+     * <p>generateIsAnyNullInParams.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String generateIsAnyNullInParams(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name + " = \\n\\");
@@ -83,6 +103,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         return stringBuilder.toString();
     }
 
+    /**
+     * <p>generateIsAnyNullInParams.</p>
+     *
+     * @param stringBuilder a {@link java.lang.StringBuilder} object.
+     * @param paramNum a int.
+     */
     public static void generateIsAnyNullInParams(StringBuilder stringBuilder, int paramNum) {
         /**
          *     public static boolean isAnyNullInParams(final Object param0, final Object param1) {
@@ -112,6 +138,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         stringBuilder.append(";\\\n    }\\\n");
     }
 
+    /**
+     * <p>generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String generateIsAnyNullInParamsThenThrowIllegalArgumentException(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name + " = \\n\\");
@@ -122,6 +154,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         return stringBuilder.toString();
     }
 
+    /**
+     * <p>generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
+     *
+     * @param stringBuilder a {@link java.lang.StringBuilder} object.
+     * @param paramNum a int.
+     */
     public static void generateIsAnyNullInParamsThenThrowIllegalArgumentException(
             StringBuilder stringBuilder, int paramNum) {
         /**
@@ -167,6 +205,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         stringBuilder.append(");\\\n    }\\\n}\\\n");
     }
 
+    /**
+     * <p>generateIsNoneNullInParams.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String generateIsNoneNullInParams(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name + " = \\n\\");
@@ -177,6 +221,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         return stringBuilder.toString();
     }
 
+    /**
+     * <p>generateIsNoneNullInParams.</p>
+     *
+     * @param stringBuilder a {@link java.lang.StringBuilder} object.
+     * @param paramNum a int.
+     */
     public static void generateIsNoneNullInParams(StringBuilder stringBuilder, int paramNum) {
         /**
          *     public static boolean isNoneNullInParams(Object param0, Object param1) {
@@ -203,6 +253,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
 
+    /**
+     * <p>generateIsAllNullInParams.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String generateIsAllNullInParams(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name + " = \\n\\");
@@ -213,6 +269,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         return stringBuilder.toString();
     }
 
+    /**
+     * <p>generateIsAllNullInParams.</p>
+     *
+     * @param stringBuilder a {@link java.lang.StringBuilder} object.
+     * @param paramNum a int.
+     */
     public static void generateIsAllNullInParams(StringBuilder stringBuilder, int paramNum) {
         /**
          *     public static boolean isAllNull(final Object param0, final Object param1) {
@@ -242,6 +304,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         stringBuilder.append(";\\\n    }\\\n");
     }
 
+    /**
+     * <p>generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String generateIsAllNullInParamsThenThrowIllegalArgumentException(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name + " = \\n\\");
@@ -252,6 +320,12 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         return stringBuilder.toString();
     }
 
+    /**
+     * <p>generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
+     *
+     * @param stringBuilder a {@link java.lang.StringBuilder} object.
+     * @param paramNum a int.
+     */
     public static void generateIsAllNullInParamsThenThrowIllegalArgumentException(
             StringBuilder stringBuilder, int paramNum) {
         /**

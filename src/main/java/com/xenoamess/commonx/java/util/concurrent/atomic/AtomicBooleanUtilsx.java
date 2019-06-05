@@ -24,14 +24,16 @@
 
 package com.xenoamess.commonx.java.util.concurrent.atomic;
 
-import java.lang.invoke.VarHandle;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntBinaryOperator;
 
 /**
+ * <p>AtomicBooleanUtilsx class.</p>
+ *
  * @author XenoAmess
  * @see java.util.concurrent.atomic.AtomicBoolean
+ * @version $Id: $Id
  */
 public class AtomicBooleanUtilsx {
     /**
@@ -47,7 +49,7 @@ public class AtomicBooleanUtilsx {
     /**
      * Flip the AtomicBoolean.
      * Sets the boolean value to false if it is true, and to true if it is false
-     * with memory effects as specified by {@link VarHandle#setVolatile}.
+     * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
      *
      * @param atomicBoolean atomicBoolean
      * @return new boolean value of AtomicBoolean

@@ -27,7 +27,10 @@ package com.xenoamess.commons.as_final_field;
 import java.lang.reflect.Field;
 
 /**
+ * <p>AsFinalFieldExceptionType class.</p>
+ *
  * @author XenoAmess
+ * @version $Id: $Id
  */
 public enum AsFinalFieldExceptionType {
     FIELD_NOT_EXIST {

@@ -27,13 +27,28 @@ package com.xenoamess.commons.as_final_field;
 import java.lang.reflect.Field;
 
 /**
+ * <p>AsFinalFieldReSetException class.</p>
+ *
  * @author XenoAmess
+ * @version $Id: $Id
  */
 public class AsFinalFieldReSetException extends RuntimeException {
+    /**
+     * <p>Constructor for AsFinalFieldReSetException.</p>
+     *
+     * @param message a {@link java.lang.String} object.
+     */
     public AsFinalFieldReSetException(String message) {
         super(message);
     }
 
+    /**
+     * <p>Constructor for AsFinalFieldReSetException.</p>
+     *
+     * @param object a {@link java.lang.Object} object.
+     * @param field a {@link java.lang.reflect.Field} object.
+     * @param asFinalFieldExceptionType a {@link com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType} object.
+     */
     public AsFinalFieldReSetException(
             Object object,
             Field field,
@@ -42,6 +57,13 @@ public class AsFinalFieldReSetException extends RuntimeException {
         super(produceMessage(object, field, field.getName(), asFinalFieldExceptionType));
     }
 
+    /**
+     * <p>Constructor for AsFinalFieldReSetException.</p>
+     *
+     * @param object a {@link java.lang.Object} object.
+     * @param fieldName a {@link java.lang.String} object.
+     * @param asFinalFieldExceptionType a {@link com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType} object.
+     */
     public AsFinalFieldReSetException(
             Object object,
             String fieldName,
@@ -50,6 +72,15 @@ public class AsFinalFieldReSetException extends RuntimeException {
         super(produceMessage(object, null, fieldName, asFinalFieldExceptionType));
     }
 
+    /**
+     * <p>produceMessage.</p>
+     *
+     * @param object a {@link java.lang.Object} object.
+     * @param field a {@link java.lang.reflect.Field} object.
+     * @param fieldName a {@link java.lang.String} object.
+     * @param asFinalFieldExceptionType a {@link com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String produceMessage(
             Object object,
             Field field,
