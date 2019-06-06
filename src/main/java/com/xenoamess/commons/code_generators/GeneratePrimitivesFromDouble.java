@@ -58,6 +58,9 @@ public class GeneratePrimitivesFromDouble {
                 "\\list\\primitive_array_lists\\DoubleListIterator.java");
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
                 "\\list\\primitive_array_lists\\DoubleTimSort.java");
+        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+                "\\list\\primitive_array_lists" +
+                "\\DoubleComparator.java");
 
     }
 }
