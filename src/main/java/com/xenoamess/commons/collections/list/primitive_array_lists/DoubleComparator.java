@@ -1,11 +1,9 @@
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
-import java.util.Comparator;
-
 /**
  * @author XenoAmess
  */
-public interface DoubleComparator extends Comparator<Double> {
+public interface DoubleComparator extends PrimitiveComparator<Double> {
     /**
      * Compares its two arguments for order.  Returns a negative integer,
      * zero, or a positive integer as the first argument is less than, equal
