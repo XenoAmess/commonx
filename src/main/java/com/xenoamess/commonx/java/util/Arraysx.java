@@ -24,7 +24,7 @@
  */
 package com.xenoamess.commonx.java.util;
 
-import com.xenoamess.commons.collections.list.DoubleTimSort;
+import com.xenoamess.commons.collections.list.primitive_array_lists.DoubleTimSort;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -22,7 +22,7 @@
  * or visit www.oracle.com if you need additional information or have any
  * questions.
  */
-package com.xenoamess.commons.collections.list;
+package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
@@ -78,8 +78,8 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link com.xenoamess.commons.collections.list.DoubleListIterator#remove() remove} or
- * {@link com.xenoamess.commons.collections.list.DoubleListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link DoubleListIterator#remove() remove} or
+ * {@link DoubleListIterator#add(Object) add} methods, the iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined

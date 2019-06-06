@@ -1,4 +1,4 @@
-package com.xenoamess.commons.collections.list;
+package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import java.util.AbstractList;
 import java.util.List;
