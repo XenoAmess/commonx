@@ -1,28 +1,31 @@
 /*
- * MIT License
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
- * Copyright (c) 2019 XenoAmess
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
  */
 
 package com.xenoamess.commonx.java.util.concurrent.atomic;
+
+import org.apache.commons.lang3.JavaVersion;
+import org.apache.commons.lang3.SystemUtils;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -54,8 +57,12 @@ public class AtomicBooleanUtilsx {
      * @param atomicBoolean atomicBoolean
      * @return new boolean value of AtomicBoolean
      * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
+     * @since 9
      */
     public static final boolean flip(AtomicBoolean atomicBoolean) {
+        if (SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_8)) {
+            return flipForJava8(atomicBoolean);
+        }
         boolean prev = atomicBoolean.get(), next = false;
         for (boolean haveNext = false; ; ) {
             if (!haveNext) {
@@ -69,13 +76,13 @@ public class AtomicBooleanUtilsx {
     }
 
     /**
+     * <p>
+     * notice: Shall only use this in java 8.
+     * <p>
      * Flip the AtomicBoolean.
      * <p>
      * this is a implement that does not use {@link java.lang.invoke.VarHandle#setVolatile} and
      * {@link AtomicBoolean#weakCompareAndSetVolatile}.
-     * <p>
-     * Shall only use this in java 8.
-     * <p>
      * Sets the boolean value to false if it is true, and to true if it is false
      * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
      *
