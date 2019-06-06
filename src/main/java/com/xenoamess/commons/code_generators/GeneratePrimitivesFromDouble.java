@@ -13,6 +13,9 @@ public class GeneratePrimitivesFromDouble {
             "Boolean"};
     public static final String[] primitiveTypesExcludeDoubleL = {"long", "int", "short", "char", "byte", "float",
             "boolean"};
+    public static final String[] fileNameReplaceStrings = {"Long", "Int", "Short", "Char", "Byte",
+            "Float",
+            "Boolean"};
 
     public static void generatePrimitivesFromFile(String sourcePath) {
         for (int i = 0, len = primitiveTypesExcludeDouble.length; i < len; i++) {
@@ -23,8 +26,10 @@ public class GeneratePrimitivesFromDouble {
     public static void generateSinglePrimitivesFromFile(String sourcePath, int replaceStringIndex) {
         String sourceString = "Double";
         String replaceString = primitiveTypesExcludeDouble[replaceStringIndex];
+        String fileNameReplaceString = fileNameReplaceStrings[replaceStringIndex];
         File sourceFile = new File(sourcePath);
-        File targetFile = new File(sourcePath.replaceAll(sourceString, replaceString));
+        String targetPath = sourcePath.replaceAll(sourceString, fileNameReplaceString);
+        File targetFile = new File(targetPath);
         String sourceStringL = "double";
         String replaceStringL = primitiveTypesExcludeDoubleL[replaceStringIndex];
 
