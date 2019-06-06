@@ -24,7 +24,7 @@
  */
 package com.xenoamess.commonx.java.util;
 
-import com.xenoamess.commons.collections.list.primitive_array_lists.DoubleTimSort;
+import com.xenoamess.commons.collections.list.primitive_array_lists.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -2092,6 +2092,311 @@ public class Arraysx {
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
      *                                                  {@code toIndex > a.length}
      */
+    public static void sort(long[] a, int fromIndex, int toIndex,
+                            Comparator<? super Long> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            LongTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
+    public static void sort(int[] a, int fromIndex, int toIndex,
+                            Comparator<? super Integer> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            IntTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
+    public static void sort(short[] a, int fromIndex, int toIndex,
+                            Comparator<? super Short> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            ShortTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
+    public static void sort(char[] a, int fromIndex, int toIndex,
+                            Comparator<? super Character> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            CharTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
+    public static void sort(byte[] a, int fromIndex, int toIndex,
+                            Comparator<? super Byte> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            ByteTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
     public static void sort(double[] a, int fromIndex, int toIndex,
                             Comparator<? super Double> c) {
         if (c == null) {
@@ -2102,6 +2407,148 @@ public class Arraysx {
         }
     }
 
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
+    public static void sort(float[] a, int fromIndex, int toIndex,
+                            Comparator<? super Float> c) {
+        if (c == null) {
+            Arrays.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            FloatTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the specified array of objects according
+     * to the order induced by the specified comparator.  The range to be
+     * sorted extends from index {@code fromIndex}, inclusive, to index
+     * {@code toIndex}, exclusive.  (If {@code fromIndex==toIndex}, the
+     * range to be sorted is empty.)  All elements in the range must be
+     * <i>mutually comparable</i> by the specified comparator (that is,
+     * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
+     * for any elements {@code e1} and {@code e2} in the range).
+     *
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * not be reordered as a result of the sort.
+     *
+     * <p>Implementation note: This implementation is a stable, adaptive,
+     * iterative mergesort that requires far fewer than n lg(n) comparisons
+     * when the input array is partially sorted, while offering the
+     * performance of a traditional mergesort when the input array is
+     * randomly ordered.  If the input array is nearly sorted, the
+     * implementation requires approximately n comparisons.  Temporary
+     * storage requirements vary from a small constant for nearly sorted
+     * input arrays to n/2 object references for randomly ordered input
+     * arrays.
+     *
+     * <p>The implementation takes equal advantage of ascending and
+     * descending order in its input array, and can take advantage of
+     * ascending and descending order in different parts of the same
+     * input array.  It is well-suited to merging two or more sorted arrays:
+     * simply concatenate the arrays and sort the resulting array.
+     *
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
+     * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
+     * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
+     * Sorting and Information Theoretic Complexity", in Proceedings of the
+     * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
+     * January 1993.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element (inclusive) to be
+     *                  sorted
+     * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param c         the comparator to determine the order of the array.  A
+     *                  {@code null} value indicates that the elements'
+     *                  {@linkplain Comparable natural ordering} should be used.
+     * @throws java.lang.ClassCastException             if the array contains elements that are not
+     *                                                  <i>mutually comparable</i> using the specified comparator.
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
+     *                                                  (optional) if the comparator is found to violate the
+     *                                                  {@link java.util.Comparator} contract
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or
+     *                                                  {@code toIndex > a.length}
+     */
+    public static void sort(boolean[] a, int fromIndex, int toIndex,
+                            Comparator<? super Boolean> c) {
+        if (c == null) {
+            Arraysx.sort(a, fromIndex, toIndex);
+        } else {
+            rangeCheck(a.length, fromIndex, toIndex);
+            BooleanTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
+        }
+    }
+
+    /**
+     * Sorts the specified range of the array into ascending order. The range
+     * to be sorted extends from the index {@code fromIndex}, inclusive, to
+     * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
+     * the range to be sorted is empty.
+     *
+     * @param a         the array to be sorted
+     * @param fromIndex the index of the first element, inclusive, to be sorted
+     * @param toIndex   the index of the last element, exclusive, to be sorted
+     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     */
+    public static void sort(boolean[] a, int fromIndex, int toIndex) {
+        Arraysx.sort(a, fromIndex, toIndex, new Comparator<Boolean>() {
+            @Override
+            public int compare(Boolean o1, Boolean o2) {
+                return o1 ? (o2 ? 0 : 1) : (o2 ? -1 : 0);
+            }
+        });
+    }
 
 //    public <T> T[] distinct(T[] originalArray) {
 //        return (T[]) Arrays.stream(originalArray).distinct().toArray();

@@ -78,8 +78,8 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link DoubleListIterator#remove() remove} or
- * {@link DoubleListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link LongListIterator#remove() remove} or
+ * {@link LongListIterator#add(Object) add} methods, the iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
@@ -106,18 +106,18 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class DoubleArrayList extends PrimitiveArrayList<Double> {
+public class LongArrayList extends PrimitiveArrayList<Long> {
     /**
      * Shared empty array instance used for empty instances.
      */
-    private static final double[] EMPTY_ELEMENTDATA = {};
+    private static final long[] EMPTY_ELEMENTDATA = {};
 
     /**
      * Shared empty array instance used for default sized empty instances. We
      * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when
      * first element is added.
      */
-    private static final double[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
+    private static final long[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
     /**
      * The array buffer into which the elements of the ArrayList are stored.
@@ -125,7 +125,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
      * will be expanded to DEFAULT_CAPACITY when the first element is added.
      */
-    transient double[] elementData; // non-private to simplify nested class access
+    transient long[] elementData; // non-private to simplify nested class access
 
     /**
      * The size of the ArrayList (the number of elements it contains).
@@ -141,9 +141,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @throws java.lang.IllegalArgumentException if the specified initial capacity
      *                                            is negative
      */
-    public DoubleArrayList(int initialCapacity) {
+    public LongArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
-            this.elementData = new double[initialCapacity];
+            this.elementData = new long[initialCapacity];
         } else if (initialCapacity == 0) {
             this.elementData = EMPTY_ELEMENTDATA;
         } else {
@@ -155,7 +155,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * Constructs an empty list with an initial capacity of ten.
      */
-    public DoubleArrayList() {
+    public LongArrayList() {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
@@ -167,18 +167,18 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @param c the collection whose elements are to be placed into this list
      * @throws java.lang.NullPointerException if the specified collection is null
      */
-    public DoubleArrayList(Collection<? extends Double> c) {
-        this(ArrayUtils.toPrimitive((Double[]) c.toArray()));
+    public LongArrayList(Collection<? extends Long> c) {
+        this(ArrayUtils.toPrimitive((Long[]) c.toArray()));
     }
 
     /**
-     * Constructs a DoubleArrayList with a
+     * Constructs a LongArrayList with a
      *
-     * @param doubleArray the collection whose elements are to be placed into this list
+     * @param longArray the collection whose elements are to be placed into this list
      * @throws java.lang.NullPointerException if the specified collection is null
      */
-    public DoubleArrayList(double[] doubleArray) {
-        elementData = doubleArray;
+    public LongArrayList(long[] longArray) {
+        elementData = longArray;
         size = elementData.length;
         if (size == 0) {
             // replace with empty array.
@@ -231,12 +231,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @param minCapacity the desired minimum capacity
      * @throws OutOfMemoryError if minCapacity is less than zero
      */
-    private double[] grow(int minCapacity) {
+    private long[] grow(int minCapacity) {
         return elementData = Arrays.copyOf(elementData,
                 newCapacity(minCapacity));
     }
 
-    private double[] grow() {
+    private long[] grow() {
         return grow(size + 1);
     }
 
@@ -319,10 +319,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
      *
-     * @param o a double.
+     * @param o a long.
      * @return a boolean.
      */
-    public boolean contains(double o) {
+    public boolean contains(long o) {
         return this.containsPrimitive(o);
     }
 
@@ -334,10 +334,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
      *
-     * @param o a double.
+     * @param o a long.
      * @return a boolean.
      */
-    public boolean containsPrimitive(double o) {
+    public boolean containsPrimitive(long o) {
         return indexOfPrimitive(o) >= 0;
     }
 
@@ -365,10 +365,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o a double.
+     * @param o a long.
      * @return a int.
      */
-    public int indexOf(double o) {
+    public int indexOf(long o) {
         return this.indexOfPrimitive(o);
     }
 
@@ -381,10 +381,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o a double.
+     * @param o a long.
      * @return a int.
      */
-    public int indexOfPrimitive(double o) {
+    public int indexOfPrimitive(long o) {
         return indexOfRangePrimitive(o, 0, size);
     }
 
@@ -406,10 +406,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         if (o == null) {
             return -1;
         }
-        if (!(o instanceof Double)) {
+        if (!(o instanceof Long)) {
             return -1;
         }
-        return this.indexOfRangePrimitive((Double) o, start, end);
+        return this.indexOfRangePrimitive((Long) o, start, end);
     }
 
     /**
@@ -421,12 +421,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o     a double.
+     * @param o     a long.
      * @param start a int.
      * @param end   a int.
      * @return a int.
      */
-    public int indexOfRange(double o, int start, int end) {
+    public int indexOfRange(long o, int start, int end) {
         return this.indexOfRangePrimitive(o, start, end);
     }
 
@@ -439,16 +439,16 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o     a double.
+     * @param o     a long.
      * @param start a int.
      * @param end   a int.
      * @return a int.
      */
-    public int indexOfRangePrimitive(double o, int start, int end) {
-        double tmpDoubleValue = o;
-        double[] es = elementData;
+    public int indexOfRangePrimitive(long o, int start, int end) {
+        long tmpLongValue = o;
+        long[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpDoubleValue) {
+            if (es[i] == tmpLongValue) {
                 return i;
             }
         }
@@ -478,10 +478,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o a double.
+     * @param o a long.
      * @return a int.
      */
-    public int lastIndexOf(double o) {
+    public int lastIndexOf(long o) {
         return this.lastIndexOfPrimitive(o);
     }
 
@@ -494,10 +494,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o a double.
+     * @param o a long.
      * @return a int.
      */
-    public int lastIndexOfPrimitive(double o) {
+    public int lastIndexOfPrimitive(long o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
 
@@ -513,7 +513,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         if (o == null) {
             return -1;
         }
-        if (!(o instanceof Double)) {
+        if (!(o instanceof Long)) {
             return -1;
         }
         return this.lastIndexOfRangePrimitive(o, start, end);
@@ -522,12 +522,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * <p>lastIndexOfRange.</p>
      *
-     * @param o     a double.
+     * @param o     a long.
      * @param start a int.
      * @param end   a int.
      * @return a int.
      */
-    public int lastIndexOfRange(double o, int start, int end) {
+    public int lastIndexOfRange(long o, int start, int end) {
         return this.lastIndexOfRangePrimitive(o, start, end);
     }
 
@@ -543,13 +543,13 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         if (o == null) {
             return -1;
         }
-        if (!(o instanceof Double)) {
+        if (!(o instanceof Long)) {
             return -1;
         }
-        double tmpDoubleValue = (Double) o;
-        double[] es = elementData;
+        long tmpLongValue = (Long) o;
+        long[] es = elementData;
         for (int i = end - 1; i >= start; i--) {
-            if (tmpDoubleValue == es[i]) {
+            if (tmpLongValue == es[i]) {
                 return i;
             }
         }
@@ -565,7 +565,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     @Override
     public Object clone() {
         try {
-            DoubleArrayList v = (DoubleArrayList) super.clone();
+            LongArrayList v = (LongArrayList) super.clone();
             v.elementData = Arrays.copyOf(elementData, size);
             v.modCount = 0;
             return v;
@@ -606,9 +606,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
-     * @return an array of {@link double} objects.
+     * @return an array of {@link long} objects.
      */
-    public double[] toArrayPrimitive() {
+    public long[] toArrayPrimitive() {
         return elementData;
     }
 
@@ -660,10 +660,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * list <i>only</i> if the caller knows that the list does not contain
      * any null elements.)
      *
-     * @param a an array of {@link double} objects.
-     * @return an array of {@link double} objects.
+     * @param a an array of {@link long} objects.
+     * @return an array of {@link long} objects.
      */
-    public double[] toArrayPrimitive(double[] a) {
+    public long[] toArrayPrimitive(long[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
             return Arrays.copyOf(elementData, size);
@@ -681,20 +681,20 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * <p>elementData.</p>
      *
      * @param index a int.
-     * @return a double.
+     * @return a long.
      */
-    public double elementData(int index) {
+    public long elementData(int index) {
         return elementData[index];
     }
 
     /**
      * <p>elementAt.</p>
      *
-     * @param es    an array of {@link double} objects.
+     * @param es    an array of {@link long} objects.
      * @param index a int.
-     * @return a double.
+     * @return a long.
      */
-    public static double elementAt(double[] es, int index) {
+    public static long elementAt(long[] es, int index) {
         return es[index];
     }
 
@@ -704,7 +704,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Returns the element at the specified position in this list.
      */
     @Override
-    public Double get(int index) {
+    public Long get(int index) {
         return getPrimitive(index);
     }
 
@@ -715,7 +715,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @return the element at the specified position in this list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public double getPrimitive(int index) {
+    public long getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
@@ -727,7 +727,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * the specified element.
      */
     @Override
-    public Double set(int index, Double element) {
+    public Long set(int index, Long element) {
         return setPrimitive(index, element);
     }
 
@@ -740,9 +740,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @return the element previously at the specified position
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public double setPrimitive(int index, double element) {
+    public long setPrimitive(int index, long element) {
         checkIndex(index, size);
-        double oldValue = elementData(index);
+        long oldValue = elementData(index);
         elementData[index] = element;
         return oldValue;
     }
@@ -752,7 +752,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * bytecode size under 35 (the -XX:MaxInlineSize default value),
      * which helps when add(E) is called in a C1-compiled loop.
      */
-    private void add(double e, double[] elementData, int s) {
+    private void add(long e, long[] elementData, int s) {
         if (s == elementData.length) {
             elementData = grow();
         }
@@ -766,7 +766,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Appends the specified element to the end of this list.
      */
     @Override
-    public boolean add(Double e) {
+    public boolean add(Long e) {
         return addPrimitive(e);
     }
 
@@ -776,7 +776,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @param e element to be appended to this list
      * @return {@code true} (as specified by {@link java.util.Collection#add})
      */
-    public boolean addPrimitive(double e) {
+    public boolean addPrimitive(long e) {
         modCount++;
         add(e, elementData, size);
         return true;
@@ -790,7 +790,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * any subsequent elements to the right (adds one to their indices).
      */
     @Override
-    public void add(int index, Double element) {
+    public void add(int index, Long element) {
         addPrimitive(index, element);
     }
 
@@ -803,11 +803,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @param element element to be inserted
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public void addPrimitive(int index, double element) {
+    public void addPrimitive(int index, long element) {
         rangeCheckForAdd(index);
         modCount++;
         final int s;
-        double[] elementData;
+        long[] elementData;
         if ((s = size) == (elementData = this.elementData).length) {
             elementData = grow();
         }
@@ -826,7 +826,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * indices).
      */
     @Override
-    public Double remove(int index) {
+    public Long remove(int index) {
         return removePrimitive(index);
     }
 
@@ -839,11 +839,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @return the element that was removed from the list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public double removePrimitive(int index) {
+    public long removePrimitive(int index) {
         checkIndex(index, size);
-        final double[] es = elementData;
+        final long[] es = elementData;
 
-        @SuppressWarnings("unchecked") double oldValue = es[index];
+        @SuppressWarnings("unchecked") long oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -865,8 +865,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         final int expectedModCount = modCount;
         // ArrayList can be subclassed and given arbitrary behavior, but we can
         // still deal with the common case where o is ArrayList precisely
-        boolean equal = (o.getClass() == DoubleArrayList.class)
-                ? equalsDoubleArrayList((DoubleArrayList) o)
+        boolean equal = (o.getClass() == LongArrayList.class)
+                ? equalsLongArrayList((LongArrayList) o)
                 : equalsRange((List<?>) o, 0, size);
 
         checkForComodification(expectedModCount);
@@ -874,7 +874,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     boolean equalsRange(List<?> other, int from, int to) {
-        final double[] es = elementData;
+        final long[] es = elementData;
         if (to > es.length) {
             throw new ConcurrentModificationException();
         }
@@ -887,13 +887,13 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return !oit.hasNext();
     }
 
-    private boolean equalsDoubleArrayList(DoubleArrayList other) {
+    private boolean equalsLongArrayList(LongArrayList other) {
         final int otherModCount = other.modCount;
         final int s = size;
         boolean equal;
         if (equal = (s == other.size)) {
-            final double[] otherEs = other.elementData;
-            final double[] es = elementData;
+            final long[] otherEs = other.elementData;
+            final long[] es = elementData;
             if (s > es.length || s > otherEs.length) {
                 throw new ConcurrentModificationException();
             }
@@ -933,14 +933,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @return a int.
      */
     public int hashCodeRange(int from, int to) {
-        final double[] es = elementData;
+        final long[] es = elementData;
         if (to > es.length) {
             throw new ConcurrentModificationException();
         }
         int hashCode = 1;
         for (int i = from; i < to; i++) {
-            double e = es[i];
-            hashCode = 31 * hashCode + Double.hashCode(e);
+            long e = es[i];
+            hashCode = 31 * hashCode + Long.hashCode(e);
         }
         return hashCode;
     }
@@ -962,10 +962,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         if (o == null) {
             return false;
         }
-        if (!(o instanceof Double)) {
+        if (!(o instanceof Long)) {
             return false;
         }
-        return this.removePrimitive((Double) o);
+        return this.removePrimitive((Long) o);
     }
 
     /**
@@ -980,11 +980,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * contained the specified element (or equivalently, if this list
      * changed as a result of the call).
      *
-     * @param o a double.
+     * @param o a long.
      * @return a boolean.
      */
-    public boolean removePrimitive(double o) {
-        final double[] es = elementData;
+    public boolean removePrimitive(long o) {
+        final long[] es = elementData;
         final int size = this.size;
         int i = 0;
         found:
@@ -1004,10 +1004,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Private remove method that skips bounds checking and does not
      * return the value removed.
      *
-     * @param es an array of {@link double} objects.
+     * @param es an array of {@link long} objects.
      * @param i  a int.
      */
-    public void fastRemove(double[] es, int i) {
+    public void fastRemove(long[] es, int i) {
         modCount++;
         final int newSize;
         if ((newSize = size - 1) > i) {
@@ -1025,7 +1025,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     @Override
     public void clear() {
         modCount++;
-        final double[] es = elementData;
+        final long[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
             es[i] = 0;
         }
@@ -1043,14 +1043,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * list is nonempty.)
      */
     @Override
-    public boolean addAll(Collection<? extends Double> c) {
+    public boolean addAll(Collection<? extends Long> c) {
         Object[] a = c.toArray();
         modCount++;
         int numNew = a.length;
         if (numNew == 0) {
             return false;
         }
-        double[] elementData;
+        long[] elementData;
         final int s;
         if (numNew > (elementData = this.elementData).length - (s = size)) {
             elementData = grow(s + numNew);
@@ -1071,7 +1071,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * specified collection's iterator.
      */
     @Override
-    public boolean addAll(int index, Collection<? extends Double> c) {
+    public boolean addAll(int index, Collection<? extends Long> c) {
         rangeCheckForAdd(index);
 
         Object[] a = c.toArray();
@@ -1080,7 +1080,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         if (numNew == 0) {
             return false;
         }
-        double[] elementData;
+        long[] elementData;
         final int s;
         if (numNew > (elementData = this.elementData).length - (s = size)) {
             elementData = grow(s + numNew);
@@ -1119,11 +1119,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * Erases the gap from lo to hi, by sliding down following elements.
      *
-     * @param es an array of {@link double} objects.
+     * @param es an array of {@link long} objects.
      * @param lo a int.
      * @param hi a int.
      */
-    public void shiftTailOverGap(double[] es, int lo, int hi) {
+    public void shiftTailOverGap(long[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
             es[i] = 0;
@@ -1202,7 +1202,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     public boolean batchRemove(Collection<?> c, boolean complement,
                                final int from, final int end) {
         Objects.requireNonNull(c);
-        final double[] es = elementData;
+        final long[] es = elementData;
         int r;
         // Optimize for initial run of survivors
         for (r = from; ; r++) {
@@ -1215,7 +1215,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
         int w = r++;
         try {
-            for (double e; r < end; r++) {
+            for (long e; r < end; r++) {
                 if (c.contains(e = es[r]) == complement) {
                     es[w++] = e;
                 }
@@ -1254,7 +1254,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         // Write out all elements in the proper order.
         for (int i = 0; i < size; i++) {
-            s.writeDouble(elementData[i]);
+            s.writeLong(elementData[i]);
         }
 
         if (modCount != expectedModCount) {
@@ -1282,11 +1282,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         if (size > 0) {
             // like clone(), allocate array based upon size not capacity
-            double[] elements = new double[size];
+            long[] elements = new long[size];
 
             // Read in all elements in the proper order.
             for (int i = 0; i < size; i++) {
-                elements[i] = s.readDouble();
+                elements[i] = s.readLong();
             }
 
             elementData = elements;
@@ -1303,16 +1303,16 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
      * The specified index indicates the first element that would be
-     * returned by an initial call to {@link DoubleListIterator#next next}.
-     * An initial call to {@link DoubleListIterator#previous previous} would
+     * returned by an initial call to {@link LongListIterator#next next}.
+     * An initial call to {@link LongListIterator#previous previous} would
      * return the element with the specified index minus one.
      *
      * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public DoubleListIterator listIterator(int index) {
+    public LongListIterator listIterator(int index) {
         rangeCheckForAdd(index);
-        return new DoubleArrayList.ListItr(index);
+        return new LongArrayList.ListItr(index);
     }
 
     /**
@@ -1326,8 +1326,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @see #listIterator(int)
      */
     @Override
-    public DoubleListIterator listIterator() {
-        return new DoubleArrayList.ListItr(0);
+    public LongListIterator listIterator() {
+        return new LongArrayList.ListItr(0);
     }
 
     /**
@@ -1338,14 +1338,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Double> iterator() {
-        return new DoubleArrayList.Itr();
+    public Iterator<Long> iterator() {
+        return new LongArrayList.Itr();
     }
 
     /**
      * An optimized version of AbstractList.Itr
      */
-    private class Itr implements DoubleIterator {
+    private class Itr implements LongIterator {
         int cursor;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
         int expectedModCount = modCount;
@@ -1361,19 +1361,19 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Double next() {
+        public Long next() {
             return this.nextPrimitive();
         }
 
         @Override
         @SuppressWarnings("unchecked")
-        public double nextPrimitive() {
+        public long nextPrimitive() {
             checkForComodification();
             int i = cursor;
             if (i >= size) {
                 throw new NoSuchElementException();
             }
-            double[] elementData = DoubleArrayList.this.elementData;
+            long[] elementData = LongArrayList.this.elementData;
             if (i >= elementData.length) {
                 throw new ConcurrentModificationException();
             }
@@ -1389,7 +1389,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             checkForComodification();
 
             try {
-                DoubleArrayList.this.remove(lastRet);
+                LongArrayList.this.remove(lastRet);
                 cursor = lastRet;
                 lastRet = -1;
                 expectedModCount = modCount;
@@ -1399,12 +1399,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public void forEachRemaining(Consumer<? super Double> action) {
+        public void forEachRemaining(Consumer<? super Long> action) {
             Objects.requireNonNull(action);
-            final int size = DoubleArrayList.this.size;
+            final int size = LongArrayList.this.size;
             int i = cursor;
             if (i < size) {
-                final double[] es = elementData;
+                final long[] es = elementData;
                 if (i >= es.length) {
                     throw new ConcurrentModificationException();
                 }
@@ -1428,7 +1428,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * An optimized version of AbstractList.ListItr
      */
-    private class ListItr extends DoubleArrayList.Itr implements DoubleListIterator {
+    private class ListItr extends LongArrayList.Itr implements LongListIterator {
         ListItr(int index) {
             super();
             cursor = index;
@@ -1451,19 +1451,19 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Double previous() {
+        public Long previous() {
             return this.previousPrimitive();
         }
 
         @Override
         @SuppressWarnings("unchecked")
-        public double previousPrimitive() {
+        public long previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;
             if (i < 0) {
                 throw new NoSuchElementException();
             }
-            double[] elementData = DoubleArrayList.this.elementData;
+            long[] elementData = LongArrayList.this.elementData;
             if (i >= elementData.length) {
                 throw new ConcurrentModificationException();
             }
@@ -1472,36 +1472,36 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public void set(Double e) {
+        public void set(Long e) {
             setPrimitive(e);
         }
 
         @Override
-        public void setPrimitive(double e) {
+        public void setPrimitive(long e) {
             if (lastRet < 0) {
                 throw new IllegalStateException();
             }
             checkForComodification();
 
             try {
-                DoubleArrayList.this.set(lastRet, e);
+                LongArrayList.this.set(lastRet, e);
             } catch (IndexOutOfBoundsException ex) {
                 throw new ConcurrentModificationException();
             }
         }
 
         @Override
-        public void add(Double e) {
+        public void add(Long e) {
             addPrimitive(e);
         }
 
         @Override
-        public void addPrimitive(double e) {
+        public void addPrimitive(long e) {
             checkForComodification();
 
             try {
                 int i = cursor;
-                DoubleArrayList.this.add(i, e);
+                LongArrayList.this.add(i, e);
                 cursor = i + 1;
                 lastRet = -1;
                 expectedModCount = modCount;
@@ -1540,21 +1540,21 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Double> subList(int fromIndex, int toIndex) {
+    public List<Long> subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
-        return new DoubleArrayList.DoubleSubList(this, fromIndex, toIndex);
+        return new LongArrayList.LongSubList(this, fromIndex, toIndex);
     }
 
-    private static class DoubleSubList extends AbstractList<Double> implements RandomAccess {
-        private final DoubleArrayList root;
-        private final DoubleArrayList.DoubleSubList parent;
+    private static class LongSubList extends AbstractList<Long> implements RandomAccess {
+        private final LongArrayList root;
+        private final LongArrayList.LongSubList parent;
         private final int offset;
         private int size;
 
         /**
-         * Constructs a sublist of an arbitrary DoubleArrayList.
+         * Constructs a sublist of an arbitrary LongArrayList.
          */
-        public DoubleSubList(DoubleArrayList root, int fromIndex, int toIndex) {
+        public LongSubList(LongArrayList root, int fromIndex, int toIndex) {
             this.root = root;
             this.parent = null;
             this.offset = fromIndex;
@@ -1565,7 +1565,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         /**
          * Constructs a sublist of another SubList.
          */
-        private DoubleSubList(DoubleArrayList.DoubleSubList parent, int fromIndex, int toIndex) {
+        private LongSubList(LongArrayList.LongSubList parent, int fromIndex, int toIndex) {
             this.root = parent.root;
             this.parent = parent;
             this.offset = parent.offset + fromIndex;
@@ -1574,24 +1574,24 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public Double set(int index, Double element) {
+        public Long set(int index, Long element) {
             return this.setPrimitive(index, element);
         }
 
-        public double setPrimitive(int index, double element) {
+        public long setPrimitive(int index, long element) {
             checkIndex(index, size);
             checkForComodification();
-            double oldValue = root.elementData(offset + index);
+            long oldValue = root.elementData(offset + index);
             root.elementData[offset + index] = element;
             return oldValue;
         }
 
         @Override
-        public Double get(int index) {
+        public Long get(int index) {
             return this.getPrimitive(index);
         }
 
-        public double getPrimitive(int index) {
+        public long getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             return root.elementData(offset + index);
@@ -1604,11 +1604,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public void add(int index, Double element) {
+        public void add(int index, Long element) {
             this.addPrimitive(index, element);
         }
 
-        public void addPrimitive(int index, double element) {
+        public void addPrimitive(int index, long element) {
             rangeCheckForAdd(index);
             checkForComodification();
             root.add(offset + index, element);
@@ -1616,14 +1616,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public Double remove(int index) {
+        public Long remove(int index) {
             return this.removePrimitive(index);
         }
 
-        public double removePrimitive(int index) {
+        public long removePrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
-            double result = root.remove(offset + index);
+            long result = root.remove(offset + index);
             updateSizeAndModCount(-1);
             return result;
         }
@@ -1636,12 +1636,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public boolean addAll(Collection<? extends Double> c) {
+        public boolean addAll(Collection<? extends Long> c) {
             return addAll(this.size, c);
         }
 
         @Override
-        public boolean addAll(int index, Collection<? extends Double> c) {
+        public boolean addAll(int index, Collection<? extends Long> c) {
             rangeCheckForAdd(index);
             int cSize = c.size();
             if (cSize == 0) {
@@ -1654,7 +1654,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public void replaceAll(UnaryOperator<Double> operator) {
+        public void replaceAll(UnaryOperator<Long> operator) {
             root.replaceAllRange(operator, offset, offset + size);
         }
 
@@ -1680,7 +1680,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public boolean removeIf(Predicate<? super Double> filter) {
+        public boolean removeIf(Predicate<? super Long> filter) {
             checkForComodification();
             int oldSize = root.size;
             boolean modified = root.removeIf(filter, offset, offset + size);
@@ -1695,7 +1695,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
-        public double[] toArrayPrimitive() {
+        public long[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
         }
@@ -1714,7 +1714,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             return a;
         }
 
-        public double[] toArrayPrimitive(double[] a) {
+        public long[] toArrayPrimitive(long[] a) {
             checkForComodification();
             if (a.length < size) {
                 return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1755,7 +1755,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             return index >= 0 ? index - offset : -1;
         }
 
-        public int indexOfPrimitive(double o) {
+        public int indexOfPrimitive(long o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
@@ -1768,7 +1768,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             return index >= 0 ? index - offset : -1;
         }
 
-        public int lastIndexOfPrimitive(double o) {
+        public int lastIndexOfPrimitive(long o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
@@ -1780,38 +1780,38 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public Iterator<Double> iterator() {
+        public Iterator<Long> iterator() {
             return listIterator();
         }
 
         @Override
-        public DoubleListIterator listIterator(int index) {
+        public LongListIterator listIterator(int index) {
             checkForComodification();
             rangeCheckForAdd(index);
 
-            return new DoubleListIterator() {
+            return new LongListIterator() {
                 int cursor = index;
                 int lastRet = -1;
                 int expectedModCount = root.modCount;
 
                 @Override
                 public boolean hasNext() {
-                    return cursor != DoubleArrayList.DoubleSubList.this.size;
+                    return cursor != LongArrayList.LongSubList.this.size;
                 }
 
                 @Override
-                public Double next() {
+                public Long next() {
                     return nextPrimitive();
                 }
 
                 @Override
-                public double nextPrimitive() {
+                public long nextPrimitive() {
                     checkForComodification();
                     int i = cursor;
-                    if (i >= DoubleArrayList.DoubleSubList.this.size) {
+                    if (i >= LongArrayList.LongSubList.this.size) {
                         throw new NoSuchElementException();
                     }
-                    double[] elementData = root.elementData;
+                    long[] elementData = root.elementData;
                     if (offset + i >= elementData.length) {
                         throw new ConcurrentModificationException();
                     }
@@ -1825,18 +1825,18 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public Double previous() {
+                public Long previous() {
                     return previousPrimitive();
                 }
 
                 @Override
-                public double previousPrimitive() {
+                public long previousPrimitive() {
                     checkForComodification();
                     int i = cursor - 1;
                     if (i < 0) {
                         throw new NoSuchElementException();
                     }
-                    double[] elementData = root.elementData;
+                    long[] elementData = root.elementData;
                     if (offset + i >= elementData.length) {
                         throw new ConcurrentModificationException();
                     }
@@ -1845,12 +1845,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public void forEachRemaining(Consumer<? super Double> action) {
+                public void forEachRemaining(Consumer<? super Long> action) {
                     Objects.requireNonNull(action);
-                    final int size = DoubleArrayList.DoubleSubList.this.size;
+                    final int size = LongArrayList.LongSubList.this.size;
                     int i = cursor;
                     if (i < size) {
-                        final double[] es = root.elementData;
+                        final long[] es = root.elementData;
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
@@ -1882,7 +1882,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                     checkForComodification();
 
                     try {
-                        DoubleArrayList.DoubleSubList.this.remove(lastRet);
+                        LongArrayList.LongSubList.this.remove(lastRet);
                         cursor = lastRet;
                         lastRet = -1;
                         expectedModCount = root.modCount;
@@ -1892,12 +1892,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public void set(Double e) {
+                public void set(Long e) {
                     setPrimitive(e);
                 }
 
                 @Override
-                public void setPrimitive(double e) {
+                public void setPrimitive(long e) {
                     if (lastRet < 0) {
                         throw new IllegalStateException();
                     }
@@ -1911,17 +1911,17 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public void add(Double e) {
+                public void add(Long e) {
                     addPrimitive(e);
                 }
 
                 @Override
-                public void addPrimitive(double e) {
+                public void addPrimitive(long e) {
                     checkForComodification();
 
                     try {
                         int i = cursor;
-                        DoubleArrayList.DoubleSubList.this.add(i, e);
+                        LongArrayList.LongSubList.this.add(i, e);
                         cursor = i + 1;
                         lastRet = -1;
                         expectedModCount = root.modCount;
@@ -1939,9 +1939,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public List<Double> subList(int fromIndex, int toIndex) {
+        public List<Long> subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
-            return new DoubleArrayList.DoubleSubList(this, fromIndex, toIndex);
+            return new LongArrayList.LongSubList(this, fromIndex, toIndex);
         }
 
         private void rangeCheckForAdd(int index) {
@@ -1961,7 +1961,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         private void updateSizeAndModCount(int sizeChange) {
-            DoubleArrayList.DoubleSubList slist = this;
+            LongArrayList.LongSubList slist = this;
             do {
                 slist.size += sizeChange;
                 slist.modCount = root.modCount;
@@ -1970,11 +1970,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public Spliterator<Double> spliterator() {
+        public Spliterator<Long> spliterator() {
             checkForComodification();
 
             // ArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Double>() {
+            return new Spliterator<Long>() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -1989,7 +1989,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public DoubleArrayList.ArrayListSpliterator trySplit() {
+                public LongArrayList.ArrayListSpliterator trySplit() {
                     int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
                     // ArrayListSpliterator can be used here as the source is already bound
                     return (lo >= mid) ? null : // divide range in half unless too small
@@ -1997,12 +1997,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public boolean tryAdvance(Consumer<? super Double> action) {
+                public boolean tryAdvance(Consumer<? super Long> action) {
                     Objects.requireNonNull(action);
                     int hi = getFence(), i = index;
                     if (i < hi) {
                         index = i + 1;
-                        double e = root.elementData[i];
+                        long e = root.elementData[i];
                         action.accept(e);
                         if (root.modCount != expectedModCount) {
                             throw new ConcurrentModificationException();
@@ -2013,11 +2013,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public void forEachRemaining(Consumer<? super Double> action) {
+                public void forEachRemaining(Consumer<? super Long> action) {
                     Objects.requireNonNull(action);
                     int i, hi, mc; // hoist accesses and checks from loop
-                    DoubleArrayList lst = root;
-                    double[] a;
+                    LongArrayList lst = root;
+                    long[] a;
                     if ((a = lst.elementData) != null) {
                         if ((hi = fence) < 0) {
                             mc = modCount;
@@ -2027,7 +2027,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                         }
                         if ((i = index) >= 0 && (index = hi) <= a.length) {
                             for (; i < hi; ++i) {
-                                double e = a[i];
+                                long e = a[i];
                                 action.accept(e);
                             }
                             if (lst.modCount == mc) {
@@ -2055,10 +2055,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@inheritDoc}
      */
     @Override
-    public void forEach(Consumer<? super Double> action) {
+    public void forEach(Consumer<? super Long> action) {
         Objects.requireNonNull(action);
         final int expectedModCount = modCount;
-        final double[] es = elementData;
+        final long[] es = elementData;
         final int size = this.size;
         for (int i = 0; modCount == expectedModCount && i < size; i++) {
             action.accept(elementAt(es, i));
@@ -2083,14 +2083,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Double> spliterator() {
-        return new DoubleArrayList.ArrayListSpliterator(0, -1, 0);
+    public Spliterator<Long> spliterator() {
+        return new LongArrayList.ArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class ArrayListSpliterator implements Spliterator<Double> {
+    final class ArrayListSpliterator implements Spliterator<Long> {
 
         /*
          * If ArrayLists were immutable, or structurally immutable (no
@@ -2147,21 +2147,21 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public DoubleArrayList.ArrayListSpliterator trySplit() {
+        public LongArrayList.ArrayListSpliterator trySplit() {
             int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
             return (lo >= mid) ? null : // divide range in half unless too small
-                    new DoubleArrayList.ArrayListSpliterator(lo, index = mid, expectedModCount);
+                    new LongArrayList.ArrayListSpliterator(lo, index = mid, expectedModCount);
         }
 
         @Override
-        public boolean tryAdvance(Consumer<? super Double> action) {
+        public boolean tryAdvance(Consumer<? super Long> action) {
             if (action == null) {
                 throw new NullPointerException();
             }
             int hi = getFence(), i = index;
             if (i < hi) {
                 index = i + 1;
-                double e = elementData[i];
+                long e = elementData[i];
                 action.accept(e);
                 if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
@@ -2172,9 +2172,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public void forEachRemaining(Consumer<? super Double> action) {
+        public void forEachRemaining(Consumer<? super Long> action) {
             int i, hi, mc; // hoist accesses and checks from loop
-            double[] a;
+            long[] a;
             if (action == null) {
                 throw new NullPointerException();
             }
@@ -2187,7 +2187,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
                 if ((i = index) >= 0 && (index = hi) <= a.length) {
                     for (; i < hi; ++i) {
-                        double e = a[i];
+                        long e = a[i];
                         action.accept(e);
                     }
                     if (modCount == mc) {
@@ -2228,7 +2228,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@inheritDoc}
      */
     @Override
-    public boolean removeIf(Predicate<? super Double> filter) {
+    public boolean removeIf(Predicate<? super Long> filter) {
         return removeIf(filter, 0, size);
     }
 
@@ -2236,10 +2236,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Removes all elements satisfying the given predicate, from index
      * i (inclusive) to index end (exclusive).
      */
-    boolean removeIf(Predicate<? super Double> filter, int i, final int end) {
+    boolean removeIf(Predicate<? super Long> filter, int i, final int end) {
         Objects.requireNonNull(filter);
         int expectedModCount = modCount;
-        final double[] es = elementData;
+        final long[] es = elementData;
         // Optimize for initial run of survivors
         for (; i < end && !filter.test(elementAt(es, i)); i++) {
             ;
@@ -2280,15 +2280,15 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@inheritDoc}
      */
     @Override
-    public void replaceAll(UnaryOperator<Double> operator) {
+    public void replaceAll(UnaryOperator<Long> operator) {
         replaceAllRange(operator, 0, size);
         modCount++;
     }
 
-    private void replaceAllRange(UnaryOperator<Double> operator, int i, int end) {
+    private void replaceAllRange(UnaryOperator<Long> operator, int i, int end) {
         Objects.requireNonNull(operator);
         final int expectedModCount = modCount;
-        final double[] es = elementData;
+        final long[] es = elementData;
         for (; modCount == expectedModCount && i < end; i++) {
             es[i] = operator.apply(elementAt(es, i));
         }
@@ -2301,7 +2301,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@inheritDoc}
      */
     @Override
-    public void sort(Comparator<? super Double> c) {
+    public void sort(Comparator<? super Long> c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
         if (modCount != expectedModCount) {
