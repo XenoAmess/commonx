@@ -122,12 +122,6 @@
                         class files. -->
                     <plugin>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <configuration>
-                            <additionalOptions>
-                                <additionalOption>-html5</additionalOption>
-                            </additionalOptions>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
