@@ -73,7 +73,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>
-                                    **/src/main/java/com/xenoamess/commonx/java/util/concurrent/atomic/*.java
+                                    **/xenoamess/commonx/java/util/concurrent/atomic/*.java
                                 </exclude>
                             </excludes>
                         </configuration>
