@@ -52,4 +52,8 @@ public interface DoubleComparator extends Comparator<Double> {
     }
 
     int compare(double d1, double d2);
+
+    default int comparePrimitive(double d1, double d2) {
+        return compare(d1, d2);
+    }
 }
