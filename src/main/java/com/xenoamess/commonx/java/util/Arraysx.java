@@ -2542,12 +2542,7 @@ public class Arraysx {
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static void sort(boolean[] a, int fromIndex, int toIndex) {
-        Arraysx.sort(a, fromIndex, toIndex, new BooleanComparator() {
-            @Override
-            public int compare(boolean o1, boolean o2) {
-                return o1 ? (o2 ? 0 : 1) : (o2 ? -1 : 0);
-            }
-        });
+        Arraysx.sort(a, fromIndex, toIndex, PrimitiveComparators.BOOLEAN_COMPARATOR_INCREASING);
     }
 
 //    public <T> T[] distinct(T[] originalArray) {
