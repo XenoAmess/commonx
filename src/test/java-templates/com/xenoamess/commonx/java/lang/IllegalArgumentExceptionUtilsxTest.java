@@ -24,6 +24,7 @@
 
 package com.xenoamess.commonx.java.lang;
 
+import com.xenoamess.commons.code_generators.IllegalArgumentExceptionUtilsxCodeGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
