@@ -78,8 +78,8 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link java.util.ListIterator#remove() remove} or
- * {@link java.util.ListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link DoubleListIterator#remove() remove} or
+ * {@link DoubleListIterator#add(Object) add} methods, the iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
@@ -168,16 +168,19 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public DoubleArrayList(Collection<? extends Double> c) {
-        elementData = ArrayUtils.toPrimitive((Double[]) c.toArray());
-        if ((size = elementData.length) != 0) {
-            // defend against c.toArray (incorrectly) not returning Object[]
-            // (see e.g. https://bugs.openjdk.java.net/browse/JDK-6260652)
-            if (elementData.getClass() != double[].class) {
-                // although I don't think this if can be entered, I will reserve it for compatibility.
-                //--- XenoAmess
-                elementData = Arrays.copyOf(elementData, size);
-            }
-        } else {
+        this(ArrayUtils.toPrimitive((Double[]) c.toArray()));
+    }
+
+    /**
+     * Constructs a DoubleArrayList with a
+     *
+     * @param doubleArray the collection whose elements are to be placed into this list
+     * @throws java.lang.NullPointerException if the specified collection is null
+     */
+    public DoubleArrayList(double[] doubleArray) {
+        elementData = doubleArray;
+        size = elementData.length;
+        if (size == 0) {
             // replace with empty array.
             this.elementData = EMPTY_ELEMENTDATA;
         }
@@ -311,6 +314,31 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * {@inheritDoc}
      * <p>
+     * Returns {@code true} if this list contains the specified element.
+     * More formally, returns {@code true} if and only if this list contains
+     * at least one element {@code e} such that
+     * {@code Objects.equals(o, e)}.
+     */
+    public boolean contains(double o) {
+        return this.containsPrimitive(o);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns {@code true} if this list contains the specified element.
+     * More formally, returns {@code true} if and only if this list contains
+     * at least one element {@code e} such that
+     * {@code Objects.equals(o, e)}.
+     */
+    public boolean containsPrimitive(double o) {
+        return indexOfPrimitive(o) >= 0;
+    }
+
+
+    /**
+     * {@inheritDoc}
+     * <p>
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
@@ -322,14 +350,75 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return indexOfRange(o, 0, size);
     }
 
-    int indexOfRange(Object o, int start, int end) {
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int indexOf(double o) {
+        return this.indexOfPrimitive(o);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int indexOfPrimitive(double o) {
+        return indexOfRangePrimitive(o, 0, size);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int indexOfRange(Object o, int start, int end) {
         if (o == null) {
             return -1;
         }
         if (!(o instanceof Double)) {
             return -1;
         }
-        double tmpDoubleValue = (Double) o;
+        return this.indexOfRangePrimitive((Double) o, start, end);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int indexOfRange(double o, int start, int end) {
+        return this.indexOfRangePrimitive(o, start, end);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int indexOfRangePrimitive(double o, int start, int end) {
+        double tmpDoubleValue = o;
         double[] es = elementData;
         for (int i = start; i < end; i++) {
             if (es[i] == tmpDoubleValue) {
@@ -338,7 +427,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
         return -1;
     }
-
 
     /**
      * {@inheritDoc}
@@ -354,7 +442,47 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return lastIndexOfRange(o, 0, size);
     }
 
-    int lastIndexOfRange(Object o, int start, int end) {
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the last occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the highest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int lastIndexOf(double o) {
+        return this.lastIndexOfPrimitive(o);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the last occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the highest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    public int lastIndexOfPrimitive(double o) {
+        return this.lastIndexOfRangePrimitive(o, 0, size);
+    }
+
+    public int lastIndexOfRange(Object o, int start, int end) {
+        if (o == null) {
+            return -1;
+        }
+        if (!(o instanceof Double)) {
+            return -1;
+        }
+        return this.lastIndexOfRangePrimitive(o, start, end);
+    }
+
+    public int lastIndexOfRange(double o, int start, int end) {
+        return this.lastIndexOfRangePrimitive(o, start, end);
+    }
+
+    public int lastIndexOfRangePrimitive(Object o, int start, int end) {
         if (o == null) {
             return -1;
         }
@@ -405,7 +533,24 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      */
     @Override
     public Object[] toArray() {
-        return ArrayUtils.toObject(Arrays.copyOf(elementData, size));
+        return ArrayUtils.toObject(this.toArrayPrimitive());
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns an array containing all of the elements in this list
+     * in proper sequence (from first to last element).
+     *
+     * <p>The returned array will be "safe" in that no references to it are
+     * maintained by this list.  (In other words, this method must allocate
+     * a new array).  The caller is thus free to modify the returned array.
+     *
+     * <p>This method acts as bridge between array-based and collection-based
+     * APIs.
+     */
+    public double[] toArrayPrimitive() {
+        return elementData;
     }
 
     /**
@@ -430,22 +575,51 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     public <T> T[] toArray(T[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
-            return (T[]) ArrayUtils.toObject(Arrays.copyOf(elementData, size));
+            return (T[]) ArrayUtils.toObject(elementData);
         }
-        System.arraycopy(elementData, 0, a, 0, size);
+        System.arraycopy(ArrayUtils.toObject(elementData), 0, a, 0, size);
         if (a.length > size) {
             a[size] = null;
         }
         return a;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns an array containing all of the elements in this list in proper
+     * sequence (from first to last element); the runtime type of the returned
+     * array is that of the specified array.  If the list fits in the
+     * specified array, it is returned therein.  Otherwise, a new array is
+     * allocated with the runtime type of the specified array and the size of
+     * this list.
+     *
+     * <p>If the list fits in the specified array with room to spare
+     * (i.e., the array has more elements than the list), the element in
+     * the array immediately following the end of the collection is set to
+     * {@code null}.  (This is useful in determining the length of the
+     * list <i>only</i> if the caller knows that the list does not contain
+     * any null elements.)
+     */
+    public double[] toArrayPrimitive(double[] a) {
+        if (a.length < size) {
+            // Make a new array of a's runtime type, but my contents:
+            return Arrays.copyOf(elementData, size);
+        }
+        System.arraycopy(elementData, 0, a, 0, size);
+        if (a.length > size) {
+            a[size] = 0;
+        }
+        return a;
+    }
+
     // Positional Access Operations
 
-    double elementData(int index) {
+    public double elementData(int index) {
         return elementData[index];
     }
 
-    static double elementAt(double[] es, int index) {
+    public static double elementAt(double[] es, int index) {
         return es[index];
     }
 
@@ -676,15 +850,15 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return hash;
     }
 
-    int hashCodeRange(int from, int to) {
+    public int hashCodeRange(int from, int to) {
         final double[] es = elementData;
         if (to > es.length) {
             throw new ConcurrentModificationException();
         }
         int hashCode = 1;
         for (int i = from; i < to; i++) {
-            Object e = es[i];
-            hashCode = 31 * hashCode + (e == null ? 0 : e.hashCode());
+            double e = es[i];
+            hashCode = 31 * hashCode + Double.hashCode(e);
         }
         return hashCode;
     }
@@ -709,13 +883,29 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         if (!(o instanceof Double)) {
             return false;
         }
+        return this.removePrimitive((Double) o);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Removes the first occurrence of the specified element from this list,
+     * if it is present.  If the list does not contain the element, it is
+     * unchanged.  More formally, removes the element with the lowest index
+     * {@code i} such that
+     * {@code Objects.equals(o, get(i))}
+     * (if such an element exists).  Returns {@code true} if this list
+     * contained the specified element (or equivalently, if this list
+     * changed as a result of the call).
+     */
+    public boolean removePrimitive(double o) {
         final double[] es = elementData;
         final int size = this.size;
         int i = 0;
         found:
         {
             for (; i < size; i++) {
-                if (o.equals(es[i])) {
+                if (o == es[i]) {
                     break found;
                 }
             }
@@ -729,7 +919,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Private remove method that skips bounds checking and does not
      * return the value removed.
      */
-    private void fastRemove(double[] es, int i) {
+    public void fastRemove(double[] es, int i) {
         modCount++;
         final int newSize;
         if ((newSize = size - 1) > i) {
@@ -829,7 +1019,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * (If {@code toIndex==fromIndex}, this operation has no effect.)
      */
     @Override
-    protected void removeRange(int fromIndex, int toIndex) {
+    public void removeRange(int fromIndex, int toIndex) {
         if (fromIndex > toIndex) {
             throw new IndexOutOfBoundsException(
                     outOfBoundsMsg(fromIndex, toIndex));
@@ -841,7 +1031,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * Erases the gap from lo to hi, by sliding down following elements.
      */
-    private void shiftTailOverGap(double[] es, int lo, int hi) {
+    public void shiftTailOverGap(double[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
             es[i] = 0;
@@ -851,7 +1041,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * A version of rangeCheck used by add and addAll.
      */
-    private void rangeCheckForAdd(int index) {
+    public void rangeCheckForAdd(int index) {
         if (index > size || index < 0) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
@@ -862,14 +1052,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Of the many possible refactorings of the error handling code,
      * this "outlining" performs best with both server and client VMs.
      */
-    private String outOfBoundsMsg(int index) {
+    public String outOfBoundsMsg(int index) {
         return "Index: " + index + ", Size: " + size;
     }
 
     /**
      * A version used in checking (fromIndex &gt; toIndex) condition
      */
-    private static String outOfBoundsMsg(int fromIndex, int toIndex) {
+    public static String outOfBoundsMsg(int fromIndex, int toIndex) {
         return "From Index: " + fromIndex + " > To Index: " + toIndex;
     }
 
@@ -900,8 +1090,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return batchRemove(c, true, 0, size);
     }
 
-    boolean batchRemove(Collection<?> c, boolean complement,
-                        final int from, final int end) {
+    public boolean batchRemove(Collection<?> c, boolean complement,
+                               final int from, final int end) {
         Objects.requireNonNull(c);
         final double[] es = elementData;
         int r;
@@ -944,7 +1134,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * instance is emitted (int), followed by all of its elements
      * (each an {@code Object}) in the proper order.
      */
-    private void writeObject(java.io.ObjectOutputStream s)
+    public void writeObject(java.io.ObjectOutputStream s)
             throws java.io.IOException {
         // Write out element count, and any hidden stuff
         int expectedModCount = modCount;
@@ -972,7 +1162,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *                                could not be found
      * @throws java.io.IOException    if an I/O error occurs
      */
-    private void readObject(java.io.ObjectInputStream s)
+    public void readObject(java.io.ObjectInputStream s)
             throws java.io.IOException, ClassNotFoundException {
 
         // Read in size, and any hidden stuff
@@ -1004,14 +1194,14 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
      * The specified index indicates the first element that would be
-     * returned by an initial call to {@link ListIterator#next next}.
-     * An initial call to {@link ListIterator#previous previous} would
+     * returned by an initial call to {@link DoubleListIterator#next next}.
+     * An initial call to {@link DoubleListIterator#previous previous} would
      * return the element with the specified index minus one.
      *
      * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public ListIterator<Double> listIterator(int index) {
+    public DoubleListIterator listIterator(int index) {
         rangeCheckForAdd(index);
         return new DoubleArrayList.ListItr(index);
     }
@@ -1027,7 +1217,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @see #listIterator(int)
      */
     @Override
-    public ListIterator<Double> listIterator() {
+    public DoubleListIterator listIterator() {
         return new DoubleArrayList.ListItr(0);
     }
 
@@ -1046,7 +1236,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * An optimized version of AbstractList.Itr
      */
-    private class Itr implements Iterator<Double> {
+    private class Itr implements DoubleIterator {
         int cursor;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
         int expectedModCount = modCount;
@@ -1063,9 +1253,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         @Override
         @SuppressWarnings("unchecked")
         public Double next() {
-            return nextPrimitive();
+            return this.nextPrimitive();
         }
 
+        @Override
         @SuppressWarnings("unchecked")
         public double nextPrimitive() {
             checkForComodification();
@@ -1128,7 +1319,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * An optimized version of AbstractList.ListItr
      */
-    private class ListItr extends DoubleArrayList.Itr implements ListIterator<Double> {
+    private class ListItr extends DoubleArrayList.Itr implements DoubleListIterator {
         ListItr(int index) {
             super();
             cursor = index;
@@ -1152,9 +1343,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         @Override
         @SuppressWarnings("unchecked")
         public Double previous() {
-            return previousPrimitive();
+            return this.previousPrimitive();
         }
 
+        @Override
         @SuppressWarnings("unchecked")
         public double previousPrimitive() {
             checkForComodification();
@@ -1175,6 +1367,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             setPrimitive(e);
         }
 
+        @Override
         public void setPrimitive(double e) {
             if (lastRet < 0) {
                 throw new IllegalStateException();
@@ -1193,6 +1386,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             addPrimitive(e);
         }
 
+        @Override
         public void addPrimitive(double e) {
             checkForComodification();
 
@@ -1272,7 +1466,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         public Double set(int index, Double element) {
-            return setPrimitive(index, element);
+            return this.setPrimitive(index, element);
         }
 
         public double setPrimitive(int index, double element) {
@@ -1285,7 +1479,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         public Double get(int index) {
-            return getPrimitive(index);
+            return this.getPrimitive(index);
         }
 
         public double getPrimitive(int index) {
@@ -1302,7 +1496,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         public void add(int index, Double element) {
-            addPrimitive(index, element);
+            this.addPrimitive(index, element);
         }
 
         public void addPrimitive(int index, double element) {
@@ -1314,7 +1508,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         public Double remove(int index) {
-            return removePrimitive(index);
+            return this.removePrimitive(index);
         }
 
         public double removePrimitive(int index) {
@@ -1389,8 +1583,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         @Override
         public Object[] toArray() {
+            return ArrayUtils.toObject(this.toArrayPrimitive());
+        }
+
+        public double[] toArrayPrimitive() {
             checkForComodification();
-            return ArrayUtils.toObject(Arrays.copyOfRange(root.elementData, offset, offset + size));
+            return Arrays.copyOfRange(root.elementData, offset, offset + size);
         }
 
         @Override
@@ -1400,9 +1598,21 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             if (a.length < size) {
                 return (T[]) ArrayUtils.toObject(Arrays.copyOfRange(root.elementData, offset, offset + size));
             }
-            System.arraycopy(root.elementData, offset, a, 0, size);
+            System.arraycopy(ArrayUtils.toObject(root.elementData), offset, a, 0, size);
             if (a.length > size) {
                 a[size] = null;
+            }
+            return a;
+        }
+
+        public double[] toArrayPrimitive(double[] a) {
+            checkForComodification();
+            if (a.length < size) {
+                return Arrays.copyOfRange(root.elementData, offset, offset + size);
+            }
+            System.arraycopy(root.elementData, offset, a, 0, size);
+            if (a.length > size) {
+                a[size] = 0;
             }
             return a;
         }
@@ -1436,9 +1646,21 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
             return index >= 0 ? index - offset : -1;
         }
 
+        public int indexOfPrimitive(double o) {
+            int index = root.indexOfRangePrimitive(o, offset, offset + size);
+            checkForComodification();
+            return index >= 0 ? index - offset : -1;
+        }
+
         @Override
         public int lastIndexOf(Object o) {
             int index = root.lastIndexOfRange(o, offset, offset + size);
+            checkForComodification();
+            return index >= 0 ? index - offset : -1;
+        }
+
+        public int lastIndexOfPrimitive(double o) {
+            int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
         }
@@ -1454,11 +1676,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public ListIterator<Double> listIterator(int index) {
+        public DoubleListIterator listIterator(int index) {
             checkForComodification();
             rangeCheckForAdd(index);
 
-            return new ListIterator<Double>() {
+            return new DoubleListIterator() {
                 int cursor = index;
                 int lastRet = -1;
                 int expectedModCount = root.modCount;
@@ -1473,6 +1695,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                     return nextPrimitive();
                 }
 
+                @Override
                 public double nextPrimitive() {
                     checkForComodification();
                     int i = cursor;
@@ -1497,6 +1720,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                     return previousPrimitive();
                 }
 
+                @Override
                 public double previousPrimitive() {
                     checkForComodification();
                     int i = cursor - 1;
@@ -1563,6 +1787,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                     setPrimitive(e);
                 }
 
+                @Override
                 public void setPrimitive(double e) {
                     if (lastRet < 0) {
                         throw new IllegalStateException();
@@ -1581,6 +1806,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                     addPrimitive(e);
                 }
 
+                @Override
                 public void addPrimitive(double e) {
                     checkForComodification();
 
