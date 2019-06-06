@@ -72,6 +72,9 @@
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
                             <excludes>
+                                <!--well we just use some functions that later than 8 there so.-->
+                                <!--I myself don't use jdk 8 anymore, and don't care about writing a jdk8 version of these classes now.-->
+                                <!--If anyone want implement it you can do it yourself.-->
                                 <exclude>
                                     **/xenoamess/commonx/java/util/concurrent/atomic/*.java
                                 </exclude>

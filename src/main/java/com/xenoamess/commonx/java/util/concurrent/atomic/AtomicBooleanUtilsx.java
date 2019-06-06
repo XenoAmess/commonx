@@ -67,4 +67,29 @@ public class AtomicBooleanUtilsx {
             haveNext = (prev == (prev = atomicBoolean.get()));
         }
     }
+
+    /**
+     * Flip the AtomicBoolean.
+     * <p>
+     * this is a implement that does not use {@link java.lang.invoke.VarHandle#setVolatile} and
+     * {@link AtomicBoolean#weakCompareAndSetVolatile}.
+     * <p>
+     * Shall only use this in java 8.
+     * <p>
+     * Sets the boolean value to false if it is true, and to true if it is false
+     * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
+     *
+     * @param atomicBoolean atomicBoolean
+     * @return new boolean value of AtomicBoolean
+     * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
+     * @see
+     * <a href="https://stackoverflow.com/questions/1255617/does-atomicboolean-not-have-a-negate-method">https://stackoverflow.com/questions/1255617/does-atomicboolean-not-have-a-negate-method</a>
+     */
+    public static final boolean flipForJava8(AtomicBoolean atomicBoolean) {
+        boolean v;
+        do {
+            v = atomicBoolean.get();
+        } while (!atomicBoolean.compareAndSet(v, !v));
+        return !v;
+    }
 }
