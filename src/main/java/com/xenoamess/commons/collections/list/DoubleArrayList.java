@@ -78,8 +78,8 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link DoubleListIterator#remove() remove} or
- * {@link DoubleListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link com.xenoamess.commons.collections.list.DoubleListIterator#remove() remove} or
+ * {@link com.xenoamess.commons.collections.list.DoubleListIterator#add(Object) add} methods, the iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
@@ -318,6 +318,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns {@code true} if and only if this list contains
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
+     *
+     * @param o a double.
+     * @return a boolean.
      */
     public boolean contains(double o) {
         return this.containsPrimitive(o);
@@ -330,6 +333,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns {@code true} if and only if this list contains
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
+     *
+     * @param o a double.
+     * @return a boolean.
      */
     public boolean containsPrimitive(double o) {
         return indexOfPrimitive(o) >= 0;
@@ -358,6 +364,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o a double.
+     * @return a int.
      */
     public int indexOf(double o) {
         return this.indexOfPrimitive(o);
@@ -371,6 +380,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o a double.
+     * @return a int.
      */
     public int indexOfPrimitive(double o) {
         return indexOfRangePrimitive(o, 0, size);
@@ -384,6 +396,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o     a {@link java.lang.Object} object.
+     * @param start a int.
+     * @param end   a int.
+     * @return a int.
      */
     public int indexOfRange(Object o, int start, int end) {
         if (o == null) {
@@ -403,6 +420,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o     a double.
+     * @param start a int.
+     * @param end   a int.
+     * @return a int.
      */
     public int indexOfRange(double o, int start, int end) {
         return this.indexOfRangePrimitive(o, start, end);
@@ -416,6 +438,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o     a double.
+     * @param start a int.
+     * @param end   a int.
+     * @return a int.
      */
     public int indexOfRangePrimitive(double o, int start, int end) {
         double tmpDoubleValue = o;
@@ -450,6 +477,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the highest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o a double.
+     * @return a int.
      */
     public int lastIndexOf(double o) {
         return this.lastIndexOfPrimitive(o);
@@ -463,11 +493,22 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * More formally, returns the highest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
+     *
+     * @param o a double.
+     * @return a int.
      */
     public int lastIndexOfPrimitive(double o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
 
+    /**
+     * <p>lastIndexOfRange.</p>
+     *
+     * @param o     a {@link java.lang.Object} object.
+     * @param start a int.
+     * @param end   a int.
+     * @return a int.
+     */
     public int lastIndexOfRange(Object o, int start, int end) {
         if (o == null) {
             return -1;
@@ -478,10 +519,26 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return this.lastIndexOfRangePrimitive(o, start, end);
     }
 
+    /**
+     * <p>lastIndexOfRange.</p>
+     *
+     * @param o     a double.
+     * @param start a int.
+     * @param end   a int.
+     * @return a int.
+     */
     public int lastIndexOfRange(double o, int start, int end) {
         return this.lastIndexOfRangePrimitive(o, start, end);
     }
 
+    /**
+     * <p>lastIndexOfRangePrimitive.</p>
+     *
+     * @param o     a {@link java.lang.Object} object.
+     * @param start a int.
+     * @param end   a int.
+     * @return a int.
+     */
     public int lastIndexOfRangePrimitive(Object o, int start, int end) {
         if (o == null) {
             return -1;
@@ -548,6 +605,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
+     *
+     * @return an array of {@link double} objects.
      */
     public double[] toArrayPrimitive() {
         return elementData;
@@ -600,6 +659,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * {@code null}.  (This is useful in determining the length of the
      * list <i>only</i> if the caller knows that the list does not contain
      * any null elements.)
+     *
+     * @param a an array of {@link double} objects.
+     * @return an array of {@link double} objects.
      */
     public double[] toArrayPrimitive(double[] a) {
         if (a.length < size) {
@@ -615,10 +677,23 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     // Positional Access Operations
 
+    /**
+     * <p>elementData.</p>
+     *
+     * @param index a int.
+     * @return a double.
+     */
     public double elementData(int index) {
         return elementData[index];
     }
 
+    /**
+     * <p>elementAt.</p>
+     *
+     * @param es    an array of {@link double} objects.
+     * @param index a int.
+     * @return a double.
+     */
     public static double elementAt(double[] es, int index) {
         return es[index];
     }
@@ -850,6 +925,13 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return hash;
     }
 
+    /**
+     * <p>hashCodeRange.</p>
+     *
+     * @param from a int.
+     * @param to   a int.
+     * @return a int.
+     */
     public int hashCodeRange(int from, int to) {
         final double[] es = elementData;
         if (to > es.length) {
@@ -897,6 +979,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * (if such an element exists).  Returns {@code true} if this list
      * contained the specified element (or equivalently, if this list
      * changed as a result of the call).
+     *
+     * @param o a double.
+     * @return a boolean.
      */
     public boolean removePrimitive(double o) {
         final double[] es = elementData;
@@ -918,6 +1003,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * Private remove method that skips bounds checking and does not
      * return the value removed.
+     *
+     * @param es an array of {@link double} objects.
+     * @param i  a int.
      */
     public void fastRemove(double[] es, int i) {
         modCount++;
@@ -1030,6 +1118,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * Erases the gap from lo to hi, by sliding down following elements.
+     *
+     * @param es an array of {@link double} objects.
+     * @param lo a int.
+     * @param hi a int.
      */
     public void shiftTailOverGap(double[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
@@ -1039,6 +1131,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * A version of rangeCheck used by add and addAll.
      */
     public void rangeCheckForAdd(int index) {
@@ -1048,6 +1142,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Constructs an IndexOutOfBoundsException detail message.
      * Of the many possible refactorings of the error handling code,
      * this "outlining" performs best with both server and client VMs.
@@ -1058,6 +1154,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
      * A version used in checking (fromIndex &gt; toIndex) condition
+     *
+     * @param fromIndex a int.
+     * @param toIndex   a int.
+     * @return a {@link java.lang.String} object.
      */
     public static String outOfBoundsMsg(int fromIndex, int toIndex) {
         return "From Index: " + fromIndex + " > To Index: " + toIndex;
@@ -1090,6 +1190,15 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         return batchRemove(c, true, 0, size);
     }
 
+    /**
+     * <p>batchRemove.</p>
+     *
+     * @param c          a {@link java.util.Collection} object.
+     * @param complement a boolean.
+     * @param from       a int.
+     * @param end        a int.
+     * @return a boolean.
+     */
     public boolean batchRemove(Collection<?> c, boolean complement,
                                final int from, final int end) {
         Objects.requireNonNull(c);
@@ -1158,9 +1267,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * deserializes it).
      *
      * @param s the stream
-     * @throws ClassNotFoundException if the class of a serialized object
-     *                                could not be found
-     * @throws java.io.IOException    if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException if the class of a serialized object
+     *                                          could not be found
+     * @throws java.io.IOException              if an I/O error occurs
      */
     public void readObject(java.io.ObjectInputStream s)
             throws java.io.IOException, ClassNotFoundException {

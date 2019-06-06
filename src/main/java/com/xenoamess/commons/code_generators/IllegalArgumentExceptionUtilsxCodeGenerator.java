@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.xenoamess.commonx.java.lang;
+package com.xenoamess.commons.code_generators;
 
 import java.io.BufferedWriter;
 import java.io.File;

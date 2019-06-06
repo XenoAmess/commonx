@@ -26,7 +26,6 @@
 package com.xenoamess.commons.collections.list;
 
 import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
 /**
  * An iterator for lists that allows the programmer
@@ -53,6 +52,7 @@ import java.util.NoSuchElementException;
  * Java Collections Framework</a>.
  *
  * @author Josh Bloch
+ * @version 0.6.0
  * @see java.util.Collection
  * @see java.util.List
  * @see java.util.Iterator
@@ -64,14 +64,13 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
     // Query Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the next element in the list and advances the cursor position.
      * This method may be called repeatedly to iterate through the list,
      * or intermixed with calls to {@link #previous} to go back and forth.
      * (Note that alternating calls to {@code next} and {@code previous}
      * will return the same element repeatedly.)
-     *
-     * @return the next element in the list
-     * @throws NoSuchElementException if the iteration has no next element
      */
     @Override
     double nextPrimitive();
@@ -86,8 +85,6 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      * element repeatedly.)
      *
      * @return the previous element in the list
-     * @throws NoSuchElementException if the iteration has no previous
-     *                                element
      */
     double previousPrimitive();
 
@@ -102,16 +99,16 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      *
      * @param e the element with which to replace the last element returned by
      *          {@code next} or {@code previous}
-     * @throws UnsupportedOperationException if the {@code set} operation
-     *                                       is not supported by this list iterator
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws IllegalArgumentException      if some aspect of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IllegalStateException         if neither {@code next} nor
-     *                                       {@code previous} have been called, or {@code remove} or
-     *                                       {@code add} have been called after the last call to
-     *                                       {@code next} or {@code previous}
+     * @throws java.lang.UnsupportedOperationException if the {@code set} operation
+     *                                                 is not supported by this list iterator
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this list
+     * @throws java.lang.IllegalArgumentException      if some aspect of the specified
+     *                                                 element prevents it from being added to this list
+     * @throws java.lang.IllegalStateException         if neither {@code next} nor
+     *                                                 {@code previous} have been called, or {@code remove} or
+     *                                                 {@code add} have been called after the last call to
+     *                                                 {@code next} or {@code previous}
      */
     void setPrimitive(double e);
 
@@ -128,12 +125,12 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      * call to {@code nextIndex} or {@code previousIndex}.)
      *
      * @param e the element to insert
-     * @throws UnsupportedOperationException if the {@code add} method is
-     *                                       not supported by this list iterator
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws IllegalArgumentException      if some aspect of this element
-     *                                       prevents it from being added to this list
+     * @throws java.lang.UnsupportedOperationException if the {@code add} method is
+     *                                                 not supported by this list iterator
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this list
+     * @throws java.lang.IllegalArgumentException      if some aspect of this element
+     *                                                 prevents it from being added to this list
      */
     void addPrimitive(double e);
 }

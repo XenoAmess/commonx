@@ -44,6 +44,7 @@ import java.util.Iterator;
  * Java Collections Framework</a>.
  *
  * @author Josh Bloch
+ * @version 0.6.0
  * @apiNote An {@link java.util.Enumeration} can be converted into an {@code Iterator} by
  * using the {@link java.util.Enumeration#asIterator} method.
  * @see java.util.Collection
