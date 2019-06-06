@@ -25,7 +25,6 @@
 package com.xenoamess.commons.collections.list;
 
 import com.xenoamess.commonx.java.util.Arraysx;
-import jdk.internal.access.SharedSecrets;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
@@ -984,7 +983,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
         if (size > 0) {
             // like clone(), allocate array based upon size not capacity
-            SharedSecrets.getJavaObjectInputStreamAccess().checkArray(s, Object[].class, size);
             double[] elements = new double[size];
 
             // Read in all elements in the proper order.
