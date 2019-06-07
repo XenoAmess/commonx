@@ -2304,7 +2304,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
     @Override
     public void sort(Comparator<? super Character> c) {
         if (!(c instanceof CharComparator)) {
-            throw new NotImplementedException("For more performance, this class only accept ByteComparator as " +
+            throw new NotImplementedException("For more performance, this class only accept CharComparator as " +
                     "comparator.");
         }
         this.sort((CharComparator) c);

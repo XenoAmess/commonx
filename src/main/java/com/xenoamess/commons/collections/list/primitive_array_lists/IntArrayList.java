@@ -2281,7 +2281,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     @Override
     public void sort(Comparator<? super Integer> c) {
         if (!(c instanceof IntComparator)) {
-            throw new NotImplementedException("For more performance, this class only accept ByteComparator as " +
+            throw new NotImplementedException("For more performance, this class only accept IntComparator as " +
                     "comparator.");
         }
         this.sort((IntComparator) c);
