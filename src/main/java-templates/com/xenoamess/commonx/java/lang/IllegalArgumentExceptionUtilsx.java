@@ -122,7 +122,7 @@ public class IllegalArgumentExceptionUtilsx {
                                                                      String appendingMessage) {
         if (!(object.getClass() == classObject)) {
             throw new IllegalArgumentException("class of this object must be " + classObject.getCanonicalName() +
-                    "but not, object : " + object + "." + message != null ? message : "");
+                    "but not, object : " + object + "." + appendingMessage != null ? appendingMessage : "");
         }
     }
 
