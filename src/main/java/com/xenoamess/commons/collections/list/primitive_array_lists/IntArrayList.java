@@ -57,7 +57,6 @@ import java.util.function.UnaryOperator;
  * @see List
  * @see LinkedList
  * @see Vector
- * @see com.xenoamess.commons.code_generators.GeneratePrimitivesFromInteger
  * @since 1.2
  */
 public class IntArrayList extends PrimitiveArrayList<Integer> {

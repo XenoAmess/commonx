@@ -57,7 +57,6 @@ import java.util.function.UnaryOperator;
  * @see List
  * @see LinkedList
  * @see Vector
- * @see com.xenoamess.commons.code_generators.GeneratePrimitivesFromShort
  * @since 1.2
  */
 public class ShortArrayList extends PrimitiveArrayList<Short> {
