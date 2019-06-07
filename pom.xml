@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.6.0-SNAPSHOT</version>
+    <version>0.6.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for the classes that
