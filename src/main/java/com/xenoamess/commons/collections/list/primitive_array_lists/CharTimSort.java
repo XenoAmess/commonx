@@ -26,8 +26,6 @@
 
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
-import java.util.Comparator;
-
 /**
  * A stable, adaptive, iterative mergesort that requires far fewer than
  * n lg(n) comparisons when running on partially sorted arrays, while
@@ -90,7 +88,7 @@ public class CharTimSort {
     /**
      * The comparator for this sort.
      */
-    public final Comparator<? super Character> c;
+    public final CharComparator c;
 
     /**
      * When we get into galloping mode, we stay there until both runs win less
@@ -146,7 +144,7 @@ public class CharTimSort {
      * @param workBase origin of usable space in work array
      * @param workLen  usable size of work array
      */
-    public CharTimSort(char[] a, Comparator<? super Character> c, char[] work, int workBase, int workLen) {
+    public CharTimSort(char[] a, CharComparator c, char[] work, int workBase, int workLen) {
         this.a = a;
         this.c = c;
 
@@ -208,7 +206,7 @@ public class CharTimSort {
      * @param workLen  usable size of work array
      * @since 1.8
      */
-    public static void sort(char[] a, int lo, int hi, Comparator<? super Character> c,
+    public static void sort(char[] a, int lo, int hi, CharComparator c,
                             char[] work, int workBase, int workLen) {
         assert c != null && a != null && lo >= 0 && lo <= hi && hi <= a.length;
 
@@ -277,7 +275,7 @@ public class CharTimSort {
      */
     @SuppressWarnings("fallthrough")
     public static void binarySort(char[] a, int lo, int hi, int start,
-                                  Comparator<? super Character> c) {
+                                  CharComparator c) {
         assert lo <= start && start <= hi;
         if (start == lo) {
             start++;
@@ -352,7 +350,7 @@ public class CharTimSort {
      * the specified array
      */
     public static int countRunAndMakeAscending(char[] a, int lo, int hi,
-                                               Comparator<? super Character> c) {
+                                               CharComparator c) {
         assert lo < hi;
         int runHi = lo + 1;
         if (runHi == hi) {
@@ -554,7 +552,7 @@ public class CharTimSort {
      * should follow it.
      */
     public static int gallopLeft(char key, char[] a, int base, int len, int hint,
-                                 Comparator<? super Character> c) {
+                                 CharComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
         int lastOfs = 0;
         int ofs = 1;
@@ -631,7 +629,7 @@ public class CharTimSort {
      * @return the int k,  0 &lt;= k &lt;= n such that a[b + k - 1] &lt; key &lt;= a[b + k],
      */
     public static int gallopRight(char key, char[] a, int base, int len,
-                                  int hint, Comparator<? super Character> c) {
+                                  int hint, CharComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
 
         int ofs = 1;
@@ -734,7 +732,7 @@ public class CharTimSort {
             return;
         }
 
-        Comparator<? super Character> c = this.c;  // Use local variable for performance
+        CharComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {
@@ -862,7 +860,7 @@ public class CharTimSort {
             return;
         }
 
-        Comparator<? super Character> c = this.c;  // Use local variable for performance
+        CharComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {

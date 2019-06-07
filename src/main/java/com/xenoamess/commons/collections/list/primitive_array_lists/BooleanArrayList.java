@@ -26,6 +26,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -1027,7 +1028,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         modCount++;
         final boolean[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = Boolean.parseBoolean(null);
+            es[i] = false;
         }
     }
 
@@ -2302,6 +2303,14 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      */
     @Override
     public void sort(Comparator<? super Boolean> c) {
+        if (!(c instanceof BooleanComparator)) {
+            throw new NotImplementedException("For more performance, this class only accept BooleanComparator as " +
+                    "comparator.");
+        }
+        this.sort((BooleanComparator) c);
+    }
+
+    public void sort(BooleanComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
         if (modCount != expectedModCount) {

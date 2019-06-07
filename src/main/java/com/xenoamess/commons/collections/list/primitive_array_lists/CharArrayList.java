@@ -26,6 +26,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -2302,6 +2303,14 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      */
     @Override
     public void sort(Comparator<? super Character> c) {
+        if (!(c instanceof CharComparator)) {
+            throw new NotImplementedException("For more performance, this class only accept ByteComparator as " +
+                    "comparator.");
+        }
+        this.sort((CharComparator) c);
+    }
+
+    public void sort(CharComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
         if (modCount != expectedModCount) {

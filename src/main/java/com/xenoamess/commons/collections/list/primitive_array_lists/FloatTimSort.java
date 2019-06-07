@@ -26,8 +26,6 @@
 
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
-import java.util.Comparator;
-
 /**
  * A stable, adaptive, iterative mergesort that requires far fewer than
  * n lg(n) comparisons when running on partially sorted arrays, while
@@ -90,7 +88,7 @@ public class FloatTimSort {
     /**
      * The comparator for this sort.
      */
-    public final Comparator<? super Float> c;
+    public final FloatComparator c;
 
     /**
      * When we get into galloping mode, we stay there until both runs win less
@@ -146,7 +144,7 @@ public class FloatTimSort {
      * @param workBase origin of usable space in work array
      * @param workLen  usable size of work array
      */
-    public FloatTimSort(float[] a, Comparator<? super Float> c, float[] work, int workBase, int workLen) {
+    public FloatTimSort(float[] a, FloatComparator c, float[] work, int workBase, int workLen) {
         this.a = a;
         this.c = c;
 
@@ -208,7 +206,7 @@ public class FloatTimSort {
      * @param workLen  usable size of work array
      * @since 1.8
      */
-    public static void sort(float[] a, int lo, int hi, Comparator<? super Float> c,
+    public static void sort(float[] a, int lo, int hi, FloatComparator c,
                             float[] work, int workBase, int workLen) {
         assert c != null && a != null && lo >= 0 && lo <= hi && hi <= a.length;
 
@@ -277,7 +275,7 @@ public class FloatTimSort {
      */
     @SuppressWarnings("fallthrough")
     public static void binarySort(float[] a, int lo, int hi, int start,
-                                  Comparator<? super Float> c) {
+                                  FloatComparator c) {
         assert lo <= start && start <= hi;
         if (start == lo) {
             start++;
@@ -352,7 +350,7 @@ public class FloatTimSort {
      * the specified array
      */
     public static int countRunAndMakeAscending(float[] a, int lo, int hi,
-                                               Comparator<? super Float> c) {
+                                               FloatComparator c) {
         assert lo < hi;
         int runHi = lo + 1;
         if (runHi == hi) {
@@ -554,7 +552,7 @@ public class FloatTimSort {
      * should follow it.
      */
     public static int gallopLeft(float key, float[] a, int base, int len, int hint,
-                                 Comparator<? super Float> c) {
+                                 FloatComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
         int lastOfs = 0;
         int ofs = 1;
@@ -631,7 +629,7 @@ public class FloatTimSort {
      * @return the int k,  0 &lt;= k &lt;= n such that a[b + k - 1] &lt; key &lt;= a[b + k],
      */
     public static int gallopRight(float key, float[] a, int base, int len,
-                                  int hint, Comparator<? super Float> c) {
+                                  int hint, FloatComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
 
         int ofs = 1;
@@ -734,7 +732,7 @@ public class FloatTimSort {
             return;
         }
 
-        Comparator<? super Float> c = this.c;  // Use local variable for performance
+        FloatComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {
@@ -862,7 +860,7 @@ public class FloatTimSort {
             return;
         }
 
-        Comparator<? super Float> c = this.c;  // Use local variable for performance
+        FloatComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {

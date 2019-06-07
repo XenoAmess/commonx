@@ -26,6 +26,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -2302,6 +2303,14 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      */
     @Override
     public void sort(Comparator<? super Long> c) {
+        if (!(c instanceof LongComparator)) {
+            throw new NotImplementedException("For more performance, this class only accept LongComparator as " +
+                    "comparator.");
+        }
+        this.sort((LongComparator) c);
+    }
+
+    public void sort(LongComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
         if (modCount != expectedModCount) {

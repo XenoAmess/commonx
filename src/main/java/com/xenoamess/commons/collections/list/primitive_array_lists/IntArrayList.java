@@ -2280,6 +2280,14 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      */
     @Override
     public void sort(Comparator<? super Integer> c) {
+        if (!(c instanceof IntComparator)) {
+            throw new NotImplementedException("For more performance, this class only accept ByteComparator as " +
+                    "comparator.");
+        }
+        this.sort((IntComparator) c);
+    }
+
+    public void sort(IntComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
         if (modCount != expectedModCount) {

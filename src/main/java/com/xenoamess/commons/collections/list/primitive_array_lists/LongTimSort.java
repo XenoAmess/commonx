@@ -26,8 +26,6 @@
 
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
-import java.util.Comparator;
-
 /**
  * A stable, adaptive, iterative mergesort that requires far fewer than
  * n lg(n) comparisons when running on partially sorted arrays, while
@@ -90,7 +88,7 @@ public class LongTimSort {
     /**
      * The comparator for this sort.
      */
-    public final Comparator<? super Long> c;
+    public final LongComparator c;
 
     /**
      * When we get into galloping mode, we stay there until both runs win less
@@ -146,7 +144,7 @@ public class LongTimSort {
      * @param workBase origin of usable space in work array
      * @param workLen  usable size of work array
      */
-    public LongTimSort(long[] a, Comparator<? super Long> c, long[] work, int workBase, int workLen) {
+    public LongTimSort(long[] a, LongComparator c, long[] work, int workBase, int workLen) {
         this.a = a;
         this.c = c;
 
@@ -208,7 +206,7 @@ public class LongTimSort {
      * @param workLen  usable size of work array
      * @since 1.8
      */
-    public static void sort(long[] a, int lo, int hi, Comparator<? super Long> c,
+    public static void sort(long[] a, int lo, int hi, LongComparator c,
                             long[] work, int workBase, int workLen) {
         assert c != null && a != null && lo >= 0 && lo <= hi && hi <= a.length;
 
@@ -277,7 +275,7 @@ public class LongTimSort {
      */
     @SuppressWarnings("fallthrough")
     public static void binarySort(long[] a, int lo, int hi, int start,
-                                  Comparator<? super Long> c) {
+                                  LongComparator c) {
         assert lo <= start && start <= hi;
         if (start == lo) {
             start++;
@@ -352,7 +350,7 @@ public class LongTimSort {
      * the specified array
      */
     public static int countRunAndMakeAscending(long[] a, int lo, int hi,
-                                               Comparator<? super Long> c) {
+                                               LongComparator c) {
         assert lo < hi;
         int runHi = lo + 1;
         if (runHi == hi) {
@@ -554,7 +552,7 @@ public class LongTimSort {
      * should follow it.
      */
     public static int gallopLeft(long key, long[] a, int base, int len, int hint,
-                                 Comparator<? super Long> c) {
+                                 LongComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
         int lastOfs = 0;
         int ofs = 1;
@@ -631,7 +629,7 @@ public class LongTimSort {
      * @return the int k,  0 &lt;= k &lt;= n such that a[b + k - 1] &lt; key &lt;= a[b + k],
      */
     public static int gallopRight(long key, long[] a, int base, int len,
-                                  int hint, Comparator<? super Long> c) {
+                                  int hint, LongComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
 
         int ofs = 1;
@@ -734,7 +732,7 @@ public class LongTimSort {
             return;
         }
 
-        Comparator<? super Long> c = this.c;  // Use local variable for performance
+        LongComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {
@@ -862,7 +860,7 @@ public class LongTimSort {
             return;
         }
 
-        Comparator<? super Long> c = this.c;  // Use local variable for performance
+        LongComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {

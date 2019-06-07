@@ -26,6 +26,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -2302,6 +2303,14 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
      */
     @Override
     public void sort(Comparator<? super Float> c) {
+        if (!(c instanceof FloatComparator)) {
+            throw new NotImplementedException("For more performance, this class only accept FloatComparator as " +
+                    "comparator.");
+        }
+        this.sort((FloatComparator) c);
+    }
+
+    public void sort(FloatComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
         if (modCount != expectedModCount) {
