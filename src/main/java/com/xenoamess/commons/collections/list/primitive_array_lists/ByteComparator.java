@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface ByteComparator extends PrimitiveComparator<Byte> {
     /**
@@ -45,22 +46,28 @@ public interface ByteComparator extends PrimitiveComparator<Byte> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code ByteComparator.compare(Byte o1, Byte o2)}
      *
-     * @param d1 a byte.
-     * @param d2 a byte.
-     * @return a int.
+     * @param p1 the first byte to be compared.
+     * @param p2 the second byte to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see ByteComparator#compare(Byte o1, Byte o2)
      */
-    int compare(byte d1, byte d2);
+    int compare(byte p1, byte p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code ByteComparator.compare(Byte o1, Byte o2)}
      *
-     * @param d1 a byte.
-     * @param d2 a byte.
-     * @return a int.
+     * @param p1 the first byte to be compared.
+     * @param p2 the second byte to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see ByteComparator#compare(Byte o1, Byte o2)
      */
-    default int comparePrimitive(byte d1, byte d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(byte p1, byte p2) {
+        return compare(p1, p2);
     }
 }

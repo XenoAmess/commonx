@@ -55,10 +55,21 @@ import java.util.Iterator;
 public interface FloatIterator extends Iterator<Float> {
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the next element in the iteration.
+     */
+    @Override
+    default Float next() {
+        return this.nextPrimitive();
+    }
+
+    /**
+     * Primitive replacement of {@code FloatIterator.next()}
      *
      * @return the next element in the iteration
      * @throws java.util.NoSuchElementException if the iteration has no more elements
+     * @see FloatIterator#next()
      */
     float nextPrimitive();
 }

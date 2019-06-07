@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface IntComparator extends PrimitiveComparator<Integer> {
     /**
@@ -45,22 +46,28 @@ public interface IntComparator extends PrimitiveComparator<Integer> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code IntComparator.compare(Integer o1, Integer o2)}
      *
-     * @param d1 a int.
-     * @param d2 a int.
-     * @return a int.
+     * @param p1 the first int to be compared.
+     * @param p2 the second int to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see IntComparator#compare(Integer o1, Integer o2)
      */
-    int compare(int d1, int d2);
+    int compare(int p1, int p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code IntComparator.compare(Integer o1, Integer o2)}
      *
-     * @param d1 a int.
-     * @param d2 a int.
-     * @return a int.
+     * @param p1 the first int to be compared.
+     * @param p2 the second int to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see IntComparator#compare(Integer o1, Integer o2)
      */
-    default int comparePrimitive(int d1, int d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(int p1, int p2) {
+        return compare(p1, p2);
     }
 }

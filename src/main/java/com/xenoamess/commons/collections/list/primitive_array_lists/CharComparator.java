@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface CharComparator extends PrimitiveComparator<Character> {
     /**
@@ -45,22 +46,28 @@ public interface CharComparator extends PrimitiveComparator<Character> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code CharComparator.compare(Character o1, Character o2)}
      *
-     * @param d1 a char.
-     * @param d2 a char.
-     * @return a int.
+     * @param p1 the first char to be compared.
+     * @param p2 the second char to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see CharComparator#compare(Character o1, Character o2)
      */
-    int compare(char d1, char d2);
+    int compare(char p1, char p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code CharComparator.compare(Character o1, Character o2)}
      *
-     * @param d1 a char.
-     * @param d2 a char.
-     * @return a int.
+     * @param p1 the first char to be compared.
+     * @param p2 the second char to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see CharComparator#compare(Character o1, Character o2)
      */
-    default int comparePrimitive(char d1, char d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(char p1, char p2) {
+        return compare(p1, p2);
     }
 }

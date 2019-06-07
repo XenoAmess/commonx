@@ -26,7 +26,6 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -34,84 +33,37 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 /**
- * Resizable-array implementation of the {@code List} interface.  Implements
- * all optional list operations, and permits all elements, including
- * {@code null}.  In addition to implementing the {@code List} interface,
- * this class provides methods to manipulate the size of the array that is
- * used internally to store the list.  (This class is roughly equivalent to
- * {@code Vector}, except that it is unsynchronized.)
- *
- * <p>The {@code size}, {@code isEmpty}, {@code get}, {@code set},
- * {@code iterator}, and {@code listIterator} operations run in constant
- * time.  The {@code add} operation runs in <i>amortized constant time</i>,
- * that is, adding n elements requires O(n) time.  All of the other operations
- * run in linear time (roughly speaking).  The constant factor is low compared
- * to that for the {@code LinkedList} implementation.
- *
- * <p>Each {@code ArrayList} instance has a <i>capacity</i>.  The capacity is
- * the size of the array used to store the elements in the list.  It is always
- * at least as large as the list size.  As elements are added to an ArrayList,
- * its capacity grows automatically.  The details of the growth policy are not
- * specified beyond the fact that adding an element has constant amortized
- * time cost.
- *
- * <p>An application can increase the capacity of an {@code ArrayList} instance
- * before adding a large number of elements using the {@code ensureCapacity}
- * operation.  This may reduce the amount of incremental reallocation.
- *
- * <p><strong>Note that this implementation is not synchronized.</strong>
- * If multiple threads access an {@code ArrayList} instance concurrently,
- * and at least one of the threads modifies the list structurally, it
- * <i>must</i> be synchronized externally.  (A structural modification is
- * any operation that adds or deletes one or more elements, or explicitly
- * resizes the backing array; merely setting the value of an element is not
- * a structural modification.)  This is typically accomplished by
- * synchronizing on some object that naturally encapsulates the list.
+ * An resizable-array implementation of the {@code List} interface.
  * <p>
- * If no such object exists, the list should be "wrapped" using the
- * {@link java.util.Collections#synchronizedList Collections.synchronizedList}
- * method.  This is best done at creation time, to prevent accidental
- * unsynchronized access to the list:<pre>
- *   List list = Collections.synchronizedList(new ArrayList(...));</pre>
- *
- * <p id="fail-fast">
- * The iterators returned by this class's {@link #iterator() iterator} and
- * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
- * if the list is structurally modified at any time after the iterator is
- * created, in any way except through the iterator's own
- * {@link com.xenoamess.commons.collections.list.primitive_array_lists.IntListIterator#remove() remove} or
- * {@link com.xenoamess.commons.collections.list.primitive_array_lists.IntListIterator#add(Object) add} methods,
- * the iterator will throw a
- * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
- * concurrent modification, the iterator fails quickly and cleanly, rather
- * than risking arbitrary, non-deterministic behavior at an undetermined
- * time in the future.
- *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
- * as it is, generally speaking, impossible to make any hard guarantees in the
- * presence of unsynchronized concurrent modification.  Fail-fast iterators
- * throw {@code ConcurrentModificationException} on a best-effort basis.
- * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness:  <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
- *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
+ * This class aims to reduce performance issue of autoboxing and unboxing.
+ * <p>
+ * This class is designed to be a replacement to {@code ArrayList<Integer>}
+ * <p>
+ * It shall be far faster in using.
+ * <p>
+ * It have functions dealing with {@code Integer} for being a {@code List},
+ * but nearly all of its functions have a replacement named XXXPrimitive.
+ * The basic idea is use XXXPrimitive functions whenever possible, and only use
+ * other functions when you have to.
+ * <p>
+ * Most of its functions are modified from {@code rrayList}, so as documents.
  *
  * @author Josh Bloch
  * @author Neal Gafter
+ * @author XenoAmess
  * @version 0.6.0
+ * @see ArrayList
  * @see Collection
  * @see List
  * @see LinkedList
  * @see Vector
+ * @see com.xenoamess.commons.code_generators.GeneratePrimitivesFromInteger
  * @since 1.2
  */
 public class IntArrayList extends PrimitiveArrayList<Integer> {
 
     /**
-     * <p>arraycopy.</p>
+     * function to copy from {@code Object[]} to {@code int[]}
      *
      * @param src     an array of {@link java.lang.Object} objects.
      * @param srcPos  a int.
@@ -128,7 +80,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * <p>arraycopy.</p>
+     * function to copy from  {@code int[]} to {@code Object[]}
      *
      * @param src     an array of {@link int} objects.
      * @param srcPos  a int.
@@ -157,15 +109,15 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     private static final int[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
     /**
-     * The array buffer into which the elements of the ArrayList are stored.
-     * The capacity of the ArrayList is the length of this array buffer. Any
-     * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
+     * The array buffer into which the elements of the {@code IntArrayList} are stored.
+     * The capacity of the {@code IntArrayList} is the length of this array buffer. Any
+     * empty {@code IntArrayList} with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
      * will be expanded to DEFAULT_CAPACITY when the first element is added.
      */
     transient int[] elementData; // non-private to simplify nested class access
 
     /**
-     * The size of the ArrayList (the number of elements it contains).
+     * The size of the {@code IntArrayList} (the number of elements it contains).
      *
      * @serial
      */
@@ -209,24 +161,50 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Constructs a IntArrayList with a
+     * Constructs an empty IntArrayList with a {@code int[]}
+     * <p>
+     * This {@code IntArrayList} will use this {@code int[]} directly as its {@code elementData}, and will use
+     * the array until the {@code IntArrayList} have more content than this array can hold.
+     * <p>
+     * we will create a full IntArrayList, and the initial size will be intArray.length.
+     * <p>
+     * When we need more space than the intArray can hold, the {@code IntArrayList} will create another
+     * (larger) array and use it as {@code elementData} instead.
      *
-     * @param intArray the collection whose elements are to be placed into this list
+     * @param intArray the array which will be used as initial {@code elementData} of this class.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public IntArrayList(int[] intArray) {
-        elementData = intArray;
-        size = elementData.length;
-        if (size == 0) {
-            // replace with empty array.
-            this.elementData = EMPTY_ELEMENTDATA;
-        }
+        this(intArray, false);
     }
 
     /**
-     * Trims the capacity of this {@code ArrayList} instance to be the
+     * Constructs a IntArrayList with a {@code int[]}
+     * <p>
+     * This {@code IntArrayList} will use this {@code int[]} directly as its {@code elementData}, and will use
+     * the array until the {@code IntArrayList} have more content than this array can hold.
+     * <p>
+     * if ifEmpty == true, then will create an empty IntArrayList, and the initial size will be 0, the current
+     * content of intArray will be ignored.
+     * <p>
+     * otherwise, we will create a full IntArrayList, and the initial size will be intArray.length.
+     * <p>
+     * When we need more space than the intArray can hold,, the {@code IntArrayList} will create another
+     * (larger) array and use it as {@code elementData} instead.
+     *
+     * @param intArray the array which will be used as initial {@code elementData} of this class.
+     * @param ifEmpty  if we will create a full IntArrayList.
+     * @throws java.lang.NullPointerException if the specified collection is null
+     */
+    public IntArrayList(int[] intArray, boolean ifEmpty) {
+        elementData = intArray;
+        size = ifEmpty ? 0 : elementData.length;
+    }
+
+    /**
+     * Trims the capacity of this {@code IntArrayList} instance to be the
      * list's current size.  An application can use this operation to minimize
-     * the storage of an {@code ArrayList} instance.
+     * the storage of an {@code IntArrayList} instance.
      */
     public void trimToSize() {
         modCount++;
@@ -238,7 +216,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Increases the capacity of this {@code ArrayList} instance, if
+     * Increases the capacity of this {@code IntArrayList} instance, if
      * necessary, to ensure that it can hold at least the number of elements
      * specified by the minimum capacity argument.
      *
@@ -349,30 +327,24 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
+     * Primitive replacement of {@code IntArrayList.contains(Object o)}
      *
-     * @param o a int.
-     * @return a boolean.
+     * @param o element whose presence in this collection is to be tested
+     * @return {@code true} if this collection contains the specified
+     * element
+     * @see IntArrayList#contains(Object o)
      */
     public boolean contains(int o) {
         return this.containsPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
+     * Primitive replacement of {@code IntArrayList.contains(Object o)}
      *
-     * @param o a int.
-     * @return a boolean.
+     * @param o element whose presence in this collection is to be tested
+     * @return {@code true} if this collection contains the specified
+     * element
+     * @see IntArrayList#contains(Object o)
      */
     public boolean containsPrimitive(int o) {
         return indexOfPrimitive(o) >= 0;
@@ -394,50 +366,40 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code IntArrayList.indexOf(Object o)}
      *
-     * @param o a int.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see IntArrayList#indexOf(Object o)
      */
     public int indexOf(int o) {
         return this.indexOfPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code IntArrayList.indexOf(Object o)}
      *
-     * @param o a int.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see IntArrayList#indexOf(Object o)
      */
     public int indexOfPrimitive(int o) {
         return indexOfRangePrimitive(o, 0, size);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
      * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
+     * in this range of this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o     a {@link java.lang.Object} object.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the first index.
      */
     public int indexOfRange(Object o, int start, int end) {
         if (o == null) {
@@ -450,36 +412,26 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code IntArrayList.indexOf(Object o)}
      *
-     * @param o     a int.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the first index.
+     * @see IntArrayList#indexOfRange(Object o, int start, int end)
      */
     public int indexOfRange(int o, int start, int end) {
         return this.indexOfRangePrimitive(o, start, end);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code IntArrayList.indexOf(Object o)}
      *
-     * @param o     a int.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the first index.
+     * @see IntArrayList#indexOfRange(Object o, int start, int end)
      */
     public int indexOfRangePrimitive(int o, int start, int end) {
         int[] es = elementData;
@@ -506,44 +458,40 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code IntArrayList.lastIndexOf(Object o)}
      *
-     * @param o a int.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see IntArrayList#lastIndexOf(Object o)
      */
     public int lastIndexOf(int o) {
         return this.lastIndexOfPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code IntArrayList.lastIndexOf(Object o)}
      *
-     * @param o a int.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see IntArrayList#lastIndexOf(Object o)
      */
     public int lastIndexOfPrimitive(int o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
 
     /**
-     * <p>lastIndexOfRange.</p>
+     * Returns the index of the last occurrence of the specified element
+     * in this range of this list, or -1 if this list does not contain the element.
+     * More formally, returns the largest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
      *
-     * @param o     a {@link java.lang.Object} object.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the last index.
      */
     public int lastIndexOfRange(Object o, int start, int end) {
         if (o == null) {
@@ -552,37 +500,33 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         if (!(o instanceof Integer)) {
             return -1;
         }
-        return this.lastIndexOfRangePrimitive(o, start, end);
+        return this.lastIndexOfRangePrimitive((Integer) o, start, end);
     }
 
     /**
-     * <p>lastIndexOfRange.</p>
+     * Primitive replacement of {@code IntArrayList.lastIndexOfRange(Object o, int start, int end)}
      *
-     * @param o     a int.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the last index.
+     * @see IntArrayList#lastIndexOfRange(Object o, int start, int end)
      */
     public int lastIndexOfRange(int o, int start, int end) {
         return this.lastIndexOfRangePrimitive(o, start, end);
     }
 
     /**
-     * <p>lastIndexOfRangePrimitive.</p>
+     * Primitive replacement of {@code IntArrayList.lastIndexOfRange(Object o, int start, int end)}
      *
-     * @param o     a {@link java.lang.Object} object.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the last index.
+     * @see IntArrayList#lastIndexOfRange(Object o, int start, int end)
      */
-    public int lastIndexOfRangePrimitive(Object o, int start, int end) {
-        if (o == null) {
-            return -1;
-        }
-        if (!(o instanceof Integer)) {
-            return -1;
-        }
-        int tmpIntegerValue = (Integer) o;
+    public int lastIndexOfRangePrimitive(int o, int start, int end) {
+        int tmpIntegerValue = o;
         int[] es = elementData;
         for (int i = end - 1; i >= start; i--) {
             if (tmpIntegerValue == es[i]) {
@@ -595,7 +539,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     /**
      * {@inheritDoc}
      * <p>
-     * Returns a shallow copy of this {@code ArrayList} instance.  (The
+     * Returns a shallow copy of this {@code IntArrayList} instance.  (The
      * elements themselves are not copied.)
      */
     @Override
@@ -630,8 +574,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -642,10 +584,10 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
-     * @return an array of {@link int} objects.
+     * @return an array of {@link int}.
      */
     public int[] toArrayPrimitive() {
-        return elementData;
+        return Arraysx.copyOf(elementData);
     }
 
     /**
@@ -699,6 +641,30 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * @param a an array of {@link int} objects.
      * @return an array of {@link int} objects.
      */
+    public int[] toArray(int[] a) {
+        return this.toArray(a);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns an array containing all of the elements in this list in proper
+     * sequence (from first to last element); the runtime type of the returned
+     * array is that of the specified array.  If the list fits in the
+     * specified array, it is returned therein.  Otherwise, a new array is
+     * allocated with the runtime type of the specified array and the size of
+     * this list.
+     *
+     * <p>If the list fits in the specified array with room to spare
+     * (i.e., the array has more elements than the list), the element in
+     * the array immediately following the end of the collection is set to
+     * {@code null}.  (This is useful in determining the length of the
+     * list <i>only</i> if the caller knows that the list does not contain
+     * any null elements.)
+     *
+     * @param a an array of {@link int} objects.
+     * @return an array of {@link int} objects.
+     */
     public int[] toArrayPrimitive(int[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -714,21 +680,31 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     // Positional Access Operations
 
     /**
-     * <p>elementData.</p>
+     * get the raw content array from the IntArrayList.
+     * <p>This method acts as bridge between array-based and collection-based APIs.
      *
-     * @param index a int.
-     * @return a int.
+     * @return this.elementData
+     */
+    public int[] getElementData() {
+        return this.elementData;
+    }
+
+    /**
+     * get this.elementData[index] without any check.
+     *
+     * @param index index
+     * @return this.elementData[index]
      */
     public int elementData(int index) {
         return elementData[index];
     }
 
     /**
-     * <p>elementAt.</p>
+     * get es[index] without any check.
      *
      * @param es    an array of {@link int} objects.
-     * @param index a int.
-     * @return a int.
+     * @param index index.
+     * @return es[index].
      */
     public static int elementAt(int[] es, int index) {
         return es[index];
@@ -745,11 +721,12 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Returns the element at the specified position in this list.
+     * Primitive replacement of {@code IntArrayList.get(int index)}
      *
      * @param index index of the element to return
      * @return the element at the specified position in this list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#get(int index)
      */
     public int getPrimitive(int index) {
         checkIndex(index, size);
@@ -768,13 +745,26 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code IntArrayList.set(int index, Integer element)}
      *
      * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#set(int index, Integer element)
+     */
+    public int set(int index, int element) {
+        return this.setPrimitive(index, element);
+    }
+
+    /**
+     * Primitive replacement of {@code IntArrayList.set(int index, Integer element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#set(int index, Integer element)
      */
     public int setPrimitive(int index, int element) {
         checkIndex(index, size);
@@ -807,10 +797,22 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code IntArrayList.add(Integer e)}
      *
      * @param e element to be appended to this list
      * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see IntArrayList#add(Integer e)
+     */
+    public boolean add(int e) {
+        return this.addPrimitive(e);
+    }
+
+    /**
+     * Primitive replacement of {@code IntArrayList.add(Integer e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see IntArrayList#add(Integer e)
      */
     public boolean addPrimitive(int e) {
         modCount++;
@@ -831,13 +833,24 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code IntArrayList.add(int index, Integer element)}
      *
      * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#add(int index, Integer element)
+     */
+    public void add(int index, int element) {
+        this.addPrimitive(index, element);
+    }
+
+    /**
+     * Primitive replacement of {@code IntArrayList.add(int index, Integer element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#add(int index, Integer element)
      */
     public void addPrimitive(int index, int element) {
         rangeCheckForAdd(index);
@@ -886,8 +899,8 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         final int expectedModCount = modCount;
-        // ArrayList can be subclassed and given arbitrary behavior, but we can
-        // still deal with the common case where o is ArrayList precisely
+        // {@code IntArrayList} can be subclassed and given arbitrary behavior, but we can
+        // still deal with the common case where o is {@code IntArrayList} precisely
         boolean equal = (o.getClass() == IntArrayList.class)
                 ? equalsIntArrayList((IntArrayList) o)
                 : equalsRange((List<?>) o, 0, size);
@@ -949,11 +962,11 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * <p>hashCodeRange.</p>
+     * get hashcode from range.
      *
-     * @param from a int.
-     * @param to   a int.
-     * @return a int.
+     * @param from start index, inclusive
+     * @param to   end index, exclusive.
+     * @return hashcode
      */
     public int hashCodeRange(int from, int to) {
         final int[] es = elementData;
@@ -1004,6 +1017,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         fastRemove(es, i);
         return true;
     }
+
 
     /**
      * Private remove method that skips bounds checking and does not
@@ -1070,21 +1084,30 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends all of the elements in the specified collection to the end of
+     * Appends all of the elements in the specified IntArrayList to the end of
      * this list, in the order that they are returned by the
-     * specified collection's Iterator.  The behavior of this operation is
-     * undefined if the specified collection is modified while the operation
+     * specified IntArrayList's Iterator.  The behavior of this operation is
+     * undefined if the specified IntArrayList is modified while the operation
      * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified collection is this list, and this
+     * undefined if the specified IntArrayList is this list, and this
      * list is nonempty.)
      *
-     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.IntArrayList} object.
-     * @return a boolean.
+     * @param c IntArrayList containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      */
     public boolean addAll(IntArrayList c) {
-        int[] a = c.toArrayPrimitive();
+        final int[] a = c.getElementData();
         modCount++;
         int numNew = a.length;
         if (numNew == 0) {
@@ -1100,6 +1123,32 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         return true;
     }
 
+    /**
+     * Appends all of the elements in the specified int[] to the end of
+     * this list.
+     * <p>
+     * The behavior of this operation is
+     * undefined if the specified int[] is modified while the operation
+     * is in progress.  (This implies that the behavior of this call is
+     * undefined if the specified int[] is this list's elementData, and this list is nonempty.)
+     *
+     * @param intArray collection containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
+     */
+    public boolean addAll(int[] intArray) {
+        return this.addAll(new IntArrayList(intArray));
+    }
 
     /**
      * {@inheritDoc}
@@ -1113,6 +1162,9 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      */
     @Override
     public boolean addAll(int index, Collection<? extends Integer> c) {
+        if (c instanceof IntArrayList) {
+            return this.addAll(index, (IntArrayList) c);
+        }
         rangeCheckForAdd(index);
 
         Object[] a = c.toArray();
@@ -1137,6 +1189,84 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         size = s + numNew;
         return true;
     }
+
+    /**
+     * Inserts all of the elements in the specified IntArrayList into this
+     * list, starting at the specified position.  Shifts the element
+     * currently at that position (if any) and any subsequent elements to
+     * the right (increases their indices).  The new elements will appear
+     * in the list in the order that they are returned by the
+     * specified collection's iterator.
+     *
+     * @param index index at which to insert the first element from the
+     *              specified collection
+     * @param c     IntArrayList containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
+     */
+    public boolean addAll(int index, IntArrayList c) {
+        rangeCheckForAdd(index);
+        final int[] a = c.getElementData();
+        modCount++;
+        int numNew = a.length;
+        if (numNew == 0) {
+            return false;
+        }
+        int[] elementData;
+        final int s;
+        if (numNew > (elementData = this.elementData).length - (s = size)) {
+            elementData = grow(s + numNew);
+        }
+
+        int numMoved = s - index;
+        if (numMoved > 0) {
+            System.arraycopy(elementData, index,
+                    elementData, index + numNew,
+                    numMoved);
+        }
+        System.arraycopy(a, 0, elementData, index, numNew);
+        size = s + numNew;
+        return true;
+    }
+
+    /**
+     * Inserts all of the elements in the specified int[] into this
+     * list, starting at the specified position.  Shifts the element
+     * currently at that position (if any) and any subsequent elements to
+     * the right (increases their indices).  The new elements will appear
+     * in the list in the order that they are returned by the
+     * specified collection's iterator.
+     *
+     * @param index index at which to insert the first element from the
+     *              specified collection
+     * @param c     int[] containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
+     */
+    public boolean addAll(int index, int[] c) {
+        return this.addAll(index, new IntArrayList(c));
+    }
+
 
     /**
      * {@inheritDoc}
@@ -1275,12 +1405,12 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Saves the state of the {@code ArrayList} instance to a stream
+     * Saves the state of the {@code IntArrayList} instance to a stream
      * (that is, serializes it).
      *
      * @param s the stream
      * @throws java.io.IOException if an I/O error occurs
-     * @serialData The length of the array backing the {@code ArrayList}
+     * @serialData The length of the array backing the {@code IntArrayList}
      * instance is emitted (int), followed by all of its elements
      * (each an {@code Object}) in the proper order.
      */
@@ -1304,7 +1434,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * Reconstitutes the {@code ArrayList} instance from a stream (that is,
+     * Reconstitutes the {@code IntArrayList} instance from a stream (that is,
      * deserializes it).
      *
      * @param s the stream
@@ -1401,12 +1531,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Integer next() {
-            return this.nextPrimitive();
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
         public int nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1491,12 +1615,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Integer previous() {
-            return this.previousPrimitive();
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
         public int previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;
@@ -1512,11 +1630,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public void set(Integer e) {
-            setPrimitive(e);
-        }
-
-        @Override
         public void setPrimitive(int e) {
             if (lastRet < 0) {
                 throw new IllegalStateException();
@@ -1528,11 +1641,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             } catch (IndexOutOfBoundsException ex) {
                 throw new ConcurrentModificationException();
             }
-        }
-
-        @Override
-        public void add(Integer e) {
-            addPrimitive(e);
         }
 
         @Override
@@ -1611,11 +1719,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             this.offset = parent.offset + fromIndex;
             this.size = toIndex - fromIndex;
             this.modCount = root.modCount;
-        }
-
-        @Override
-        public Integer set(int index, Integer element) {
-            return this.setPrimitive(index, element);
         }
 
         public int setPrimitive(int index, int element) {
@@ -1795,6 +1898,10 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             return index >= 0 ? index - offset : -1;
         }
 
+        public int indexOf(int o) {
+            return this.indexOfPrimitive(o);
+        }
+
         public int indexOfPrimitive(int o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1808,6 +1915,10 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             return index >= 0 ? index - offset : -1;
         }
 
+        public int lastIndexOf(int o) {
+            return this.lastIndexOfPrimitive(o);
+        }
+
         public int lastIndexOfPrimitive(int o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1818,6 +1929,15 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         public boolean contains(Object o) {
             return indexOf(o) >= 0;
         }
+
+        public boolean contains(int o) {
+            return this.containsPrimitive(o);
+        }
+
+        public boolean containsPrimitive(int o) {
+            return indexOfPrimitive(o) >= 0;
+        }
+
 
         @Override
         public Iterator<Integer> iterator() {
@@ -2013,7 +2133,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         public Spliterator<Integer> spliterator() {
             checkForComodification();
 
-            // ArrayListSpliterator not used here due to late-binding
+            // IntArrayListSpliterator not used here due to late-binding
             return new Spliterator<Integer>() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
@@ -2029,11 +2149,11 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
                 }
 
                 @Override
-                public IntArrayList.ArrayListSpliterator trySplit() {
+                public IntArrayList.IntArrayListSpliterator trySplit() {
                     int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
-                    // ArrayListSpliterator can be used here as the source is already bound
+                    // IntArrayListSpliterator can be used here as the source is already bound
                     return (lo >= mid) ? null : // divide range in half unless too small
-                            root.new ArrayListSpliterator(lo, index = mid, expectedModCount);
+                            root.new IntArrayListSpliterator(lo, index = mid, expectedModCount);
                 }
 
                 @Override
@@ -2124,16 +2244,16 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      */
     @Override
     public Spliterator<Integer> spliterator() {
-        return new IntArrayList.ArrayListSpliterator(0, -1, 0);
+        return new IntArrayList.IntArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class ArrayListSpliterator implements Spliterator<Integer> {
+    final class IntArrayListSpliterator implements Spliterator<Integer> {
 
         /*
-         * If ArrayLists were immutable, or structurally immutable (no
+         * If IntArrayLists were immutable, or structurally immutable (no
          * adds, removes, etc), we could implement their spliterators
          * with Arrays.spliterator. Instead we detect as much
          * interference during traversal as practical without
@@ -2171,7 +2291,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         /**
          * Creates new spliterator covering the given range.
          */
-        ArrayListSpliterator(int origin, int fence, int expectedModCount) {
+        IntArrayListSpliterator(int origin, int fence, int expectedModCount) {
             this.index = origin;
             this.fence = fence;
             this.expectedModCount = expectedModCount;
@@ -2187,10 +2307,10 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public IntArrayList.ArrayListSpliterator trySplit() {
+        public IntArrayList.IntArrayListSpliterator trySplit() {
             int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
             return (lo >= mid) ? null : // divide range in half unless too small
-                    new IntArrayList.ArrayListSpliterator(lo, index = mid, expectedModCount);
+                    new IntArrayList.IntArrayListSpliterator(lo, index = mid, expectedModCount);
         }
 
         @Override
@@ -2342,7 +2462,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     @Override
     public void sort(Comparator<? super Integer> c) {
         if (!(c instanceof IntComparator)) {
-            throw new NotImplementedException("For more performance, this class only accept IntComparator as " +
+            throw new IllegalArgumentException("For more performance, this class only accept IntComparator as " +
                     "comparator.");
         }
         this.sort((IntComparator) c);

@@ -26,7 +26,6 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -34,84 +33,37 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 /**
- * Resizable-array implementation of the {@code List} interface.  Implements
- * all optional list operations, and permits all elements, including
- * {@code null}.  In addition to implementing the {@code List} interface,
- * this class provides methods to manipulate the size of the array that is
- * used internally to store the list.  (This class is roughly equivalent to
- * {@code Vector}, except that it is unsynchronized.)
- *
- * <p>The {@code size}, {@code isEmpty}, {@code get}, {@code set},
- * {@code iterator}, and {@code listIterator} operations run in constant
- * time.  The {@code add} operation runs in <i>amortized constant time</i>,
- * that is, adding n elements requires O(n) time.  All of the other operations
- * run in linear time (roughly speaking).  The constant factor is low compared
- * to that for the {@code LinkedList} implementation.
- *
- * <p>Each {@code ArrayList} instance has a <i>capacity</i>.  The capacity is
- * the size of the array used to store the elements in the list.  It is always
- * at least as large as the list size.  As elements are added to an ArrayList,
- * its capacity grows automatically.  The details of the growth policy are not
- * specified beyond the fact that adding an element has constant amortized
- * time cost.
- *
- * <p>An application can increase the capacity of an {@code ArrayList} instance
- * before adding a large number of elements using the {@code ensureCapacity}
- * operation.  This may reduce the amount of incremental reallocation.
- *
- * <p><strong>Note that this implementation is not synchronized.</strong>
- * If multiple threads access an {@code ArrayList} instance concurrently,
- * and at least one of the threads modifies the list structurally, it
- * <i>must</i> be synchronized externally.  (A structural modification is
- * any operation that adds or deletes one or more elements, or explicitly
- * resizes the backing array; merely setting the value of an element is not
- * a structural modification.)  This is typically accomplished by
- * synchronizing on some object that naturally encapsulates the list.
+ * An resizable-array implementation of the {@code List} interface.
  * <p>
- * If no such object exists, the list should be "wrapped" using the
- * {@link java.util.Collections#synchronizedList Collections.synchronizedList}
- * method.  This is best done at creation time, to prevent accidental
- * unsynchronized access to the list:<pre>
- *   List list = Collections.synchronizedList(new ArrayList(...));</pre>
- *
- * <p id="fail-fast">
- * The iterators returned by this class's {@link #iterator() iterator} and
- * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
- * if the list is structurally modified at any time after the iterator is
- * created, in any way except through the iterator's own
- * {@link com.xenoamess.commons.collections.list.primitive_array_lists.FloatListIterator#remove() remove} or
- * {@link com.xenoamess.commons.collections.list.primitive_array_lists.FloatListIterator#add(Object) add} methods,
- * the iterator will throw a
- * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
- * concurrent modification, the iterator fails quickly and cleanly, rather
- * than risking arbitrary, non-deterministic behavior at an undetermined
- * time in the future.
- *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
- * as it is, generally speaking, impossible to make any hard guarantees in the
- * presence of unsynchronized concurrent modification.  Fail-fast iterators
- * throw {@code ConcurrentModificationException} on a best-effort basis.
- * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness:  <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
- *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
+ * This class aims to reduce performance issue of autoboxing and unboxing.
+ * <p>
+ * This class is designed to be a replacement to {@code ArrayList<Float>}
+ * <p>
+ * It shall be far faster in using.
+ * <p>
+ * It have functions dealing with {@code Float} for being a {@code List},
+ * but nearly all of its functions have a replacement named XXXPrimitive.
+ * The basic idea is use XXXPrimitive functions whenever possible, and only use
+ * other functions when you have to.
+ * <p>
+ * Most of its functions are modified from {@code rrayList}, so as documents.
  *
  * @author Josh Bloch
  * @author Neal Gafter
+ * @author XenoAmess
  * @version 0.6.0
+ * @see ArrayList
  * @see Collection
  * @see List
  * @see LinkedList
  * @see Vector
+ * @see com.xenoamess.commons.code_generators.GeneratePrimitivesFromFloat
  * @since 1.2
  */
 public class FloatArrayList extends PrimitiveArrayList<Float> {
 
     /**
-     * <p>arraycopy.</p>
+     * function to copy from {@code Object[]} to {@code float[]}
      *
      * @param src     an array of {@link java.lang.Object} objects.
      * @param srcPos  a int.
@@ -128,7 +80,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * <p>arraycopy.</p>
+     * function to copy from  {@code float[]} to {@code Object[]}
      *
      * @param src     an array of {@link float} objects.
      * @param srcPos  a int.
@@ -157,15 +109,15 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     private static final float[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
     /**
-     * The array buffer into which the elements of the ArrayList are stored.
-     * The capacity of the ArrayList is the length of this array buffer. Any
-     * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
+     * The array buffer into which the elements of the {@code FloatArrayList} are stored.
+     * The capacity of the {@code FloatArrayList} is the length of this array buffer. Any
+     * empty {@code FloatArrayList} with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
      * will be expanded to DEFAULT_CAPACITY when the first element is added.
      */
     transient float[] elementData; // non-private to simplify nested class access
 
     /**
-     * The size of the ArrayList (the number of elements it contains).
+     * The size of the {@code FloatArrayList} (the number of elements it contains).
      *
      * @serial
      */
@@ -209,24 +161,50 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Constructs a FloatArrayList with a
+     * Constructs an empty FloatArrayList with a {@code float[]}
+     * <p>
+     * This {@code FloatArrayList} will use this {@code float[]} directly as its {@code elementData}, and will use
+     * the array until the {@code FloatArrayList} have more content than this array can hold.
+     * <p>
+     * we will create a full FloatArrayList, and the initial size will be floatArray.length.
+     * <p>
+     * When we need more space than the floatArray can hold, the {@code FloatArrayList} will create another
+     * (larger) array and use it as {@code elementData} instead.
      *
-     * @param floatArray the collection whose elements are to be placed into this list
+     * @param floatArray the array which will be used as initial {@code elementData} of this class.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public FloatArrayList(float[] floatArray) {
-        elementData = floatArray;
-        size = elementData.length;
-        if (size == 0) {
-            // replace with empty array.
-            this.elementData = EMPTY_ELEMENTDATA;
-        }
+        this(floatArray, false);
     }
 
     /**
-     * Trims the capacity of this {@code ArrayList} instance to be the
+     * Constructs a FloatArrayList with a {@code float[]}
+     * <p>
+     * This {@code FloatArrayList} will use this {@code float[]} directly as its {@code elementData}, and will use
+     * the array until the {@code FloatArrayList} have more content than this array can hold.
+     * <p>
+     * if ifEmpty == true, then will create an empty FloatArrayList, and the initial size will be 0, the current
+     * content of floatArray will be ignored.
+     * <p>
+     * otherwise, we will create a full FloatArrayList, and the initial size will be floatArray.length.
+     * <p>
+     * When we need more space than the floatArray can hold,, the {@code FloatArrayList} will create another
+     * (larger) array and use it as {@code elementData} instead.
+     *
+     * @param floatArray the array which will be used as initial {@code elementData} of this class.
+     * @param ifEmpty     if we will create a full FloatArrayList.
+     * @throws java.lang.NullPointerException if the specified collection is null
+     */
+    public FloatArrayList(float[] floatArray, boolean ifEmpty) {
+        elementData = floatArray;
+        size = ifEmpty ? 0 : elementData.length;
+    }
+
+    /**
+     * Trims the capacity of this {@code FloatArrayList} instance to be the
      * list's current size.  An application can use this operation to minimize
-     * the storage of an {@code ArrayList} instance.
+     * the storage of an {@code FloatArrayList} instance.
      */
     public void trimToSize() {
         modCount++;
@@ -238,7 +216,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Increases the capacity of this {@code ArrayList} instance, if
+     * Increases the capacity of this {@code FloatArrayList} instance, if
      * necessary, to ensure that it can hold at least the number of elements
      * specified by the minimum capacity argument.
      *
@@ -349,30 +327,24 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
+     * Primitive replacement of {@code FloatArrayList.contains(Object o)}
      *
-     * @param o a float.
-     * @return a boolean.
+     * @param o element whose presence in this collection is to be tested
+     * @return {@code true} if this collection contains the specified
+     * element
+     * @see FloatArrayList#contains(Object o)
      */
     public boolean contains(float o) {
         return this.containsPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
+     * Primitive replacement of {@code FloatArrayList.contains(Object o)}
      *
-     * @param o a float.
-     * @return a boolean.
+     * @param o element whose presence in this collection is to be tested
+     * @return {@code true} if this collection contains the specified
+     * element
+     * @see FloatArrayList#contains(Object o)
      */
     public boolean containsPrimitive(float o) {
         return indexOfPrimitive(o) >= 0;
@@ -394,50 +366,40 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code FloatArrayList.indexOf(Object o)}
      *
-     * @param o a float.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see FloatArrayList#indexOf(Object o)
      */
     public int indexOf(float o) {
         return this.indexOfPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code FloatArrayList.indexOf(Object o)}
      *
-     * @param o a float.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see FloatArrayList#indexOf(Object o)
      */
     public int indexOfPrimitive(float o) {
         return indexOfRangePrimitive(o, 0, size);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
      * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
+     * in this range of this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
      *
-     * @param o     a {@link java.lang.Object} object.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the first index.
      */
     public int indexOfRange(Object o, int start, int end) {
         if (o == null) {
@@ -450,36 +412,26 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code FloatArrayList.indexOf(Object o)}
      *
-     * @param o     a float.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the first index.
+     * @see FloatArrayList#indexOfRange(Object o, int start, int end)
      */
     public int indexOfRange(float o, int start, int end) {
         return this.indexOfRangePrimitive(o, start, end);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code FloatArrayList.indexOf(Object o)}
      *
-     * @param o     a float.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the first index.
+     * @see FloatArrayList#indexOfRange(Object o, int start, int end)
      */
     public int indexOfRangePrimitive(float o, int start, int end) {
         float[] es = elementData;
@@ -506,44 +458,40 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code FloatArrayList.lastIndexOf(Object o)}
      *
-     * @param o a float.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see FloatArrayList#lastIndexOf(Object o)
      */
     public int lastIndexOf(float o) {
         return this.lastIndexOfPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code FloatArrayList.lastIndexOf(Object o)}
      *
-     * @param o a float.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see FloatArrayList#lastIndexOf(Object o)
      */
     public int lastIndexOfPrimitive(float o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
 
     /**
-     * <p>lastIndexOfRange.</p>
+     * Returns the index of the last occurrence of the specified element
+     * in this range of this list, or -1 if this list does not contain the element.
+     * More formally, returns the largest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
      *
-     * @param o     a {@link java.lang.Object} object.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the last index.
      */
     public int lastIndexOfRange(Object o, int start, int end) {
         if (o == null) {
@@ -552,37 +500,33 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         if (!(o instanceof Float)) {
             return -1;
         }
-        return this.lastIndexOfRangePrimitive(o, start, end);
+        return this.lastIndexOfRangePrimitive((Float) o, start, end);
     }
 
     /**
-     * <p>lastIndexOfRange.</p>
+     * Primitive replacement of {@code FloatArrayList.lastIndexOfRange(Object o, int start, int end)}
      *
-     * @param o     a float.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the last index.
+     * @see FloatArrayList#lastIndexOfRange(Object o, int start, int end)
      */
     public int lastIndexOfRange(float o, int start, int end) {
         return this.lastIndexOfRangePrimitive(o, start, end);
     }
 
     /**
-     * <p>lastIndexOfRangePrimitive.</p>
+     * Primitive replacement of {@code FloatArrayList.lastIndexOfRange(Object o, int start, int end)}
      *
-     * @param o     a {@link java.lang.Object} object.
-     * @param start a int.
-     * @param end   a int.
-     * @return a int.
+     * @param o     the object to search for.
+     * @param start start index of this search, inclusive.
+     * @param end   end index of this, exclusive.
+     * @return the last index.
+     * @see FloatArrayList#lastIndexOfRange(Object o, int start, int end)
      */
-    public int lastIndexOfRangePrimitive(Object o, int start, int end) {
-        if (o == null) {
-            return -1;
-        }
-        if (!(o instanceof Float)) {
-            return -1;
-        }
-        float tmpFloatValue = (Float) o;
+    public int lastIndexOfRangePrimitive(float o, int start, int end) {
+        float tmpFloatValue = o;
         float[] es = elementData;
         for (int i = end - 1; i >= start; i--) {
             if (tmpFloatValue == es[i]) {
@@ -595,7 +539,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     /**
      * {@inheritDoc}
      * <p>
-     * Returns a shallow copy of this {@code ArrayList} instance.  (The
+     * Returns a shallow copy of this {@code FloatArrayList} instance.  (The
      * elements themselves are not copied.)
      */
     @Override
@@ -630,8 +574,6 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -642,10 +584,10 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
-     * @return an array of {@link float} objects.
+     * @return an array of {@link float}.
      */
     public float[] toArrayPrimitive() {
-        return elementData;
+        return Arraysx.copyOf(elementData);
     }
 
     /**
@@ -699,6 +641,30 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
      * @param a an array of {@link float} objects.
      * @return an array of {@link float} objects.
      */
+    public float[] toArray(float[] a) {
+        return this.toArray(a);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns an array containing all of the elements in this list in proper
+     * sequence (from first to last element); the runtime type of the returned
+     * array is that of the specified array.  If the list fits in the
+     * specified array, it is returned therein.  Otherwise, a new array is
+     * allocated with the runtime type of the specified array and the size of
+     * this list.
+     *
+     * <p>If the list fits in the specified array with room to spare
+     * (i.e., the array has more elements than the list), the element in
+     * the array immediately following the end of the collection is set to
+     * {@code null}.  (This is useful in determining the length of the
+     * list <i>only</i> if the caller knows that the list does not contain
+     * any null elements.)
+     *
+     * @param a an array of {@link float} objects.
+     * @return an array of {@link float} objects.
+     */
     public float[] toArrayPrimitive(float[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -714,21 +680,31 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     // Positional Access Operations
 
     /**
-     * <p>elementData.</p>
+     * get the raw content array from the FloatArrayList.
+     * <p>This method acts as bridge between array-based and collection-based APIs.
      *
-     * @param index a int.
-     * @return a float.
+     * @return this.elementData
+     */
+    public float[] getElementData() {
+        return this.elementData;
+    }
+
+    /**
+     * get this.elementData[index] without any check.
+     *
+     * @param index index
+     * @return this.elementData[index]
      */
     public float elementData(int index) {
         return elementData[index];
     }
 
     /**
-     * <p>elementAt.</p>
+     * get es[index] without any check.
      *
      * @param es    an array of {@link float} objects.
-     * @param index a int.
-     * @return a float.
+     * @param index index.
+     * @return es[index].
      */
     public static float elementAt(float[] es, int index) {
         return es[index];
@@ -745,11 +721,12 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Returns the element at the specified position in this list.
+     * Primitive replacement of {@code FloatArrayList.get(int index)}
      *
      * @param index index of the element to return
      * @return the element at the specified position in this list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see FloatArrayList#get(int index)
      */
     public float getPrimitive(int index) {
         checkIndex(index, size);
@@ -768,13 +745,26 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code FloatArrayList.set(int index, Float element)}
      *
      * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see FloatArrayList#set(int index, Float element)
+     */
+    public float set(int index, float element) {
+        return this.setPrimitive(index, element);
+    }
+
+    /**
+     * Primitive replacement of {@code FloatArrayList.set(int index, Float element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see FloatArrayList#set(int index, Float element)
      */
     public float setPrimitive(int index, float element) {
         checkIndex(index, size);
@@ -807,10 +797,22 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code FloatArrayList.add(Float e)}
      *
      * @param e element to be appended to this list
      * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see FloatArrayList#add(Float e)
+     */
+    public boolean add(float e) {
+        return this.addPrimitive(e);
+    }
+
+    /**
+     * Primitive replacement of {@code FloatArrayList.add(Float e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see FloatArrayList#add(Float e)
      */
     public boolean addPrimitive(float e) {
         modCount++;
@@ -831,13 +833,24 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code FloatArrayList.add(int index, Float element)}
      *
      * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see FloatArrayList#add(int index, Float element)
+     */
+    public void add(int index, float element) {
+        this.addPrimitive(index, element);
+    }
+
+    /**
+     * Primitive replacement of {@code FloatArrayList.add(int index, Float element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see FloatArrayList#add(int index, Float element)
      */
     public void addPrimitive(int index, float element) {
         rangeCheckForAdd(index);
@@ -899,8 +912,8 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         }
 
         final int expectedModCount = modCount;
-        // ArrayList can be subclassed and given arbitrary behavior, but we can
-        // still deal with the common case where o is ArrayList precisely
+        // {@code FloatArrayList} can be subclassed and given arbitrary behavior, but we can
+        // still deal with the common case where o is {@code FloatArrayList} precisely
         boolean equal = (o.getClass() == FloatArrayList.class)
                 ? equalsFloatArrayList((FloatArrayList) o)
                 : equalsRange((List<?>) o, 0, size);
@@ -962,11 +975,11 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * <p>hashCodeRange.</p>
+     * get hashcode from range.
      *
-     * @param from a int.
-     * @param to   a int.
-     * @return a int.
+     * @param from start index, inclusive
+     * @param to   end index, exclusive.
+     * @return hashcode
      */
     public int hashCodeRange(int from, int to) {
         final float[] es = elementData;
@@ -1005,19 +1018,22 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present.  If the list does not contain the element, it is
-     * unchanged.  More formally, removes the element with the lowest index
-     * {@code i} such that
-     * {@code Objects.equals(o, get(i))}
-     * (if such an element exists).  Returns {@code true} if this list
-     * contained the specified element (or equivalently, if this list
-     * changed as a result of the call).
+     * Primitive replacement of {@code FloatArrayList.remove(Object o)}
      *
-     * @param o a float.
-     * @return a boolean.
+     * @param o element to be removed from this collection, if present
+     * @return {@code true} if an element was removed as a result of this call
+     * @see FloatArrayList#remove(Object o)
+     */
+    public boolean remove(float o) {
+        return this.removePrimitive(o);
+    }
+
+    /**
+     * Primitive replacement of {@code FloatArrayList.remove(Object o)}
+     *
+     * @param o element to be removed from this collection, if present
+     * @return {@code true} if an element was removed as a result of this call
+     * @see FloatArrayList#remove(Object o)
      */
     public boolean removePrimitive(float o) {
         final float[] es = elementData;
@@ -1101,21 +1117,30 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends all of the elements in the specified collection to the end of
+     * Appends all of the elements in the specified FloatArrayList to the end of
      * this list, in the order that they are returned by the
-     * specified collection's Iterator.  The behavior of this operation is
-     * undefined if the specified collection is modified while the operation
+     * specified FloatArrayList's Iterator.  The behavior of this operation is
+     * undefined if the specified FloatArrayList is modified while the operation
      * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified collection is this list, and this
+     * undefined if the specified FloatArrayList is this list, and this
      * list is nonempty.)
      *
-     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.FloatArrayList} object.
-     * @return a boolean.
+     * @param c FloatArrayList containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      */
     public boolean addAll(FloatArrayList c) {
-        float[] a = c.toArrayPrimitive();
+        final float[] a = c.getElementData();
         modCount++;
         int numNew = a.length;
         if (numNew == 0) {
@@ -1131,6 +1156,32 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         return true;
     }
 
+    /**
+     * Appends all of the elements in the specified float[] to the end of
+     * this list.
+     * <p>
+     * The behavior of this operation is
+     * undefined if the specified float[] is modified while the operation
+     * is in progress.  (This implies that the behavior of this call is
+     * undefined if the specified float[] is this list's elementData, and this list is nonempty.)
+     *
+     * @param floatArray collection containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
+     */
+    public boolean addAll(float[] floatArray) {
+        return this.addAll(new FloatArrayList(floatArray));
+    }
 
     /**
      * {@inheritDoc}
@@ -1144,6 +1195,9 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
      */
     @Override
     public boolean addAll(int index, Collection<? extends Float> c) {
+        if (c instanceof FloatArrayList) {
+            return this.addAll(index, (FloatArrayList) c);
+        }
         rangeCheckForAdd(index);
 
         Object[] a = c.toArray();
@@ -1168,6 +1222,84 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         size = s + numNew;
         return true;
     }
+
+    /**
+     * Inserts all of the elements in the specified FloatArrayList into this
+     * list, starting at the specified position.  Shifts the element
+     * currently at that position (if any) and any subsequent elements to
+     * the right (increases their indices).  The new elements will appear
+     * in the list in the order that they are returned by the
+     * specified collection's iterator.
+     *
+     * @param index index at which to insert the first element from the
+     *              specified collection
+     * @param c     FloatArrayList containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
+     */
+    public boolean addAll(int index, FloatArrayList c) {
+        rangeCheckForAdd(index);
+        final float[] a = c.getElementData();
+        modCount++;
+        int numNew = a.length;
+        if (numNew == 0) {
+            return false;
+        }
+        float[] elementData;
+        final int s;
+        if (numNew > (elementData = this.elementData).length - (s = size)) {
+            elementData = grow(s + numNew);
+        }
+
+        int numMoved = s - index;
+        if (numMoved > 0) {
+            System.arraycopy(elementData, index,
+                    elementData, index + numNew,
+                    numMoved);
+        }
+        System.arraycopy(a, 0, elementData, index, numNew);
+        size = s + numNew;
+        return true;
+    }
+
+    /**
+     * Inserts all of the elements in the specified float[] into this
+     * list, starting at the specified position.  Shifts the element
+     * currently at that position (if any) and any subsequent elements to
+     * the right (increases their indices).  The new elements will appear
+     * in the list in the order that they are returned by the
+     * specified collection's iterator.
+     *
+     * @param index index at which to insert the first element from the
+     *              specified collection
+     * @param c     float[] containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
+     */
+    public boolean addAll(int index, float[] c) {
+        return this.addAll(index, new FloatArrayList(c));
+    }
+
 
     /**
      * {@inheritDoc}
@@ -1306,12 +1438,12 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Saves the state of the {@code ArrayList} instance to a stream
+     * Saves the state of the {@code FloatArrayList} instance to a stream
      * (that is, serializes it).
      *
      * @param s the stream
      * @throws java.io.IOException if an I/O error occurs
-     * @serialData The length of the array backing the {@code ArrayList}
+     * @serialData The length of the array backing the {@code FloatArrayList}
      * instance is emitted (int), followed by all of its elements
      * (each an {@code Object}) in the proper order.
      */
@@ -1335,7 +1467,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     }
 
     /**
-     * Reconstitutes the {@code ArrayList} instance from a stream (that is,
+     * Reconstitutes the {@code FloatArrayList} instance from a stream (that is,
      * deserializes it).
      *
      * @param s the stream
@@ -1432,12 +1564,6 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Float next() {
-            return this.nextPrimitive();
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
         public float nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1522,12 +1648,6 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Float previous() {
-            return this.previousPrimitive();
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
         public float previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;
@@ -1543,11 +1663,6 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         }
 
         @Override
-        public void set(Float e) {
-            setPrimitive(e);
-        }
-
-        @Override
         public void setPrimitive(float e) {
             if (lastRet < 0) {
                 throw new IllegalStateException();
@@ -1559,11 +1674,6 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
             } catch (IndexOutOfBoundsException ex) {
                 throw new ConcurrentModificationException();
             }
-        }
-
-        @Override
-        public void add(Float e) {
-            addPrimitive(e);
         }
 
         @Override
@@ -1642,11 +1752,6 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
             this.offset = parent.offset + fromIndex;
             this.size = toIndex - fromIndex;
             this.modCount = root.modCount;
-        }
-
-        @Override
-        public Float set(int index, Float element) {
-            return this.setPrimitive(index, element);
         }
 
         public float setPrimitive(int index, float element) {
@@ -1826,6 +1931,10 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
             return index >= 0 ? index - offset : -1;
         }
 
+        public int indexOf(float o) {
+            return this.indexOfPrimitive(o);
+        }
+
         public int indexOfPrimitive(float o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1839,6 +1948,10 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
             return index >= 0 ? index - offset : -1;
         }
 
+        public int lastIndexOf(float o) {
+            return this.lastIndexOfPrimitive(o);
+        }
+
         public int lastIndexOfPrimitive(float o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1849,6 +1962,15 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         public boolean contains(Object o) {
             return indexOf(o) >= 0;
         }
+
+        public boolean contains(float o) {
+            return this.containsPrimitive(o);
+        }
+
+        public boolean containsPrimitive(float o) {
+            return indexOfPrimitive(o) >= 0;
+        }
+
 
         @Override
         public Iterator<Float> iterator() {
@@ -2044,7 +2166,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         public Spliterator<Float> spliterator() {
             checkForComodification();
 
-            // ArrayListSpliterator not used here due to late-binding
+            // FloatArrayListSpliterator not used here due to late-binding
             return new Spliterator<Float>() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
@@ -2060,11 +2182,11 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
                 }
 
                 @Override
-                public FloatArrayList.ArrayListSpliterator trySplit() {
+                public FloatArrayList.FloatArrayListSpliterator trySplit() {
                     int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
-                    // ArrayListSpliterator can be used here as the source is already bound
+                    // FloatArrayListSpliterator can be used here as the source is already bound
                     return (lo >= mid) ? null : // divide range in half unless too small
-                            root.new ArrayListSpliterator(lo, index = mid, expectedModCount);
+                            root.new FloatArrayListSpliterator(lo, index = mid, expectedModCount);
                 }
 
                 @Override
@@ -2155,16 +2277,16 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
      */
     @Override
     public Spliterator<Float> spliterator() {
-        return new FloatArrayList.ArrayListSpliterator(0, -1, 0);
+        return new FloatArrayList.FloatArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class ArrayListSpliterator implements Spliterator<Float> {
+    final class FloatArrayListSpliterator implements Spliterator<Float> {
 
         /*
-         * If ArrayLists were immutable, or structurally immutable (no
+         * If FloatArrayLists were immutable, or structurally immutable (no
          * adds, removes, etc), we could implement their spliterators
          * with Arrays.spliterator. Instead we detect as much
          * interference during traversal as practical without
@@ -2202,7 +2324,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         /**
          * Creates new spliterator covering the given range.
          */
-        ArrayListSpliterator(int origin, int fence, int expectedModCount) {
+        FloatArrayListSpliterator(int origin, int fence, int expectedModCount) {
             this.index = origin;
             this.fence = fence;
             this.expectedModCount = expectedModCount;
@@ -2218,10 +2340,10 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
         }
 
         @Override
-        public FloatArrayList.ArrayListSpliterator trySplit() {
+        public FloatArrayList.FloatArrayListSpliterator trySplit() {
             int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
             return (lo >= mid) ? null : // divide range in half unless too small
-                    new FloatArrayList.ArrayListSpliterator(lo, index = mid, expectedModCount);
+                    new FloatArrayList.FloatArrayListSpliterator(lo, index = mid, expectedModCount);
         }
 
         @Override
@@ -2373,7 +2495,7 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
     @Override
     public void sort(Comparator<? super Float> c) {
         if (!(c instanceof FloatComparator)) {
-            throw new NotImplementedException("For more performance, this class only accept FloatComparator as " +
+            throw new IllegalArgumentException("For more performance, this class only accept FloatComparator as " +
                     "comparator.");
         }
         this.sort((FloatComparator) c);

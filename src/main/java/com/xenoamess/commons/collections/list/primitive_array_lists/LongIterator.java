@@ -55,10 +55,21 @@ import java.util.Iterator;
 public interface LongIterator extends Iterator<Long> {
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the next element in the iteration.
+     */
+    @Override
+    default Long next() {
+        return this.nextPrimitive();
+    }
+
+    /**
+     * Primitive replacement of {@code LongIterator.next()}
      *
      * @return the next element in the iteration
      * @throws java.util.NoSuchElementException if the iteration has no more elements
+     * @see LongIterator#next()
      */
     long nextPrimitive();
 }

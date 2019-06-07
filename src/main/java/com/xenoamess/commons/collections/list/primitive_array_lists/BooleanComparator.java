@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface BooleanComparator extends PrimitiveComparator<Boolean> {
     /**
@@ -45,22 +46,28 @@ public interface BooleanComparator extends PrimitiveComparator<Boolean> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code BooleanComparator.compare(Boolean o1, Boolean o2)}
      *
-     * @param d1 a boolean.
-     * @param d2 a boolean.
-     * @return a int.
+     * @param p1 the first boolean to be compared.
+     * @param p2 the second boolean to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see BooleanComparator#compare(Boolean o1, Boolean o2)
      */
-    int compare(boolean d1, boolean d2);
+    int compare(boolean p1, boolean p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code BooleanComparator.compare(Boolean o1, Boolean o2)}
      *
-     * @param d1 a boolean.
-     * @param d2 a boolean.
-     * @return a int.
+     * @param p1 the first boolean to be compared.
+     * @param p2 the second boolean to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see BooleanComparator#compare(Boolean o1, Boolean o2)
      */
-    default int comparePrimitive(boolean d1, boolean d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(boolean p1, boolean p2) {
+        return compare(p1, p2);
     }
 }

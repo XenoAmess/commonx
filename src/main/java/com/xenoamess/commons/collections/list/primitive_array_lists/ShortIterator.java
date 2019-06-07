@@ -55,10 +55,21 @@ import java.util.Iterator;
 public interface ShortIterator extends Iterator<Short> {
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the next element in the iteration.
+     */
+    @Override
+    default Short next() {
+        return this.nextPrimitive();
+    }
+
+    /**
+     * Primitive replacement of {@code ShortIterator.next()}
      *
      * @return the next element in the iteration
      * @throws java.util.NoSuchElementException if the iteration has no more elements
+     * @see ShortIterator#next()
      */
     short nextPrimitive();
 }

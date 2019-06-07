@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface LongComparator extends PrimitiveComparator<Long> {
     /**
@@ -45,22 +46,28 @@ public interface LongComparator extends PrimitiveComparator<Long> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code LongComparator.compare(Long o1, Long o2)}
      *
-     * @param d1 a long.
-     * @param d2 a long.
-     * @return a int.
+     * @param p1 the first long to be compared.
+     * @param p2 the second long to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see LongComparator#compare(Long o1, Long o2)
      */
-    int compare(long d1, long d2);
+    int compare(long p1, long p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code LongComparator.compare(Long o1, Long o2)}
      *
-     * @param d1 a long.
-     * @param d2 a long.
-     * @return a int.
+     * @param p1 the first long to be compared.
+     * @param p2 the second long to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see LongComparator#compare(Long o1, Long o2)
      */
-    default int comparePrimitive(long d1, long d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(long p1, long p2) {
+        return compare(p1, p2);
     }
 }

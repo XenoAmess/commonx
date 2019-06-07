@@ -69,21 +69,25 @@ public class GeneratePrimitivesFromDouble {
             while ((line = bufIn.readLine()) != null) {
                 line = line.replaceAll(sourceString, replaceString);
                 line = line.replaceAll(sourceStringL, replaceStringL);
-                line = line.replaceAll("CharacterArrayList", "CharArrayList");
-                line = line.replaceAll("CharacterIterator", "CharIterator");
-                line = line.replaceAll("CharacterListIterator", "CharListIterator");
-                line = line.replaceAll(".readCharacter\\(", ".readChar(");
-                line = line.replaceAll(".writeCharacter\\(", ".writeChar(");
-                line = line.replaceAll("CharacterComparator", "CharComparator");
-                line = line.replaceAll("CharacterTimSort", "CharTimSort");
-
-                line = line.replaceAll("IntegerArrayList", "IntArrayList");
-                line = line.replaceAll("IntegerIterator", "IntIterator");
-                line = line.replaceAll("IntegerListIterator", "IntListIterator");
-                line = line.replaceAll(".readInteger\\(", ".readInt(");
-                line = line.replaceAll(".writeInteger\\(", ".writeInt(");
-                line = line.replaceAll("IntegerComparator", "IntComparator");
-                line = line.replaceAll("IntegerTimSort", "IntTimSort");
+                if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("char")) {
+                    line = line.replaceAll("CharacterArrayList", "CharArrayList");
+                    line = line.replaceAll("CharacterIterator", "CharIterator");
+                    line = line.replaceAll("CharacterListIterator", "CharListIterator");
+                    line = line.replaceAll(".readCharacter\\(", ".readChar(");
+                    line = line.replaceAll(".writeCharacter\\(", ".writeChar(");
+                    line = line.replaceAll("CharacterComparator", "CharComparator");
+                    line = line.replaceAll("CharacterTimSort", "CharTimSort");
+                } else if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("int")) {
+                    line = line.replaceAll("IntegerArrayList", "IntArrayList");
+                    line = line.replaceAll("IntegerIterator", "IntIterator");
+                    line = line.replaceAll("IntegerListIterator", "IntListIterator");
+                    line = line.replaceAll(".readInteger\\(", ".readInt(");
+                    line = line.replaceAll(".writeInteger\\(", ".writeInt(");
+                    line = line.replaceAll("IntegerComparator", "IntComparator");
+                    line = line.replaceAll("IntegerTimSort", "IntTimSort");
+                } else if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("boolean")) {
+                    line = line.replaceAll("] = 0;", "] = false;");
+                }
 
                 tempStream.write(line);
                 tempStream.append(System.getProperty("line.separator"));
@@ -103,18 +107,18 @@ public class GeneratePrimitivesFromDouble {
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
                 "\\list\\primitive_array_lists\\DoubleArrayList.java");
 
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-//                "\\list\\primitive_array_lists\\DoubleIterator.java");
+        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+                "\\list\\primitive_array_lists\\DoubleIterator.java");
 
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-//                "\\list\\primitive_array_lists\\DoubleListIterator.java");
+        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+                "\\list\\primitive_array_lists\\DoubleListIterator.java");
 
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
                 "\\list\\primitive_array_lists\\DoubleTimSort.java");
 
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-//                "\\list\\primitive_array_lists" +
-//                "\\DoubleComparator.java");
+        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+                "\\list\\primitive_array_lists" +
+                "\\DoubleComparator.java");
 
     }
 }

@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface FloatComparator extends PrimitiveComparator<Float> {
     /**
@@ -45,22 +46,28 @@ public interface FloatComparator extends PrimitiveComparator<Float> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code FloatComparator.compare(Float o1, Float o2)}
      *
-     * @param d1 a float.
-     * @param d2 a float.
-     * @return a int.
+     * @param p1 the first float to be compared.
+     * @param p2 the second float to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see FloatComparator#compare(Float o1, Float o2)
      */
-    int compare(float d1, float d2);
+    int compare(float p1, float p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code FloatComparator.compare(Float o1, Float o2)}
      *
-     * @param d1 a float.
-     * @param d2 a float.
-     * @return a int.
+     * @param p1 the first float to be compared.
+     * @param p2 the second float to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see FloatComparator#compare(Float o1, Float o2)
      */
-    default int comparePrimitive(float d1, float d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(float p1, float p2) {
+        return compare(p1, p2);
     }
 }

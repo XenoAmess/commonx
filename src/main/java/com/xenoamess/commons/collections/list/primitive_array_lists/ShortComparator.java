@@ -5,6 +5,7 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
  *
  * @author XenoAmess
  * @version 0.6.0
+ * @see java.util.Comparator
  */
 public interface ShortComparator extends PrimitiveComparator<Short> {
     /**
@@ -45,22 +46,28 @@ public interface ShortComparator extends PrimitiveComparator<Short> {
     }
 
     /**
-     * <p>compare.</p>
+     * Primitive replacement of {@code ShortComparator.compare(Short o1, Short o2)}
      *
-     * @param d1 a short.
-     * @param d2 a short.
-     * @return a int.
+     * @param p1 the first short to be compared.
+     * @param p2 the second short to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see ShortComparator#compare(Short o1, Short o2)
      */
-    int compare(short d1, short d2);
+    int compare(short p1, short p2);
 
     /**
-     * <p>comparePrimitive.</p>
+     * Primitive replacement of {@code ShortComparator.compare(Short o1, Short o2)}
      *
-     * @param d1 a short.
-     * @param d2 a short.
-     * @return a int.
+     * @param p1 the first short to be compared.
+     * @param p2 the second short to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the
+     * second.
+     * @see ShortComparator#compare(Short o1, Short o2)
      */
-    default int comparePrimitive(short d1, short d2) {
-        return compare(d1, d2);
+    default int comparePrimitive(short p1, short p2) {
+        return compare(p1, p2);
     }
 }

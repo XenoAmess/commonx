@@ -55,10 +55,21 @@ import java.util.Iterator;
 public interface CharIterator extends Iterator<Character> {
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the next element in the iteration.
+     */
+    @Override
+    default Character next() {
+        return this.nextPrimitive();
+    }
+
+    /**
+     * Primitive replacement of {@code CharIterator.next()}
      *
      * @return the next element in the iteration
      * @throws java.util.NoSuchElementException if the iteration has no more elements
+     * @see CharIterator#next()
      */
     char nextPrimitive();
 }
