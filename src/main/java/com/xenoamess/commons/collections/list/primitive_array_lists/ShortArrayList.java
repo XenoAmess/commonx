@@ -447,10 +447,9 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @return a int.
      */
     public int indexOfRangePrimitive(short o, int start, int end) {
-        short tmpShortValue = o;
         short[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpShortValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

@@ -447,10 +447,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * @return a int.
      */
     public int indexOfRangePrimitive(double o, int start, int end) {
-        double tmpDoubleValue = o;
         double[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpDoubleValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

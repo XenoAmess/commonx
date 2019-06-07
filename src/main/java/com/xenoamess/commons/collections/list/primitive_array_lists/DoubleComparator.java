@@ -41,7 +41,7 @@ public interface DoubleComparator extends PrimitiveComparator<Double> {
      */
     @Override
     default int compare(Double o1, Double o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

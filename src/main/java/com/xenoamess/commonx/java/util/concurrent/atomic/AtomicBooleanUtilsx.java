@@ -59,7 +59,7 @@ public class AtomicBooleanUtilsx {
      * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
      * @since 9
      */
-    public static final boolean flip(AtomicBoolean atomicBoolean) {
+    public static boolean flip(AtomicBoolean atomicBoolean) {
         if (SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_8)) {
             return flipForJava8(atomicBoolean);
         }
@@ -90,7 +90,7 @@ public class AtomicBooleanUtilsx {
      * @return new boolean value of AtomicBoolean
      * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
      */
-    public static final boolean flipForJava8(AtomicBoolean atomicBoolean) {
+    public static boolean flipForJava8(AtomicBoolean atomicBoolean) {
         boolean v;
         do {
             v = atomicBoolean.get();

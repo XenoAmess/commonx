@@ -41,7 +41,7 @@ public interface CharComparator extends PrimitiveComparator<Character> {
      */
     @Override
     default int compare(Character o1, Character o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

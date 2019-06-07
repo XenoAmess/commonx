@@ -447,10 +447,9 @@ public class FloatArrayList extends PrimitiveArrayList<Float> {
      * @return a int.
      */
     public int indexOfRangePrimitive(float o, int start, int end) {
-        float tmpFloatValue = o;
         float[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpFloatValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

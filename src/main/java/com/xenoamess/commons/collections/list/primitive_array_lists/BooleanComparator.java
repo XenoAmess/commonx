@@ -41,7 +41,7 @@ public interface BooleanComparator extends PrimitiveComparator<Boolean> {
      */
     @Override
     default int compare(Boolean o1, Boolean o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

@@ -10,20 +10,20 @@ import java.io.*;
  */
 public class GeneratePrimitivesFromDouble {
     /**
-     * Constant <code>primitiveTypes</code>
+     * Constant <code>PRIMITIVE_TYPES</code>
      */
-    public static final String[] primitiveTypes = {"Long", "Int", "Short", "Char", "Byte", "Double", "Float"
+    public static final String[] PRIMITIVE_TYPES = {"Long", "Int", "Short", "Char", "Byte", "Double", "Float"
             , "Boolean"};
     /**
-     * Constant <code>primitiveTypesExcludeDouble</code>
+     * Constant <code>PRIMITIVE_TYPES_EXCLUDE_DOUBLE</code>
      */
-    public static final String[] primitiveTypesExcludeDouble = {"Long", "Integer", "Short", "Character", "Byte",
+    public static final String[] PRIMITIVE_TYPES_EXCLUDE_DOUBLE = {"Long", "Integer", "Short", "Character", "Byte",
             "Float",
             "Boolean"};
     /**
-     * Constant <code>primitiveTypesExcludeDoubleL</code>
+     * Constant <code>PRIMITIVE_TYPES_EXCLUDE_DOUBLEL</code>
      */
-    public static final String[] primitiveTypesExcludeDoubleL = {"long", "int", "short", "char", "byte", "float",
+    public static final String[] PRIMITIVE_TYPES_EXCLUDE_DOUBLEL = {"long", "int", "short", "char", "byte", "float",
             "boolean"};
     /**
      * Constant <code>fileNameReplaceStrings</code>
@@ -38,7 +38,7 @@ public class GeneratePrimitivesFromDouble {
      * @param sourcePath a {@link java.lang.String} object.
      */
     public static void generatePrimitivesFromFile(String sourcePath) {
-        for (int i = 0, len = primitiveTypesExcludeDouble.length; i < len; i++) {
+        for (int i = 0, len = PRIMITIVE_TYPES_EXCLUDE_DOUBLE.length; i < len; i++) {
             generateSinglePrimitivesFromFile(sourcePath, i);
         }
     }
@@ -51,13 +51,13 @@ public class GeneratePrimitivesFromDouble {
      */
     public static void generateSinglePrimitivesFromFile(String sourcePath, int replaceStringIndex) {
         String sourceString = "Double";
-        String replaceString = primitiveTypesExcludeDouble[replaceStringIndex];
+        String replaceString = PRIMITIVE_TYPES_EXCLUDE_DOUBLE[replaceStringIndex];
         String fileNameReplaceString = fileNameReplaceStrings[replaceStringIndex];
         File sourceFile = new File(sourcePath);
         String targetPath = sourcePath.replaceAll(sourceString, fileNameReplaceString);
         File targetFile = new File(targetPath);
         String sourceStringL = "double";
-        String replaceStringL = primitiveTypesExcludeDoubleL[replaceStringIndex];
+        String replaceStringL = PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex];
 
         try (
                 FileReader in = new FileReader(sourceFile);
@@ -73,8 +73,6 @@ public class GeneratePrimitivesFromDouble {
                 tempStream.append(System.getProperty("line.separator"));
             }
             tempStream.writeTo(out);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -447,10 +447,9 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @return a int.
      */
     public int indexOfRangePrimitive(char o, int start, int end) {
-        char tmpCharacterValue = o;
         char[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpCharacterValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

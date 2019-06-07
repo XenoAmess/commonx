@@ -41,7 +41,7 @@ public interface ShortComparator extends PrimitiveComparator<Short> {
      */
     @Override
     default int compare(Short o1, Short o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

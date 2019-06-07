@@ -41,7 +41,7 @@ public interface ByteComparator extends PrimitiveComparator<Byte> {
      */
     @Override
     default int compare(Byte o1, Byte o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

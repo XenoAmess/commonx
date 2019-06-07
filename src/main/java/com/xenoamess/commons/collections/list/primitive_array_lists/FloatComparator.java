@@ -41,7 +41,7 @@ public interface FloatComparator extends PrimitiveComparator<Float> {
      */
     @Override
     default int compare(Float o1, Float o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

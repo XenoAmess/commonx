@@ -447,10 +447,9 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @return a int.
      */
     public int indexOfRangePrimitive(long o, int start, int end) {
-        long tmpLongValue = o;
         long[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpLongValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

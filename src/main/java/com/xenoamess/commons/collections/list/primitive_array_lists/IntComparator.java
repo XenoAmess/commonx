@@ -41,7 +41,7 @@ public interface IntComparator extends PrimitiveComparator<Integer> {
      */
     @Override
     default int compare(Integer o1, Integer o2) {
-        return compare(o1, o2);
+        return comparePrimitive(o1, o2);
     }
 
     /**

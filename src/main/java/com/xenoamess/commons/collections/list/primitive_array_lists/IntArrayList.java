@@ -447,10 +447,9 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * @return a int.
      */
     public int indexOfRangePrimitive(int o, int start, int end) {
-        int tmpIntegerValue = o;
         int[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpIntegerValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

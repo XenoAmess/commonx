@@ -2546,12 +2546,12 @@ public class Arraysx {
         int trueCount = 0;
         int i;
         int limit;
-        for (i = fromIndex - 1; ++i < toIndex; trueCount += a[i] ? 1 : 0)
-            ;
-        for (limit = toIndex - trueCount; --i >= limit; a[i] = true)
-            ;
-        for (i++; --i >= fromIndex; a[i] = false)
-            ;
+        for (i = fromIndex - 1; ++i < toIndex; trueCount += a[i] ? 1 : 0) {
+        }
+        for (limit = toIndex - trueCount; --i >= limit; a[i] = true) {
+        }
+        for (i++; --i >= fromIndex; a[i] = false) {
+        }
     }
 
 //    public <T> T[] distinct(T[] originalArray) {

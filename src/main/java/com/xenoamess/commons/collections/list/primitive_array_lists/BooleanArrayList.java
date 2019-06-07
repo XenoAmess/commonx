@@ -447,10 +447,9 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @return a int.
      */
     public int indexOfRangePrimitive(boolean o, int start, int end) {
-        boolean tmpBooleanValue = o;
         boolean[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpBooleanValue) {
+            if (es[i] == o) {
                 return i;
             }
         }

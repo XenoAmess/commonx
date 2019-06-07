@@ -447,10 +447,9 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @return a int.
      */
     public int indexOfRangePrimitive(byte o, int start, int end) {
-        byte tmpByteValue = o;
         byte[] es = elementData;
         for (int i = start; i < end; i++) {
-            if (es[i] == tmpByteValue) {
+            if (es[i] == o) {
                 return i;
             }
         }
