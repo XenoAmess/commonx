@@ -2243,7 +2243,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         final double[] es = elementData;
         // Optimize for initial run of survivors
         for (; i < end && !filter.test(elementAt(es, i)); i++) {
-            ;
         }
         // Tolerate predicates that reentrantly access the collection for
         // read (but writers still get CME), so traverse once to find

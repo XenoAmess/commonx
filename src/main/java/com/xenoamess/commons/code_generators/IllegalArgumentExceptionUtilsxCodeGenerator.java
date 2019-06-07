@@ -52,7 +52,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(file));) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(file))) {
             out.write(content);
         } catch (IOException e) {
             e.printStackTrace();

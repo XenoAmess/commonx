@@ -63,7 +63,7 @@ public class GeneratePrimitivesFromDouble {
                 FileReader in = new FileReader(sourceFile);
                 BufferedReader bufIn = new BufferedReader(in);
                 CharArrayWriter tempStream = new CharArrayWriter();
-                FileWriter out = new FileWriter(targetFile);
+                FileWriter out = new FileWriter(targetFile)
         ) {
             String line = null;
             while ((line = bufIn.readLine()) != null) {
