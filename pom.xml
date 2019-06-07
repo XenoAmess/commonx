@@ -8,9 +8,7 @@
     <version>0.7.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
-    <description>Commonx, a package of Java utility classes for the classes that
-        are in java's hierarchy, or are considered to be so standard as to
-        justify existence in java.
+    <description>Commonx, a package of Java utility classes for common use.
     </description>
     <url>https://github.com/XenoAmess/commonx</url>
     <licenses>

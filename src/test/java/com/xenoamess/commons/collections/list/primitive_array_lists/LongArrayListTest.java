@@ -74,7 +74,7 @@ public class LongArrayListTest {
         }
         a1.sort(null);
         long score1 = (System.nanoTime() - begin1);
-        System.out.println("LongArrayList point : " + score1);
+        System.out.println("LongArrayList score : " + score1);
 
         long begin2 = System.nanoTime();
         ArrayList<Long> a2 = new ArrayList<Long>();
