@@ -25,6 +25,8 @@
 package com.xenoamess.commonx.java.lang;
 
 /**
+ * This is the util class for generating IllegalArgumentException.
+ * <p>
  * Notice that most of the contents in this class is generated, and there be a certain way to build this code.
  * <p>
  * First, run the main function in IllegalArgumentExceptionUtilsxCodeGenerator to generate template files.
@@ -105,4 +107,33 @@ public class IllegalArgumentExceptionUtilsx {
      */
     //${generateIsAllNullInParamsThenThrowIllegalArgumentException}
 
+    // generated ends
+    //-----------------------------------------------------------------------
+
+    /**
+     * <p>If the object's class not be classObject, then throw an IllegalArgumentException about that.</p>
+     *
+     * @param object           the object.
+     * @param classObject      the class.
+     * @param appendingMessage the appending message.
+     * @author XenoAmess
+     */
+    public static void ifClassNotBeThenThrowIllegalArgumentException(Object object, Class classObject,
+                                                                     String appendingMessage) {
+        if (!(object.getClass() == classObject)) {
+            throw new IllegalArgumentException("class of this object must be " + classObject.getCanonicalName() +
+                    "but not, object : " + object + "." + message != null ? message : "");
+        }
+    }
+
+    /**
+     * <p>If the object's class not be classObject, then throw an IllegalArgumentException about that.</p>
+     *
+     * @param object      the object.
+     * @param classObject the class.
+     * @author XenoAmess
+     */
+    public static void ifClassNotBeThenThrowIllegalArgumentException(Object object, Class classObject) {
+        ifClassNotBeThenThrowIllegalArgumentException(object, classObject, null);
+    }
 }

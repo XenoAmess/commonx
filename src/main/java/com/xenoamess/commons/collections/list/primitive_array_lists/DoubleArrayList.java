@@ -26,7 +26,6 @@ package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -2496,7 +2495,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     @Override
     public void sort(Comparator<? super Double> c) {
         if (!(c instanceof DoubleComparator)) {
-            throw new NotImplementedException("For more performance, this class only accept DoubleComparator as " +
+            throw new IllegalArgumentException("For more performance, this class only accept DoubleComparator as " +
                     "comparator.");
         }
         this.sort((DoubleComparator) c);
