@@ -779,7 +779,7 @@ public class Arraysx {
      * not be reordered as a result of the sort.
      *
      * @param a   the array to be sorted
-     * @param <T> component type of the array to be sorted.
+     * @param <T> component type of the array to be sorted
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are not
      *                                            <i>mutually comparable</i> (for example, strings and integers)
@@ -823,7 +823,7 @@ public class Arraysx {
      * @param fromIndex the index of the first element (inclusive) to be
      *                  sorted
      * @param toIndex   the index of the last element (exclusive) to be sorted
-     * @param <T>       a T object.
+     * @param <T>       component type of the array to be sorted
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                                  (optional) if the natural ordering of the array elements is
@@ -861,7 +861,7 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param <T> the class of the objects to be sorted
+     * @param <T> component type of the array to be sorted
      * @param a   the array to be sorted
      * @param cmp the comparator to determine the order of the array.  A
      *            {@code null} value indicates that the elements'
@@ -901,7 +901,7 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param <T>       the class of the objects to be sorted
+     * @param <T>       component type of the array to be sorted
      * @param a         the array to be sorted
      * @param fromIndex the index of the first element (inclusive) to be
      *                  sorted
@@ -1079,7 +1079,7 @@ public class Arraysx {
      * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
      * January 1993.
      *
-     * @param <T> the class of the objects to be sorted
+     * @param <T> component type of the array to be sorted
      * @param a   the array to be sorted
      * @param c   the comparator to determine the order of the array.  A
      *            {@code null} value indicates that the elements'
@@ -1132,7 +1132,7 @@ public class Arraysx {
      * Fourth Annual ACM-SIAM Symposium on Discrete Algorithms, pp 467-474,
      * January 1993.
      *
-     * @param <T>       the class of the objects to be sorted
+     * @param <T>       component type of the array to be sorted
      * @param a         the array to be sorted
      * @param fromIndex the index of the first element (inclusive) to be
      *                  sorted
@@ -1165,7 +1165,7 @@ public class Arraysx {
      * Parallel prefix computation is usually more efficient than
      * sequential loops for large arrays.
      *
-     * @param <T>   the class of the objects in the array
+     * @param <T>   component type of the array to be sorted
      * @param array the array, which is modified in-place by this method
      * @param op    a side-effect-free, associative function to perform the
      *              cumulation
@@ -1182,7 +1182,7 @@ public class Arraysx {
      * Performs {@link #parallelPrefixSelf(Object[], BinaryOperator)}
      * for the given subrange of the array.
      *
-     * @param <T>       the class of the objects in the array
+     * @param <T>       component type of the array to be sorted
      * @param array     the array
      * @param fromIndex the index of the first element, inclusive
      * @param toIndex   the index of the last element, exclusive
@@ -1946,7 +1946,7 @@ public class Arraysx {
      *                     fillNew(new AtomicBoolean[1000])};
      * </pre>
      *
-     * @param <T>   the component type of the array
+     * @param <T>   the component type of the array to be filled
      * @param array the array to be filled
      * @throws java.lang.IllegalArgumentException if array is null,
      *                                            or if T have no such constructor,
@@ -2004,7 +2004,7 @@ public class Arraysx {
      *                     fillNew(new AtomicBoolean[1000])};
      * </pre>
      *
-     * @param <T>   the component type of the array
+     * @param <T>   the component type of the array to be filled
      * @param array the array to be filled
      * @return the original array
      * @throws java.lang.IllegalArgumentException if array is null,
