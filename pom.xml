@@ -61,7 +61,7 @@
         <profile>
             <id>jdk8</id>
             <activation>
-                <jdk>[8,9)</jdk>
+                <jdk>(,9)</jdk>
             </activation>
             <build>
                 <plugins>
