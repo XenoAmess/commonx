@@ -99,8 +99,19 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
 
     // Modification Operations
 
+    @Override
+    default Double previous() {
+        return this.previousPrimitive();
+    }
+
+
+    @Override
+    default void set(Double e) {
+        setPrimitive(e);
+    }
+
     /**
-     * Primitive replacement of {@code DoubleListIterator.set(Object e)}
+     * Primitive replacement of {@code DoubleListIterator.set(Double e)}
      *
      * @param e the element with which to replace the last element returned by
      *          {@code next} or {@code previous}
@@ -114,12 +125,17 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      *                                                 {@code previous} have been called, or {@code remove} or
      *                                                 {@code add} have been called after the last call to
      *                                                 {@code next} or {@code previous}
-     * @see DoubleListIterator#set(Object e)
+     * @see DoubleListIterator#set(Double e)
      */
     void setPrimitive(double e);
 
+    @Override
+    default void add(Double e) {
+        addPrimitive(e);
+    }
+
     /**
-     * Primitive replacement of {@code DoubleListIterator.add(Object e)}
+     * Primitive replacement of {@code DoubleListIterator.add(Double e)}
      *
      * @param e the element to insert
      * @throws java.lang.UnsupportedOperationException if the {@code add} method is
@@ -128,7 +144,7 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      *                                                 prevents it from being added to this list
      * @throws java.lang.IllegalArgumentException      if some aspect of this element
      *                                                 prevents it from being added to this list
-     * @see DoubleListIterator#add(Object e)
+     * @see DoubleListIterator#add(Double e)
      */
     void addPrimitive(double e);
 }
