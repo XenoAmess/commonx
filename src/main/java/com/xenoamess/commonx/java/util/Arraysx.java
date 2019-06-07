@@ -2530,6 +2530,7 @@ public class Arraysx {
         }
     }
 
+
     /**
      * Sorts the specified range of the array into ascending order. The range
      * to be sorted extends from the index {@code fromIndex}, inclusive, to
@@ -2543,7 +2544,16 @@ public class Arraysx {
      * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static void sort(boolean[] a, int fromIndex, int toIndex) {
-        Arraysx.sort(a, fromIndex, toIndex, PrimitiveComparators.BOOLEAN_COMPARATOR_INCREASING);
+        rangeCheck(a.length, fromIndex, toIndex);
+        int trueCount = 0;
+        int i;
+        int limit;
+        for (i = fromIndex - 1; ++i < toIndex; trueCount += a[i] ? 1 : 0)
+            ;
+        for (limit = toIndex - trueCount; --i >= limit; a[i] = true)
+            ;
+        for (i++; --i >= fromIndex; a[i] = false)
+            ;
     }
 
 //    public <T> T[] distinct(T[] originalArray) {
