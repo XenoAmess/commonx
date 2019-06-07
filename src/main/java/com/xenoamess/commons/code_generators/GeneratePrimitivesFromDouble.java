@@ -3,26 +3,52 @@ package com.xenoamess.commons.code_generators;
 import java.io.*;
 
 /**
+ * <p>GeneratePrimitivesFromDouble class.</p>
+ *
  * @author XenoAmess
+ * @version 0.6.0
  */
 public class GeneratePrimitivesFromDouble {
+    /**
+     * Constant <code>primitiveTypes</code>
+     */
     public static final String[] primitiveTypes = {"Long", "Int", "Short", "Char", "Byte", "Double", "Float"
             , "Boolean"};
+    /**
+     * Constant <code>primitiveTypesExcludeDouble</code>
+     */
     public static final String[] primitiveTypesExcludeDouble = {"Long", "Integer", "Short", "Character", "Byte",
             "Float",
             "Boolean"};
+    /**
+     * Constant <code>primitiveTypesExcludeDoubleL</code>
+     */
     public static final String[] primitiveTypesExcludeDoubleL = {"long", "int", "short", "char", "byte", "float",
             "boolean"};
+    /**
+     * Constant <code>fileNameReplaceStrings</code>
+     */
     public static final String[] fileNameReplaceStrings = {"Long", "Int", "Short", "Char", "Byte",
             "Float",
             "Boolean"};
 
+    /**
+     * <p>generatePrimitivesFromFile.</p>
+     *
+     * @param sourcePath a {@link java.lang.String} object.
+     */
     public static void generatePrimitivesFromFile(String sourcePath) {
         for (int i = 0, len = primitiveTypesExcludeDouble.length; i < len; i++) {
             generateSinglePrimitivesFromFile(sourcePath, i);
         }
     }
 
+    /**
+     * <p>generateSinglePrimitivesFromFile.</p>
+     *
+     * @param sourcePath         a {@link java.lang.String} object.
+     * @param replaceStringIndex a int.
+     */
     public static void generateSinglePrimitivesFromFile(String sourcePath, int replaceStringIndex) {
         String sourceString = "Double";
         String replaceString = primitiveTypesExcludeDouble[replaceStringIndex];
@@ -54,6 +80,11 @@ public class GeneratePrimitivesFromDouble {
         }
     }
 
+    /**
+     * <p>main.</p>
+     *
+     * @param args an array of {@link java.lang.String} objects.
+     */
     public static void main(String[] args) {
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
                 "\\list\\primitive_array_lists\\DoubleArrayList.java");

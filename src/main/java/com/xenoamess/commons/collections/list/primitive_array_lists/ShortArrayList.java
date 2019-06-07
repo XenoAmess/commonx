@@ -79,8 +79,9 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link ShortListIterator#remove() remove} or
- * {@link ShortListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link com.xenoamess.commons.collections.list.primitive_array_lists.ShortListIterator#remove() remove} or
+ * {@link com.xenoamess.commons.collections.list.primitive_array_lists.ShortListIterator#add(Object) add} methods,
+ * the iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
@@ -1268,9 +1269,8 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * deserializes it).
      *
      * @param s the stream
-     * @throws java.lang.ClassNotFoundException if the class of a serialized object
-     *                                          could not be found
      * @throws java.io.IOException              if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException if any.
      */
     public void readObject(java.io.ObjectInputStream s)
             throws java.io.IOException, ClassNotFoundException {
@@ -2310,6 +2310,11 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         this.sort((ShortComparator) c);
     }
 
+    /**
+     * <p>sort.</p>
+     *
+     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.ShortComparator} object.
+     */
     public void sort(ShortComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);

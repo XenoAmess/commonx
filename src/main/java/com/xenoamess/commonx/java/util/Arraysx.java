@@ -778,8 +778,7 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param a   the array to be sorted
-     * @param <T> a T object.
+     * @param a the array to be sorted
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are not
      *                                            <i>mutually comparable</i> (for example, strings and integers)
@@ -823,7 +822,6 @@ public class Arraysx {
      * @param fromIndex the index of the first element (inclusive) to be
      *                  sorted
      * @param toIndex   the index of the last element (exclusive) to be sorted
-     * @param <T>       a T object.
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                                  (optional) if the natural ordering of the array elements is
@@ -2540,8 +2538,8 @@ public class Arraysx {
      * @param a         the array to be sorted
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
-     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
+     * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex < 0} or {@code toIndex > a.length}
      */
     public static void sort(boolean[] a, int fromIndex, int toIndex) {
         rangeCheck(a.length, fromIndex, toIndex);

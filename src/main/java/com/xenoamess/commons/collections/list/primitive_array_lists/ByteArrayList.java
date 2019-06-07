@@ -79,8 +79,9 @@ import java.util.function.UnaryOperator;
  * {@link #listIterator(int) listIterator} methods are <em>fail-fast</em>:
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
- * {@link ByteListIterator#remove() remove} or
- * {@link ByteListIterator#add(Object) add} methods, the iterator will throw a
+ * {@link com.xenoamess.commons.collections.list.primitive_array_lists.ByteListIterator#remove() remove} or
+ * {@link com.xenoamess.commons.collections.list.primitive_array_lists.ByteListIterator#add(Object) add} methods, the
+ * iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
@@ -1268,9 +1269,8 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * deserializes it).
      *
      * @param s the stream
-     * @throws java.lang.ClassNotFoundException if the class of a serialized object
-     *                                          could not be found
      * @throws java.io.IOException              if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException if any.
      */
     public void readObject(java.io.ObjectInputStream s)
             throws java.io.IOException, ClassNotFoundException {
@@ -2310,6 +2310,11 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         this.sort((ByteComparator) c);
     }
 
+    /**
+     * <p>sort.</p>
+     *
+     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.ByteComparator} object.
+     */
     public void sort(ByteComparator c) {
         final int expectedModCount = modCount;
         Arraysx.sort(elementData, 0, size, c);
