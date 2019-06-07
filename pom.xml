@@ -39,6 +39,46 @@
         <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!---->
+        <!---->
+        <!--libraries versions-->
+        <commons-collections4.version>4.3</commons-collections4.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <guava.version>27.1-jre</guava.version>
+        <jackson.version>2.9.9</jackson.version>
+        <joml.version>1.9.15</joml.version>
+        <log4j.version>2.11.2</log4j.version>
+        <lwjgl.version>3.2.2</lwjgl.version>
+        <slf4j.version>1.8.0-beta4</slf4j.version>
+        <steamworks4j.version>1.8.0</steamworks4j.version>
+        <steamworks4j-server.version>1.8.0</steamworks4j-server.version>
+        <JXInput.version>1.0.0</JXInput.version>
+        <!---->
+        <!---->
+        <!--home made libraries versions-->
+        <commonx.version>0.7.0</commonx.version>
+        <multi_language.version>0.43.4</multi_language.version>
+        <x8l.version>0.47.3</x8l.version>
+        <SDL_GameControllerDB_Util.version>0.1.2
+        </SDL_GameControllerDB_Util.version>
+        <!---->
+        <!---->
+        <!--maven plugins versions-->
+        <junit-jupiter-api.version>5.5.0-RC1</junit-jupiter-api.version>
+        <junit-jupiter-engine.version>5.5.0-RC1</junit-jupiter-engine.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>2.0.0</maven-enforcer-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
+        <maven-project-info-reports-plugin.version>3.0.0
+        </maven-project-info-reports-plugin.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+        <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+        <templating-maven-plugin.version>1.0.0</templating-maven-plugin.version>
+        <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
     </properties>
 
     <profiles>
@@ -96,7 +136,7 @@
                         because of missing tools.jar. -->
                     <plugin>
                         <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>3.0.0-M2</version>
+                        <version>${maven-enforcer-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>enforce-versions</id>
@@ -135,22 +175,26 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>RELEASE</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
+            <version>${junit-jupiter-api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>RELEASE</version>
+            <version>${junit-jupiter-engine.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>${versions-maven-plugin.version}</version>
+        </dependency>
     </dependencies>
-
 
     <build>
         <resources>
@@ -175,7 +219,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${properties-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>initialize</phase>
@@ -207,7 +251,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>templating-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${templating-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>filter-src</id>
@@ -242,17 +286,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>${maven-site-plugin.version}
+                </version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven-project-info-reports-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <locale>en</locale>
                     <show>private</show>
@@ -320,12 +365,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>${maven-deploy-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -338,7 +383,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                 </configuration>
@@ -346,7 +391,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${maven.compiler.source}
                     </source>
@@ -362,13 +407,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
+                <version>${maven-gpg-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>update-properties</goal>
                         </goals>
                     </execution>
                 </executions>
