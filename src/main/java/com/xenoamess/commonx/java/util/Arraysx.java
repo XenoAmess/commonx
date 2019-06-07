@@ -2093,7 +2093,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(long[] a, int fromIndex, int toIndex,
-                            Comparator<? super Long> c) {
+                            LongComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2154,7 +2154,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(int[] a, int fromIndex, int toIndex,
-                            Comparator<? super Integer> c) {
+                            IntComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2215,7 +2215,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(short[] a, int fromIndex, int toIndex,
-                            Comparator<? super Short> c) {
+                            ShortComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2276,7 +2276,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(char[] a, int fromIndex, int toIndex,
-                            Comparator<? super Character> c) {
+                            CharComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2337,7 +2337,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(byte[] a, int fromIndex, int toIndex,
-                            Comparator<? super Byte> c) {
+                            ByteComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2398,7 +2398,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(double[] a, int fromIndex, int toIndex,
-                            Comparator<? super Double> c) {
+                            DoubleComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2406,6 +2406,7 @@ public class Arraysx {
             DoubleTimSort.sort(a, fromIndex, toIndex, c, null, 0, 0);
         }
     }
+
 
     /**
      * Sorts the specified range of the specified array of objects according
@@ -2459,7 +2460,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(float[] a, int fromIndex, int toIndex,
-                            Comparator<? super Float> c) {
+                            FloatComparator c) {
         if (c == null) {
             Arrays.sort(a, fromIndex, toIndex);
         } else {
@@ -2520,7 +2521,7 @@ public class Arraysx {
      *                                                  {@code toIndex > a.length}
      */
     public static void sort(boolean[] a, int fromIndex, int toIndex,
-                            Comparator<? super Boolean> c) {
+                            BooleanComparator c) {
         if (c == null) {
             Arraysx.sort(a, fromIndex, toIndex);
         } else {

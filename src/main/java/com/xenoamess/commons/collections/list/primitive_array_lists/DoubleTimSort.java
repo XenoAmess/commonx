@@ -26,8 +26,6 @@
 
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
-import java.util.Comparator;
-
 /**
  * A stable, adaptive, iterative mergesort that requires far fewer than
  * n lg(n) comparisons when running on partially sorted arrays, while
@@ -90,7 +88,7 @@ public class DoubleTimSort {
     /**
      * The comparator for this sort.
      */
-    public final Comparator<? super Double> c;
+    public final DoubleComparator c;
 
     /**
      * When we get into galloping mode, we stay there until both runs win less
@@ -146,7 +144,7 @@ public class DoubleTimSort {
      * @param workBase origin of usable space in work array
      * @param workLen  usable size of work array
      */
-    public DoubleTimSort(double[] a, Comparator<? super Double> c, double[] work, int workBase, int workLen) {
+    public DoubleTimSort(double[] a, DoubleComparator c, double[] work, int workBase, int workLen) {
         this.a = a;
         this.c = c;
 
@@ -208,7 +206,7 @@ public class DoubleTimSort {
      * @param workLen  usable size of work array
      * @since 1.8
      */
-    public static void sort(double[] a, int lo, int hi, Comparator<? super Double> c,
+    public static void sort(double[] a, int lo, int hi, DoubleComparator c,
                             double[] work, int workBase, int workLen) {
         assert c != null && a != null && lo >= 0 && lo <= hi && hi <= a.length;
 
@@ -277,7 +275,7 @@ public class DoubleTimSort {
      */
     @SuppressWarnings("fallthrough")
     public static void binarySort(double[] a, int lo, int hi, int start,
-                                  Comparator<? super Double> c) {
+                                  DoubleComparator c) {
         assert lo <= start && start <= hi;
         if (start == lo) {
             start++;
@@ -352,7 +350,7 @@ public class DoubleTimSort {
      * the specified array
      */
     public static int countRunAndMakeAscending(double[] a, int lo, int hi,
-                                               Comparator<? super Double> c) {
+                                               DoubleComparator c) {
         assert lo < hi;
         int runHi = lo + 1;
         if (runHi == hi) {
@@ -554,7 +552,7 @@ public class DoubleTimSort {
      * should follow it.
      */
     public static int gallopLeft(double key, double[] a, int base, int len, int hint,
-                                 Comparator<? super Double> c) {
+                                 DoubleComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
         int lastOfs = 0;
         int ofs = 1;
@@ -631,7 +629,7 @@ public class DoubleTimSort {
      * @return the int k,  0 &lt;= k &lt;= n such that a[b + k - 1] &lt; key &lt;= a[b + k],
      */
     public static int gallopRight(double key, double[] a, int base, int len,
-                                  int hint, Comparator<? super Double> c) {
+                                  int hint, DoubleComparator c) {
         assert len > 0 && hint >= 0 && hint < len;
 
         int ofs = 1;
@@ -734,7 +732,7 @@ public class DoubleTimSort {
             return;
         }
 
-        Comparator<? super Double> c = this.c;  // Use local variable for performance
+        DoubleComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {
@@ -862,7 +860,7 @@ public class DoubleTimSort {
             return;
         }
 
-        Comparator<? super Double> c = this.c;  // Use local variable for performance
+        DoubleComparator c = this.c;  // Use local variable for performance
         int minGallop = this.minGallop;    //  "    "       "     "      "
         outer:
         while (true) {
