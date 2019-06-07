@@ -35,9 +35,13 @@ import java.util.function.UnaryOperator;
 
 /**
  * An resizable-array implementation of the {@code List} interface.
+ * <p>
  * This class aims to reduce performance issue of autoboxing and unboxing.
+ * <p>
  * This class is designed to be a replacement to {@code ArrayList<Double>}
+ * <p>
  * It shall be far faster in using.
+ * <p>
  * It have functions dealing with {@code Double} for being a {@code List},
  * but nearly all of its functions have a replacement named XXXPrimitive.
  * The basic idea is use XXXPrimitive functions whenever possible, and only use
@@ -54,13 +58,13 @@ import java.util.function.UnaryOperator;
  * @see List
  * @see LinkedList
  * @see Vector
- * @see GeneratePrimitivesFromDouble
+ * @see com.xenoamess.commons.code_generators.GeneratePrimitivesFromDouble
  * @since 1.2
  */
 public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
     /**
-     * <p>arraycopy.</p>
+     * function to copy from {@code Object[]} to {@code double[]}
      *
      * @param src     an array of {@link java.lang.Object} objects.
      * @param srcPos  a int.
@@ -77,7 +81,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * <p>arraycopy.</p>
+     * function to copy from  {@code double[]} to {@code Object[]}
      *
      * @param src     an array of {@link double} objects.
      * @param srcPos  a int.
@@ -106,15 +110,15 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     private static final double[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
     /**
-     * The array buffer into which the elements of the ArrayList are stored.
-     * The capacity of the ArrayList is the length of this array buffer. Any
-     * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
+     * The array buffer into which the elements of the {@code DoubleArrayList} are stored.
+     * The capacity of the {@code DoubleArrayList} is the length of this array buffer. Any
+     * empty {@code DoubleArrayList} with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
      * will be expanded to DEFAULT_CAPACITY when the first element is added.
      */
     transient double[] elementData; // non-private to simplify nested class access
 
     /**
-     * The size of the ArrayList (the number of elements it contains).
+     * The size of the {@code DoubleArrayList} (the number of elements it contains).
      *
      * @serial
      */
@@ -158,24 +162,25 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Constructs a DoubleArrayList with a
+     * Constructs a DoubleArrayList with a {@code double[]}
+     * <p>
+     * This {@code DoubleArrayList} will use this {@code double[]} directly as its {@code elementData}, and will use
+     * it until the {@code DoubleArrayList} have more content than this array can hold.
+     * <p>
+     * Then the {@code DoubleArrayList} will create another (larger) array and use it as {@code elementData} instead.
      *
-     * @param doubleArray the collection whose elements are to be placed into this list
+     * @param doubleArray the array which will be used as initial {@code elementData} of this class.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public DoubleArrayList(double[] doubleArray) {
         elementData = doubleArray;
         size = elementData.length;
-        if (size == 0) {
-            // replace with empty array.
-            this.elementData = EMPTY_ELEMENTDATA;
-        }
     }
 
     /**
-     * Trims the capacity of this {@code ArrayList} instance to be the
+     * Trims the capacity of this {@code DoubleArrayList} instance to be the
      * list's current size.  An application can use this operation to minimize
-     * the storage of an {@code ArrayList} instance.
+     * the storage of an {@code DoubleArrayList} instance.
      */
     public void trimToSize() {
         modCount++;
@@ -187,7 +192,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Increases the capacity of this {@code ArrayList} instance, if
+     * Increases the capacity of this {@code DoubleArrayList} instance, if
      * necessary, to ensure that it can hold at least the number of elements
      * specified by the minimum capacity argument.
      *
@@ -298,30 +303,24 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
+     * Primitive replacement of {@code DoubleArrayList.contains(Object o)}
      *
-     * @param o a double.
-     * @return a boolean.
+     * @param o element whose presence in this collection is to be tested
+     * @return {@code true} if this collection contains the specified
+     * element
+     * @see DoubleArrayList#contains(Object o)
      */
     public boolean contains(double o) {
         return this.containsPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
+     * Primitive replacement of {@code DoubleArrayList.contains(Object o)}
      *
-     * @param o a double.
-     * @return a boolean.
+     * @param o element whose presence in this collection is to be tested
+     * @return {@code true} if this collection contains the specified
+     * element
+     * @see DoubleArrayList#contains(Object o)
      */
     public boolean containsPrimitive(double o) {
         return indexOfPrimitive(o) >= 0;
@@ -343,32 +342,24 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code DoubleArrayList.indexOf(Object o)}
      *
-     * @param o a double.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see DoubleArrayList#indexOf(Object o)
      */
     public int indexOf(double o) {
         return this.indexOfPrimitive(o);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code DoubleArrayList.indexOf(Object o)}
      *
-     * @param o a double.
-     * @return a int.
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @see DoubleArrayList#indexOf(Object o)
      */
     public int indexOfPrimitive(double o) {
         return indexOfRangePrimitive(o, 0, size);
@@ -399,13 +390,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
+     * Primitive replacement of {@code DoubleArrayList.indexOf(Object o)}
      *
      * @param o     a double.
      * @param start a int.
@@ -544,7 +529,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     /**
      * {@inheritDoc}
      * <p>
-     * Returns a shallow copy of this {@code ArrayList} instance.  (The
+     * Returns a shallow copy of this {@code DoubleArrayList} instance.  (The
      * elements themselves are not copied.)
      */
     @Override
@@ -848,8 +833,8 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         final int expectedModCount = modCount;
-        // ArrayList can be subclassed and given arbitrary behavior, but we can
-        // still deal with the common case where o is ArrayList precisely
+        // {@code DoubleArrayList} can be subclassed and given arbitrary behavior, but we can
+        // still deal with the common case where o is {@code DoubleArrayList} precisely
         boolean equal = (o.getClass() == DoubleArrayList.class)
                 ? equalsDoubleArrayList((DoubleArrayList) o)
                 : equalsRange((List<?>) o, 0, size);
@@ -1255,12 +1240,12 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Saves the state of the {@code ArrayList} instance to a stream
+     * Saves the state of the {@code DoubleArrayList} instance to a stream
      * (that is, serializes it).
      *
      * @param s the stream
      * @throws java.io.IOException if an I/O error occurs
-     * @serialData The length of the array backing the {@code ArrayList}
+     * @serialData The length of the array backing the {@code DoubleArrayList}
      * instance is emitted (int), followed by all of its elements
      * (each an {@code Object}) in the proper order.
      */
@@ -1284,7 +1269,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
     }
 
     /**
-     * Reconstitutes the {@code ArrayList} instance from a stream (that is,
+     * Reconstitutes the {@code DoubleArrayList} instance from a stream (that is,
      * deserializes it).
      *
      * @param s the stream
@@ -1377,12 +1362,6 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         @Override
         public boolean hasNext() {
             return cursor != size;
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public Double next() {
-            return this.nextPrimitive();
         }
 
         @Override
@@ -1993,7 +1972,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         public Spliterator<Double> spliterator() {
             checkForComodification();
 
-            // ArrayListSpliterator not used here due to late-binding
+            // DoubleArrayListSpliterator not used here due to late-binding
             return new Spliterator<Double>() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
@@ -2009,11 +1988,11 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
                 }
 
                 @Override
-                public DoubleArrayList.ArrayListSpliterator trySplit() {
+                public DoubleArrayList.DoubleArrayListSpliterator trySplit() {
                     int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
-                    // ArrayListSpliterator can be used here as the source is already bound
+                    // DoubleArrayListSpliterator can be used here as the source is already bound
                     return (lo >= mid) ? null : // divide range in half unless too small
-                            root.new ArrayListSpliterator(lo, index = mid, expectedModCount);
+                            root.new DoubleArrayListSpliterator(lo, index = mid, expectedModCount);
                 }
 
                 @Override
@@ -2104,16 +2083,16 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      */
     @Override
     public Spliterator<Double> spliterator() {
-        return new DoubleArrayList.ArrayListSpliterator(0, -1, 0);
+        return new DoubleArrayList.DoubleArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class ArrayListSpliterator implements Spliterator<Double> {
+    final class DoubleArrayListSpliterator implements Spliterator<Double> {
 
         /*
-         * If ArrayLists were immutable, or structurally immutable (no
+         * If DoubleArrayLists were immutable, or structurally immutable (no
          * adds, removes, etc), we could implement their spliterators
          * with Arrays.spliterator. Instead we detect as much
          * interference during traversal as practical without
@@ -2151,7 +2130,7 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         /**
          * Creates new spliterator covering the given range.
          */
-        ArrayListSpliterator(int origin, int fence, int expectedModCount) {
+        DoubleArrayListSpliterator(int origin, int fence, int expectedModCount) {
             this.index = origin;
             this.fence = fence;
             this.expectedModCount = expectedModCount;
@@ -2167,10 +2146,10 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
 
         @Override
-        public DoubleArrayList.ArrayListSpliterator trySplit() {
+        public DoubleArrayList.DoubleArrayListSpliterator trySplit() {
             int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
             return (lo >= mid) ? null : // divide range in half unless too small
-                    new DoubleArrayList.ArrayListSpliterator(lo, index = mid, expectedModCount);
+                    new DoubleArrayList.DoubleArrayListSpliterator(lo, index = mid, expectedModCount);
         }
 
         @Override

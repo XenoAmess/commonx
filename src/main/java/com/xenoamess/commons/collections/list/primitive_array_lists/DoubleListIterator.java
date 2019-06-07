@@ -26,6 +26,7 @@
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 /**
  * An iterator for lists that allows the programmer
@@ -71,31 +72,37 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      * or intermixed with calls to {@link #previous} to go back and forth.
      * (Note that alternating calls to {@code next} and {@code previous}
      * will return the same element repeatedly.)
+     *
+     * @return the next element in the list
+     * @throws NoSuchElementException if the iteration has no next element
+     */
+    @Override
+    default Double next() {
+        return DoubleIterator.super.next();
+    }
+
+    /**
+     * Primitive replacement of {@code DoubleListIterator.next()}
+     *
+     * @see DoubleListIterator#next()
      */
     @Override
     double nextPrimitive();
 
 
     /**
-     * Returns the previous element in the list and moves the cursor
-     * position backwards.  This method may be called repeatedly to
-     * iterate through the list backwards, or intermixed with calls to
-     * {@link #next} to go back and forth.  (Note that alternating calls
-     * to {@code next} and {@code previous} will return the same
-     * element repeatedly.)
+     * Primitive replacement of {@code DoubleListIterator.previous()}
      *
-     * @return the previous element in the list
+     * @return {@code true} if the list iterator has more elements when
+     * traversing the list in the reverse direction
+     * @see DoubleListIterator#previous()
      */
     double previousPrimitive();
 
     // Modification Operations
 
     /**
-     * Replaces the last element returned by {@link #next} or
-     * {@link #previous} with the specified element (optional operation).
-     * This call can be made only if neither {@link #remove} nor {@link
-     * #add} have been called after the last call to {@code next} or
-     * {@code previous}.
+     * Primitive replacement of {@code DoubleListIterator.set(Object e)}
      *
      * @param e the element with which to replace the last element returned by
      *          {@code next} or {@code previous}
@@ -109,20 +116,12 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      *                                                 {@code previous} have been called, or {@code remove} or
      *                                                 {@code add} have been called after the last call to
      *                                                 {@code next} or {@code previous}
+     * @see DoubleListIterator#set(Object e)
      */
     void setPrimitive(double e);
 
     /**
-     * Inserts the specified element into the list (optional operation).
-     * The element is inserted immediately before the element that
-     * would be returned by {@link #next}, if any, and after the element
-     * that would be returned by {@link #previous}, if any.  (If the
-     * list contains no elements, the new element becomes the sole element
-     * on the list.)  The new element is inserted before the implicit
-     * cursor: a subsequent call to {@code next} would be unaffected, and a
-     * subsequent call to {@code previous} would return the new element.
-     * (This call increases by one the value that would be returned by a
-     * call to {@code nextIndex} or {@code previousIndex}.)
+     * Primitive replacement of {@code DoubleListIterator.add(Object e)}
      *
      * @param e the element to insert
      * @throws java.lang.UnsupportedOperationException if the {@code add} method is
@@ -131,6 +130,7 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      *                                                 prevents it from being added to this list
      * @throws java.lang.IllegalArgumentException      if some aspect of this element
      *                                                 prevents it from being added to this list
+     * @see DoubleListIterator#add(Object e)
      */
     void addPrimitive(double e);
 }

@@ -26,6 +26,7 @@
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * An iterator over a collection.  {@code Iterator} takes the place of
@@ -58,7 +59,19 @@ public interface DoubleIterator extends Iterator<Double> {
      * Returns the next element in the iteration.
      *
      * @return the next element in the iteration
+     * @throws NoSuchElementException if the iteration has no more elements
+     */
+    @Override
+    default Double next() {
+        return this.nextPrimitive();
+    }
+
+    /**
+     * Primitive replacement of {@code DoubleIterator.next()}
+     *
+     * @return the next element in the iteration
      * @throws java.util.NoSuchElementException if the iteration has no more elements
+     * @see DoubleIterator#next()
      */
     double nextPrimitive();
 }
