@@ -61,9 +61,7 @@
         <profile>
             <id>jdk8</id>
             <activation>
-                <property>
-                    <name>jdk8</name>
-                </property>
+                <jdk>8</jdk>
             </activation>
             <build>
                 <plugins>
@@ -76,7 +74,7 @@
                                 <!--I myself don't use jdk 8 anymore, and don't care about writing a jdk8 version of these classes now.-->
                                 <!--If anyone want implement it you can do it yourself.-->
                                 <exclude>
-                                    **/com/xenoamess/commonx/java/util/concurrent/atomic/**
+                                    com/xenoamess/commonx/java/util/concurrent/atomic/**
                                 </exclude>
                             </excludes>
                         </configuration>
