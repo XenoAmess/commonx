@@ -110,6 +110,15 @@ import java.util.function.UnaryOperator;
  */
 public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
 
+    /**
+     * <p>arraycopy.</p>
+     *
+     * @param src     an array of {@link java.lang.Object} objects.
+     * @param srcPos  a int.
+     * @param dest    an array of {@link boolean} objects.
+     * @param destPos a int.
+     * @param length  a int.
+     */
     public static void arraycopy(Object[] src, int srcPos,
                                  boolean[] dest, int destPos,
                                  int length) {
@@ -118,6 +127,15 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         }
     }
 
+    /**
+     * <p>arraycopy.</p>
+     *
+     * @param src     an array of {@link boolean} objects.
+     * @param srcPos  a int.
+     * @param dest    an array of {@link java.lang.Object} objects.
+     * @param destPos a int.
+     * @param length  a int.
+     */
     public static void arraycopy(boolean[] src, int srcPos,
                                  Object[] dest, int destPos,
                                  int length) {
@@ -1092,6 +1110,9 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * is in progress.  (This implies that the behavior of this call is
      * undefined if the specified collection is this list, and this
      * list is nonempty.)
+     *
+     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.BooleanArrayList} object.
+     * @return a boolean.
      */
     public boolean addAll(BooleanArrayList c) {
         boolean[] a = c.toArrayPrimitive();

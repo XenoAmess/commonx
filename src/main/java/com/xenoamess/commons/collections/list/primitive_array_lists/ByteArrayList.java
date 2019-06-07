@@ -110,6 +110,15 @@ import java.util.function.UnaryOperator;
  */
 public class ByteArrayList extends PrimitiveArrayList<Byte> {
 
+    /**
+     * <p>arraycopy.</p>
+     *
+     * @param src     an array of {@link java.lang.Object} objects.
+     * @param srcPos  a int.
+     * @param dest    an array of {@link byte} objects.
+     * @param destPos a int.
+     * @param length  a int.
+     */
     public static void arraycopy(Object[] src, int srcPos,
                                  byte[] dest, int destPos,
                                  int length) {
@@ -118,6 +127,15 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         }
     }
 
+    /**
+     * <p>arraycopy.</p>
+     *
+     * @param src     an array of {@link byte} objects.
+     * @param srcPos  a int.
+     * @param dest    an array of {@link java.lang.Object} objects.
+     * @param destPos a int.
+     * @param length  a int.
+     */
     public static void arraycopy(byte[] src, int srcPos,
                                  Object[] dest, int destPos,
                                  int length) {
@@ -1092,6 +1110,9 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * is in progress.  (This implies that the behavior of this call is
      * undefined if the specified collection is this list, and this
      * list is nonempty.)
+     *
+     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.ByteArrayList} object.
+     * @return a boolean.
      */
     public boolean addAll(ByteArrayList c) {
         byte[] a = c.toArrayPrimitive();

@@ -110,6 +110,15 @@ import java.util.function.UnaryOperator;
  */
 public class DoubleArrayList extends PrimitiveArrayList<Double> {
 
+    /**
+     * <p>arraycopy.</p>
+     *
+     * @param src     an array of {@link java.lang.Object} objects.
+     * @param srcPos  a int.
+     * @param dest    an array of {@link double} objects.
+     * @param destPos a int.
+     * @param length  a int.
+     */
     public static void arraycopy(Object[] src, int srcPos,
                                  double[] dest, int destPos,
                                  int length) {
@@ -118,6 +127,15 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
         }
     }
 
+    /**
+     * <p>arraycopy.</p>
+     *
+     * @param src     an array of {@link double} objects.
+     * @param srcPos  a int.
+     * @param dest    an array of {@link java.lang.Object} objects.
+     * @param destPos a int.
+     * @param length  a int.
+     */
     public static void arraycopy(double[] src, int srcPos,
                                  Object[] dest, int destPos,
                                  int length) {
@@ -1092,6 +1110,9 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      * is in progress.  (This implies that the behavior of this call is
      * undefined if the specified collection is this list, and this
      * list is nonempty.)
+     *
+     * @param c a {@link com.xenoamess.commons.collections.list.primitive_array_lists.DoubleArrayList} object.
+     * @return a boolean.
      */
     public boolean addAll(DoubleArrayList c) {
         double[] a = c.toArrayPrimitive();
