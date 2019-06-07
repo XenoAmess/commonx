@@ -72,7 +72,7 @@ public abstract class PrimitiveArrayList<E> extends AbstractList<E>
      * @param index  the index
      * @param length the upper-bound (exclusive) of the range
      * @return {@code index} if it is within bounds of the range
-     * @throws IndexOutOfBoundsException if the {@code index} is out of bounds
+     * @throws java.lang.IndexOutOfBoundsException if the {@code index} is out of bounds
      * @see java.util.Objects#checkIndex(int index, int length);
      * @since 8
      */
@@ -84,6 +84,8 @@ public abstract class PrimitiveArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * A totally copy of AbstractList.subListRangeCheck(int fromIndex, int toIndex, int size)
      * I just cannot understand why they choose to make it package private, so I have to copy it.
      * But anyway, they might have their reasons.

@@ -26,7 +26,6 @@
 package com.xenoamess.commons.collections.list.primitive_array_lists;
 
 import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
 /**
  * An iterator for lists that allows the programmer
@@ -72,9 +71,6 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      * or intermixed with calls to {@link #previous} to go back and forth.
      * (Note that alternating calls to {@code next} and {@code previous}
      * will return the same element repeatedly.)
-     *
-     * @return the next element in the list
-     * @throws NoSuchElementException if the iteration has no next element
      */
     @Override
     default Double next() {
@@ -82,6 +78,8 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code DoubleListIterator.next()}
      *
      * @see DoubleListIterator#next()

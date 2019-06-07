@@ -778,7 +778,8 @@ public class Arraysx {
      * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * @param a the array to be sorted
+     * @param a   the array to be sorted
+     * @param <T> component type of the array to be sorted.
      * @return the original array
      * @throws java.lang.ClassCastException       if the array contains elements that are not
      *                                            <i>mutually comparable</i> (for example, strings and integers)
@@ -822,6 +823,7 @@ public class Arraysx {
      * @param fromIndex the index of the first element (inclusive) to be
      *                  sorted
      * @param toIndex   the index of the last element (exclusive) to be sorted
+     * @param <T>       a T object.
      * @return the original array
      * @throws java.lang.IllegalArgumentException       if {@code fromIndex > toIndex} or
      *                                                  (optional) if the natural ordering of the array elements is
@@ -1639,7 +1641,7 @@ public class Arraysx {
      *
      * @param a   the array to be filled
      * @param val the value to be stored in all elements of the array
-     * @param <T> a T object.
+     * @param <T> component type of the array to be filled.
      * @return the original array
      * @throws java.lang.ArrayStoreException if the specified value is not of a
      *                                       runtime type that can be stored in the specified array
