@@ -69,6 +69,22 @@ public class GeneratePrimitivesFromDouble {
             while ((line = bufIn.readLine()) != null) {
                 line = line.replaceAll(sourceString, replaceString);
                 line = line.replaceAll(sourceStringL, replaceStringL);
+                line = line.replaceAll("CharacterArrayList", "CharArrayList");
+                line = line.replaceAll("CharacterIterator", "CharIterator");
+                line = line.replaceAll("CharacterListIterator", "CharListIterator");
+                line = line.replaceAll(".readCharacter\\(", ".readChar(");
+                line = line.replaceAll(".writeCharacter\\(", ".writeChar(");
+                line = line.replaceAll("CharacterComparator", "CharComparator");
+                line = line.replaceAll("CharacterTimSort", "CharTimSort");
+
+                line = line.replaceAll("IntegerArrayList", "IntArrayList");
+                line = line.replaceAll("IntegerIterator", "IntIterator");
+                line = line.replaceAll("IntegerListIterator", "IntListIterator");
+                line = line.replaceAll(".readInteger\\(", ".readInt(");
+                line = line.replaceAll(".writeInteger\\(", ".writeInt(");
+                line = line.replaceAll("IntegerComparator", "IntComparator");
+                line = line.replaceAll("IntegerTimSort", "IntTimSort");
+
                 tempStream.write(line);
                 tempStream.append(System.getProperty("line.separator"));
             }

@@ -80,8 +80,8 @@ import java.util.function.UnaryOperator;
  * if the list is structurally modified at any time after the iterator is
  * created, in any way except through the iterator's own
  * {@link com.xenoamess.commons.collections.list.primitive_array_lists.LongListIterator#remove() remove} or
- * {@link com.xenoamess.commons.collections.list.primitive_array_lists.LongListIterator#add(Object) add} methods, the
- * iterator will throw a
+ * {@link com.xenoamess.commons.collections.list.primitive_array_lists.LongListIterator#add(Object) add} methods,
+ * the iterator will throw a
  * {@link java.util.ConcurrentModificationException}.  Thus, in the face of
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
@@ -109,6 +109,23 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class LongArrayList extends PrimitiveArrayList<Long> {
+
+    public static void arraycopy(Object[] src, int srcPos,
+                                 long[] dest, int destPos,
+                                 int length) {
+        for (int i = srcPos, j = destPos, limit = i + length; i < limit; i++, j++) {
+            dest[j] = (Long) src[i];
+        }
+    }
+
+    public static void arraycopy(long[] src, int srcPos,
+                                 Object[] dest, int destPos,
+                                 int length) {
+        for (int i = srcPos, j = destPos, limit = i + length; i < limit; i++, j++) {
+            dest[j] = src[i];
+        }
+    }
+
     /**
      * Shared empty array instance used for empty instances.
      */
@@ -637,7 +654,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             // Make a new array of a's runtime type, but my contents:
             return (T[]) ArrayUtils.toObject(elementData);
         }
-        System.arraycopy(ArrayUtils.toObject(elementData), 0, a, 0, size);
+        LongArrayList.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
             a[size] = null;
         }
@@ -1045,7 +1062,39 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      */
     @Override
     public boolean addAll(Collection<? extends Long> c) {
+        if (c instanceof LongArrayList) {
+            return this.addAll((LongArrayList) c);
+        }
         Object[] a = c.toArray();
+        modCount++;
+        int numNew = a.length;
+        if (numNew == 0) {
+            return false;
+        }
+        long[] elementData;
+        final int s;
+        if (numNew > (elementData = this.elementData).length - (s = size)) {
+            elementData = grow(s + numNew);
+        }
+
+        LongArrayList.arraycopy(a, 0, elementData, s, numNew);
+        size = s + numNew;
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Appends all of the elements in the specified collection to the end of
+     * this list, in the order that they are returned by the
+     * specified collection's Iterator.  The behavior of this operation is
+     * undefined if the specified collection is modified while the operation
+     * is in progress.  (This implies that the behavior of this call is
+     * undefined if the specified collection is this list, and this
+     * list is nonempty.)
+     */
+    public boolean addAll(LongArrayList c) {
+        long[] a = c.toArrayPrimitive();
         modCount++;
         int numNew = a.length;
         if (numNew == 0) {
@@ -1060,6 +1109,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         size = s + numNew;
         return true;
     }
+
 
     /**
      * {@inheritDoc}
@@ -1093,7 +1143,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
                     elementData, index + numNew,
                     numMoved);
         }
-        System.arraycopy(a, 0, elementData, index, numNew);
+        LongArrayList.arraycopy(a, 0, elementData, index, numNew);
         size = s + numNew;
         return true;
     }
@@ -1707,7 +1757,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             if (a.length < size) {
                 return (T[]) ArrayUtils.toObject(Arrays.copyOfRange(root.elementData, offset, offset + size));
             }
-            System.arraycopy(ArrayUtils.toObject(root.elementData), offset, a, 0, size);
+            LongArrayList.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
                 a[size] = null;
             }
