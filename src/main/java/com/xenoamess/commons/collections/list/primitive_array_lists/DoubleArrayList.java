@@ -1127,17 +1127,17 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * @param c DoubleArrayList containing elements to be added to this list
      * @return {@code true} if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the {@code addAll} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of the specified
-     *                                       collection prevents it from being added to this list
-     * @throws NullPointerException          if the specified collection contains one
-     *                                       or more null elements and this list does not permit null
-     *                                       elements, or if the specified collection is null
-     * @throws IllegalArgumentException      if some property of an element of the
-     *                                       specified collection prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      */
     public boolean addAll(DoubleArrayList c) {
         final double[] a = c.getElementData();
@@ -1167,17 +1167,17 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *
      * @param doubleArray collection containing elements to be added to this list
      * @return {@code true} if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the {@code addAll} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of the specified
-     *                                       collection prevents it from being added to this list
-     * @throws NullPointerException          if the specified collection contains one
-     *                                       or more null elements and this list does not permit null
-     *                                       elements, or if the specified collection is null
-     * @throws IllegalArgumentException      if some property of an element of the
-     *                                       specified collection prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      */
     public boolean addAll(double[] doubleArray) {
         return this.addAll(new DoubleArrayList(doubleArray));
@@ -1235,17 +1235,17 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *              specified collection
      * @param c     DoubleArrayList containing elements to be added to this list
      * @return {@code true} if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the {@code addAll} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of the specified
-     *                                       collection prevents it from being added to this list
-     * @throws NullPointerException          if the specified collection contains one
-     *                                       or more null elements and this list does not permit null
-     *                                       elements, or if the specified collection is null
-     * @throws IllegalArgumentException      if some property of an element of the
-     *                                       specified collection prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      */
     public boolean addAll(int index, DoubleArrayList c) {
         rangeCheckForAdd(index);
@@ -1284,17 +1284,17 @@ public class DoubleArrayList extends PrimitiveArrayList<Double> {
      *              specified collection
      * @param c     double[] containing elements to be added to this list
      * @return {@code true} if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the {@code addAll} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of the specified
-     *                                       collection prevents it from being added to this list
-     * @throws NullPointerException          if the specified collection contains one
-     *                                       or more null elements and this list does not permit null
-     *                                       elements, or if the specified collection is null
-     * @throws IllegalArgumentException      if some property of an element of the
-     *                                       specified collection prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of an element of the specified
+     *                                                 collection prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified collection contains one
+     *                                                 or more null elements and this list does not permit null
+     *                                                 elements, or if the specified collection is null
+     * @throws java.lang.IllegalArgumentException      if some property of an element of the
+     *                                                 specified collection prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      */
     public boolean addAll(int index, double[] c) {
         return this.addAll(index, new DoubleArrayList(c));

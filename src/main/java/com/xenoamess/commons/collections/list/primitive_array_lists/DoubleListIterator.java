@@ -99,12 +99,18 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
 
     // Modification Operations
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     default Double previous() {
         return this.previousPrimitive();
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     default void set(Double e) {
         setPrimitive(e);
@@ -129,6 +135,9 @@ public interface DoubleListIterator extends DoubleIterator, ListIterator<Double>
      */
     void setPrimitive(double e);
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     default void add(Double e) {
         addPrimitive(e);
