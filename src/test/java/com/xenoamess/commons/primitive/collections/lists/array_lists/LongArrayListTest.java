@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -13,13 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LongArrayListTest {
 
     public void checkEqual(LongArrayList a1, ArrayList<Long> a2) {
-        assertTrue(a1.size() == a2.size());
+        assertEquals(a1.size(), a2.size());
         for (int i = 0; i < a1.size(); i++) {
-            assertTrue(a1.get(i).equals(a2.get(i)));
-            assertTrue(a1.getPrimitive(i) == a2.get(i));
+            assertEquals(a1.get(i), a2.get(i));
+            assertEquals(a1.getPrimitive(i), (long) a2.get(i));
         }
-        assertTrue(a1.equals(a2));
-        assertTrue(a2.equals(a1));
+        assertEquals(a1, a2);
+        assertEquals(a2, a1);
     }
 
     public void check(int length) {
@@ -77,7 +78,7 @@ public class LongArrayListTest {
         System.out.println("LongArrayList score : " + score1);
 
         long begin2 = System.nanoTime();
-        ArrayList<Long> a2 = new ArrayList<Long>();
+        ArrayList<Long> a2 = new ArrayList<>();
         for (int i = 0; i < a1.size(); i++) {
             a2.add(data.getPrimitive(i));
         }

@@ -344,8 +344,7 @@ public interface BooleanSpliterator extends Spliterator<Boolean>, Primitive {
      *                   {@link Spliterator.OfInt} for {@code Integer}.
      * @since 1.8
      */
-    interface BooleanOfPrimitive<T_CONS, T_SPLITR extends BooleanSpliterator.BooleanOfPrimitive<T_CONS,
-            T_SPLITR>>
+    interface BooleanOfPrimitive<T_CONS, T_SPLITR extends BooleanSpliterator.BooleanOfPrimitive<T_CONS, T_SPLITR>>
             extends BooleanSpliterator, Spliterator.OfPrimitive<Boolean, T_CONS, T_SPLITR> {
         @Override
         T_SPLITR trySplit();

@@ -70,40 +70,45 @@ public class GeneratePrimitivesFromDouble {
                 line = line.replaceAll(sourceString, replaceString);
                 line = line.replaceAll(sourceStringL, replaceStringL);
                 line = line.replaceAll(sourceStringL.toUpperCase(), replaceStringL.toUpperCase());
-                if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("char")) {
-                    line = line.replaceAll("CharacterArrayList", "CharArrayList");
-                    line = line.replaceAll("CharacterIterator", "CharIterator");
-                    line = line.replaceAll("CharacterListIterator", "CharListIterator");
-                    line = line.replaceAll(".readCharacter\\(", ".readChar(");
-                    line = line.replaceAll(".writeCharacter\\(", ".writeChar(");
-                    line = line.replaceAll("CharacterComparator", "CharComparator");
-                    line = line.replaceAll("CharacterTimSort", "CharTimSort");
-                    line = line.replaceAll("CharacterSpliterators", "CharSpliterators");
-                    line = line.replaceAll("CharacterConsumer", "CharConsumer");
-                    line = line.replaceAll("CharacterCollection", "CharCollection");
-                    line = line.replaceAll("CharacterIterable", "CharIterable");
-                    line = line.replaceAll("CharacterList", "CharList");
-                    for (char chr = 'A'; chr <= 'Z'; chr++) {
-                        line = line.replaceAll("Character" + chr, "Char" + chr);
-                    }
-                } else if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("int")) {
-                    line = line.replaceAll("IntegerArrayList", "IntArrayList");
-                    line = line.replaceAll("IntegerIterator", "IntIterator");
-                    line = line.replaceAll("IntegerListIterator", "IntListIterator");
-                    line = line.replaceAll(".readInteger\\(", ".readInt(");
-                    line = line.replaceAll(".writeInteger\\(", ".writeInt(");
-                    line = line.replaceAll("IntegerComparator", "IntComparator");
-                    line = line.replaceAll("IntegerTimSort", "IntTimSort");
-                    line = line.replaceAll("IntegerSpliterators", "IntSpliterators");
-                    line = line.replaceAll("IntegerConsumer", "IntConsumer");
-                    line = line.replaceAll("IntegerCollection", "IntCollection");
-                    line = line.replaceAll("IntegerIterable", "IntIterable");
-                    line = line.replaceAll("IntegerList", "IntList");
-                    for (char chr = 'A'; chr <= 'Z'; chr++) {
-                        line = line.replaceAll("Integer" + chr, "Int" + chr);
-                    }
-                } else if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("boolean")) {
-                    line = line.replaceAll("] = 0;", "] = false;");
+                switch (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex]) {
+                    case "char":
+//                        line = line.replaceAll("CharacterArrayList", "CharArrayList");
+//                        line = line.replaceAll("CharacterIterator", "CharIterator");
+//                        line = line.replaceAll("CharacterListIterator", "CharListIterator");
+                        line = line.replaceAll(".readCharacter\\(", ".readChar(");
+                        line = line.replaceAll(".writeCharacter\\(", ".writeChar(");
+//                        line = line.replaceAll("CharacterComparator", "CharComparator");
+//                        line = line.replaceAll("CharacterTimSort", "CharTimSort");
+//                        line = line.replaceAll("CharacterSpliterators", "CharSpliterators");
+//                        line = line.replaceAll("CharacterConsumer", "CharConsumer");
+//                        line = line.replaceAll("CharacterCollection", "CharCollection");
+//                        line = line.replaceAll("CharacterIterable", "CharIterable");
+//                        line = line.replaceAll("CharacterList", "CharList");
+                        line = line.replaceAll("(Character)([a-zA-Z])", "Char$2");
+                        line = line.replaceAll("Charistics", "Characteristics");
+
+                        break;
+                    case "int":
+//                        line = line.replaceAll("IntegerArrayList", "IntArrayList");
+//                        line = line.replaceAll("IntegerIterator", "IntIterator");
+//                        line = line.replaceAll("IntegerListIterator", "IntListIterator");
+                        line = line.replaceAll(".readInteger\\(", ".readInt(");
+                        line = line.replaceAll(".writeInteger\\(", ".writeInt(");
+//                        line = line.replaceAll("IntegerComparator", "IntComparator");
+//                        line = line.replaceAll("IntegerTimSort", "IntTimSort");
+//                        line = line.replaceAll("IntegerSpliterators", "IntSpliterators");
+//                        line = line.replaceAll("IntegerConsumer", "IntConsumer");
+//                        line = line.replaceAll("IntegerCollection", "IntCollection");
+//                        line = line.replaceAll("IntegerIterable", "IntIterable");
+//                        line = line.replaceAll("IntegerList", "IntList");
+//                        for (char chr = 'A'; chr <= 'Z'; chr++) {
+//                            line = line.replaceAll("Integer" + chr, "Int" + chr);
+//                        }
+                        line = line.replaceAll("(Integer)([a-zA-Z])", "Int$2");
+                        break;
+                    case "boolean":
+                        line = line.replaceAll("] = 0;", "] = false;");
+                        break;
                 }
 
                 tempStream.write(line);
@@ -145,14 +150,14 @@ public class GeneratePrimitivesFromDouble {
         // get the folder list
         File[] array = file.listFiles();
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].isFile()) {
-                if (array[i].toString().contains("Double")) {
-                    System.out.println(array[i].getAbsolutePath());
-                    generatePrimitivesFromFile(array[i].getAbsolutePath());
+        for (File value : array) {
+            if (value.isFile()) {
+                if (value.toString().contains("Double")) {
+                    System.out.println(value.getAbsolutePath());
+                    generatePrimitivesFromFile(value.getAbsolutePath());
                 }
-            } else if (array[i].isDirectory()) {
-                processFile(array[i].getPath());
+            } else if (value.isDirectory()) {
+                processFile(value.getPath());
             }
         }
     }

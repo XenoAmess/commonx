@@ -23,37 +23,37 @@ public class PrimitiveComparators implements Primitive {
      * comparator for increasing sort.
      */
     public static final LongComparator LONG_COMPARATOR_INCREASING = (long d1, long d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Long.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
     public static final IntComparator INT_COMPARATOR_INCREASING = (int d1, int d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Integer.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
     public static final ShortComparator SHORT_COMPARATOR_INCREASING = (short d1, short d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Short.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
     public static final CharComparator CHAR_COMPARATOR_INCREASING = (char d1, char d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Character.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
     public static final ByteComparator BYTE_COMPARATOR_INCREASING = (byte d1, byte d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Byte.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
     public static final DoubleComparator DOUBLE_COMPARATOR_INCREASING = (double d1, double d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Double.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
     public static final FloatComparator FLOAT_COMPARATOR_INCREASING = (float d1, float d2) ->
-            (d1 == d2) ? 0 : (d1 > d2 ? 1 : -1);
+            Float.compare(d1, d2);
     /**
      * comparator for increasing sort.
      */
@@ -64,38 +64,37 @@ public class PrimitiveComparators implements Primitive {
      * comparator for decreasing sort.
      */
     public static final LongComparator LONG_COMPARATOR_DECREASING = (long d1, long d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 : -1);
+            Long.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
     public static final IntComparator INT_COMPARATOR_DECREASING = (int d1, int d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 :
-                    -1);
+            Integer.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
     public static final ShortComparator SHORT_COMPARATOR_DECREASING = (short d1, short d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 : -1);
+            Short.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
     public static final CharComparator CHAR_COMPARATOR_DECREASING = (char d1, char d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 : -1);
+            Character.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
     public static final ByteComparator BYTE_COMPARATOR_DECREASING = (byte d1, byte d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 : -1);
+            Byte.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
     public static final DoubleComparator DOUBLE_COMPARATOR_DECREASING = (double d1, double d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 : -1);
+            Double.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
     public static final FloatComparator FLOAT_COMPARATOR_DECREASING = (float d1, float d2) ->
-            (d2 == d1) ? 0 : (d2 > d1 ? 1 : -1);
+            Float.compare(d2, d1);
     /**
      * comparator for decreasing sort.
      */
