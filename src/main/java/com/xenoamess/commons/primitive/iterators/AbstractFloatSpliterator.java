@@ -45,7 +45,7 @@ import com.xenoamess.commons.primitive.functions.FloatConsumer;
  *
  * <p>An alternative to using this class, that also permits limited
  * parallelism, is to create a spliterator from an iterator
- * (see {@link FloatSpliterators#spliterator(FloatIterator, long, int)}.
+ * (see {@link com.xenoamess.commons.primitive.iterators.FloatSpliterators#spliterator(FloatIterator, long, int)}.
  * Depending on the circumstances using an iterator may be easier or more
  * convenient than extending this class. For example, if there is already an
  * iterator available to use then there is no need to extend this class.

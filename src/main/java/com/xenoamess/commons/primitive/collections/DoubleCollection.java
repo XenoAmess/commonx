@@ -122,19 +122,19 @@ import java.util.stream.StreamSupport;
  * backing collection to store the actual elements. Operations that are not handled
  * by the view collection itself are delegated to the backing collection. Examples of
  * view collections include the wrapper collections returned by methods such as
- * {@link Collections#checkedCollection Collections.checkedCollection},
- * {@link Collections#synchronizedCollection Collections.synchronizedCollection}, and
- * {@link Collections#unmodifiableCollection Collections.unmodifiableCollection}.
+ * {@link java.util.Collections#checkedCollection Collections.checkedCollection},
+ * {@link java.util.Collections#synchronizedCollection Collections.synchronizedCollection}, and
+ * {@link java.util.Collections#unmodifiableCollection Collections.unmodifiableCollection}.
  * Other examples of view collections include collections that provide a
  * different representation of the same elements, for example, as
- * provided by {@link List#subList List.subList},
- * {@link NavigableSet#subSet NavigableSet.subSet}, or
- * {@link Map#entrySet Map.entrySet}.
+ * provided by {@link java.util.List#subList List.subList},
+ * {@link java.util.NavigableSet#subSet NavigableSet.subSet}, or
+ * {@link java.util.Map#entrySet Map.entrySet}.
  * Any changes made to the backing collection are visible in the view collection.
  * Correspondingly, any changes made to the view collection &mdash; if changes
  * are permitted &mdash; are written through to the backing collection.
  * Although they technically aren't collections, instances of
- * {@link Iterator} and {@link ListIterator} can also allow modifications
+ * {@link java.util.Iterator} and {@link java.util.ListIterator} can also allow modifications
  * to be written through to the backing collection, and in some cases,
  * modifications to the backing collection will be visible to the Iterator
  * during iteration.
@@ -162,7 +162,7 @@ import java.util.stream.StreamSupport;
  * modified by calling any methods on it. For a collection to be properly
  * unmodifiable, any view collections derived from it must also be unmodifiable.
  * For example, if a List is unmodifiable, the List returned by
- * {@link List#subList List.subList} is also unmodifiable.
+ * {@link java.util.List#subList List.subList} is also unmodifiable.
  *
  * <p>An unmodifiable collection is not necessarily immutable. If the
  * contained elements are mutable, the entire collection is clearly
@@ -184,8 +184,8 @@ import java.util.stream.StreamSupport;
  * an internal collection, while preventing them from modifying such
  * collections unexpectedly. Examples of unmodifiable view collections
  * are those returned by the
- * {@link Collections#unmodifiableCollection Collections.unmodifiableCollection},
- * {@link Collections#unmodifiableList Collections.unmodifiableList}, and
+ * {@link java.util.Collections#unmodifiableCollection Collections.unmodifiableCollection},
+ * {@link java.util.Collections#unmodifiableList Collections.unmodifiableList}, and
  * related methods.
  *
  * <p>Note that changes to the backing collection might still be possible,
@@ -453,7 +453,7 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
      *
      * @implSpec The default implementation traverses all elements of the collection using
      * its {@link #iterator}.  Each matching element is removed using
-     * {@link Iterator#remove()}.  If the collection's iterator does not
+     * {@link java.util.Iterator#remove()}.  If the collection's iterator does not
      * support removal then an {@code UnsupportedOperationException} will be
      * thrown on the first matching element.
      * @since 1.8
@@ -519,15 +519,15 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
      * from the collection's {@code Iterator}.  The spliterator inherits the
      * <em>fail-fast</em> properties of the collection's iterator.
      * <p>
-     * The created {@code Spliterator} reports {@link Spliterator#SIZED}.
+     * The created {@code Spliterator} reports {@link java.util.Spliterator#SIZED}.
      * @implNote The created {@code Spliterator} additionally reports
-     * {@link Spliterator#SUBSIZED}.
+     * {@link java.util.Spliterator#SUBSIZED}.
      *
      * <p>If a spliterator covers no elements then the reporting of additional
      * characteristic values, beyond that of {@code SIZED} and {@code SUBSIZED},
      * does not aid clients to control, specialize or simplify computation.
      * However, this does enable shared use of an immutable and empty
-     * spliterator instance (see {@link Spliterators#emptySpliterator()}) for
+     * spliterator instance (see {@link java.util.Spliterators#emptySpliterator()}) for
      * empty collections, and enables clients to determine if such a spliterator
      * covers no elements.
      * @since 1.8

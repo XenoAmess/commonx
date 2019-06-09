@@ -126,9 +126,6 @@ import java.util.function.Consumer;
  * are encountered.
  *
  * @author XenoAmess
- * @author XenoAmess
- * @author XenoAmess
- * @author XenoAmess
  * @version 0.8.0
  * @apiNote <p>Spliterators, like {@code Iterator}s, are for traversing the elements of
  * a source.  The {@code Spliterator} API was designed to support efficient

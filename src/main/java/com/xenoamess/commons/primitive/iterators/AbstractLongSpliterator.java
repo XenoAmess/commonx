@@ -45,7 +45,7 @@ import com.xenoamess.commons.primitive.functions.LongConsumer;
  *
  * <p>An alternative to using this class, that also permits limited
  * parallelism, is to create a spliterator from an iterator
- * (see {@link LongSpliterators#spliterator(LongIterator, long, int)}.
+ * (see {@link com.xenoamess.commons.primitive.iterators.LongSpliterators#spliterator(LongIterator, long, int)}.
  * Depending on the circumstances using an iterator may be easier or more
  * convenient than extending this class. For example, if there is already an
  * iterator available to use then there is no need to extend this class.
