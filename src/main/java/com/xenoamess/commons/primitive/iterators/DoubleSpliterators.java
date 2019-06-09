@@ -22,6 +22,7 @@
  * or visit www.oracle.com if you need additional information or have any
  * questions.
  */
+
 package com.xenoamess.commons.primitive.iterators;
 
 import com.xenoamess.commons.primitive.Primitive;
