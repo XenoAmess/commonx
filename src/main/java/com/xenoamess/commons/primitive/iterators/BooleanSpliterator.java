@@ -344,7 +344,7 @@ public interface BooleanSpliterator extends Spliterator<Boolean>, Primitive {
      *                   {@link Spliterator.OfInt} for {@code Integer}.
      * @since 1.8
      */
-    public interface BooleanOfPrimitive<T_CONS, T_SPLITR extends BooleanSpliterator.BooleanOfPrimitive<T_CONS,
+    interface BooleanOfPrimitive<T_CONS, T_SPLITR extends BooleanSpliterator.BooleanOfPrimitive<T_CONS,
             T_SPLITR>>
             extends BooleanSpliterator, Spliterator.OfPrimitive<Boolean, T_CONS, T_SPLITR> {
         @Override
@@ -392,7 +392,7 @@ public interface BooleanSpliterator extends Spliterator<Boolean>, Primitive {
      *
      * @since 1.8
      */
-    public interface BooleanOfBoolean
+    interface BooleanOfBoolean
             extends BooleanSpliterator.BooleanOfPrimitive
             <BooleanConsumer, BooleanSpliterator.BooleanOfBoolean> {
 
@@ -427,7 +427,7 @@ public interface BooleanSpliterator extends Spliterator<Boolean>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfBoolean.tryAdvance((BooleanConsumer) action::accept)");
 //                }
-                return tryAdvance((BooleanConsumer) action::accept);
+                return tryAdvance(action::accept);
             }
         }
 
@@ -451,7 +451,7 @@ public interface BooleanSpliterator extends Spliterator<Boolean>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfBoolean.forEachRemaining((BooleanConsumer) action::accept)");
 //                }
-                forEachRemaining((BooleanConsumer) action::accept);
+                forEachRemaining(action::accept);
             }
         }
     }

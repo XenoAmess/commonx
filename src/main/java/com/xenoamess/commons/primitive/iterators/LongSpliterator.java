@@ -344,7 +344,7 @@ public interface LongSpliterator extends Spliterator<Long>, Primitive {
      *                   {@link Spliterator.OfInt} for {@code Integer}.
      * @since 1.8
      */
-    public interface LongOfPrimitive<T_CONS, T_SPLITR extends LongSpliterator.LongOfPrimitive<T_CONS, T_SPLITR>>
+    interface LongOfPrimitive<T_CONS, T_SPLITR extends LongSpliterator.LongOfPrimitive<T_CONS, T_SPLITR>>
             extends LongSpliterator, Spliterator.OfPrimitive<Long, T_CONS, T_SPLITR> {
         @Override
         T_SPLITR trySplit();
@@ -391,7 +391,7 @@ public interface LongSpliterator extends Spliterator<Long>, Primitive {
      *
      * @since 1.8
      */
-    public interface LongOfLong
+    interface LongOfLong
             extends LongSpliterator.LongOfPrimitive
             <LongConsumer, LongSpliterator.LongOfLong> {
 
@@ -426,7 +426,7 @@ public interface LongSpliterator extends Spliterator<Long>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfLong.tryAdvance((LongConsumer) action::accept)");
 //                }
-                return tryAdvance((LongConsumer) action::accept);
+                return tryAdvance(action::accept);
             }
         }
 
@@ -450,7 +450,7 @@ public interface LongSpliterator extends Spliterator<Long>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfLong.forEachRemaining((LongConsumer) action::accept)");
 //                }
-                forEachRemaining((LongConsumer) action::accept);
+                forEachRemaining(action::accept);
             }
         }
     }

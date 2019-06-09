@@ -344,7 +344,7 @@ public interface CharSpliterator extends Spliterator<Character>, Primitive {
      *                   {@link Spliterator.OfInt} for {@code Integer}.
      * @since 1.8
      */
-    public interface CharOfPrimitive<T_CONS, T_SPLITR extends CharSpliterator.CharOfPrimitive<T_CONS, T_SPLITR>>
+    interface CharOfPrimitive<T_CONS, T_SPLITR extends CharSpliterator.CharOfPrimitive<T_CONS, T_SPLITR>>
             extends CharSpliterator, Spliterator.OfPrimitive<Character, T_CONS, T_SPLITR> {
         @Override
         T_SPLITR trySplit();
@@ -391,7 +391,7 @@ public interface CharSpliterator extends Spliterator<Character>, Primitive {
      *
      * @since 1.8
      */
-    public interface CharOfCharacter
+    interface CharOfCharacter
             extends CharSpliterator.CharOfPrimitive
             <CharConsumer, CharSpliterator.CharOfCharacter> {
 
@@ -426,7 +426,7 @@ public interface CharSpliterator extends Spliterator<Character>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfCharacter.tryAdvance((CharConsumer) action::accept)");
 //                }
-                return tryAdvance((CharConsumer) action::accept);
+                return tryAdvance(action::accept);
             }
         }
 
@@ -450,7 +450,7 @@ public interface CharSpliterator extends Spliterator<Character>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfCharacter.forEachRemaining((CharConsumer) action::accept)");
 //                }
-                forEachRemaining((CharConsumer) action::accept);
+                forEachRemaining(action::accept);
             }
         }
     }

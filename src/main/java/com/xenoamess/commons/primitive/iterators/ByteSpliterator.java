@@ -344,7 +344,7 @@ public interface ByteSpliterator extends Spliterator<Byte>, Primitive {
      *                   {@link Spliterator.OfInt} for {@code Integer}.
      * @since 1.8
      */
-    public interface ByteOfPrimitive<T_CONS, T_SPLITR extends ByteSpliterator.ByteOfPrimitive<T_CONS, T_SPLITR>>
+    interface ByteOfPrimitive<T_CONS, T_SPLITR extends ByteSpliterator.ByteOfPrimitive<T_CONS, T_SPLITR>>
             extends ByteSpliterator, Spliterator.OfPrimitive<Byte, T_CONS, T_SPLITR> {
         @Override
         T_SPLITR trySplit();
@@ -391,7 +391,7 @@ public interface ByteSpliterator extends Spliterator<Byte>, Primitive {
      *
      * @since 1.8
      */
-    public interface ByteOfByte
+    interface ByteOfByte
             extends ByteSpliterator.ByteOfPrimitive
             <ByteConsumer, ByteSpliterator.ByteOfByte> {
 
@@ -426,7 +426,7 @@ public interface ByteSpliterator extends Spliterator<Byte>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfByte.tryAdvance((ByteConsumer) action::accept)");
 //                }
-                return tryAdvance((ByteConsumer) action::accept);
+                return tryAdvance(action::accept);
             }
         }
 
@@ -450,7 +450,7 @@ public interface ByteSpliterator extends Spliterator<Byte>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfByte.forEachRemaining((ByteConsumer) action::accept)");
 //                }
-                forEachRemaining((ByteConsumer) action::accept);
+                forEachRemaining(action::accept);
             }
         }
     }

@@ -344,7 +344,7 @@ public interface IntSpliterator extends Spliterator<Integer>, Primitive {
      *                   {@link Spliterator.OfInt} for {@code Integer}.
      * @since 1.8
      */
-    public interface IntOfPrimitive<T_CONS, T_SPLITR extends IntSpliterator.IntOfPrimitive<T_CONS, T_SPLITR>>
+    interface IntOfPrimitive<T_CONS, T_SPLITR extends IntSpliterator.IntOfPrimitive<T_CONS, T_SPLITR>>
             extends IntSpliterator, Spliterator.OfPrimitive<Integer, T_CONS, T_SPLITR> {
         @Override
         T_SPLITR trySplit();
@@ -391,7 +391,7 @@ public interface IntSpliterator extends Spliterator<Integer>, Primitive {
      *
      * @since 1.8
      */
-    public interface IntOfInteger
+    interface IntOfInteger
             extends IntSpliterator.IntOfPrimitive
             <IntConsumer, IntSpliterator.IntOfInteger> {
 
@@ -426,7 +426,7 @@ public interface IntSpliterator extends Spliterator<Integer>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfInteger.tryAdvance((IntConsumer) action::accept)");
 //                }
-                return tryAdvance((IntConsumer) action::accept);
+                return tryAdvance(action::accept);
             }
         }
 
@@ -450,7 +450,7 @@ public interface IntSpliterator extends Spliterator<Integer>, Primitive {
 //                    Tripwire.trip(getClass(),
 //                            "{0} calling Spliterator.OfInteger.forEachRemaining((IntConsumer) action::accept)");
 //                }
-                forEachRemaining((IntConsumer) action::accept);
+                forEachRemaining(action::accept);
             }
         }
     }
