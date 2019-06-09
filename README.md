@@ -33,5 +33,11 @@ I will point codes that from others and obey their licenses.
 brief introduction 
 ----------
 
-In short this library are 
+In short this library are composed by two parts:
+
+##commons: 
+some commonly used classes / utils.
+
+##commonx: 
+extensions of some libraries / utility of some java core classes.
 
