@@ -205,7 +205,7 @@ public class FloatArrayList extends AbstractFloatList
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param floatArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty     if we will create a full FloatArrayList.
+     * @param ifEmpty    if we will create a full FloatArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public FloatArrayList(float[] floatArray, boolean ifEmpty) {

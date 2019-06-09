@@ -843,7 +843,8 @@
 //        }
 //        threshold = newThr;
 //        @SuppressWarnings({"rawtypes", "unchecked"})
-//        BooleanHashMap.BooleanNode<V>[] newTab = (BooleanHashMap.BooleanNode<V>[]) new BooleanHashMap.BooleanNode[newCap];
+//        BooleanHashMap.BooleanNode<V>[] newTab = (BooleanHashMap.BooleanNode<V>[]) new BooleanHashMap
+//        .BooleanNode[newCap];
 //        table = newTab;
 //        if (oldTab != null) {
 //            for (int j = 0; j < oldCap; ++j) {
@@ -2149,12 +2150,14 @@
 //    }
 //
 //    // For conversion from TreeNodes to plain nodes
-//    BooleanHashMap.BooleanNode<V> replacementNode(BooleanHashMap.BooleanNode<V> p, BooleanHashMap.BooleanNode<V> next) {
+//    BooleanHashMap.BooleanNode<V> replacementNode(BooleanHashMap.BooleanNode<V> p, BooleanHashMap.BooleanNode<V>
+//    next) {
 //        return new BooleanHashMap.Node<>(p.hash, p.key, p.value, next);
 //    }
 //
 //    // Create a tree bin node
-//    BooleanHashMap.BooleanTreeNode<V> newTreeNode(int hash, Boolean key, V value, BooleanHashMap.BooleanNode<V> next) {
+//    BooleanHashMap.BooleanTreeNode<V> newTreeNode(int hash, Boolean key, V value, BooleanHashMap.BooleanNode<V>
+//    next) {
 //        return new BooleanHashMap.BooleanTreeNode<>(hash, key, value, next);
 //    }
 //
@@ -2454,7 +2457,8 @@
 //                return;
 //            }
 //            int index = (n - 1) & hash;
-//            BooleanHashMap.BooleanTreeNode<V> first = (BooleanHashMap.BooleanTreeNode<V>) tab[index], root = first, rl;
+//            BooleanHashMap.BooleanTreeNode<V> first = (BooleanHashMap.BooleanTreeNode<V>) tab[index], root = first,
+//            rl;
 //            BooleanHashMap.BooleanTreeNode<V> succ = (BooleanHashMap.BooleanTreeNode<V>) next, pred = prev;
 //            if (pred == null) {
 //                tab[index] = first = succ;

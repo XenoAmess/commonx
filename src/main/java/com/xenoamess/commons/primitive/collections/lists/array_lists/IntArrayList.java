@@ -205,7 +205,7 @@ public class IntArrayList extends AbstractIntList
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param intArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty     if we will create a full IntArrayList.
+     * @param ifEmpty  if we will create a full IntArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public IntArrayList(int[] intArray, boolean ifEmpty) {

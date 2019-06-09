@@ -803,7 +803,7 @@ public abstract class AbstractIntList extends AbstractList<Integer> implements A
          * Create new spliterator covering the given  range
          */
         private IntRandomAccessSpliterator(AbstractIntList.IntRandomAccessSpliterator parent,
-                                              int origin, int fence) {
+                                           int origin, int fence) {
             this.list = parent.list;
             this.index = origin;
             this.fence = fence;
@@ -1098,7 +1098,7 @@ public abstract class AbstractIntList extends AbstractList<Integer> implements A
          * not a RandomAccessSubList itself.
          */
         IntRandomAccessSubList(AbstractIntList root,
-                                  int fromIndex, int toIndex) {
+                               int fromIndex, int toIndex) {
             super(root, fromIndex, toIndex);
         }
 
@@ -1106,7 +1106,7 @@ public abstract class AbstractIntList extends AbstractList<Integer> implements A
          * Constructs a sublist of another RandomAccessSubList.
          */
         IntRandomAccessSubList(AbstractIntList.IntRandomAccessSubList parent,
-                                  int fromIndex, int toIndex) {
+                               int fromIndex, int toIndex) {
             super(parent, fromIndex, toIndex);
         }
 

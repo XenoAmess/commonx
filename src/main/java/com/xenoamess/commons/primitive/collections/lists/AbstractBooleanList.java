@@ -14,7 +14,8 @@ import java.util.function.Consumer;
 /**
  * @author XenoAmess
  */
-public abstract class AbstractBooleanList extends AbstractList<Boolean> implements AbstractBooleanCollection, BooleanList
+public abstract class AbstractBooleanList extends AbstractList<Boolean> implements AbstractBooleanCollection,
+        BooleanList
         , Primitive {
     /**
      * Sole constructor.  (For invocation by subclass constructors, typically
@@ -803,7 +804,7 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
          * Create new spliterator covering the given  range
          */
         private BooleanRandomAccessSpliterator(AbstractBooleanList.BooleanRandomAccessSpliterator parent,
-                                              int origin, int fence) {
+                                               int origin, int fence) {
             this.list = parent.list;
             this.index = origin;
             this.fence = fence;
@@ -1098,7 +1099,7 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
          * not a RandomAccessSubList itself.
          */
         BooleanRandomAccessSubList(AbstractBooleanList root,
-                                  int fromIndex, int toIndex) {
+                                   int fromIndex, int toIndex) {
             super(root, fromIndex, toIndex);
         }
 
@@ -1106,7 +1107,7 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
          * Constructs a sublist of another RandomAccessSubList.
          */
         BooleanRandomAccessSubList(AbstractBooleanList.BooleanRandomAccessSubList parent,
-                                  int fromIndex, int toIndex) {
+                                   int fromIndex, int toIndex) {
             super(parent, fromIndex, toIndex);
         }
 

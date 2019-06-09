@@ -205,7 +205,7 @@ public class BooleanArrayList extends AbstractBooleanList
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param booleanArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty     if we will create a full BooleanArrayList.
+     * @param ifEmpty      if we will create a full BooleanArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public BooleanArrayList(boolean[] booleanArray, boolean ifEmpty) {

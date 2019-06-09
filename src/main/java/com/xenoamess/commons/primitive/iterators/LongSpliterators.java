@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.LongCollection;
 import com.xenoamess.commons.primitive.functions.LongConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
@@ -150,7 +153,7 @@ public final class LongSpliterators implements Primitive {
      * @see Arrays#spliterator(long[])
      */
     public static LongSpliterator.LongOfLong spliterator(long[] array,
-                                                               int additionalCharacteristics) {
+                                                         int additionalCharacteristics) {
         return new LongArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics);
     }
 
@@ -187,7 +190,7 @@ public final class LongSpliterators implements Primitive {
      * @see Arrays#spliterator(long[], int, int)
      */
     public static LongSpliterator.LongOfLong spliterator(long[] array, int fromIndex, int toIndex,
-                                                               int additionalCharacteristics) {
+                                                         int additionalCharacteristics) {
         checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex);
         return new LongArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics);
     }
@@ -236,7 +239,7 @@ public final class LongSpliterators implements Primitive {
      * @throws NullPointerException if the given collection is {@code null}
      */
     public static LongSpliterator spliterator(LongCollection c,
-                                                int characteristics) {
+                                              int characteristics) {
         return new LongIteratorSpliterator(Objects.requireNonNull(c),
                 characteristics);
     }
@@ -324,8 +327,8 @@ public final class LongSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static LongSpliterator.LongOfLong spliterator(LongIterator iterator,
-                                                               long size,
-                                                               int characteristics) {
+                                                         long size,
+                                                         int characteristics) {
         return new LongIteratorSpliterator(Objects.requireNonNull(iterator),
                 size, characteristics);
     }
@@ -352,7 +355,7 @@ public final class LongSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static LongSpliterator.LongOfLong spliteratorUnknownSize(LongIterator iterator,
-                                                                          int characteristics) {
+                                                                    int characteristics) {
         return new LongIteratorSpliterator(Objects.requireNonNull(iterator), characteristics);
     }
 

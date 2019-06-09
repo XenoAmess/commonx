@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.CharCollection;
 import com.xenoamess.commons.primitive.functions.CharConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
@@ -150,7 +153,7 @@ public final class CharSpliterators implements Primitive {
      * @see Arrays#spliterator(char[])
      */
     public static CharSpliterator.CharOfCharacter spliterator(char[] array,
-                                                               int additionalCharacteristics) {
+                                                              int additionalCharacteristics) {
         return new CharArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics);
     }
 
@@ -187,7 +190,7 @@ public final class CharSpliterators implements Primitive {
      * @see Arrays#spliterator(char[], int, int)
      */
     public static CharSpliterator.CharOfCharacter spliterator(char[] array, int fromIndex, int toIndex,
-                                                               int additionalCharacteristics) {
+                                                              int additionalCharacteristics) {
         checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex);
         return new CharArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics);
     }
@@ -236,7 +239,7 @@ public final class CharSpliterators implements Primitive {
      * @throws NullPointerException if the given collection is {@code null}
      */
     public static CharSpliterator spliterator(CharCollection c,
-                                                int characteristics) {
+                                              int characteristics) {
         return new CharIteratorSpliterator(Objects.requireNonNull(c),
                 characteristics);
     }
@@ -324,8 +327,8 @@ public final class CharSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static CharSpliterator.CharOfCharacter spliterator(CharIterator iterator,
-                                                               long size,
-                                                               int characteristics) {
+                                                              long size,
+                                                              int characteristics) {
         return new CharIteratorSpliterator(Objects.requireNonNull(iterator),
                 size, characteristics);
     }
@@ -352,7 +355,7 @@ public final class CharSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static CharSpliterator.CharOfCharacter spliteratorUnknownSize(CharIterator iterator,
-                                                                          int characteristics) {
+                                                                         int characteristics) {
         return new CharIteratorSpliterator(Objects.requireNonNull(iterator), characteristics);
     }
 

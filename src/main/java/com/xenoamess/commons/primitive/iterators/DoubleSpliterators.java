@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.DoubleCollection;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of

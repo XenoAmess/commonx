@@ -205,7 +205,7 @@ public class LongArrayList extends AbstractLongList
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param longArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty     if we will create a full LongArrayList.
+     * @param ifEmpty   if we will create a full LongArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public LongArrayList(long[] longArray, boolean ifEmpty) {

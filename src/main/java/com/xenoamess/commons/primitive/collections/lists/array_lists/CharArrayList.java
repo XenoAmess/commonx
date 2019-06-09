@@ -205,7 +205,7 @@ public class CharArrayList extends AbstractCharList
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param charArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty     if we will create a full CharArrayList.
+     * @param ifEmpty   if we will create a full CharArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public CharArrayList(char[] charArray, boolean ifEmpty) {

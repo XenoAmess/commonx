@@ -43,7 +43,7 @@ public class LongRandomAccessSpliterator implements LongSpliterator {
      * Create new spliterator covering the given  range
      */
     public LongRandomAccessSpliterator(LongRandomAccessSpliterator parent,
-                                         int origin, int fence) {
+                                       int origin, int fence) {
         this.list = parent.list;
         this.index = origin;
         this.fence = fence;

@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.ByteCollection;
 import com.xenoamess.commons.primitive.functions.ByteConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
@@ -150,7 +153,7 @@ public final class ByteSpliterators implements Primitive {
      * @see Arrays#spliterator(byte[])
      */
     public static ByteSpliterator.ByteOfByte spliterator(byte[] array,
-                                                               int additionalCharacteristics) {
+                                                         int additionalCharacteristics) {
         return new ByteArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics);
     }
 
@@ -187,7 +190,7 @@ public final class ByteSpliterators implements Primitive {
      * @see Arrays#spliterator(byte[], int, int)
      */
     public static ByteSpliterator.ByteOfByte spliterator(byte[] array, int fromIndex, int toIndex,
-                                                               int additionalCharacteristics) {
+                                                         int additionalCharacteristics) {
         checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex);
         return new ByteArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics);
     }
@@ -236,7 +239,7 @@ public final class ByteSpliterators implements Primitive {
      * @throws NullPointerException if the given collection is {@code null}
      */
     public static ByteSpliterator spliterator(ByteCollection c,
-                                                int characteristics) {
+                                              int characteristics) {
         return new ByteIteratorSpliterator(Objects.requireNonNull(c),
                 characteristics);
     }
@@ -324,8 +327,8 @@ public final class ByteSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static ByteSpliterator.ByteOfByte spliterator(ByteIterator iterator,
-                                                               long size,
-                                                               int characteristics) {
+                                                         long size,
+                                                         int characteristics) {
         return new ByteIteratorSpliterator(Objects.requireNonNull(iterator),
                 size, characteristics);
     }
@@ -352,7 +355,7 @@ public final class ByteSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static ByteSpliterator.ByteOfByte spliteratorUnknownSize(ByteIterator iterator,
-                                                                          int characteristics) {
+                                                                    int characteristics) {
         return new ByteIteratorSpliterator(Objects.requireNonNull(iterator), characteristics);
     }
 

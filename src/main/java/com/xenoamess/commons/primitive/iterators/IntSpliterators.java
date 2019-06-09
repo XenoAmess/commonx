@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.IntCollection;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
@@ -150,7 +153,7 @@ public final class IntSpliterators implements Primitive {
      * @see Arrays#spliterator(int[])
      */
     public static IntSpliterator.IntOfInteger spliterator(int[] array,
-                                                               int additionalCharacteristics) {
+                                                          int additionalCharacteristics) {
         return new IntArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics);
     }
 
@@ -187,7 +190,7 @@ public final class IntSpliterators implements Primitive {
      * @see Arrays#spliterator(int[], int, int)
      */
     public static IntSpliterator.IntOfInteger spliterator(int[] array, int fromIndex, int toIndex,
-                                                               int additionalCharacteristics) {
+                                                          int additionalCharacteristics) {
         checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex);
         return new IntArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics);
     }
@@ -236,7 +239,7 @@ public final class IntSpliterators implements Primitive {
      * @throws NullPointerException if the given collection is {@code null}
      */
     public static IntSpliterator spliterator(IntCollection c,
-                                                int characteristics) {
+                                             int characteristics) {
         return new IntIteratorSpliterator(Objects.requireNonNull(c),
                 characteristics);
     }
@@ -324,8 +327,8 @@ public final class IntSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static IntSpliterator.IntOfInteger spliterator(IntIterator iterator,
-                                                               long size,
-                                                               int characteristics) {
+                                                          long size,
+                                                          int characteristics) {
         return new IntIteratorSpliterator(Objects.requireNonNull(iterator),
                 size, characteristics);
     }
@@ -352,7 +355,7 @@ public final class IntSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static IntSpliterator.IntOfInteger spliteratorUnknownSize(IntIterator iterator,
-                                                                          int characteristics) {
+                                                                     int characteristics) {
         return new IntIteratorSpliterator(Objects.requireNonNull(iterator), characteristics);
     }
 

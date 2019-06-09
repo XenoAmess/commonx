@@ -43,7 +43,7 @@ public class BooleanRandomAccessSpliterator implements BooleanSpliterator {
      * Create new spliterator covering the given  range
      */
     public BooleanRandomAccessSpliterator(BooleanRandomAccessSpliterator parent,
-                                         int origin, int fence) {
+                                          int origin, int fence) {
         this.list = parent.list;
         this.index = origin;
         this.fence = fence;

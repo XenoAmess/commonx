@@ -364,7 +364,8 @@ public interface BooleanSpliterator extends Spliterator<Boolean>, Primitive {
      * @see Spliterator.OfBoolean
      * @since 1.8
      */
-    public interface BooleanOfPrimitive<T_CONS, T_SPLITR extends BooleanSpliterator.BooleanOfPrimitive<T_CONS, T_SPLITR>>
+    public interface BooleanOfPrimitive<T_CONS, T_SPLITR extends BooleanSpliterator.BooleanOfPrimitive<T_CONS,
+            T_SPLITR>>
             extends BooleanSpliterator, Spliterator.OfPrimitive<Boolean, T_CONS, T_SPLITR> {
         @Override
         T_SPLITR trySplit();

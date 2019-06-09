@@ -205,7 +205,7 @@ public class ShortArrayList extends AbstractShortList
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param shortArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty     if we will create a full ShortArrayList.
+     * @param ifEmpty    if we will create a full ShortArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public ShortArrayList(short[] shortArray, boolean ifEmpty) {

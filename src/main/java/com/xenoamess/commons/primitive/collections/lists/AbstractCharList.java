@@ -803,7 +803,7 @@ public abstract class AbstractCharList extends AbstractList<Character> implement
          * Create new spliterator covering the given  range
          */
         private CharRandomAccessSpliterator(AbstractCharList.CharRandomAccessSpliterator parent,
-                                              int origin, int fence) {
+                                            int origin, int fence) {
             this.list = parent.list;
             this.index = origin;
             this.fence = fence;
@@ -1098,7 +1098,7 @@ public abstract class AbstractCharList extends AbstractList<Character> implement
          * not a RandomAccessSubList itself.
          */
         CharRandomAccessSubList(AbstractCharList root,
-                                  int fromIndex, int toIndex) {
+                                int fromIndex, int toIndex) {
             super(root, fromIndex, toIndex);
         }
 
@@ -1106,7 +1106,7 @@ public abstract class AbstractCharList extends AbstractList<Character> implement
          * Constructs a sublist of another RandomAccessSubList.
          */
         CharRandomAccessSubList(AbstractCharList.CharRandomAccessSubList parent,
-                                  int fromIndex, int toIndex) {
+                                int fromIndex, int toIndex) {
             super(parent, fromIndex, toIndex);
         }
 

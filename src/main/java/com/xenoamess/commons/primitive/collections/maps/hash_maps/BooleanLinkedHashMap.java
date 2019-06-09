@@ -257,7 +257,8 @@
 //        return p;
 //    }
 //
-//    BooleanHashMap.BooleanNode<V> replacementNode(BooleanHashMap.BooleanNode<V> p, BooleanHashMap.BooleanNode<V> next) {
+//    BooleanHashMap.BooleanNode<V> replacementNode(BooleanHashMap.BooleanNode<V> p, BooleanHashMap.BooleanNode<V>
+//    next) {
 //        BooleanLinkedHashMap.BooleanEntry<V> q = (BooleanLinkedHashMap.BooleanEntry<V>) p;
 //        BooleanLinkedHashMap.BooleanEntry<V> t =
 //                new BooleanLinkedHashMap.Entry<>(q.hash, q.key, q.value, next);

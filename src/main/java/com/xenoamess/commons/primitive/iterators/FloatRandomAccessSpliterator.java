@@ -43,7 +43,7 @@ public class FloatRandomAccessSpliterator implements FloatSpliterator {
      * Create new spliterator covering the given  range
      */
     public FloatRandomAccessSpliterator(FloatRandomAccessSpliterator parent,
-                                         int origin, int fence) {
+                                        int origin, int fence) {
         this.list = parent.list;
         this.index = origin;
         this.fence = fence;

@@ -803,7 +803,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
          * Create new spliterator covering the given  range
          */
         private ShortRandomAccessSpliterator(AbstractShortList.ShortRandomAccessSpliterator parent,
-                                              int origin, int fence) {
+                                             int origin, int fence) {
             this.list = parent.list;
             this.index = origin;
             this.fence = fence;
@@ -1098,7 +1098,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
          * not a RandomAccessSubList itself.
          */
         ShortRandomAccessSubList(AbstractShortList root,
-                                  int fromIndex, int toIndex) {
+                                 int fromIndex, int toIndex) {
             super(root, fromIndex, toIndex);
         }
 
@@ -1106,7 +1106,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
          * Constructs a sublist of another RandomAccessSubList.
          */
         ShortRandomAccessSubList(AbstractShortList.ShortRandomAccessSubList parent,
-                                  int fromIndex, int toIndex) {
+                                 int fromIndex, int toIndex) {
             super(parent, fromIndex, toIndex);
         }
 

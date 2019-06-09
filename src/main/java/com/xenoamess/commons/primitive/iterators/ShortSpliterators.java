@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.ShortCollection;
 import com.xenoamess.commons.primitive.functions.ShortConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
@@ -150,7 +153,7 @@ public final class ShortSpliterators implements Primitive {
      * @see Arrays#spliterator(short[])
      */
     public static ShortSpliterator.ShortOfShort spliterator(short[] array,
-                                                               int additionalCharacteristics) {
+                                                            int additionalCharacteristics) {
         return new ShortArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics);
     }
 
@@ -187,7 +190,7 @@ public final class ShortSpliterators implements Primitive {
      * @see Arrays#spliterator(short[], int, int)
      */
     public static ShortSpliterator.ShortOfShort spliterator(short[] array, int fromIndex, int toIndex,
-                                                               int additionalCharacteristics) {
+                                                            int additionalCharacteristics) {
         checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex);
         return new ShortArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics);
     }
@@ -236,7 +239,7 @@ public final class ShortSpliterators implements Primitive {
      * @throws NullPointerException if the given collection is {@code null}
      */
     public static ShortSpliterator spliterator(ShortCollection c,
-                                                int characteristics) {
+                                               int characteristics) {
         return new ShortIteratorSpliterator(Objects.requireNonNull(c),
                 characteristics);
     }
@@ -324,8 +327,8 @@ public final class ShortSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static ShortSpliterator.ShortOfShort spliterator(ShortIterator iterator,
-                                                               long size,
-                                                               int characteristics) {
+                                                            long size,
+                                                            int characteristics) {
         return new ShortIteratorSpliterator(Objects.requireNonNull(iterator),
                 size, characteristics);
     }
@@ -352,7 +355,7 @@ public final class ShortSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static ShortSpliterator.ShortOfShort spliteratorUnknownSize(ShortIterator iterator,
-                                                                          int characteristics) {
+                                                                       int characteristics) {
         return new ShortIteratorSpliterator(Objects.requireNonNull(iterator), characteristics);
     }
 

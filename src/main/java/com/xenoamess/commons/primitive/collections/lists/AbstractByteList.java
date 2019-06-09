@@ -803,7 +803,7 @@ public abstract class AbstractByteList extends AbstractList<Byte> implements Abs
          * Create new spliterator covering the given  range
          */
         private ByteRandomAccessSpliterator(AbstractByteList.ByteRandomAccessSpliterator parent,
-                                              int origin, int fence) {
+                                            int origin, int fence) {
             this.list = parent.list;
             this.index = origin;
             this.fence = fence;
@@ -1098,7 +1098,7 @@ public abstract class AbstractByteList extends AbstractList<Byte> implements Abs
          * not a RandomAccessSubList itself.
          */
         ByteRandomAccessSubList(AbstractByteList root,
-                                  int fromIndex, int toIndex) {
+                                int fromIndex, int toIndex) {
             super(root, fromIndex, toIndex);
         }
 
@@ -1106,7 +1106,7 @@ public abstract class AbstractByteList extends AbstractList<Byte> implements Abs
          * Constructs a sublist of another RandomAccessSubList.
          */
         ByteRandomAccessSubList(AbstractByteList.ByteRandomAccessSubList parent,
-                                  int fromIndex, int toIndex) {
+                                int fromIndex, int toIndex) {
             super(parent, fromIndex, toIndex);
         }
 

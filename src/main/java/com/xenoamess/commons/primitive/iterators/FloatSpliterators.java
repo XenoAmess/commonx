@@ -28,7 +28,10 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.FloatCollection;
 import com.xenoamess.commons.primitive.functions.FloatConsumer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
@@ -150,7 +153,7 @@ public final class FloatSpliterators implements Primitive {
      * @see Arrays#spliterator(float[])
      */
     public static FloatSpliterator.FloatOfFloat spliterator(float[] array,
-                                                               int additionalCharacteristics) {
+                                                            int additionalCharacteristics) {
         return new FloatArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics);
     }
 
@@ -187,7 +190,7 @@ public final class FloatSpliterators implements Primitive {
      * @see Arrays#spliterator(float[], int, int)
      */
     public static FloatSpliterator.FloatOfFloat spliterator(float[] array, int fromIndex, int toIndex,
-                                                               int additionalCharacteristics) {
+                                                            int additionalCharacteristics) {
         checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex);
         return new FloatArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics);
     }
@@ -236,7 +239,7 @@ public final class FloatSpliterators implements Primitive {
      * @throws NullPointerException if the given collection is {@code null}
      */
     public static FloatSpliterator spliterator(FloatCollection c,
-                                                int characteristics) {
+                                               int characteristics) {
         return new FloatIteratorSpliterator(Objects.requireNonNull(c),
                 characteristics);
     }
@@ -324,8 +327,8 @@ public final class FloatSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static FloatSpliterator.FloatOfFloat spliterator(FloatIterator iterator,
-                                                               long size,
-                                                               int characteristics) {
+                                                            long size,
+                                                            int characteristics) {
         return new FloatIteratorSpliterator(Objects.requireNonNull(iterator),
                 size, characteristics);
     }
@@ -352,7 +355,7 @@ public final class FloatSpliterators implements Primitive {
      * @throws NullPointerException if the given iterator is {@code null}
      */
     public static FloatSpliterator.FloatOfFloat spliteratorUnknownSize(FloatIterator iterator,
-                                                                          int characteristics) {
+                                                                       int characteristics) {
         return new FloatIteratorSpliterator(Objects.requireNonNull(iterator), characteristics);
     }
 
