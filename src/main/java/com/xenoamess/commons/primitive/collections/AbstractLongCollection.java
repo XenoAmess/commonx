@@ -286,7 +286,6 @@ public interface AbstractLongCollection extends LongCollection,
      * return list.toArray(a);
      * }</pre>
      */
-    @SuppressWarnings("unchecked")
     default long[] toArrayPrimitive(long[] a) {
         // Estimate size of array; be prepared to see more or fewer elements
         int size = size();
@@ -362,7 +361,6 @@ public interface AbstractLongCollection extends LongCollection,
      * @return array containing the elements in the given array, plus any
      * further elements returned by the iterator, trimmed to size
      */
-    @SuppressWarnings("unchecked")
     static long[] finishToArrayPrimitive(long[] r, LongIterator it) {
         int i = r.length;
         while (it.hasNext()) {

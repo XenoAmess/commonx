@@ -642,7 +642,7 @@ public class CharArrayList extends AbstractCharList
      * @return an array of {@link char} objects.
      */
     public char[] toArray(char[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class CharArrayList extends AbstractCharList
         checkIndex(index, size);
         final char[] es = elementData;
 
-        @SuppressWarnings("unchecked") char oldValue = es[index];
+        char oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class CharArrayList extends AbstractCharList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public char nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class CharArrayList extends AbstractCharList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public char previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

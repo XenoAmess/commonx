@@ -642,7 +642,7 @@ public class LongArrayList extends AbstractLongList
      * @return an array of {@link long} objects.
      */
     public long[] toArray(long[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class LongArrayList extends AbstractLongList
         checkIndex(index, size);
         final long[] es = elementData;
 
-        @SuppressWarnings("unchecked") long oldValue = es[index];
+        long oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class LongArrayList extends AbstractLongList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public long nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class LongArrayList extends AbstractLongList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public long previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

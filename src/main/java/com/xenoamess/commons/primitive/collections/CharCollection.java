@@ -123,8 +123,7 @@ import java.util.stream.StreamSupport;
  * by the view collection itself are delegated to the backing collection. Examples of
  * view collections include the wrapper collections returned by methods such as
  * {@link java.util.Collections#checkedCollection Collections.checkedCollection},
- * {@link java.util.Collections#synchronizedCollection Collections.synchronizedCollection}, and
- * {@link java.util.Collections#unmodifiableCollection Collections.unmodifiableCollection}.
+ * and {@link java.util.Collections#unmodifiableCollection Collections.unmodifiableCollection}.
  * Other examples of view collections include collections that provide a
  * different representation of the same elements, for example, as
  * provided by {@link java.util.List#subList List.subList},

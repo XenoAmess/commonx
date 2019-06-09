@@ -642,7 +642,7 @@ public class BooleanArrayList extends AbstractBooleanList
      * @return an array of {@link boolean} objects.
      */
     public boolean[] toArray(boolean[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class BooleanArrayList extends AbstractBooleanList
         checkIndex(index, size);
         final boolean[] es = elementData;
 
-        @SuppressWarnings("unchecked") boolean oldValue = es[index];
+        boolean oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class BooleanArrayList extends AbstractBooleanList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class BooleanArrayList extends AbstractBooleanList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

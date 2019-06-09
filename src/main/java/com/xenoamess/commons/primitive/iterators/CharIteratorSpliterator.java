@@ -374,6 +374,7 @@ public class CharIteratorSpliterator implements CharSpliterator.CharOfCharacter 
         CharIterator i;
         long s;
         if ((i = it) == null) {
+            assert collection != null;
             i = it = collection.iterator();
             s = est = (long) collection.size();
         } else {

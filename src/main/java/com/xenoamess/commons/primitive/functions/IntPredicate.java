@@ -153,7 +153,6 @@ public interface IntPredicate extends Predicate<Integer>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static IntPredicate not(Predicate<? super Integer> target) {
         Objects.requireNonNull(target);
         return (IntPredicate) target.negate();

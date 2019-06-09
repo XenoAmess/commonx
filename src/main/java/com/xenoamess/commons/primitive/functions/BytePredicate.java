@@ -153,7 +153,6 @@ public interface BytePredicate extends Predicate<Byte>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static BytePredicate not(Predicate<? super Byte> target) {
         Objects.requireNonNull(target);
         return (BytePredicate) target.negate();

@@ -156,7 +156,7 @@ public class BooleanTimSort {
         int tlen = (len < 2 * INITIAL_TMP_STORAGE_LENGTH) ?
                 len >>> 1 : INITIAL_TMP_STORAGE_LENGTH;
         if (work == null || workLen < tlen || workBase + tlen > work.length) {
-            @SuppressWarnings({"unchecked", "UnnecessaryLocalVariable"})
+            @SuppressWarnings({"UnnecessaryLocalVariable"})
             boolean[] newArray = new boolean[tlen];
             tmp = newArray;
             tmpBase = 0;
@@ -225,10 +225,10 @@ public class BooleanTimSort {
             return;
         }
 
-        /**
-         * March over the array once, left to right, finding natural runs,
-         * extending short natural runs to minRun elements, and merging runs
-         * to maintain stack invariant.
+        /*
+          March over the array once, left to right, finding natural runs,
+          extending short natural runs to minRun elements, and merging runs
+          to maintain stack invariant.
          */
         BooleanTimSort ts = new BooleanTimSort(a, c, work, workBase, workLen);
         int minRun = minRunLength(nRemaining);
@@ -556,7 +556,7 @@ public class BooleanTimSort {
      */
     public static int gallopLeft(boolean key, boolean[] a, int base, int len, int hint,
                                  BooleanComparator c) {
-        assert len > 0 && hint >= 0 && hint < len;
+        assert hint >= 0 && hint < len;
         int lastOfs = 0;
         int ofs = 1;
         if (c.compare(key, a[base + hint]) > 0) {
@@ -633,7 +633,7 @@ public class BooleanTimSort {
      */
     public static int gallopRight(boolean key, boolean[] a, int base, int len,
                                   int hint, BooleanComparator c) {
-        assert len > 0 && hint >= 0 && hint < len;
+        assert hint >= 0 && hint < len;
 
         int ofs = 1;
         int lastOfs = 0;
@@ -976,7 +976,7 @@ public class BooleanTimSort {
                 newSize = Math.min(newSize, a.length >>> 1);
             }
 
-            @SuppressWarnings({"unchecked", "UnnecessaryLocalVariable"})
+            @SuppressWarnings({"UnnecessaryLocalVariable"})
             boolean[] newArray = new boolean[newSize];
             tmp = newArray;
             tmpLen = newSize;

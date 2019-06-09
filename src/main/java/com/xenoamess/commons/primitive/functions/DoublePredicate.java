@@ -153,7 +153,6 @@ public interface DoublePredicate extends Predicate<Double>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static DoublePredicate not(Predicate<? super Double> target) {
         Objects.requireNonNull(target);
         return (DoublePredicate) target.negate();

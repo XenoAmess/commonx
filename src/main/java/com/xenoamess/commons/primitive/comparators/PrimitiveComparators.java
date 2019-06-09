@@ -22,38 +22,31 @@ public class PrimitiveComparators implements Primitive {
     /**
      * comparator for increasing sort.
      */
-    public static final LongComparator LONG_COMPARATOR_INCREASING = (long d1, long d2) ->
-            Long.compare(d1, d2);
+    public static final LongComparator LONG_COMPARATOR_INCREASING = Long::compare;
     /**
      * comparator for increasing sort.
      */
-    public static final IntComparator INT_COMPARATOR_INCREASING = (int d1, int d2) ->
-            Integer.compare(d1, d2);
+    public static final IntComparator INT_COMPARATOR_INCREASING = Integer::compare;
     /**
      * comparator for increasing sort.
      */
-    public static final ShortComparator SHORT_COMPARATOR_INCREASING = (short d1, short d2) ->
-            Short.compare(d1, d2);
+    public static final ShortComparator SHORT_COMPARATOR_INCREASING = Short::compare;
     /**
      * comparator for increasing sort.
      */
-    public static final CharComparator CHAR_COMPARATOR_INCREASING = (char d1, char d2) ->
-            Character.compare(d1, d2);
+    public static final CharComparator CHAR_COMPARATOR_INCREASING = Character::compare;
     /**
      * comparator for increasing sort.
      */
-    public static final ByteComparator BYTE_COMPARATOR_INCREASING = (byte d1, byte d2) ->
-            Byte.compare(d1, d2);
+    public static final ByteComparator BYTE_COMPARATOR_INCREASING = Byte::compare;
     /**
      * comparator for increasing sort.
      */
-    public static final DoubleComparator DOUBLE_COMPARATOR_INCREASING = (double d1, double d2) ->
-            Double.compare(d1, d2);
+    public static final DoubleComparator DOUBLE_COMPARATOR_INCREASING = Double::compare;
     /**
      * comparator for increasing sort.
      */
-    public static final FloatComparator FLOAT_COMPARATOR_INCREASING = (float d1, float d2) ->
-            Float.compare(d1, d2);
+    public static final FloatComparator FLOAT_COMPARATOR_INCREASING = Float::compare;
     /**
      * comparator for increasing sort.
      */

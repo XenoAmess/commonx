@@ -286,7 +286,6 @@ public interface AbstractCharCollection extends CharCollection,
      * return list.toArray(a);
      * }</pre>
      */
-    @SuppressWarnings("unchecked")
     default char[] toArrayPrimitive(char[] a) {
         // Estimate size of array; be prepared to see more or fewer elements
         int size = size();
@@ -362,7 +361,6 @@ public interface AbstractCharCollection extends CharCollection,
      * @return array containing the elements in the given array, plus any
      * further elements returned by the iterator, trimmed to size
      */
-    @SuppressWarnings("unchecked")
     static char[] finishToArrayPrimitive(char[] r, CharIterator it) {
         int i = r.length;
         while (it.hasNext()) {

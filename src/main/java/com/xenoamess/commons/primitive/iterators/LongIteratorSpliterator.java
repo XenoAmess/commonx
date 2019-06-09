@@ -374,6 +374,7 @@ public class LongIteratorSpliterator implements LongSpliterator.LongOfLong {
         LongIterator i;
         long s;
         if ((i = it) == null) {
+            assert collection != null;
             i = it = collection.iterator();
             s = est = (long) collection.size();
         } else {

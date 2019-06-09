@@ -899,7 +899,7 @@ public interface LongList extends List<Long>, LongCollection, Primitive {
      * spliterator will <em>fail-fast</em> and throw a
      * {@code ConcurrentModificationException}.
      * If the list is also an instance of {@link java.util.AbstractList} then the
-     * spliterator will use the list's {@link java.util.AbstractList#modCount modCount}
+     * spliterator will use the list's modCount
      * field to provide additional <em>fail-fast</em> behavior.
      * <li>Otherwise, the default implementation creates a spliterator from the
      * list's {@code Iterator}.  The spliterator inherits the

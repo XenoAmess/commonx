@@ -81,15 +81,12 @@ public interface BooleanConsumer extends Consumer<Boolean>, Primitive {
     @Override
     default BooleanConsumer andThen(Consumer<? super Boolean> after) {
         Objects.requireNonNull(after);
-        return new BooleanConsumer() {
-            @Override
-            public void acceptPrimitive(boolean t) {
-                acceptPrimitive(t);
-                if (after instanceof BooleanConsumer) {
-                    ((BooleanConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            BooleanConsumer.this.acceptPrimitive(t);
+            if (after instanceof BooleanConsumer) {
+                ((BooleanConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

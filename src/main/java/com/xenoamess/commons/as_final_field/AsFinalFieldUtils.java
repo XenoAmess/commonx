@@ -79,7 +79,7 @@ public class AsFinalFieldUtils {
             throw new IllegalArgumentException("The object must not be null");
         }
 
-        Field field = null;
+        Field field;
         try {
             if (object instanceof Class) {
                 field = ((Class) object).getDeclaredField(fieldName);
@@ -101,7 +101,6 @@ public class AsFinalFieldUtils {
                 } else {
                     field.set(object, newValue);
                 }
-                return;
             } else {
                 throw new AsFinalFieldReSetException(object, field, ALREADY_HAVE_VALUE);
             }

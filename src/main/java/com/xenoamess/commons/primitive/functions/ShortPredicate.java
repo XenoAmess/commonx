@@ -153,7 +153,6 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static ShortPredicate not(Predicate<? super Short> target) {
         Objects.requireNonNull(target);
         return (ShortPredicate) target.negate();

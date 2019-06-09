@@ -81,15 +81,12 @@ public interface LongConsumer extends Consumer<Long>, Primitive {
     @Override
     default LongConsumer andThen(Consumer<? super Long> after) {
         Objects.requireNonNull(after);
-        return new LongConsumer() {
-            @Override
-            public void acceptPrimitive(long t) {
-                acceptPrimitive(t);
-                if (after instanceof LongConsumer) {
-                    ((LongConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            LongConsumer.this.acceptPrimitive(t);
+            if (after instanceof LongConsumer) {
+                ((LongConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

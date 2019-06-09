@@ -81,15 +81,12 @@ public interface DoubleConsumer extends Consumer<Double>, Primitive {
     @Override
     default DoubleConsumer andThen(Consumer<? super Double> after) {
         Objects.requireNonNull(after);
-        return new DoubleConsumer() {
-            @Override
-            public void acceptPrimitive(double t) {
-                acceptPrimitive(t);
-                if (after instanceof DoubleConsumer) {
-                    ((DoubleConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            DoubleConsumer.this.acceptPrimitive(t);
+            if (after instanceof DoubleConsumer) {
+                ((DoubleConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

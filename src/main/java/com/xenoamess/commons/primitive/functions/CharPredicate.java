@@ -153,7 +153,6 @@ public interface CharPredicate extends Predicate<Character>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static CharPredicate not(Predicate<? super Character> target) {
         Objects.requireNonNull(target);
         return (CharPredicate) target.negate();

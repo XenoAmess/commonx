@@ -153,7 +153,6 @@ public interface BooleanPredicate extends Predicate<Boolean>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static BooleanPredicate not(Predicate<? super Boolean> target) {
         Objects.requireNonNull(target);
         return (BooleanPredicate) target.negate();

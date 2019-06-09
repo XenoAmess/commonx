@@ -81,15 +81,12 @@ public interface ShortConsumer extends Consumer<Short>, Primitive {
     @Override
     default ShortConsumer andThen(Consumer<? super Short> after) {
         Objects.requireNonNull(after);
-        return new ShortConsumer() {
-            @Override
-            public void acceptPrimitive(short t) {
-                acceptPrimitive(t);
-                if (after instanceof ShortConsumer) {
-                    ((ShortConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            ShortConsumer.this.acceptPrimitive(t);
+            if (after instanceof ShortConsumer) {
+                ((ShortConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

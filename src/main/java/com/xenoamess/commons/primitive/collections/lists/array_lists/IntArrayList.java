@@ -642,7 +642,7 @@ public class IntArrayList extends AbstractIntList
      * @return an array of {@link int} objects.
      */
     public int[] toArray(int[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class IntArrayList extends AbstractIntList
         checkIndex(index, size);
         final int[] es = elementData;
 
-        @SuppressWarnings("unchecked") int oldValue = es[index];
+        int oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class IntArrayList extends AbstractIntList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public int nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class IntArrayList extends AbstractIntList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public int previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

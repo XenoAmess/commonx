@@ -24,10 +24,10 @@ import java.util.function.Consumer;
  * {@link java.util.List#size() size()} methods.
  *
  * <p>To implement a modifiable list, the programmer must additionally
- * override the {@link #set(int, Object) set(int, E)} method (which otherwise
+ * override the {@link #set(int, Boolean) set(int, E)} method (which otherwise
  * throws an {@code UnsupportedOperationException}).  If the list is
  * variable-size the programmer must additionally override the
- * {@link #add(int, Object) add(int, E)} and {@link #remove(int)} methods.
+ * {@link #add(int, Boolean) add(int, E)} and {@link #remove(int)} methods.
  *
  * <p>The programmer should generally provide a void (no argument) and collection
  * constructor, as per the recommendation in the {@link java.util.Collection} interface
@@ -38,8 +38,8 @@ import java.util.function.Consumer;
  * list iterator are implemented by this class, on top of the "random access"
  * methods:
  * {@link #get(int)},
- * {@link #set(int, Object) set(int, E)},
- * {@link #add(int, Object) add(int, E)} and
+ * {@link #set(int, Boolean) set(int, E)},
+ * {@link #add(int, Boolean) add(int, E)} and
  * {@link #remove(int)}.
  *
  * <p>The documentation for each non-abstract method in this class describes its
@@ -152,7 +152,7 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
      *
      * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} unless
-     * {@link #add(int, Object) add(int, E)} is overridden.
+     * {@link #add(int, Boolean) add(int, E)} is overridden.
      */
     @Override
     public final boolean add(Boolean e) {
@@ -602,11 +602,9 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      * <p>
-     * A totally copy of AbstractList.subListRangeCheck(int fromIndex, int toIndex, int size)
+     * A copy of AbstractList.subListRangeCheck(int fromIndex, int toIndex, int size)
      * I just cannot understand why they choose to make it package private, so I have to copy it.
      * But anyway, they might have their reasons.
-     *
-     * @see AbstractList#subListRangeCheck(int fromIndex, int toIndex, int size)
      */
     public static void subListRangeCheck(int fromIndex, int toIndex, int size) {
         if (fromIndex < 0) {

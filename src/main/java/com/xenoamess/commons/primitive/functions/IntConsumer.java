@@ -81,15 +81,12 @@ public interface IntConsumer extends Consumer<Integer>, Primitive {
     @Override
     default IntConsumer andThen(Consumer<? super Integer> after) {
         Objects.requireNonNull(after);
-        return new IntConsumer() {
-            @Override
-            public void acceptPrimitive(int t) {
-                acceptPrimitive(t);
-                if (after instanceof IntConsumer) {
-                    ((IntConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            IntConsumer.this.acceptPrimitive(t);
+            if (after instanceof IntConsumer) {
+                ((IntConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

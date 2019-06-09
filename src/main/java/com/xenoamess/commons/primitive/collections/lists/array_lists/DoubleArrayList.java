@@ -642,7 +642,7 @@ public class DoubleArrayList extends AbstractDoubleList
      * @return an array of {@link double} objects.
      */
     public double[] toArray(double[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class DoubleArrayList extends AbstractDoubleList
         checkIndex(index, size);
         final double[] es = elementData;
 
-        @SuppressWarnings("unchecked") double oldValue = es[index];
+        double oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class DoubleArrayList extends AbstractDoubleList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public double nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class DoubleArrayList extends AbstractDoubleList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public double previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

@@ -81,15 +81,12 @@ public interface CharConsumer extends Consumer<Character>, Primitive {
     @Override
     default CharConsumer andThen(Consumer<? super Character> after) {
         Objects.requireNonNull(after);
-        return new CharConsumer() {
-            @Override
-            public void acceptPrimitive(char t) {
-                acceptPrimitive(t);
-                if (after instanceof CharConsumer) {
-                    ((CharConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            CharConsumer.this.acceptPrimitive(t);
+            if (after instanceof CharConsumer) {
+                ((CharConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

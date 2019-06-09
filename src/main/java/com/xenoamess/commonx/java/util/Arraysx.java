@@ -2015,7 +2015,6 @@ public class Arraysx {
      * @author XenoAmess
      * @since 3.10
      */
-    @SuppressWarnings("unchecked")
     public static <T> T[] fillNewSelf(T[] array) {
         fillNew(array);
         return array;

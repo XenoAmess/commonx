@@ -81,15 +81,12 @@ public interface FloatConsumer extends Consumer<Float>, Primitive {
     @Override
     default FloatConsumer andThen(Consumer<? super Float> after) {
         Objects.requireNonNull(after);
-        return new FloatConsumer() {
-            @Override
-            public void acceptPrimitive(float t) {
-                acceptPrimitive(t);
-                if (after instanceof FloatConsumer) {
-                    ((FloatConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            FloatConsumer.this.acceptPrimitive(t);
+            if (after instanceof FloatConsumer) {
+                ((FloatConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

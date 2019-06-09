@@ -642,7 +642,7 @@ public class FloatArrayList extends AbstractFloatList
      * @return an array of {@link float} objects.
      */
     public float[] toArray(float[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class FloatArrayList extends AbstractFloatList
         checkIndex(index, size);
         final float[] es = elementData;
 
-        @SuppressWarnings("unchecked") float oldValue = es[index];
+        float oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class FloatArrayList extends AbstractFloatList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public float nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class FloatArrayList extends AbstractFloatList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public float previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

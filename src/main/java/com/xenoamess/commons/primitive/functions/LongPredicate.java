@@ -153,7 +153,6 @@ public interface LongPredicate extends Predicate<Long>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static LongPredicate not(Predicate<? super Long> target) {
         Objects.requireNonNull(target);
         return (LongPredicate) target.negate();

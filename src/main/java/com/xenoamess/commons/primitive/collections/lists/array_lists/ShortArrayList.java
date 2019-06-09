@@ -642,7 +642,7 @@ public class ShortArrayList extends AbstractShortList
      * @return an array of {@link short} objects.
      */
     public short[] toArray(short[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class ShortArrayList extends AbstractShortList
         checkIndex(index, size);
         final short[] es = elementData;
 
-        @SuppressWarnings("unchecked") short oldValue = es[index];
+        short oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class ShortArrayList extends AbstractShortList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public short nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class ShortArrayList extends AbstractShortList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public short previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

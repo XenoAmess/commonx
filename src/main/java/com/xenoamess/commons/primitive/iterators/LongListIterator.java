@@ -42,7 +42,7 @@ import java.util.ListIterator;
  * Element(0)   Element(1)   Element(2)   ... Element(n-1)
  * cursor positions:  ^            ^            ^            ^                  ^
  * </PRE>
- * Note that the {@link #remove} and {@link #set(Object)} methods are
+ * Note that the {@link #remove} and {@link #set(Long)} methods are
  * <i>not</i> defined in terms of the cursor position;  they are defined to
  * operate on the last element returned by a call to {@link #next} or
  * {@link #previous()}.

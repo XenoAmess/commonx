@@ -286,7 +286,6 @@ public interface AbstractBooleanCollection extends BooleanCollection,
      * return list.toArray(a);
      * }</pre>
      */
-    @SuppressWarnings("unchecked")
     default boolean[] toArrayPrimitive(boolean[] a) {
         // Estimate size of array; be prepared to see more or fewer elements
         int size = size();
@@ -362,7 +361,6 @@ public interface AbstractBooleanCollection extends BooleanCollection,
      * @return array containing the elements in the given array, plus any
      * further elements returned by the iterator, trimmed to size
      */
-    @SuppressWarnings("unchecked")
     static boolean[] finishToArrayPrimitive(boolean[] r, BooleanIterator it) {
         int i = r.length;
         while (it.hasNext()) {

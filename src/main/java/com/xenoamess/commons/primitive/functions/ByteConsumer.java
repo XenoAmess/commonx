@@ -81,15 +81,12 @@ public interface ByteConsumer extends Consumer<Byte>, Primitive {
     @Override
     default ByteConsumer andThen(Consumer<? super Byte> after) {
         Objects.requireNonNull(after);
-        return new ByteConsumer() {
-            @Override
-            public void acceptPrimitive(byte t) {
-                acceptPrimitive(t);
-                if (after instanceof ByteConsumer) {
-                    ((ByteConsumer) after).acceptPrimitive(t);
-                } else {
-                    after.accept(t);
-                }
+        return t -> {
+            ByteConsumer.this.acceptPrimitive(t);
+            if (after instanceof ByteConsumer) {
+                ((ByteConsumer) after).acceptPrimitive(t);
+            } else {
+                after.accept(t);
             }
         };
     }

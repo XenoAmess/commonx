@@ -642,7 +642,7 @@ public class ByteArrayList extends AbstractByteList
      * @return an array of {@link byte} objects.
      */
     public byte[] toArray(byte[] a) {
-        return this.toArray(a);
+        return this.toArrayPrimitive(a);
     }
 
     /**
@@ -798,7 +798,7 @@ public class ByteArrayList extends AbstractByteList
         checkIndex(index, size);
         final byte[] es = elementData;
 
-        @SuppressWarnings("unchecked") byte oldValue = es[index];
+        byte oldValue = es[index];
         fastRemove(es, index);
 
         return oldValue;
@@ -1471,7 +1471,6 @@ public class ByteArrayList extends AbstractByteList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public byte nextPrimitive() {
             checkForComodification();
             int i = cursor;
@@ -1555,7 +1554,6 @@ public class ByteArrayList extends AbstractByteList
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public byte previousPrimitive() {
             checkForComodification();
             int i = cursor - 1;

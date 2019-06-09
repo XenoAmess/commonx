@@ -150,7 +150,6 @@ public class Version implements Comparable<Version> {
      * @param resourceFilePath path of the resource file
      * @return the url returned
      */
-    @SuppressWarnings("Duplicates")
     public static URL getURL(String resourceFilePath) {
         return Version.class.getResource(resourceFilePath);
     }

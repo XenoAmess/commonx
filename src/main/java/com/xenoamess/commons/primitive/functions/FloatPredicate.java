@@ -153,7 +153,6 @@ public interface FloatPredicate extends Predicate<Float>, Primitive {
      *
      * @since 11
      */
-    @SuppressWarnings("unchecked")
     static FloatPredicate not(Predicate<? super Float> target) {
         Objects.requireNonNull(target);
         return (FloatPredicate) target.negate();
