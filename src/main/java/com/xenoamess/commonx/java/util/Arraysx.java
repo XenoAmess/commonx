@@ -24,7 +24,8 @@
  */
 package com.xenoamess.commonx.java.util;
 
-import com.xenoamess.commons.collections.list.primitive_array_lists.*;
+import com.xenoamess.commons.primitive.comparators.*;
+import com.xenoamess.commons.primitive.sorts.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

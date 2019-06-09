@@ -105,20 +105,18 @@ public class GeneratePrimitivesFromDouble {
      */
     public static void main(String[] args) {
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\primitive_array_lists\\DoubleArrayList.java");
+                "\\list\\array_lists\\DoubleArrayList.java");
 
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\primitive_array_lists\\DoubleIterator.java");
+                "\\list\\array_lists\\DoubleIterator.java");
 
         generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\primitive_array_lists\\DoubleListIterator.java");
+                "\\list\\array_lists\\DoubleListIterator.java");
 
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\primitive_array_lists\\DoubleTimSort.java");
+        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
+                "\\sorts\\DoubleTimSort.java");
 
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\primitive_array_lists" +
-                "\\DoubleComparator.java");
-
+        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
+                "\\comparators\\DoubleComparator.java");
     }
 }
