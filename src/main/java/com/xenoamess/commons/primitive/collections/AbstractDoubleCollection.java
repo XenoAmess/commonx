@@ -409,7 +409,7 @@ public interface AbstractDoubleCollection extends DoubleCollection,
      * method and this collection contains the specified object.
      */
     @Override
-    default boolean removePrimitive(double o) {
+    default boolean removeByContentPrimitive(double o) {
         DoubleIterator it = iterator();
         while (it.hasNext()) {
             if (o == it.nextPrimitive()) {

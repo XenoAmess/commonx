@@ -24,6 +24,11 @@ public abstract class AbstractDoubleList extends AbstractList<Double> implements
     }
 
 
+    @Override
+    public String toString() {
+        return AbstractDoubleCollection.toString(this);
+    }
+
     /**
      * {@inheritDoc}
      *
@@ -44,7 +49,7 @@ public abstract class AbstractDoubleList extends AbstractList<Double> implements
      */
     @Override
     public final Double remove(int index) {
-        return this.removePrimitive(index);
+        return this.removeByIndexPrimitive(index);
     }
 
     /**
@@ -260,7 +265,7 @@ public abstract class AbstractDoubleList extends AbstractList<Double> implements
      * @see #remove(int index)
      */
     @Override
-    public double removePrimitive(int index) {
+    public double removeByIndexPrimitive(int index) {
         throw new UnsupportedOperationException();
     }
 
@@ -471,7 +476,7 @@ public abstract class AbstractDoubleList extends AbstractList<Double> implements
             checkForComodification();
 
             try {
-                AbstractDoubleList.this.removePrimitive(lastRet);
+                AbstractDoubleList.this.removeByIndexPrimitive(lastRet);
                 if (lastRet < cursor) {
                     cursor--;
                 }
@@ -949,10 +954,10 @@ public abstract class AbstractDoubleList extends AbstractList<Double> implements
         }
 
         @Override
-        public double removePrimitive(int index) {
+        public double removeByIndexPrimitive(int index) {
             AbstractDoubleList.checkIndex(index, size);
             checkForComodification();
-            double result = root.removePrimitive(offset + index);
+            double result = root.removeByIndexPrimitive(offset + index);
             updateSizeAndModCount(-1);
             return result;
         }

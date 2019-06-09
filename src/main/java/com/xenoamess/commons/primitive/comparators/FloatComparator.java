@@ -1,5 +1,9 @@
 package com.xenoamess.commons.primitive.comparators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
+import java.util.Comparator;
+
 /**
  * <p>FloatComparator interface.</p>
  *
@@ -7,7 +11,7 @@ package com.xenoamess.commons.primitive.comparators;
  * @version 0.6.0
  * @see java.util.Comparator
  */
-public interface FloatComparator extends PrimitiveComparator<Float> {
+public interface FloatComparator extends Comparator<Float>, Primitive {
     /**
      * {@inheritDoc}
      * <p>

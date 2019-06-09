@@ -24,7 +24,13 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.collections.lists.AbstractByteList;
+import com.xenoamess.commons.primitive.collections.lists.ByteList;
 import com.xenoamess.commons.primitive.comparators.ByteComparator;
+import com.xenoamess.commons.primitive.functions.ByteConsumer;
+import com.xenoamess.commons.primitive.iterators.ByteIterator;
+import com.xenoamess.commons.primitive.iterators.ByteListIterator;
+import com.xenoamess.commons.primitive.iterators.ByteSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -60,7 +66,8 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class ByteArrayList extends PrimitiveArrayList<Byte> {
+public class ByteArrayList extends AbstractByteList
+        implements ByteList, RandomAccess, Cloneable, java.io.Serializable {
 
     /**
      * function to copy from {@code Object[]} to {@code byte[]}
@@ -95,6 +102,11 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             dest[j] = src[i];
         }
     }
+
+    /**
+     * Default initial capacity.
+     */
+    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -314,19 +326,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     */
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
-    }
-
-    /**
      * Primitive replacement of {@code ByteArrayList.contains(Object o)}
      *
      * @param o element whose presence in this collection is to be tested
@@ -334,6 +333,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * element
      * @see ByteArrayList#contains(Object o)
      */
+    @Override
     public boolean contains(byte o) {
         return this.containsPrimitive(o);
     }
@@ -346,6 +346,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * element
      * @see ByteArrayList#contains(Object o)
      */
+    @Override
     public boolean containsPrimitive(byte o) {
         return indexOfPrimitive(o) >= 0;
     }
@@ -385,6 +386,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * this list, or -1 if this list does not contain the element
      * @see ByteArrayList#indexOf(Object o)
      */
+    @Override
     public int indexOfPrimitive(byte o) {
         return indexOfRangePrimitive(o, 0, size);
     }
@@ -477,6 +479,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * this list, or -1 if this list does not contain the element
      * @see ByteArrayList#lastIndexOf(Object o)
      */
+    @Override
     public int lastIndexOfPrimitive(byte o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
@@ -586,6 +589,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      *
      * @return an array of {@link byte}.
      */
+    @Override
     public byte[] toArrayPrimitive() {
         return Arraysx.copyOf(elementData);
     }
@@ -665,6 +669,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @param a an array of {@link byte} objects.
      * @return an array of {@link byte} objects.
      */
+    @Override
     public byte[] toArrayPrimitive(byte[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -711,16 +716,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the element at the specified position in this list.
-     */
-    @Override
-    public Byte get(int index) {
-        return getPrimitive(index);
-    }
-
-    /**
      * Primitive replacement of {@code ByteArrayList.get(int index)}
      *
      * @param index index of the element to return
@@ -728,44 +723,22 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see ByteArrayList#get(int index)
      */
+    @Override
     public byte getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code ByteArrayList.set(int index, Byte element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see ByteArrayList#set(int index, Byte element)
      */
     @Override
-    public Byte set(int index, Byte element) {
-        return setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.set(int index, Byte element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ByteArrayList#set(int index, Byte element)
-     */
-    public byte set(int index, byte element) {
-        return this.setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.set(int index, Byte element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ByteArrayList#set(int index, Byte element)
-     */
     public byte setPrimitive(int index, byte element) {
         checkIndex(index, size);
         byte oldValue = elementData(index);
@@ -787,33 +760,13 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code ByteArrayList.add(Byte e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see ByteArrayList#add(Byte e)
      */
     @Override
-    public boolean add(Byte e) {
-        return addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.add(Byte e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see ByteArrayList#add(Byte e)
-     */
-    public boolean add(byte e) {
-        return this.addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.add(Byte e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see ByteArrayList#add(Byte e)
-     */
     public boolean addPrimitive(byte e) {
         modCount++;
         add(e, elementData, size);
@@ -821,37 +774,14 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code ByteArrayList.add(int index, Byte element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see ByteArrayList#add(int index, Byte element)
      */
     @Override
-    public void add(int index, Byte element) {
-        addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.add(int index, Byte element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ByteArrayList#add(int index, Byte element)
-     */
-    public void add(int index, byte element) {
-        this.addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.add(int index, Byte element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ByteArrayList#add(int index, Byte element)
-     */
     public void addPrimitive(int index, byte element) {
         rangeCheckForAdd(index);
         modCount++;
@@ -868,18 +798,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left (subtracts one from their
-     * indices).
-     */
-    @Override
-    public Byte remove(int index) {
-        return removePrimitive(index);
-    }
-
-    /**
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
@@ -888,7 +806,8 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @return the element that was removed from the list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public byte removePrimitive(int index) {
+    @Override
+    public byte removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final byte[] es = elementData;
 
@@ -1014,7 +933,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         if (!(o instanceof Byte)) {
             return false;
         }
-        return this.removePrimitive((Byte) o);
+        return this.removeByContentPrimitive((Byte) o);
     }
 
     /**
@@ -1024,8 +943,9 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @return {@code true} if an element was removed as a result of this call
      * @see ByteArrayList#remove(Object o)
      */
-    public boolean remove(byte o) {
-        return this.removePrimitive(o);
+    @Override
+    public boolean removeByContent(byte o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -1035,7 +955,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @return {@code true} if an element was removed as a result of this call
      * @see ByteArrayList#remove(Object o)
      */
-    public boolean removePrimitive(byte o) {
+    public boolean removeByContentPrimitive(byte o) {
         final byte[] es = elementData;
         final int size = this.size;
         int i = 0;
@@ -1541,7 +1461,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Byte> iterator() {
+    public ByteIterator iterator() {
         return new ByteArrayList.Itr();
     }
 
@@ -1721,12 +1641,12 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Byte> subList(int fromIndex, int toIndex) {
+    public ByteList subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
         return new ByteArrayList.ByteSubList(this, fromIndex, toIndex);
     }
 
-    private static class ByteSubList extends AbstractList<Byte> implements RandomAccess {
+    private static class ByteSubList extends AbstractByteList implements RandomAccess {
         private final ByteArrayList root;
         private final ByteArrayList.ByteSubList parent;
         private final int offset;
@@ -1754,6 +1674,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             this.modCount = root.modCount;
         }
 
+        @Override
         public byte setPrimitive(int index, byte element) {
             checkIndex(index, size);
             checkForComodification();
@@ -1763,10 +1684,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         }
 
         @Override
-        public Byte get(int index) {
-            return this.getPrimitive(index);
-        }
-
         public byte getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
@@ -1780,10 +1697,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         }
 
         @Override
-        public void add(int index, Byte element) {
-            this.addPrimitive(index, element);
-        }
-
         public void addPrimitive(int index, byte element) {
             rangeCheckForAdd(index);
             checkForComodification();
@@ -1791,12 +1704,9 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             updateSizeAndModCount(1);
         }
 
-        @Override
-        public Byte remove(int index) {
-            return this.removePrimitive(index);
-        }
 
-        public byte removePrimitive(int index) {
+        @Override
+        public byte removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             byte result = root.remove(offset + index);
@@ -1871,6 +1781,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
+        @Override
         public byte[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1890,6 +1801,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             return a;
         }
 
+        @Override
         public byte[] toArrayPrimitive(byte[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1935,6 +1847,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             return this.indexOfPrimitive(o);
         }
 
+        @Override
         public int indexOfPrimitive(byte o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1952,6 +1865,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
             return this.lastIndexOfPrimitive(o);
         }
 
+        @Override
         public int lastIndexOfPrimitive(byte o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1959,21 +1873,18 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         }
 
         @Override
-        public boolean contains(Object o) {
-            return indexOf(o) >= 0;
-        }
-
         public boolean contains(byte o) {
             return this.containsPrimitive(o);
         }
 
+        @Override
         public boolean containsPrimitive(byte o) {
             return indexOfPrimitive(o) >= 0;
         }
 
 
         @Override
-        public Iterator<Byte> iterator() {
+        public ByteIterator iterator() {
             return listIterator();
         }
 
@@ -1990,11 +1901,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
                 @Override
                 public boolean hasNext() {
                     return cursor != ByteArrayList.ByteSubList.this.size;
-                }
-
-                @Override
-                public Byte next() {
-                    return nextPrimitive();
                 }
 
                 @Override
@@ -2015,11 +1921,6 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
                 @Override
                 public boolean hasPrevious() {
                     return cursor != 0;
-                }
-
-                @Override
-                public Byte previous() {
-                    return previousPrimitive();
                 }
 
                 @Override
@@ -2047,9 +1948,18 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
-                        for (; i < size && modCount == expectedModCount; i++) {
-                            action.accept(elementAt(es, offset + i));
+
+                        if (action instanceof ByteConsumer) {
+                            ByteConsumer actionByteConsumer = (ByteConsumer) action;
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                actionByteConsumer.acceptPrimitive(elementAt(es, offset + i));
+                            }
+                        } else {
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                action.accept(elementAt(es, offset + i));
+                            }
                         }
+
                         // update once at end to reduce heap write traffic
                         cursor = i;
                         lastRet = i - 1;
@@ -2132,7 +2042,7 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         }
 
         @Override
-        public List<Byte> subList(int fromIndex, int toIndex) {
+        public ByteList subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
             return new ByteArrayList.ByteSubList(this, fromIndex, toIndex);
         }
@@ -2163,11 +2073,11 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
         }
 
         @Override
-        public Spliterator<Byte> spliterator() {
+        public ByteSpliterator spliterator() {
             checkForComodification();
 
             // ByteArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Byte>() {
+            return new ByteSpliterator() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -2276,14 +2186,14 @@ public class ByteArrayList extends PrimitiveArrayList<Byte> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Byte> spliterator() {
+    public ByteSpliterator spliterator() {
         return new ByteArrayList.ByteArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class ByteArrayListSpliterator implements Spliterator<Byte> {
+    final class ByteArrayListSpliterator implements ByteSpliterator {
 
         /*
          * If ByteArrayLists were immutable, or structurally immutable (no

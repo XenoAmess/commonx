@@ -807,7 +807,7 @@ public class DoubleArrayList extends AbstractDoubleList
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
-    public double removePrimitive(int index) {
+    public double removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final double[] es = elementData;
 
@@ -933,7 +933,7 @@ public class DoubleArrayList extends AbstractDoubleList
         if (!(o instanceof Double)) {
             return false;
         }
-        return this.removePrimitive((Double) o);
+        return this.removeByContentPrimitive((Double) o);
     }
 
     /**
@@ -944,8 +944,8 @@ public class DoubleArrayList extends AbstractDoubleList
      * @see DoubleArrayList#remove(Object o)
      */
     @Override
-    public boolean remove(double o) {
-        return this.removePrimitive(o);
+    public boolean removeByContent(double o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -955,7 +955,7 @@ public class DoubleArrayList extends AbstractDoubleList
      * @return {@code true} if an element was removed as a result of this call
      * @see DoubleArrayList#remove(Object o)
      */
-    public boolean removePrimitive(double o) {
+    public boolean removeByContentPrimitive(double o) {
         final double[] es = elementData;
         final int size = this.size;
         int i = 0;
@@ -1706,7 +1706,7 @@ public class DoubleArrayList extends AbstractDoubleList
 
 
         @Override
-        public double removePrimitive(int index) {
+        public double removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             double result = root.remove(offset + index);

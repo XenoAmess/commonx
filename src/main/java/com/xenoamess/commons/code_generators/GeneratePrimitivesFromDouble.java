@@ -69,6 +69,7 @@ public class GeneratePrimitivesFromDouble {
             while ((line = bufIn.readLine()) != null) {
                 line = line.replaceAll(sourceString, replaceString);
                 line = line.replaceAll(sourceStringL, replaceStringL);
+                line = line.replaceAll(sourceStringL.toUpperCase(), replaceStringL.toUpperCase());
                 if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("char")) {
                     line = line.replaceAll("CharacterArrayList", "CharArrayList");
                     line = line.replaceAll("CharacterIterator", "CharIterator");
@@ -77,6 +78,14 @@ public class GeneratePrimitivesFromDouble {
                     line = line.replaceAll(".writeCharacter\\(", ".writeChar(");
                     line = line.replaceAll("CharacterComparator", "CharComparator");
                     line = line.replaceAll("CharacterTimSort", "CharTimSort");
+                    line = line.replaceAll("CharacterSpliterators", "CharSpliterators");
+                    line = line.replaceAll("CharacterConsumer", "CharConsumer");
+                    line = line.replaceAll("CharacterCollection", "CharCollection");
+                    line = line.replaceAll("CharacterIterable", "CharIterable");
+                    line = line.replaceAll("CharacterList", "CharList");
+                    for (char chr = 'A'; chr <= 'Z'; chr++) {
+                        line = line.replaceAll("Character" + chr, "Char" + chr);
+                    }
                 } else if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("int")) {
                     line = line.replaceAll("IntegerArrayList", "IntArrayList");
                     line = line.replaceAll("IntegerIterator", "IntIterator");
@@ -85,6 +94,14 @@ public class GeneratePrimitivesFromDouble {
                     line = line.replaceAll(".writeInteger\\(", ".writeInt(");
                     line = line.replaceAll("IntegerComparator", "IntComparator");
                     line = line.replaceAll("IntegerTimSort", "IntTimSort");
+                    line = line.replaceAll("IntegerSpliterators", "IntSpliterators");
+                    line = line.replaceAll("IntegerConsumer", "IntConsumer");
+                    line = line.replaceAll("IntegerCollection", "IntCollection");
+                    line = line.replaceAll("IntegerIterable", "IntIterable");
+                    line = line.replaceAll("IntegerList", "IntList");
+                    for (char chr = 'A'; chr <= 'Z'; chr++) {
+                        line = line.replaceAll("Integer" + chr, "Int" + chr);
+                    }
                 } else if (PRIMITIVE_TYPES_EXCLUDE_DOUBLEL[replaceStringIndex].equals("boolean")) {
                     line = line.replaceAll("] = 0;", "] = false;");
                 }
@@ -104,19 +121,39 @@ public class GeneratePrimitivesFromDouble {
      * @param args an array of {@link java.lang.String} objects.
      */
     public static void main(String[] args) {
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\array_lists\\DoubleArrayList.java");
+//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+//                "\\list\\array_lists\\DoubleArrayList.java");
+//
+//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+//                "\\list\\array_lists\\DoubleIterator.java");
+//
+//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
+//                "\\list\\array_lists\\DoubleListIterator.java");
+//
+//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
+//                "\\sorts\\DoubleTimSort.java");
+//
+//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
+//                "\\comparators\\DoubleComparator.java");
 
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\array_lists\\DoubleIterator.java");
+        processFile("src/main/java/com/xenoamess/commons/primitive/");
+    }
 
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-                "\\list\\array_lists\\DoubleListIterator.java");
+    private static void processFile(String path) {
+        // get file list where the path has
+        File file = new File(path);
+        // get the folder list
+        File[] array = file.listFiles();
 
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
-                "\\sorts\\DoubleTimSort.java");
-
-        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
-                "\\comparators\\DoubleComparator.java");
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].isFile()) {
+                if (array[i].toString().contains("Double")) {
+                    System.out.println(array[i].getAbsolutePath());
+                    generatePrimitivesFromFile(array[i].getAbsolutePath());
+                }
+            } else if (array[i].isDirectory()) {
+                processFile(array[i].getPath());
+            }
+        }
     }
 }

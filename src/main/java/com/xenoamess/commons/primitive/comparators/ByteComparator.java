@@ -1,5 +1,9 @@
 package com.xenoamess.commons.primitive.comparators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
+import java.util.Comparator;
+
 /**
  * <p>ByteComparator interface.</p>
  *
@@ -7,7 +11,7 @@ package com.xenoamess.commons.primitive.comparators;
  * @version 0.6.0
  * @see java.util.Comparator
  */
-public interface ByteComparator extends PrimitiveComparator<Byte> {
+public interface ByteComparator extends Comparator<Byte>, Primitive {
     /**
      * {@inheritDoc}
      * <p>

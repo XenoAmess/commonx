@@ -84,7 +84,7 @@ public abstract class AbstractDoubleSpliterator implements DoubleSpliterator.Dou
             if (est != Long.MAX_VALUE) {
                 est -= j;
             }
-            return new DoubleSpliterators.DoubleArraySpliterator(a, 0, j, characteristics());
+            return new DoubleArraySpliterator(a, 0, j, characteristics());
         }
         return null;
     }

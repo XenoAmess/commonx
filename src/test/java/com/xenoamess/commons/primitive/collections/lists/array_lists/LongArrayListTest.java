@@ -40,7 +40,7 @@ public class LongArrayListTest {
             if (flag) {
                 a1.remove(l);
             } else {
-                a1.removePrimitive(l);
+                a1.removeByContentPrimitive(l);
             }
         }
 
@@ -70,7 +70,7 @@ public class LongArrayListTest {
             a1.addPrimitive(data.getPrimitive(i));
         }
         for (int i = 0; i < length; i++) {
-            a1.removePrimitive(data.getPrimitive(i));
+            a1.removeByContentPrimitive(data.getPrimitive(i));
         }
         a1.sort(null);
         long score1 = (System.nanoTime() - begin1);

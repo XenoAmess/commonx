@@ -24,7 +24,13 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.collections.lists.AbstractIntList;
+import com.xenoamess.commons.primitive.collections.lists.IntList;
 import com.xenoamess.commons.primitive.comparators.IntComparator;
+import com.xenoamess.commons.primitive.functions.IntConsumer;
+import com.xenoamess.commons.primitive.iterators.IntIterator;
+import com.xenoamess.commons.primitive.iterators.IntListIterator;
+import com.xenoamess.commons.primitive.iterators.IntSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -60,7 +66,8 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class IntArrayList extends PrimitiveArrayList<Integer> {
+public class IntArrayList extends AbstractIntList
+        implements IntList, RandomAccess, Cloneable, java.io.Serializable {
 
     /**
      * function to copy from {@code Object[]} to {@code int[]}
@@ -95,6 +102,11 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             dest[j] = src[i];
         }
     }
+
+    /**
+     * Default initial capacity.
+     */
+    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -193,7 +205,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * (larger) array and use it as {@code elementData} instead.
      *
      * @param intArray the array which will be used as initial {@code elementData} of this class.
-     * @param ifEmpty  if we will create a full IntArrayList.
+     * @param ifEmpty     if we will create a full IntArrayList.
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public IntArrayList(int[] intArray, boolean ifEmpty) {
@@ -314,19 +326,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     */
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
-    }
-
-    /**
      * Primitive replacement of {@code IntArrayList.contains(Object o)}
      *
      * @param o element whose presence in this collection is to be tested
@@ -334,6 +333,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * element
      * @see IntArrayList#contains(Object o)
      */
+    @Override
     public boolean contains(int o) {
         return this.containsPrimitive(o);
     }
@@ -346,6 +346,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * element
      * @see IntArrayList#contains(Object o)
      */
+    @Override
     public boolean containsPrimitive(int o) {
         return indexOfPrimitive(o) >= 0;
     }
@@ -385,6 +386,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * this list, or -1 if this list does not contain the element
      * @see IntArrayList#indexOf(Object o)
      */
+    @Override
     public int indexOfPrimitive(int o) {
         return indexOfRangePrimitive(o, 0, size);
     }
@@ -477,6 +479,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * this list, or -1 if this list does not contain the element
      * @see IntArrayList#lastIndexOf(Object o)
      */
+    @Override
     public int lastIndexOfPrimitive(int o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
@@ -526,10 +529,10 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * @see IntArrayList#lastIndexOfRange(Object o, int start, int end)
      */
     public int lastIndexOfRangePrimitive(int o, int start, int end) {
-        int tmpIntegerValue = o;
+        int tmpIntValue = o;
         int[] es = elementData;
         for (int i = end - 1; i >= start; i--) {
-            if (tmpIntegerValue == es[i]) {
+            if (tmpIntValue == es[i]) {
                 return i;
             }
         }
@@ -586,6 +589,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      *
      * @return an array of {@link int}.
      */
+    @Override
     public int[] toArrayPrimitive() {
         return Arraysx.copyOf(elementData);
     }
@@ -665,6 +669,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * @param a an array of {@link int} objects.
      * @return an array of {@link int} objects.
      */
+    @Override
     public int[] toArrayPrimitive(int[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -711,16 +716,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the element at the specified position in this list.
-     */
-    @Override
-    public Integer get(int index) {
-        return getPrimitive(index);
-    }
-
-    /**
      * Primitive replacement of {@code IntArrayList.get(int index)}
      *
      * @param index index of the element to return
@@ -728,44 +723,22 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see IntArrayList#get(int index)
      */
+    @Override
     public int getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code IntArrayList.set(int index, Integer element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#set(int index, Integer element)
      */
     @Override
-    public Integer set(int index, Integer element) {
-        return setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.set(int index, Integer element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see IntArrayList#set(int index, Integer element)
-     */
-    public int set(int index, int element) {
-        return this.setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.set(int index, Integer element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see IntArrayList#set(int index, Integer element)
-     */
     public int setPrimitive(int index, int element) {
         checkIndex(index, size);
         int oldValue = elementData(index);
@@ -787,33 +760,13 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code IntArrayList.add(Integer e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see IntArrayList#add(Integer e)
      */
     @Override
-    public boolean add(Integer e) {
-        return addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.add(Integer e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see IntArrayList#add(Integer e)
-     */
-    public boolean add(int e) {
-        return this.addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.add(Integer e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see IntArrayList#add(Integer e)
-     */
     public boolean addPrimitive(int e) {
         modCount++;
         add(e, elementData, size);
@@ -821,37 +774,14 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code IntArrayList.add(int index, Integer element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see IntArrayList#add(int index, Integer element)
      */
     @Override
-    public void add(int index, Integer element) {
-        addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.add(int index, Integer element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see IntArrayList#add(int index, Integer element)
-     */
-    public void add(int index, int element) {
-        this.addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.add(int index, Integer element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see IntArrayList#add(int index, Integer element)
-     */
     public void addPrimitive(int index, int element) {
         rangeCheckForAdd(index);
         modCount++;
@@ -868,14 +798,16 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
+     *
+     * @param index the index of the element to be removed
+     * @return the element that was removed from the list
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
-    public Integer remove(int index) {
+    public int removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final int[] es = elementData;
 
@@ -1001,14 +933,36 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         if (!(o instanceof Integer)) {
             return false;
         }
-        int oInt = (Integer) o;
+        return this.removeByContentPrimitive((Integer) o);
+    }
+
+    /**
+     * Primitive replacement of {@code IntArrayList.remove(Object o)}
+     *
+     * @param o element to be removed from this collection, if present
+     * @return {@code true} if an element was removed as a result of this call
+     * @see IntArrayList#remove(Object o)
+     */
+    @Override
+    public boolean removeByContent(int o) {
+        return this.removeByContentPrimitive(o);
+    }
+
+    /**
+     * Primitive replacement of {@code IntArrayList.remove(Object o)}
+     *
+     * @param o element to be removed from this collection, if present
+     * @return {@code true} if an element was removed as a result of this call
+     * @see IntArrayList#remove(Object o)
+     */
+    public boolean removeByContentPrimitive(int o) {
         final int[] es = elementData;
         final int size = this.size;
         int i = 0;
         found:
         {
             for (; i < size; i++) {
-                if (oInt == es[i]) {
+                if (o == es[i]) {
                     break found;
                 }
             }
@@ -1017,7 +971,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         fastRemove(es, i);
         return true;
     }
-
 
     /**
      * Private remove method that skips bounds checking and does not
@@ -1508,7 +1461,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Integer> iterator() {
+    public IntIterator iterator() {
         return new IntArrayList.Itr();
     }
 
@@ -1688,21 +1641,21 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Integer> subList(int fromIndex, int toIndex) {
+    public IntList subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
-        return new IntArrayList.IntegerSubList(this, fromIndex, toIndex);
+        return new IntArrayList.IntSubList(this, fromIndex, toIndex);
     }
 
-    private static class IntegerSubList extends AbstractList<Integer> implements RandomAccess {
+    private static class IntSubList extends AbstractIntList implements RandomAccess {
         private final IntArrayList root;
-        private final IntArrayList.IntegerSubList parent;
+        private final IntArrayList.IntSubList parent;
         private final int offset;
         private int size;
 
         /**
          * Constructs a sublist of an arbitrary IntArrayList.
          */
-        public IntegerSubList(IntArrayList root, int fromIndex, int toIndex) {
+        public IntSubList(IntArrayList root, int fromIndex, int toIndex) {
             this.root = root;
             this.parent = null;
             this.offset = fromIndex;
@@ -1713,7 +1666,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         /**
          * Constructs a sublist of another SubList.
          */
-        private IntegerSubList(IntArrayList.IntegerSubList parent, int fromIndex, int toIndex) {
+        private IntSubList(IntArrayList.IntSubList parent, int fromIndex, int toIndex) {
             this.root = parent.root;
             this.parent = parent;
             this.offset = parent.offset + fromIndex;
@@ -1721,6 +1674,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             this.modCount = root.modCount;
         }
 
+        @Override
         public int setPrimitive(int index, int element) {
             checkIndex(index, size);
             checkForComodification();
@@ -1730,10 +1684,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public Integer get(int index) {
-            return this.getPrimitive(index);
-        }
-
         public int getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
@@ -1747,10 +1697,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public void add(int index, Integer element) {
-            this.addPrimitive(index, element);
-        }
-
         public void addPrimitive(int index, int element) {
             rangeCheckForAdd(index);
             checkForComodification();
@@ -1758,12 +1704,9 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             updateSizeAndModCount(1);
         }
 
-        @Override
-        public Integer remove(int index) {
-            return this.removePrimitive(index);
-        }
 
-        public int removePrimitive(int index) {
+        @Override
+        public int removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             int result = root.remove(offset + index);
@@ -1838,6 +1781,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
+        @Override
         public int[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1857,6 +1801,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             return a;
         }
 
+        @Override
         public int[] toArrayPrimitive(int[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1902,6 +1847,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             return this.indexOfPrimitive(o);
         }
 
+        @Override
         public int indexOfPrimitive(int o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1919,6 +1865,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
             return this.lastIndexOfPrimitive(o);
         }
 
+        @Override
         public int lastIndexOfPrimitive(int o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1926,21 +1873,18 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public boolean contains(Object o) {
-            return indexOf(o) >= 0;
-        }
-
         public boolean contains(int o) {
             return this.containsPrimitive(o);
         }
 
+        @Override
         public boolean containsPrimitive(int o) {
             return indexOfPrimitive(o) >= 0;
         }
 
 
         @Override
-        public Iterator<Integer> iterator() {
+        public IntIterator iterator() {
             return listIterator();
         }
 
@@ -1956,19 +1900,14 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
 
                 @Override
                 public boolean hasNext() {
-                    return cursor != IntArrayList.IntegerSubList.this.size;
-                }
-
-                @Override
-                public Integer next() {
-                    return nextPrimitive();
+                    return cursor != IntArrayList.IntSubList.this.size;
                 }
 
                 @Override
                 public int nextPrimitive() {
                     checkForComodification();
                     int i = cursor;
-                    if (i >= IntArrayList.IntegerSubList.this.size) {
+                    if (i >= IntArrayList.IntSubList.this.size) {
                         throw new NoSuchElementException();
                     }
                     int[] elementData = root.elementData;
@@ -1982,11 +1921,6 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
                 @Override
                 public boolean hasPrevious() {
                     return cursor != 0;
-                }
-
-                @Override
-                public Integer previous() {
-                    return previousPrimitive();
                 }
 
                 @Override
@@ -2007,16 +1941,25 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
                 @Override
                 public void forEachRemaining(Consumer<? super Integer> action) {
                     Objects.requireNonNull(action);
-                    final int size = IntArrayList.IntegerSubList.this.size;
+                    final int size = IntArrayList.IntSubList.this.size;
                     int i = cursor;
                     if (i < size) {
                         final int[] es = root.elementData;
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
-                        for (; i < size && modCount == expectedModCount; i++) {
-                            action.accept(elementAt(es, offset + i));
+
+                        if (action instanceof IntConsumer) {
+                            IntConsumer actionIntConsumer = (IntConsumer) action;
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                actionIntConsumer.acceptPrimitive(elementAt(es, offset + i));
+                            }
+                        } else {
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                action.accept(elementAt(es, offset + i));
+                            }
                         }
+
                         // update once at end to reduce heap write traffic
                         cursor = i;
                         lastRet = i - 1;
@@ -2042,7 +1985,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
                     checkForComodification();
 
                     try {
-                        IntArrayList.IntegerSubList.this.remove(lastRet);
+                        IntArrayList.IntSubList.this.remove(lastRet);
                         cursor = lastRet;
                         lastRet = -1;
                         expectedModCount = root.modCount;
@@ -2081,7 +2024,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
 
                     try {
                         int i = cursor;
-                        IntArrayList.IntegerSubList.this.add(i, e);
+                        IntArrayList.IntSubList.this.add(i, e);
                         cursor = i + 1;
                         lastRet = -1;
                         expectedModCount = root.modCount;
@@ -2099,9 +2042,9 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public List<Integer> subList(int fromIndex, int toIndex) {
+        public IntList subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
-            return new IntArrayList.IntegerSubList(this, fromIndex, toIndex);
+            return new IntArrayList.IntSubList(this, fromIndex, toIndex);
         }
 
         private void rangeCheckForAdd(int index) {
@@ -2121,7 +2064,7 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         private void updateSizeAndModCount(int sizeChange) {
-            IntArrayList.IntegerSubList slist = this;
+            IntArrayList.IntSubList slist = this;
             do {
                 slist.size += sizeChange;
                 slist.modCount = root.modCount;
@@ -2130,11 +2073,11 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
         }
 
         @Override
-        public Spliterator<Integer> spliterator() {
+        public IntSpliterator spliterator() {
             checkForComodification();
 
             // IntArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Integer>() {
+            return new IntSpliterator() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -2243,14 +2186,14 @@ public class IntArrayList extends PrimitiveArrayList<Integer> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Integer> spliterator() {
+    public IntSpliterator spliterator() {
         return new IntArrayList.IntArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class IntArrayListSpliterator implements Spliterator<Integer> {
+    final class IntArrayListSpliterator implements IntSpliterator {
 
         /*
          * If IntArrayLists were immutable, or structurally immutable (no

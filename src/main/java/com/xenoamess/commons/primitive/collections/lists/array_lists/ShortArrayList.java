@@ -24,7 +24,13 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.collections.lists.AbstractShortList;
+import com.xenoamess.commons.primitive.collections.lists.ShortList;
 import com.xenoamess.commons.primitive.comparators.ShortComparator;
+import com.xenoamess.commons.primitive.functions.ShortConsumer;
+import com.xenoamess.commons.primitive.iterators.ShortIterator;
+import com.xenoamess.commons.primitive.iterators.ShortListIterator;
+import com.xenoamess.commons.primitive.iterators.ShortSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -60,7 +66,8 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class ShortArrayList extends PrimitiveArrayList<Short> {
+public class ShortArrayList extends AbstractShortList
+        implements ShortList, RandomAccess, Cloneable, java.io.Serializable {
 
     /**
      * function to copy from {@code Object[]} to {@code short[]}
@@ -95,6 +102,11 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             dest[j] = src[i];
         }
     }
+
+    /**
+     * Default initial capacity.
+     */
+    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -314,19 +326,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     */
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
-    }
-
-    /**
      * Primitive replacement of {@code ShortArrayList.contains(Object o)}
      *
      * @param o element whose presence in this collection is to be tested
@@ -334,6 +333,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * element
      * @see ShortArrayList#contains(Object o)
      */
+    @Override
     public boolean contains(short o) {
         return this.containsPrimitive(o);
     }
@@ -346,6 +346,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * element
      * @see ShortArrayList#contains(Object o)
      */
+    @Override
     public boolean containsPrimitive(short o) {
         return indexOfPrimitive(o) >= 0;
     }
@@ -385,6 +386,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * this list, or -1 if this list does not contain the element
      * @see ShortArrayList#indexOf(Object o)
      */
+    @Override
     public int indexOfPrimitive(short o) {
         return indexOfRangePrimitive(o, 0, size);
     }
@@ -477,6 +479,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * this list, or -1 if this list does not contain the element
      * @see ShortArrayList#lastIndexOf(Object o)
      */
+    @Override
     public int lastIndexOfPrimitive(short o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
@@ -586,6 +589,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      *
      * @return an array of {@link short}.
      */
+    @Override
     public short[] toArrayPrimitive() {
         return Arraysx.copyOf(elementData);
     }
@@ -665,6 +669,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @param a an array of {@link short} objects.
      * @return an array of {@link short} objects.
      */
+    @Override
     public short[] toArrayPrimitive(short[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -711,16 +716,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the element at the specified position in this list.
-     */
-    @Override
-    public Short get(int index) {
-        return getPrimitive(index);
-    }
-
-    /**
      * Primitive replacement of {@code ShortArrayList.get(int index)}
      *
      * @param index index of the element to return
@@ -728,44 +723,22 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see ShortArrayList#get(int index)
      */
+    @Override
     public short getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code ShortArrayList.set(int index, Short element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see ShortArrayList#set(int index, Short element)
      */
     @Override
-    public Short set(int index, Short element) {
-        return setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.set(int index, Short element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ShortArrayList#set(int index, Short element)
-     */
-    public short set(int index, short element) {
-        return this.setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.set(int index, Short element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ShortArrayList#set(int index, Short element)
-     */
     public short setPrimitive(int index, short element) {
         checkIndex(index, size);
         short oldValue = elementData(index);
@@ -787,33 +760,13 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code ShortArrayList.add(Short e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see ShortArrayList#add(Short e)
      */
     @Override
-    public boolean add(Short e) {
-        return addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.add(Short e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see ShortArrayList#add(Short e)
-     */
-    public boolean add(short e) {
-        return this.addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.add(Short e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see ShortArrayList#add(Short e)
-     */
     public boolean addPrimitive(short e) {
         modCount++;
         add(e, elementData, size);
@@ -821,37 +774,14 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code ShortArrayList.add(int index, Short element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see ShortArrayList#add(int index, Short element)
      */
     @Override
-    public void add(int index, Short element) {
-        addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.add(int index, Short element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ShortArrayList#add(int index, Short element)
-     */
-    public void add(int index, short element) {
-        this.addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.add(int index, Short element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see ShortArrayList#add(int index, Short element)
-     */
     public void addPrimitive(int index, short element) {
         rangeCheckForAdd(index);
         modCount++;
@@ -868,18 +798,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left (subtracts one from their
-     * indices).
-     */
-    @Override
-    public Short remove(int index) {
-        return removePrimitive(index);
-    }
-
-    /**
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
@@ -888,7 +806,8 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @return the element that was removed from the list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public short removePrimitive(int index) {
+    @Override
+    public short removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final short[] es = elementData;
 
@@ -1014,7 +933,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         if (!(o instanceof Short)) {
             return false;
         }
-        return this.removePrimitive((Short) o);
+        return this.removeByContentPrimitive((Short) o);
     }
 
     /**
@@ -1024,8 +943,9 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @return {@code true} if an element was removed as a result of this call
      * @see ShortArrayList#remove(Object o)
      */
-    public boolean remove(short o) {
-        return this.removePrimitive(o);
+    @Override
+    public boolean removeByContent(short o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -1035,7 +955,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @return {@code true} if an element was removed as a result of this call
      * @see ShortArrayList#remove(Object o)
      */
-    public boolean removePrimitive(short o) {
+    public boolean removeByContentPrimitive(short o) {
         final short[] es = elementData;
         final int size = this.size;
         int i = 0;
@@ -1541,7 +1461,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Short> iterator() {
+    public ShortIterator iterator() {
         return new ShortArrayList.Itr();
     }
 
@@ -1721,12 +1641,12 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Short> subList(int fromIndex, int toIndex) {
+    public ShortList subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
         return new ShortArrayList.ShortSubList(this, fromIndex, toIndex);
     }
 
-    private static class ShortSubList extends AbstractList<Short> implements RandomAccess {
+    private static class ShortSubList extends AbstractShortList implements RandomAccess {
         private final ShortArrayList root;
         private final ShortArrayList.ShortSubList parent;
         private final int offset;
@@ -1754,6 +1674,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             this.modCount = root.modCount;
         }
 
+        @Override
         public short setPrimitive(int index, short element) {
             checkIndex(index, size);
             checkForComodification();
@@ -1763,10 +1684,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         }
 
         @Override
-        public Short get(int index) {
-            return this.getPrimitive(index);
-        }
-
         public short getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
@@ -1780,10 +1697,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         }
 
         @Override
-        public void add(int index, Short element) {
-            this.addPrimitive(index, element);
-        }
-
         public void addPrimitive(int index, short element) {
             rangeCheckForAdd(index);
             checkForComodification();
@@ -1791,12 +1704,9 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             updateSizeAndModCount(1);
         }
 
-        @Override
-        public Short remove(int index) {
-            return this.removePrimitive(index);
-        }
 
-        public short removePrimitive(int index) {
+        @Override
+        public short removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             short result = root.remove(offset + index);
@@ -1871,6 +1781,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
+        @Override
         public short[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1890,6 +1801,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             return a;
         }
 
+        @Override
         public short[] toArrayPrimitive(short[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1935,6 +1847,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             return this.indexOfPrimitive(o);
         }
 
+        @Override
         public int indexOfPrimitive(short o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1952,6 +1865,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
             return this.lastIndexOfPrimitive(o);
         }
 
+        @Override
         public int lastIndexOfPrimitive(short o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1959,21 +1873,18 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         }
 
         @Override
-        public boolean contains(Object o) {
-            return indexOf(o) >= 0;
-        }
-
         public boolean contains(short o) {
             return this.containsPrimitive(o);
         }
 
+        @Override
         public boolean containsPrimitive(short o) {
             return indexOfPrimitive(o) >= 0;
         }
 
 
         @Override
-        public Iterator<Short> iterator() {
+        public ShortIterator iterator() {
             return listIterator();
         }
 
@@ -1990,11 +1901,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
                 @Override
                 public boolean hasNext() {
                     return cursor != ShortArrayList.ShortSubList.this.size;
-                }
-
-                @Override
-                public Short next() {
-                    return nextPrimitive();
                 }
 
                 @Override
@@ -2015,11 +1921,6 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
                 @Override
                 public boolean hasPrevious() {
                     return cursor != 0;
-                }
-
-                @Override
-                public Short previous() {
-                    return previousPrimitive();
                 }
 
                 @Override
@@ -2047,9 +1948,18 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
-                        for (; i < size && modCount == expectedModCount; i++) {
-                            action.accept(elementAt(es, offset + i));
+
+                        if (action instanceof ShortConsumer) {
+                            ShortConsumer actionShortConsumer = (ShortConsumer) action;
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                actionShortConsumer.acceptPrimitive(elementAt(es, offset + i));
+                            }
+                        } else {
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                action.accept(elementAt(es, offset + i));
+                            }
                         }
+
                         // update once at end to reduce heap write traffic
                         cursor = i;
                         lastRet = i - 1;
@@ -2132,7 +2042,7 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         }
 
         @Override
-        public List<Short> subList(int fromIndex, int toIndex) {
+        public ShortList subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
             return new ShortArrayList.ShortSubList(this, fromIndex, toIndex);
         }
@@ -2163,11 +2073,11 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
         }
 
         @Override
-        public Spliterator<Short> spliterator() {
+        public ShortSpliterator spliterator() {
             checkForComodification();
 
             // ShortArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Short>() {
+            return new ShortSpliterator() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -2276,14 +2186,14 @@ public class ShortArrayList extends PrimitiveArrayList<Short> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Short> spliterator() {
+    public ShortSpliterator spliterator() {
         return new ShortArrayList.ShortArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class ShortArrayListSpliterator implements Spliterator<Short> {
+    final class ShortArrayListSpliterator implements ShortSpliterator {
 
         /*
          * If ShortArrayLists were immutable, or structurally immutable (no

@@ -443,7 +443,7 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
         if (!(o instanceof Double)) {
             return false;
         }
-        return removePrimitive((Double) o);
+        return removeByContentPrimitive((Double) o);
     }
 
     /**
@@ -463,8 +463,8 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
      *                                       is not supported by this collection
      * @see #remove(Object o)
      */
-    default boolean remove(double o) {
-        return this.removePrimitive(o);
+    default boolean removeByContent(double o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -484,7 +484,7 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
      *                                       is not supported by this collection
      * @see #remove(Object o)
      */
-    boolean removePrimitive(double o);
+    boolean removeByContentPrimitive(double o);
 
     // Bulk Operations
 

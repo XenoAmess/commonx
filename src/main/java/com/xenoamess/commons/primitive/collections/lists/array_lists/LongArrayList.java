@@ -24,7 +24,13 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.collections.lists.AbstractLongList;
+import com.xenoamess.commons.primitive.collections.lists.LongList;
 import com.xenoamess.commons.primitive.comparators.LongComparator;
+import com.xenoamess.commons.primitive.functions.LongConsumer;
+import com.xenoamess.commons.primitive.iterators.LongIterator;
+import com.xenoamess.commons.primitive.iterators.LongListIterator;
+import com.xenoamess.commons.primitive.iterators.LongSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -60,7 +66,8 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class LongArrayList extends PrimitiveArrayList<Long> {
+public class LongArrayList extends AbstractLongList
+        implements LongList, RandomAccess, Cloneable, java.io.Serializable {
 
     /**
      * function to copy from {@code Object[]} to {@code long[]}
@@ -95,6 +102,11 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             dest[j] = src[i];
         }
     }
+
+    /**
+     * Default initial capacity.
+     */
+    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -314,19 +326,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     */
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
-    }
-
-    /**
      * Primitive replacement of {@code LongArrayList.contains(Object o)}
      *
      * @param o element whose presence in this collection is to be tested
@@ -334,6 +333,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * element
      * @see LongArrayList#contains(Object o)
      */
+    @Override
     public boolean contains(long o) {
         return this.containsPrimitive(o);
     }
@@ -346,6 +346,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * element
      * @see LongArrayList#contains(Object o)
      */
+    @Override
     public boolean containsPrimitive(long o) {
         return indexOfPrimitive(o) >= 0;
     }
@@ -385,6 +386,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * this list, or -1 if this list does not contain the element
      * @see LongArrayList#indexOf(Object o)
      */
+    @Override
     public int indexOfPrimitive(long o) {
         return indexOfRangePrimitive(o, 0, size);
     }
@@ -477,6 +479,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * this list, or -1 if this list does not contain the element
      * @see LongArrayList#lastIndexOf(Object o)
      */
+    @Override
     public int lastIndexOfPrimitive(long o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
@@ -586,6 +589,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      *
      * @return an array of {@link long}.
      */
+    @Override
     public long[] toArrayPrimitive() {
         return Arraysx.copyOf(elementData);
     }
@@ -665,6 +669,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @param a an array of {@link long} objects.
      * @return an array of {@link long} objects.
      */
+    @Override
     public long[] toArrayPrimitive(long[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -711,16 +716,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the element at the specified position in this list.
-     */
-    @Override
-    public Long get(int index) {
-        return getPrimitive(index);
-    }
-
-    /**
      * Primitive replacement of {@code LongArrayList.get(int index)}
      *
      * @param index index of the element to return
@@ -728,44 +723,22 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see LongArrayList#get(int index)
      */
+    @Override
     public long getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code LongArrayList.set(int index, Long element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see LongArrayList#set(int index, Long element)
      */
     @Override
-    public Long set(int index, Long element) {
-        return setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code LongArrayList.set(int index, Long element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see LongArrayList#set(int index, Long element)
-     */
-    public long set(int index, long element) {
-        return this.setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code LongArrayList.set(int index, Long element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see LongArrayList#set(int index, Long element)
-     */
     public long setPrimitive(int index, long element) {
         checkIndex(index, size);
         long oldValue = elementData(index);
@@ -787,33 +760,13 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code LongArrayList.add(Long e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see LongArrayList#add(Long e)
      */
     @Override
-    public boolean add(Long e) {
-        return addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code LongArrayList.add(Long e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see LongArrayList#add(Long e)
-     */
-    public boolean add(long e) {
-        return this.addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code LongArrayList.add(Long e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see LongArrayList#add(Long e)
-     */
     public boolean addPrimitive(long e) {
         modCount++;
         add(e, elementData, size);
@@ -821,37 +774,14 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code LongArrayList.add(int index, Long element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see LongArrayList#add(int index, Long element)
      */
     @Override
-    public void add(int index, Long element) {
-        addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code LongArrayList.add(int index, Long element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see LongArrayList#add(int index, Long element)
-     */
-    public void add(int index, long element) {
-        this.addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code LongArrayList.add(int index, Long element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see LongArrayList#add(int index, Long element)
-     */
     public void addPrimitive(int index, long element) {
         rangeCheckForAdd(index);
         modCount++;
@@ -868,18 +798,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left (subtracts one from their
-     * indices).
-     */
-    @Override
-    public Long remove(int index) {
-        return removePrimitive(index);
-    }
-
-    /**
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
@@ -888,7 +806,8 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @return the element that was removed from the list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public long removePrimitive(int index) {
+    @Override
+    public long removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final long[] es = elementData;
 
@@ -1014,7 +933,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         if (!(o instanceof Long)) {
             return false;
         }
-        return this.removePrimitive((Long) o);
+        return this.removeByContentPrimitive((Long) o);
     }
 
     /**
@@ -1024,8 +943,9 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @return {@code true} if an element was removed as a result of this call
      * @see LongArrayList#remove(Object o)
      */
-    public boolean remove(long o) {
-        return this.removePrimitive(o);
+    @Override
+    public boolean removeByContent(long o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -1035,7 +955,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @return {@code true} if an element was removed as a result of this call
      * @see LongArrayList#remove(Object o)
      */
-    public boolean removePrimitive(long o) {
+    public boolean removeByContentPrimitive(long o) {
         final long[] es = elementData;
         final int size = this.size;
         int i = 0;
@@ -1541,7 +1461,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Long> iterator() {
+    public LongIterator iterator() {
         return new LongArrayList.Itr();
     }
 
@@ -1721,12 +1641,12 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Long> subList(int fromIndex, int toIndex) {
+    public LongList subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
         return new LongArrayList.LongSubList(this, fromIndex, toIndex);
     }
 
-    private static class LongSubList extends AbstractList<Long> implements RandomAccess {
+    private static class LongSubList extends AbstractLongList implements RandomAccess {
         private final LongArrayList root;
         private final LongArrayList.LongSubList parent;
         private final int offset;
@@ -1754,6 +1674,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             this.modCount = root.modCount;
         }
 
+        @Override
         public long setPrimitive(int index, long element) {
             checkIndex(index, size);
             checkForComodification();
@@ -1763,10 +1684,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         }
 
         @Override
-        public Long get(int index) {
-            return this.getPrimitive(index);
-        }
-
         public long getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
@@ -1780,10 +1697,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         }
 
         @Override
-        public void add(int index, Long element) {
-            this.addPrimitive(index, element);
-        }
-
         public void addPrimitive(int index, long element) {
             rangeCheckForAdd(index);
             checkForComodification();
@@ -1791,12 +1704,9 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             updateSizeAndModCount(1);
         }
 
-        @Override
-        public Long remove(int index) {
-            return this.removePrimitive(index);
-        }
 
-        public long removePrimitive(int index) {
+        @Override
+        public long removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             long result = root.remove(offset + index);
@@ -1871,6 +1781,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
+        @Override
         public long[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1890,6 +1801,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             return a;
         }
 
+        @Override
         public long[] toArrayPrimitive(long[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1935,6 +1847,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             return this.indexOfPrimitive(o);
         }
 
+        @Override
         public int indexOfPrimitive(long o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1952,6 +1865,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
             return this.lastIndexOfPrimitive(o);
         }
 
+        @Override
         public int lastIndexOfPrimitive(long o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1959,21 +1873,18 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         }
 
         @Override
-        public boolean contains(Object o) {
-            return indexOf(o) >= 0;
-        }
-
         public boolean contains(long o) {
             return this.containsPrimitive(o);
         }
 
+        @Override
         public boolean containsPrimitive(long o) {
             return indexOfPrimitive(o) >= 0;
         }
 
 
         @Override
-        public Iterator<Long> iterator() {
+        public LongIterator iterator() {
             return listIterator();
         }
 
@@ -1990,11 +1901,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
                 @Override
                 public boolean hasNext() {
                     return cursor != LongArrayList.LongSubList.this.size;
-                }
-
-                @Override
-                public Long next() {
-                    return nextPrimitive();
                 }
 
                 @Override
@@ -2015,11 +1921,6 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
                 @Override
                 public boolean hasPrevious() {
                     return cursor != 0;
-                }
-
-                @Override
-                public Long previous() {
-                    return previousPrimitive();
                 }
 
                 @Override
@@ -2047,9 +1948,18 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
-                        for (; i < size && modCount == expectedModCount; i++) {
-                            action.accept(elementAt(es, offset + i));
+
+                        if (action instanceof LongConsumer) {
+                            LongConsumer actionLongConsumer = (LongConsumer) action;
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                actionLongConsumer.acceptPrimitive(elementAt(es, offset + i));
+                            }
+                        } else {
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                action.accept(elementAt(es, offset + i));
+                            }
                         }
+
                         // update once at end to reduce heap write traffic
                         cursor = i;
                         lastRet = i - 1;
@@ -2132,7 +2042,7 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         }
 
         @Override
-        public List<Long> subList(int fromIndex, int toIndex) {
+        public LongList subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
             return new LongArrayList.LongSubList(this, fromIndex, toIndex);
         }
@@ -2163,11 +2073,11 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
         }
 
         @Override
-        public Spliterator<Long> spliterator() {
+        public LongSpliterator spliterator() {
             checkForComodification();
 
             // LongArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Long>() {
+            return new LongSpliterator() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -2276,14 +2186,14 @@ public class LongArrayList extends PrimitiveArrayList<Long> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Long> spliterator() {
+    public LongSpliterator spliterator() {
         return new LongArrayList.LongArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class LongArrayListSpliterator implements Spliterator<Long> {
+    final class LongArrayListSpliterator implements LongSpliterator {
 
         /*
          * If LongArrayLists were immutable, or structurally immutable (no

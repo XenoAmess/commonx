@@ -108,7 +108,7 @@ public class DoubleIteratorSpliterator implements DoubleSpliterator.DoubleOfDoub
             if (est != Long.MAX_VALUE) {
                 est -= j;
             }
-            return new DoubleSpliterators.DoubleArraySpliterator(a, 0, j, characteristics);
+            return new DoubleArraySpliterator(a, 0, j, characteristics);
         }
         return null;
     }

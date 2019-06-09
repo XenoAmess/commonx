@@ -803,7 +803,7 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      */
     @Override
     default Double remove(int index) {
-        return this.removePrimitive(index);
+        return this.removeByIndexPrimitive(index);
     }
 
     /**
@@ -817,7 +817,7 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      *                                       ({@code index < 0 || index >= size()})
      * @see #remove(int index)
      */
-    double removePrimitive(int index);
+    double removeByIndexPrimitive(int index);
 
     // Search Operations
 

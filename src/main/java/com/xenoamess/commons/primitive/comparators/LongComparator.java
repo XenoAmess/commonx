@@ -1,5 +1,9 @@
 package com.xenoamess.commons.primitive.comparators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
+import java.util.Comparator;
+
 /**
  * <p>LongComparator interface.</p>
  *
@@ -7,7 +11,7 @@ package com.xenoamess.commons.primitive.comparators;
  * @version 0.6.0
  * @see java.util.Comparator
  */
-public interface LongComparator extends PrimitiveComparator<Long> {
+public interface LongComparator extends Comparator<Long>, Primitive {
     /**
      * {@inheritDoc}
      * <p>

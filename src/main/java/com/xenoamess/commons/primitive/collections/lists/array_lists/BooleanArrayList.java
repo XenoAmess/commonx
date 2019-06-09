@@ -24,7 +24,13 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.collections.lists.AbstractBooleanList;
+import com.xenoamess.commons.primitive.collections.lists.BooleanList;
 import com.xenoamess.commons.primitive.comparators.BooleanComparator;
+import com.xenoamess.commons.primitive.functions.BooleanConsumer;
+import com.xenoamess.commons.primitive.iterators.BooleanIterator;
+import com.xenoamess.commons.primitive.iterators.BooleanListIterator;
+import com.xenoamess.commons.primitive.iterators.BooleanSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -60,7 +66,8 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
+public class BooleanArrayList extends AbstractBooleanList
+        implements BooleanList, RandomAccess, Cloneable, java.io.Serializable {
 
     /**
      * function to copy from {@code Object[]} to {@code boolean[]}
@@ -95,6 +102,11 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             dest[j] = src[i];
         }
     }
+
+    /**
+     * Default initial capacity.
+     */
+    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -314,19 +326,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     */
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
-    }
-
-    /**
      * Primitive replacement of {@code BooleanArrayList.contains(Object o)}
      *
      * @param o element whose presence in this collection is to be tested
@@ -334,6 +333,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * element
      * @see BooleanArrayList#contains(Object o)
      */
+    @Override
     public boolean contains(boolean o) {
         return this.containsPrimitive(o);
     }
@@ -346,6 +346,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * element
      * @see BooleanArrayList#contains(Object o)
      */
+    @Override
     public boolean containsPrimitive(boolean o) {
         return indexOfPrimitive(o) >= 0;
     }
@@ -385,6 +386,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * this list, or -1 if this list does not contain the element
      * @see BooleanArrayList#indexOf(Object o)
      */
+    @Override
     public int indexOfPrimitive(boolean o) {
         return indexOfRangePrimitive(o, 0, size);
     }
@@ -477,6 +479,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * this list, or -1 if this list does not contain the element
      * @see BooleanArrayList#lastIndexOf(Object o)
      */
+    @Override
     public int lastIndexOfPrimitive(boolean o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
@@ -586,6 +589,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      *
      * @return an array of {@link boolean}.
      */
+    @Override
     public boolean[] toArrayPrimitive() {
         return Arraysx.copyOf(elementData);
     }
@@ -665,6 +669,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @param a an array of {@link boolean} objects.
      * @return an array of {@link boolean} objects.
      */
+    @Override
     public boolean[] toArrayPrimitive(boolean[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -711,16 +716,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the element at the specified position in this list.
-     */
-    @Override
-    public Boolean get(int index) {
-        return getPrimitive(index);
-    }
-
-    /**
      * Primitive replacement of {@code BooleanArrayList.get(int index)}
      *
      * @param index index of the element to return
@@ -728,44 +723,22 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see BooleanArrayList#get(int index)
      */
+    @Override
     public boolean getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code BooleanArrayList.set(int index, Boolean element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see BooleanArrayList#set(int index, Boolean element)
      */
     @Override
-    public Boolean set(int index, Boolean element) {
-        return setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.set(int index, Boolean element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see BooleanArrayList#set(int index, Boolean element)
-     */
-    public boolean set(int index, boolean element) {
-        return this.setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.set(int index, Boolean element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see BooleanArrayList#set(int index, Boolean element)
-     */
     public boolean setPrimitive(int index, boolean element) {
         checkIndex(index, size);
         boolean oldValue = elementData(index);
@@ -787,33 +760,13 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code BooleanArrayList.add(Boolean e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see BooleanArrayList#add(Boolean e)
      */
     @Override
-    public boolean add(Boolean e) {
-        return addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.add(Boolean e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see BooleanArrayList#add(Boolean e)
-     */
-    public boolean add(boolean e) {
-        return this.addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.add(Boolean e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see BooleanArrayList#add(Boolean e)
-     */
     public boolean addPrimitive(boolean e) {
         modCount++;
         add(e, elementData, size);
@@ -821,37 +774,14 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code BooleanArrayList.add(int index, Boolean element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see BooleanArrayList#add(int index, Boolean element)
      */
     @Override
-    public void add(int index, Boolean element) {
-        addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.add(int index, Boolean element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see BooleanArrayList#add(int index, Boolean element)
-     */
-    public void add(int index, boolean element) {
-        this.addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.add(int index, Boolean element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see BooleanArrayList#add(int index, Boolean element)
-     */
     public void addPrimitive(int index, boolean element) {
         rangeCheckForAdd(index);
         modCount++;
@@ -868,18 +798,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left (subtracts one from their
-     * indices).
-     */
-    @Override
-    public Boolean remove(int index) {
-        return removePrimitive(index);
-    }
-
-    /**
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
@@ -888,7 +806,8 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @return the element that was removed from the list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public boolean removePrimitive(int index) {
+    @Override
+    public boolean removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final boolean[] es = elementData;
 
@@ -1014,7 +933,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         if (!(o instanceof Boolean)) {
             return false;
         }
-        return this.removePrimitive((Boolean) o);
+        return this.removeByContentPrimitive((Boolean) o);
     }
 
     /**
@@ -1024,8 +943,9 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @return {@code true} if an element was removed as a result of this call
      * @see BooleanArrayList#remove(Object o)
      */
-    public boolean remove(boolean o) {
-        return this.removePrimitive(o);
+    @Override
+    public boolean removeByContent(boolean o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -1035,7 +955,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @return {@code true} if an element was removed as a result of this call
      * @see BooleanArrayList#remove(Object o)
      */
-    public boolean removePrimitive(boolean o) {
+    public boolean removeByContentPrimitive(boolean o) {
         final boolean[] es = elementData;
         final int size = this.size;
         int i = 0;
@@ -1541,7 +1461,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Boolean> iterator() {
+    public BooleanIterator iterator() {
         return new BooleanArrayList.Itr();
     }
 
@@ -1721,12 +1641,12 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Boolean> subList(int fromIndex, int toIndex) {
+    public BooleanList subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
         return new BooleanArrayList.BooleanSubList(this, fromIndex, toIndex);
     }
 
-    private static class BooleanSubList extends AbstractList<Boolean> implements RandomAccess {
+    private static class BooleanSubList extends AbstractBooleanList implements RandomAccess {
         private final BooleanArrayList root;
         private final BooleanArrayList.BooleanSubList parent;
         private final int offset;
@@ -1754,6 +1674,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             this.modCount = root.modCount;
         }
 
+        @Override
         public boolean setPrimitive(int index, boolean element) {
             checkIndex(index, size);
             checkForComodification();
@@ -1763,10 +1684,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         }
 
         @Override
-        public Boolean get(int index) {
-            return this.getPrimitive(index);
-        }
-
         public boolean getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
@@ -1780,10 +1697,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         }
 
         @Override
-        public void add(int index, Boolean element) {
-            this.addPrimitive(index, element);
-        }
-
         public void addPrimitive(int index, boolean element) {
             rangeCheckForAdd(index);
             checkForComodification();
@@ -1791,12 +1704,9 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             updateSizeAndModCount(1);
         }
 
-        @Override
-        public Boolean remove(int index) {
-            return this.removePrimitive(index);
-        }
 
-        public boolean removePrimitive(int index) {
+        @Override
+        public boolean removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             boolean result = root.remove(offset + index);
@@ -1871,6 +1781,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
+        @Override
         public boolean[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1890,6 +1801,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             return a;
         }
 
+        @Override
         public boolean[] toArrayPrimitive(boolean[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1935,6 +1847,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             return this.indexOfPrimitive(o);
         }
 
+        @Override
         public int indexOfPrimitive(boolean o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1952,6 +1865,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
             return this.lastIndexOfPrimitive(o);
         }
 
+        @Override
         public int lastIndexOfPrimitive(boolean o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1959,21 +1873,18 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         }
 
         @Override
-        public boolean contains(Object o) {
-            return indexOf(o) >= 0;
-        }
-
         public boolean contains(boolean o) {
             return this.containsPrimitive(o);
         }
 
+        @Override
         public boolean containsPrimitive(boolean o) {
             return indexOfPrimitive(o) >= 0;
         }
 
 
         @Override
-        public Iterator<Boolean> iterator() {
+        public BooleanIterator iterator() {
             return listIterator();
         }
 
@@ -1990,11 +1901,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
                 @Override
                 public boolean hasNext() {
                     return cursor != BooleanArrayList.BooleanSubList.this.size;
-                }
-
-                @Override
-                public Boolean next() {
-                    return nextPrimitive();
                 }
 
                 @Override
@@ -2015,11 +1921,6 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
                 @Override
                 public boolean hasPrevious() {
                     return cursor != 0;
-                }
-
-                @Override
-                public Boolean previous() {
-                    return previousPrimitive();
                 }
 
                 @Override
@@ -2047,9 +1948,18 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
-                        for (; i < size && modCount == expectedModCount; i++) {
-                            action.accept(elementAt(es, offset + i));
+
+                        if (action instanceof BooleanConsumer) {
+                            BooleanConsumer actionBooleanConsumer = (BooleanConsumer) action;
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                actionBooleanConsumer.acceptPrimitive(elementAt(es, offset + i));
+                            }
+                        } else {
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                action.accept(elementAt(es, offset + i));
+                            }
                         }
+
                         // update once at end to reduce heap write traffic
                         cursor = i;
                         lastRet = i - 1;
@@ -2132,7 +2042,7 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         }
 
         @Override
-        public List<Boolean> subList(int fromIndex, int toIndex) {
+        public BooleanList subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
             return new BooleanArrayList.BooleanSubList(this, fromIndex, toIndex);
         }
@@ -2163,11 +2073,11 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
         }
 
         @Override
-        public Spliterator<Boolean> spliterator() {
+        public BooleanSpliterator spliterator() {
             checkForComodification();
 
             // BooleanArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Boolean>() {
+            return new BooleanSpliterator() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -2276,14 +2186,14 @@ public class BooleanArrayList extends PrimitiveArrayList<Boolean> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Boolean> spliterator() {
+    public BooleanSpliterator spliterator() {
         return new BooleanArrayList.BooleanArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class BooleanArrayListSpliterator implements Spliterator<Boolean> {
+    final class BooleanArrayListSpliterator implements BooleanSpliterator {
 
         /*
          * If BooleanArrayLists were immutable, or structurally immutable (no

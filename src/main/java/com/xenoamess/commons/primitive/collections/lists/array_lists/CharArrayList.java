@@ -24,7 +24,13 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.collections.lists.AbstractCharList;
+import com.xenoamess.commons.primitive.collections.lists.CharList;
 import com.xenoamess.commons.primitive.comparators.CharComparator;
+import com.xenoamess.commons.primitive.functions.CharConsumer;
+import com.xenoamess.commons.primitive.iterators.CharIterator;
+import com.xenoamess.commons.primitive.iterators.CharListIterator;
+import com.xenoamess.commons.primitive.iterators.CharSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -60,7 +66,8 @@ import java.util.function.UnaryOperator;
  * @see Vector
  * @since 1.2
  */
-public class CharArrayList extends PrimitiveArrayList<Character> {
+public class CharArrayList extends AbstractCharList
+        implements CharList, RandomAccess, Cloneable, java.io.Serializable {
 
     /**
      * function to copy from {@code Object[]} to {@code char[]}
@@ -95,6 +102,11 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             dest[j] = src[i];
         }
     }
+
+    /**
+     * Default initial capacity.
+     */
+    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Shared empty array instance used for empty instances.
@@ -314,19 +326,6 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns {@code true} if this list contains the specified element.
-     * More formally, returns {@code true} if and only if this list contains
-     * at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     */
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) >= 0;
-    }
-
-    /**
      * Primitive replacement of {@code CharArrayList.contains(Object o)}
      *
      * @param o element whose presence in this collection is to be tested
@@ -334,6 +333,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * element
      * @see CharArrayList#contains(Object o)
      */
+    @Override
     public boolean contains(char o) {
         return this.containsPrimitive(o);
     }
@@ -346,6 +346,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * element
      * @see CharArrayList#contains(Object o)
      */
+    @Override
     public boolean containsPrimitive(char o) {
         return indexOfPrimitive(o) >= 0;
     }
@@ -385,6 +386,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * this list, or -1 if this list does not contain the element
      * @see CharArrayList#indexOf(Object o)
      */
+    @Override
     public int indexOfPrimitive(char o) {
         return indexOfRangePrimitive(o, 0, size);
     }
@@ -477,6 +479,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * this list, or -1 if this list does not contain the element
      * @see CharArrayList#lastIndexOf(Object o)
      */
+    @Override
     public int lastIndexOfPrimitive(char o) {
         return this.lastIndexOfRangePrimitive(o, 0, size);
     }
@@ -526,10 +529,10 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @see CharArrayList#lastIndexOfRange(Object o, int start, int end)
      */
     public int lastIndexOfRangePrimitive(char o, int start, int end) {
-        char tmpCharacterValue = o;
+        char tmpCharValue = o;
         char[] es = elementData;
         for (int i = end - 1; i >= start; i--) {
-            if (tmpCharacterValue == es[i]) {
+            if (tmpCharValue == es[i]) {
                 return i;
             }
         }
@@ -586,6 +589,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      *
      * @return an array of {@link char}.
      */
+    @Override
     public char[] toArrayPrimitive() {
         return Arraysx.copyOf(elementData);
     }
@@ -665,6 +669,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @param a an array of {@link char} objects.
      * @return an array of {@link char} objects.
      */
+    @Override
     public char[] toArrayPrimitive(char[] a) {
         if (a.length < size) {
             // Make a new array of a's runtime type, but my contents:
@@ -711,16 +716,6 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the element at the specified position in this list.
-     */
-    @Override
-    public Character get(int index) {
-        return getPrimitive(index);
-    }
-
-    /**
      * Primitive replacement of {@code CharArrayList.get(int index)}
      *
      * @param index index of the element to return
@@ -728,44 +723,22 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see CharArrayList#get(int index)
      */
+    @Override
     public char getPrimitive(int index) {
         checkIndex(index, size);
         return elementData(index);
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Replaces the element at the specified position in this list with
-     * the specified element.
+     * Primitive replacement of {@code CharArrayList.set(int index, Character element)}
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see CharArrayList#set(int index, Character element)
      */
     @Override
-    public Character set(int index, Character element) {
-        return setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code CharArrayList.set(int index, Character element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see CharArrayList#set(int index, Character element)
-     */
-    public char set(int index, char element) {
-        return this.setPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code CharArrayList.set(int index, Character element)}
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see CharArrayList#set(int index, Character element)
-     */
     public char setPrimitive(int index, char element) {
         checkIndex(index, size);
         char oldValue = elementData(index);
@@ -787,33 +760,13 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Appends the specified element to the end of this list.
+     * Primitive replacement of {@code CharArrayList.add(Character e)}
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link java.util.Collection#add})
+     * @see CharArrayList#add(Character e)
      */
     @Override
-    public boolean add(Character e) {
-        return addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code CharArrayList.add(Character e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see CharArrayList#add(Character e)
-     */
-    public boolean add(char e) {
-        return this.addPrimitive(e);
-    }
-
-    /**
-     * Primitive replacement of {@code CharArrayList.add(Character e)}
-     *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
-     * @see CharArrayList#add(Character e)
-     */
     public boolean addPrimitive(char e) {
         modCount++;
         add(e, elementData, size);
@@ -821,37 +774,14 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Inserts the specified element at the specified position in this
-     * list. Shifts the element currently at that position (if any) and
-     * any subsequent elements to the right (adds one to their indices).
+     * Primitive replacement of {@code CharArrayList.add(int index, Character element)}
+     *
+     * @param index   index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
+     * @see CharArrayList#add(int index, Character element)
      */
     @Override
-    public void add(int index, Character element) {
-        addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code CharArrayList.add(int index, Character element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see CharArrayList#add(int index, Character element)
-     */
-    public void add(int index, char element) {
-        this.addPrimitive(index, element);
-    }
-
-    /**
-     * Primitive replacement of {@code CharArrayList.add(int index, Character element)}
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
-     * @see CharArrayList#add(int index, Character element)
-     */
     public void addPrimitive(int index, char element) {
         rangeCheckForAdd(index);
         modCount++;
@@ -868,18 +798,6 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left (subtracts one from their
-     * indices).
-     */
-    @Override
-    public Character remove(int index) {
-        return removePrimitive(index);
-    }
-
-    /**
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
@@ -888,7 +806,8 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @return the element that was removed from the list
      * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
-    public char removePrimitive(int index) {
+    @Override
+    public char removeByIndexPrimitive(int index) {
         checkIndex(index, size);
         final char[] es = elementData;
 
@@ -1014,7 +933,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         if (!(o instanceof Character)) {
             return false;
         }
-        return this.removePrimitive((Character) o);
+        return this.removeByContentPrimitive((Character) o);
     }
 
     /**
@@ -1024,8 +943,9 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @return {@code true} if an element was removed as a result of this call
      * @see CharArrayList#remove(Object o)
      */
-    public boolean remove(char o) {
-        return this.removePrimitive(o);
+    @Override
+    public boolean removeByContent(char o) {
+        return this.removeByContentPrimitive(o);
     }
 
     /**
@@ -1035,7 +955,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @return {@code true} if an element was removed as a result of this call
      * @see CharArrayList#remove(Object o)
      */
-    public boolean removePrimitive(char o) {
+    public boolean removeByContentPrimitive(char o) {
         final char[] es = elementData;
         final int size = this.size;
         int i = 0;
@@ -1541,7 +1461,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
-    public Iterator<Character> iterator() {
+    public CharIterator iterator() {
         return new CharArrayList.Itr();
     }
 
@@ -1721,21 +1641,21 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * a fashion that iterations in progress may yield incorrect results.)
      */
     @Override
-    public List<Character> subList(int fromIndex, int toIndex) {
+    public CharList subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
-        return new CharArrayList.CharacterSubList(this, fromIndex, toIndex);
+        return new CharArrayList.CharSubList(this, fromIndex, toIndex);
     }
 
-    private static class CharacterSubList extends AbstractList<Character> implements RandomAccess {
+    private static class CharSubList extends AbstractCharList implements RandomAccess {
         private final CharArrayList root;
-        private final CharArrayList.CharacterSubList parent;
+        private final CharArrayList.CharSubList parent;
         private final int offset;
         private int size;
 
         /**
          * Constructs a sublist of an arbitrary CharArrayList.
          */
-        public CharacterSubList(CharArrayList root, int fromIndex, int toIndex) {
+        public CharSubList(CharArrayList root, int fromIndex, int toIndex) {
             this.root = root;
             this.parent = null;
             this.offset = fromIndex;
@@ -1746,7 +1666,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         /**
          * Constructs a sublist of another SubList.
          */
-        private CharacterSubList(CharArrayList.CharacterSubList parent, int fromIndex, int toIndex) {
+        private CharSubList(CharArrayList.CharSubList parent, int fromIndex, int toIndex) {
             this.root = parent.root;
             this.parent = parent;
             this.offset = parent.offset + fromIndex;
@@ -1754,6 +1674,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             this.modCount = root.modCount;
         }
 
+        @Override
         public char setPrimitive(int index, char element) {
             checkIndex(index, size);
             checkForComodification();
@@ -1763,10 +1684,6 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         }
 
         @Override
-        public Character get(int index) {
-            return this.getPrimitive(index);
-        }
-
         public char getPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
@@ -1780,10 +1697,6 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         }
 
         @Override
-        public void add(int index, Character element) {
-            this.addPrimitive(index, element);
-        }
-
         public void addPrimitive(int index, char element) {
             rangeCheckForAdd(index);
             checkForComodification();
@@ -1791,12 +1704,9 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             updateSizeAndModCount(1);
         }
 
-        @Override
-        public Character remove(int index) {
-            return this.removePrimitive(index);
-        }
 
-        public char removePrimitive(int index) {
+        @Override
+        public char removeByIndexPrimitive(int index) {
             checkIndex(index, size);
             checkForComodification();
             char result = root.remove(offset + index);
@@ -1871,6 +1781,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             return ArrayUtils.toObject(this.toArrayPrimitive());
         }
 
+        @Override
         public char[] toArrayPrimitive() {
             checkForComodification();
             return Arrays.copyOfRange(root.elementData, offset, offset + size);
@@ -1890,6 +1801,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             return a;
         }
 
+        @Override
         public char[] toArrayPrimitive(char[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1935,6 +1847,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             return this.indexOfPrimitive(o);
         }
 
+        @Override
         public int indexOfPrimitive(char o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1952,6 +1865,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
             return this.lastIndexOfPrimitive(o);
         }
 
+        @Override
         public int lastIndexOfPrimitive(char o) {
             int index = root.lastIndexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
@@ -1959,21 +1873,18 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         }
 
         @Override
-        public boolean contains(Object o) {
-            return indexOf(o) >= 0;
-        }
-
         public boolean contains(char o) {
             return this.containsPrimitive(o);
         }
 
+        @Override
         public boolean containsPrimitive(char o) {
             return indexOfPrimitive(o) >= 0;
         }
 
 
         @Override
-        public Iterator<Character> iterator() {
+        public CharIterator iterator() {
             return listIterator();
         }
 
@@ -1989,19 +1900,14 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
 
                 @Override
                 public boolean hasNext() {
-                    return cursor != CharArrayList.CharacterSubList.this.size;
-                }
-
-                @Override
-                public Character next() {
-                    return nextPrimitive();
+                    return cursor != CharArrayList.CharSubList.this.size;
                 }
 
                 @Override
                 public char nextPrimitive() {
                     checkForComodification();
                     int i = cursor;
-                    if (i >= CharArrayList.CharacterSubList.this.size) {
+                    if (i >= CharArrayList.CharSubList.this.size) {
                         throw new NoSuchElementException();
                     }
                     char[] elementData = root.elementData;
@@ -2015,11 +1921,6 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
                 @Override
                 public boolean hasPrevious() {
                     return cursor != 0;
-                }
-
-                @Override
-                public Character previous() {
-                    return previousPrimitive();
                 }
 
                 @Override
@@ -2040,16 +1941,25 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
                 @Override
                 public void forEachRemaining(Consumer<? super Character> action) {
                     Objects.requireNonNull(action);
-                    final int size = CharArrayList.CharacterSubList.this.size;
+                    final int size = CharArrayList.CharSubList.this.size;
                     int i = cursor;
                     if (i < size) {
                         final char[] es = root.elementData;
                         if (offset + i >= es.length) {
                             throw new ConcurrentModificationException();
                         }
-                        for (; i < size && modCount == expectedModCount; i++) {
-                            action.accept(elementAt(es, offset + i));
+
+                        if (action instanceof CharConsumer) {
+                            CharConsumer actionCharConsumer = (CharConsumer) action;
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                actionCharConsumer.acceptPrimitive(elementAt(es, offset + i));
+                            }
+                        } else {
+                            for (; i < size && modCount == expectedModCount; i++) {
+                                action.accept(elementAt(es, offset + i));
+                            }
                         }
+
                         // update once at end to reduce heap write traffic
                         cursor = i;
                         lastRet = i - 1;
@@ -2075,7 +1985,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
                     checkForComodification();
 
                     try {
-                        CharArrayList.CharacterSubList.this.remove(lastRet);
+                        CharArrayList.CharSubList.this.remove(lastRet);
                         cursor = lastRet;
                         lastRet = -1;
                         expectedModCount = root.modCount;
@@ -2114,7 +2024,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
 
                     try {
                         int i = cursor;
-                        CharArrayList.CharacterSubList.this.add(i, e);
+                        CharArrayList.CharSubList.this.add(i, e);
                         cursor = i + 1;
                         lastRet = -1;
                         expectedModCount = root.modCount;
@@ -2132,9 +2042,9 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         }
 
         @Override
-        public List<Character> subList(int fromIndex, int toIndex) {
+        public CharList subList(int fromIndex, int toIndex) {
             subListRangeCheck(fromIndex, toIndex, size);
-            return new CharArrayList.CharacterSubList(this, fromIndex, toIndex);
+            return new CharArrayList.CharSubList(this, fromIndex, toIndex);
         }
 
         private void rangeCheckForAdd(int index) {
@@ -2154,7 +2064,7 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         }
 
         private void updateSizeAndModCount(int sizeChange) {
-            CharArrayList.CharacterSubList slist = this;
+            CharArrayList.CharSubList slist = this;
             do {
                 slist.size += sizeChange;
                 slist.modCount = root.modCount;
@@ -2163,11 +2073,11 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
         }
 
         @Override
-        public Spliterator<Character> spliterator() {
+        public CharSpliterator spliterator() {
             checkForComodification();
 
             // CharArrayListSpliterator not used here due to late-binding
-            return new Spliterator<Character>() {
+            return new CharSpliterator() {
                 private int index = offset; // current index, modified on advance/split
                 private int fence = -1; // -1 until used; then one past last index
                 private int expectedModCount; // initialized when fence set
@@ -2276,14 +2186,14 @@ public class CharArrayList extends PrimitiveArrayList<Character> {
      * @since 1.8
      */
     @Override
-    public Spliterator<Character> spliterator() {
+    public CharSpliterator spliterator() {
         return new CharArrayList.CharArrayListSpliterator(0, -1, 0);
     }
 
     /**
      * Index-based split-by-two, lazily initialized Spliterator
      */
-    final class CharArrayListSpliterator implements Spliterator<Character> {
+    final class CharArrayListSpliterator implements CharSpliterator {
 
         /*
          * If CharArrayLists were immutable, or structurally immutable (no
