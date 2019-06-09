@@ -62,33 +62,37 @@ public class FloatArrayListTest {
         FloatArrayList data = new FloatArrayList();
         for (int i = 0; i < length; i++) {
             float l = random.nextFloat();
-            data.add(l);
+            data.addPrimitive(l);
         }
 
-        long begin1 = System.nanoTime();
+        long begin1 = System.currentTimeMillis();
         FloatArrayList a1 = new FloatArrayList();
+
         for (int i = 0; i < length; i++) {
             a1.addPrimitive(data.getPrimitive(i));
         }
+        a1.sort(null);
+        Object a1c = a1.clone();
         for (int i = 0; i < length; i++) {
             a1.removeByContentPrimitive(data.getPrimitive(i));
         }
-        a1.sort(null);
-        long score1 = (System.nanoTime() - begin1);
+        long score1 = (System.currentTimeMillis() - begin1);
         System.out.println("FloatArrayList time : " + score1);
 
-        long begin2 = System.nanoTime();
+        long begin2 = System.currentTimeMillis();
         ArrayList<Float> a2 = new ArrayList<>();
         for (int i = 0; i < length; i++) {
             a2.add(data.getPrimitive(i));
         }
+        a2.sort(null);
+        Object a2c = a2.clone();
         for (int i = 0; i < length; i++) {
             a2.remove((Object) data.getPrimitive(i));
         }
-        a2.sort(null);
-        long score2 = (System.nanoTime() - begin2);
+        long score2 = (System.currentTimeMillis() - begin2);
         System.out.println("ArrayList<Float> time : " + score2);
-        assert (score2 > score1);
+        assertTrue(score2 > score1);
+        assertEquals(a1c, a2c);
     }
 
     @Test
@@ -110,6 +114,6 @@ public class FloatArrayListTest {
 //        }
         System.out.println("large deleted");
         System.out.println("performance checks started:");
-        performanceChecks(1000000);
+        performanceChecks(100000);
     }
 }
