@@ -942,6 +942,7 @@ public class ShortArrayList extends AbstractShortList
      *
      * @see ShortArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(short o) {
         final short[] es = elementData;
         final int size = this.size;

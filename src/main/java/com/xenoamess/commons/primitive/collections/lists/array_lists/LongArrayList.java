@@ -942,6 +942,7 @@ public class LongArrayList extends AbstractLongList
      *
      * @see LongArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(long o) {
         final long[] es = elementData;
         final int size = this.size;

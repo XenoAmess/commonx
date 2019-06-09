@@ -13,13 +13,13 @@ import java.util.*;
  * over the sort order.  Comparators can also be used to control the order of
  * certain data structures (such as {@link SortedSet sorted sets} or {@link
  * SortedMap sorted maps}), or to provide an ordering for collections of
- * objects that don't have a {@link Comparable natural ordering}.<p>
+ * objects that don't have a {@link Comparable natural ordering}.
  * <p>
  * The ordering imposed by a comparator {@code c} on a set of elements
  * {@code S} is said to be <i>consistent with equals</i> if and only if
  * {@code c.compare(e1, e2)==0} has the same boolean value as
  * {@code e1.equals(e2)} for every {@code e1} and {@code e2} in
- * {@code S}.<p>
+ * {@code S}.
  * <p>
  * Caution should be exercised when using a comparator capable of imposing an
  * ordering inconsistent with equals to order a sorted set (or sorted map).
@@ -28,7 +28,7 @@ import java.util.*;
  * ordering imposed by {@code c} on {@code S} is inconsistent with equals,
  * the sorted set (or sorted map) will behave "strangely."  In particular the
  * sorted set (or sorted map) will violate the general contract for set (or
- * map), which is defined in terms of {@code equals}.<p>
+ * map), which is defined in terms of {@code equals}.
  * <p>
  * For example, suppose one adds two elements {@code a} and {@code b} such that
  * {@code (a.equals(b) && c.compare(a, b) != 0)}
@@ -37,13 +37,13 @@ import java.util.*;
  * true (and the size of the tree set will increase) because {@code a} and
  * {@code b} are not equivalent from the tree set's perspective, even though
  * this is contrary to the specification of the
- * {@link java.util.Set#add Set.add} method.<p>
+ * {@link java.util.Set#add Set.add} method.
  * <p>
  * Note: It is generally a good idea for comparators to also implement
  * {@code java.io.Serializable}, as they may be used as ordering methods in
  * serializable data structures (like {@link java.util.TreeSet}, {@link java.util.TreeMap}).  In
  * order for the data structure to serialize successfully, the comparator (if
- * provided) must implement {@code Serializable}.<p>
+ * provided) must implement {@code Serializable}.
  * <p>
  * For the mathematically inclined, the <i>relation</i> that defines the
  * <i>imposed ordering</i> that a given comparator {@code c} imposes on a
@@ -70,7 +70,6 @@ import java.util.*;
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
- * @param <T> the type of objects that may be compared by this comparator
  * @author Josh Bloch
  * @author Neal Gafter
  * @author XenoAmess
@@ -87,20 +86,20 @@ public interface FloatComparator extends Comparator<Float>, Primitive {
      * <p>
      * Compares its two arguments for order.  Returns a negative integer,
      * zero, or a positive integer as the first argument is less than, equal
-     * to, or greater than the second.<p>
+     * to, or greater than the second.
      * <p>
      * The implementor must ensure that {@code sgn(compare(x, y)) ==
      * -sgn(compare(y, x))} for all {@code x} and {@code y}.  (This
      * implies that {@code compare(x, y)} must throw an exception if and only
-     * if {@code compare(y, x)} throws an exception.)<p>
+     * if {@code compare(y, x)} throws an exception.)
      * <p>
      * The implementor must also ensure that the relation is transitive:
      * {@code ((compare(x, y)>0) && (compare(y, z)>0))} implies
-     * {@code compare(x, z)>0}.<p>
+     * {@code compare(x, z)>0}.
      * <p>
      * Finally, the implementor must ensure that {@code compare(x, y)==0}
      * implies that {@code sgn(compare(x, z))==sgn(compare(y, z))} for all
-     * {@code z}.<p>
+     * {@code z}.
      * <p>
      * It is generally the case, but <i>not</i> strictly required that
      * {@code (compare(x, y)==0) == (x.equals(y))}.  Generally speaking,

@@ -42,7 +42,7 @@ import java.util.function.UnaryOperator;
  * An ordered collection (also known as a <i>sequence</i>).  The user of this
  * interface has precise control over where in the list each element is
  * inserted.  The user can access elements by their integer index (position in
- * the list), and search for elements in the list.<p>
+ * the list), and search for elements in the list.
  * <p>
  * Unlike sets, lists typically allow duplicate elements.  More formally,
  * lists typically allow pairs of elements {@code e1} and {@code e2}
@@ -50,13 +50,13 @@ import java.util.function.UnaryOperator;
  * null elements if they allow null elements at all.  It is not inconceivable
  * that someone might wish to implement a list that prohibits duplicates, by
  * throwing runtime exceptions when the user attempts to insert them, but we
- * expect this usage to be rare.<p>
+ * expect this usage to be rare.
  * <p>
  * The {@code List} interface places additional stipulations, beyond those
  * specified in the {@code Collection} interface, on the contracts of the
  * {@code iterator}, {@code add}, {@code remove}, {@code equals}, and
  * {@code hashCode} methods.  Declarations for other inherited methods are
- * also included here for convenience.<p>
+ * also included here for convenience.
  * <p>
  * The {@code List} interface provides four methods for positional (indexed)
  * access to list elements.  Lists (like Java arrays) are zero based.  Note
@@ -64,21 +64,21 @@ import java.util.function.UnaryOperator;
  * for some implementations (the {@code LinkedList} class, for
  * example). Thus, iterating over the elements in a list is typically
  * preferable to indexing through it if the caller does not know the
- * implementation.<p>
+ * implementation.
  * <p>
  * The {@code List} interface provides a special iterator, called a
  * {@code ListIterator}, that allows element insertion and replacement, and
  * bidirectional access in addition to the normal operations that the
  * {@code Iterator} interface provides.  A method is provided to obtain a
- * list iterator that starts at a specified position in the list.<p>
+ * list iterator that starts at a specified position in the list.
  * <p>
  * The {@code List} interface provides two methods to search for a specified
  * object.  From a performance standpoint, these methods should be used with
  * caution.  In many implementations they will perform costly linear
- * searches.<p>
+ * searches.
  * <p>
  * The {@code List} interface provides two methods to efficiently insert and
- * remove multiple elements at an arbitrary point in the list.<p>
+ * remove multiple elements at an arbitrary point in the list.
  * <p>
  * Note: While it is permissible for lists to contain themselves as elements,
  * extreme caution is advised: the {@code equals} and {@code hashCode}
@@ -201,14 +201,14 @@ public interface FloatList extends List<Float>, FloatCollection, Primitive {
      * Ensures that this collection contains the specified element (optional
      * operation).  Returns {@code true} if this collection changed as a
      * result of the call.  (Returns {@code false} if this collection does
-     * not permit duplicates and already contains the specified element.)<p>
+     * not permit duplicates and already contains the specified element.)
      * <p>
      * Collections that support this operation may place limitations on what
      * elements may be added to this collection.  In particular, some
      * collections will refuse to add {@code null} elements, and others will
      * impose restrictions on the type of elements that may be added.
      * Collection classes should clearly specify in their documentation any
-     * restrictions on what elements may be added.<p>
+     * restrictions on what elements may be added.
      * <p>
      * If a collection refuses to add a particular element for any reason
      * other than that it already contains the element, it <i>must</i> throw
@@ -856,7 +856,7 @@ public interface FloatList extends List<Float>, FloatCollection, Primitive {
      * empty.)  The returned list is backed by this list, so non-structural
      * changes in the returned list are reflected in this list, and vice-versa.
      * The returned list supports all of the optional list operations supported
-     * by this list.<p>
+     * by this list.
      * <p>
      * This method eliminates the need for explicit range operations (of
      * the sort that commonly exist for arrays).  Any operation that expects
@@ -868,7 +868,7 @@ public interface FloatList extends List<Float>, FloatCollection, Primitive {
      * }</pre>
      * Similar idioms may be constructed for {@code indexOf} and
      * {@code lastIndexOf}, and all of the algorithms in the
-     * {@code Collections} class can be applied to a subList.<p>
+     * {@code Collections} class can be applied to a subList.
      * <p>
      * The semantics of the list returned by this method become undefined if
      * the backing list (i.e., this list) is <i>structurally modified</i> in

@@ -106,10 +106,7 @@ import java.util.function.Consumer;
  * tryAdvance()}, as certain guarantees (such as the accuracy of
  * {@link #estimateSize()} for {@code SIZED} spliterators) are only valid before
  * traversal has begun.
- *
- * <p>Primitive subtype specializations of {@code Spliterator} are provided for
- * {@link java.util.Spliterator.OfInt int}, {@link java.util.Spliterator.OfLong long}, and
- * {@link java.util.Spliterator.OfBoolean boolean} values.
+ * <p>
  * The subtype default implementations of
  * {@link java.util.Spliterator#tryAdvance(java.util.function.Consumer)}
  * and {@link java.util.Spliterator#forEachRemaining(java.util.function.Consumer)} box
@@ -308,8 +305,8 @@ public class BooleanIteratorSpliterator implements BooleanSpliterator.BooleanOfB
 
     /**
      * Creates a spliterator using the given
-     * collection's {@link java.util.Collection#iterator()) for traversal,
-     * and reporting its {@link java.util.Collection#size()) as its initial
+     * collection's  {@link java.util.Collection#iterator()} for traversal,
+     * and reporting its {@link java.util.Collection#size()} as its initial
      * size.
      *
      * @param characteristics properties of this spliterator's

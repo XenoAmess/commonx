@@ -32,9 +32,9 @@ import com.xenoamess.commons.primitive.functions.CharConsumer;
  * {@code trySplit} to permit limited parallelism.
  *
  * <p>To implement a spliterator an extending class need only
- * implement {@link #tryAdvance(java.util.function.CharConsumer)
+ * implement {@link #tryAdvance(CharConsumer)
  * tryAdvance}.  The extending class should override
- * {@link #forEachRemaining(java.util.function.CharConsumer) forEachRemaining}
+ * {@link #forEachRemaining(CharConsumer) forEachRemaining}
  * if it can provide a more performant implementation.
  *
  * @author XenoAmess
@@ -45,11 +45,11 @@ import com.xenoamess.commons.primitive.functions.CharConsumer;
  *
  * <p>An alternative to using this class, that also permits limited
  * parallelism, is to create a spliterator from an iterator
- * (see {@link #spliterator(java.util.CharIterator, long, int)}.
+ * (see {@link CharSpliterators#spliterator(CharIterator, long, int)}.
  * Depending on the circumstances using an iterator may be easier or more
  * convenient than extending this class. For example, if there is already an
  * iterator available to use then there is no need to extend this class.
- * @see #spliterator(java.util.CharIterator, long, int)
+ * @see CharSpliterators#spliterator(CharIterator, long, int)
  * @since 1.8
  */
 public abstract class AbstractCharSpliterator implements CharSpliterator.CharOfCharacter {

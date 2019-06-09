@@ -33,7 +33,7 @@ import java.util.function.Predicate;
  * Represents a predicate (boolean-valued function) of one argument.
  *
  * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #test(Object)}.
+ * whose functional method is {@link #test(Float)}.
  *
  * @author XenoAmess
  * @version 0.8.0

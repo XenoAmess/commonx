@@ -942,6 +942,7 @@ public class BooleanArrayList extends AbstractBooleanList
      *
      * @see BooleanArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(boolean o) {
         final boolean[] es = elementData;
         final int size = this.size;

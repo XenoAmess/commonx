@@ -346,6 +346,9 @@
                         <tag>
                             <name>see</name>
                         </tag>
+                        <tag>
+                            <name>jls</name>
+                        </tag>
                     </tags>
 
                     <source>${maven.compiler.source}
@@ -1127,6 +1130,9 @@
                         </tag>
                         <tag>
                             <name>see</name>
+                        </tag>
+                        <tag>
+                            <name>jls</name>
                         </tag>
                     </tags>
 

@@ -35,26 +35,26 @@ import java.util.Objects;
 
 /**
  * This class provides a skeletal implementation of the {@code Collection}
- * interface, to minimize the effort required to implement this interface. <p>
+ * interface, to minimize the effort required to implement this interface.
  * <p>
  * To implement an unmodifiable collection, the programmer needs only to
  * extend this class and provide implementations for the {@code iterator} and
  * {@code size} methods.  (The iterator returned by the {@code iterator}
- * method must implement {@code hasNext} and {@code next}.)<p>
+ * method must implement {@code hasNext} and {@code next}.)
  * <p>
  * To implement a modifiable collection, the programmer must additionally
  * override this class's {@code add} method (which otherwise throws an
  * {@code UnsupportedOperationException}), and the iterator returned by the
  * {@code iterator} method must additionally implement its {@code remove}
- * method.<p>
+ * method.
  * <p>
  * The programmer should generally provide a void (no argument) and
  * {@code Collection} constructor, as per the recommendation in the
- * {@code Collection} interface specification.<p>
+ * {@code Collection} interface specification.
  * <p>
  * The documentation for each non-abstract method in this class describes its
  * implementation in detail.  Each of these methods may be overridden if
- * the collection being implemented admits a more efficient implementation.<p>
+ * the collection being implemented admits a more efficient implementation.
  * <p>
  * This class is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">

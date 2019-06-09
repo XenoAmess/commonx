@@ -32,9 +32,9 @@ import com.xenoamess.commons.primitive.functions.ShortConsumer;
  * {@code trySplit} to permit limited parallelism.
  *
  * <p>To implement a spliterator an extending class need only
- * implement {@link #tryAdvance(java.util.function.ShortConsumer)
+ * implement {@link #tryAdvance(ShortConsumer)
  * tryAdvance}.  The extending class should override
- * {@link #forEachRemaining(java.util.function.ShortConsumer) forEachRemaining}
+ * {@link #forEachRemaining(ShortConsumer) forEachRemaining}
  * if it can provide a more performant implementation.
  *
  * @author XenoAmess
@@ -45,11 +45,11 @@ import com.xenoamess.commons.primitive.functions.ShortConsumer;
  *
  * <p>An alternative to using this class, that also permits limited
  * parallelism, is to create a spliterator from an iterator
- * (see {@link #spliterator(java.util.ShortIterator, long, int)}.
+ * (see {@link ShortSpliterators#spliterator(ShortIterator, long, int)}.
  * Depending on the circumstances using an iterator may be easier or more
  * convenient than extending this class. For example, if there is already an
  * iterator available to use then there is no need to extend this class.
- * @see #spliterator(java.util.ShortIterator, long, int)
+ * @see ShortSpliterators#spliterator(ShortIterator, long, int)
  * @since 1.8
  */
 public abstract class AbstractShortSpliterator implements ShortSpliterator.ShortOfShort {

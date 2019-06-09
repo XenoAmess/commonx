@@ -108,26 +108,6 @@ import java.util.function.Consumer;
  * {@link #estimateSize()} for {@code SIZED} spliterators) are only valid before
  * traversal has begun.
  *
- * <p>Primitive subtype specializations of {@code Spliterator} are provided for
- * {@link OfInt int}, {@link OfLong long}, and {@link OfInteger int} values.
- * The subtype default implementations of
- * {@link java.util.Spliterator#tryAdvance(java.util.function.Consumer)}
- * and {@link java.util.Spliterator#forEachRemaining(java.util.function.Consumer)} box
- * primitive values to instances of their corresponding wrapper class.  Such
- * boxing may undermine any performance advantages gained by using the primitive
- * specializations.  To avoid boxing, the corresponding primitive-based methods
- * should be used.  For example,
- * {@link java.util.Spliterator.OfInt#tryAdvance(java.util.function.IntConsumer)}
- * and {@link java.util.Spliterator.OfInt#forEachRemaining(java.util.function.IntConsumer)}
- * should be used in preference to
- * {@link java.util.Spliterator.OfInt#tryAdvance(java.util.function.Consumer)} and
- * {@link java.util.Spliterator.OfInt#forEachRemaining(java.util.function.Consumer)}.
- * Traversal of primitive values using boxing-based methods
- * {@link #tryAdvance tryAdvance()} and
- * {@link #forEachRemaining(java.util.function.Consumer) forEachRemaining()}
- * does not affect the order in which the values, transformed to boxed values,
- * are encountered.
- *
  * @author XenoAmess
  * @version 0.8.0
  * @apiNote <p>Spliterators, like {@code Iterator}s, are for traversing the elements of
@@ -362,9 +342,6 @@ public interface IntSpliterator extends Spliterator<Integer>, Primitive {
      * @param <T_SPLITR> the type of primitive Spliterator.  The type must be
      *                   a primitive specialization of Spliterator for {@code T}, such as
      *                   {@link Spliterator.OfInt} for {@code Integer}.
-     * @see Spliterator.OfInt
-     * @see Spliterator.OfLong
-     * @see Spliterator.OfInteger
      * @since 1.8
      */
     public interface IntOfPrimitive<T_CONS, T_SPLITR extends IntSpliterator.IntOfPrimitive<T_CONS, T_SPLITR>>

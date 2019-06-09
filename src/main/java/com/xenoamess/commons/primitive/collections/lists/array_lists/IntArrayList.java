@@ -942,6 +942,7 @@ public class IntArrayList extends AbstractIntList
      *
      * @see IntArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(int o) {
         final int[] es = elementData;
         final int size = this.size;

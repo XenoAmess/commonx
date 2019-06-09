@@ -942,6 +942,7 @@ public class FloatArrayList extends AbstractFloatList
      *
      * @see FloatArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(float o) {
         final float[] es = elementData;
         final int size = this.size;

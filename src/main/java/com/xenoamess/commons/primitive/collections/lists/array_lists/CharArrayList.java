@@ -942,6 +942,7 @@ public class CharArrayList extends AbstractCharList
      *
      * @see CharArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(char o) {
         final char[] es = elementData;
         final int size = this.size;

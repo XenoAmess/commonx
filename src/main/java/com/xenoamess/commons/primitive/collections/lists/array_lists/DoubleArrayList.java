@@ -942,6 +942,7 @@ public class DoubleArrayList extends AbstractDoubleList
      *
      * @see DoubleArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(double o) {
         final double[] es = elementData;
         final int size = this.size;

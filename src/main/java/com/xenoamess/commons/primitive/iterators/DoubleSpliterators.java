@@ -29,7 +29,6 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.DoubleCollection;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -137,9 +136,7 @@ public final class DoubleSpliterators implements Primitive {
      *
      * <p>This method is provided as an implementation convenience for
      * Spliterators which store portions of their elements in arrays, and need
-     * fine control over Spliterator characteristics.  Most other situations in
-     * which a Spliterator for an array is needed should use
-     * {@link java.util.Arrays#spliterator(double[])}.
+     * fine control over Spliterator characteristics.
      *
      * <p>The returned spliterator always reports the characteristics
      * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
@@ -152,7 +149,6 @@ public final class DoubleSpliterators implements Primitive {
      *                                  {@code SUBSIZED} which are always reported
      * @return A spliterator for an array
      * @throws java.lang.NullPointerException if the given array is {@code null}
-     * @see Arrays#spliterator(double[])
      */
     public static DoubleSpliterator.DoubleOfDouble spliterator(double[] array,
                                                                int additionalCharacteristics) {
@@ -165,9 +161,7 @@ public final class DoubleSpliterators implements Primitive {
      *
      * <p>This method is provided as an implementation convenience for
      * Spliterators which store portions of their elements in arrays, and need
-     * fine control over Spliterator characteristics.  Most other situations in
-     * which a Spliterator for an array is needed should use
-     * {@link java.util.Arrays#spliterator(double[], int, int)}.
+     * fine control over Spliterator characteristics.
      *
      * <p>The returned spliterator always reports the characteristics
      * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
@@ -189,7 +183,6 @@ public final class DoubleSpliterators implements Primitive {
      * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex} is negative,
      *                                                  {@code toIndex} is less than {@code fromIndex}, or
      *                                                  {@code toIndex} is greater than the array size
-     * @see Arrays#spliterator(double[], int, int)
      */
     public static DoubleSpliterator.DoubleOfDouble spliterator(double[] array, int fromIndex, int toIndex,
                                                                int additionalCharacteristics) {

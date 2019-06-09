@@ -942,6 +942,7 @@ public class ByteArrayList extends AbstractByteList
      *
      * @see ByteArrayList#remove(Object o)
      */
+    @Override
     public boolean removeByContentPrimitive(byte o) {
         final byte[] es = elementData;
         final int size = this.size;

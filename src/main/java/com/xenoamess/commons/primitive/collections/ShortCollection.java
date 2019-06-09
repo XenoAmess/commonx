@@ -31,8 +31,7 @@ import com.xenoamess.commons.primitive.iterators.ShortIterator;
 import com.xenoamess.commons.primitive.iterators.ShortSpliterator;
 import com.xenoamess.commons.primitive.iterators.ShortSpliterators;
 
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -200,7 +199,6 @@ import java.util.stream.StreamSupport;
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
- * @param <E> the type of elements in this collection
  * @author Josh Bloch
  * @author Neal Gafter
  * @author XenoAmess
@@ -328,14 +326,14 @@ public interface ShortCollection extends Collection<Short>, ShortIterable, Primi
      * Ensures that this collection contains the specified element (optional
      * operation).  Returns {@code true} if this collection changed as a
      * result of the call.  (Returns {@code false} if this collection does
-     * not permit duplicates and already contains the specified element.)<p>
+     * not permit duplicates and already contains the specified element.)
      * <p>
      * Collections that support this operation may place limitations on what
      * elements may be added to this collection.  In particular, some
      * collections will refuse to add {@code null} elements, and others will
      * impose restrictions on the type of elements that may be added.
      * Collection classes should clearly specify in their documentation any
-     * restrictions on what elements may be added.<p>
+     * restrictions on what elements may be added.
      * <p>
      * If a collection refuses to add a particular element for any reason
      * other than that it already contains the element, it <i>must</i> throw
@@ -419,12 +417,8 @@ public interface ShortCollection extends Collection<Short>, ShortIterable, Primi
      * @return {@code true} if an element was removed as a result of this call
      * @throws java.lang.ClassCastException            if the type of the specified element
      *                                                 is incompatible with this collection
-     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                                 .html#optional-restrictions">optional</a>)
      * @throws java.lang.NullPointerException          if the specified element is null and this
      *                                                 collection does not permit null elements
-     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                                 .html#optional-restrictions">optional</a>)
      * @throws java.lang.UnsupportedOperationException if the {@code remove} operation
      *                                                 is not supported by this collection
      * @see #remove(Object o)
@@ -440,12 +434,8 @@ public interface ShortCollection extends Collection<Short>, ShortIterable, Primi
      * @return {@code true} if an element was removed as a result of this call
      * @throws java.lang.ClassCastException            if the type of the specified element
      *                                                 is incompatible with this collection
-     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                                 .html#optional-restrictions">optional</a>)
      * @throws java.lang.NullPointerException          if the specified element is null and this
      *                                                 collection does not permit null elements
-     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                                 .html#optional-restrictions">optional</a>)
      * @throws java.lang.UnsupportedOperationException if the {@code remove} operation
      *                                                 is not supported by this collection
      * @see #remove(Object o)
