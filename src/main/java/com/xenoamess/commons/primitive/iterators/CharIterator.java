@@ -28,12 +28,15 @@ package com.xenoamess.commons.primitive.iterators;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.functions.CharConsumer;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
  * An iterator over a collection.  {@code Iterator} takes the place of
- * {@link Enumeration} in the Java Collections Framework.  Iterators
+ * {@link java.util.Enumeration} in the Java Collections Framework.  Iterators
  * differ from enumerations in two ways:
  *
  * <ul>
@@ -48,15 +51,21 @@ import java.util.function.Consumer;
  * Java Collections Framework</a>.
  *
  * @author Josh Bloch
- * @apiNote An {@link Enumeration} can be converted into an {@code Iterator} by
- * using the {@link Enumeration#asIterator} method.
+ * @author XenoAmess
+ * @version 0.8.0
+ * @apiNote An {@link java.util.Enumeration} can be converted into an {@code Iterator} by
+ * using the {@link java.util.Enumeration#asIterator} method.
  * @see Collection
  * @see ListIterator
  * @see Iterable
+ * @see Iterator
  * @since 1.2
  */
 public interface CharIterator extends Iterator<Character>, Primitive {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     default Character next() {
         return this.nextPrimitive();
@@ -66,12 +75,13 @@ public interface CharIterator extends Iterator<Character>, Primitive {
      * Primitive replacement of next()
      *
      * @return the next element in the iteration
-     * @throws NoSuchElementException if the iteration has no more elements
      * @see #next()
      */
     char nextPrimitive();
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Performs the given action for each remaining element until all elements
      * have been processed or the action throws an exception.  Actions are
      * performed in the order of iteration, if that order is specified.
@@ -85,8 +95,6 @@ public interface CharIterator extends Iterator<Character>, Primitive {
      * Subsequent behavior of an iterator is unspecified if the action throws an
      * exception.
      *
-     * @param action The action to be performed for each element
-     * @throws NullPointerException if the specified action is null
      * @implSpec <p>The default implementation behaves as if:
      * <pre>{@code
      *     while (hasNext())

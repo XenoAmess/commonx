@@ -11,8 +11,51 @@ import com.xenoamess.commons.primitive.iterators.BooleanSpliterator;
 import java.util.*;
 import java.util.function.Consumer;
 
+
 /**
+ * This class provides a skeletal implementation of the {@link java.util.List}
+ * interface to minimize the effort required to implement this interface
+ * backed by a "random access" data store (such as an array).  For sequential
+ * access data (such as a linked list), {@link java.util.AbstractSequentialList} should
+ * be used in preference to this class.
+ *
+ * <p>To implement an unmodifiable list, the programmer needs only to extend
+ * this class and provide implementations for the {@link #get(int)} and
+ * {@link java.util.List#size() size()} methods.
+ *
+ * <p>To implement a modifiable list, the programmer must additionally
+ * override the {@link #set(int, Object) set(int, E)} method (which otherwise
+ * throws an {@code UnsupportedOperationException}).  If the list is
+ * variable-size the programmer must additionally override the
+ * {@link #add(int, Object) add(int, E)} and {@link #remove(int)} methods.
+ *
+ * <p>The programmer should generally provide a void (no argument) and collection
+ * constructor, as per the recommendation in the {@link java.util.Collection} interface
+ * specification.
+ *
+ * <p>Unlike the other abstract collection implementations, the programmer does
+ * <i>not</i> have to provide an iterator implementation; the iterator and
+ * list iterator are implemented by this class, on top of the "random access"
+ * methods:
+ * {@link #get(int)},
+ * {@link #set(int, Object) set(int, E)},
+ * {@link #add(int, Object) add(int, E)} and
+ * {@link #remove(int)}.
+ *
+ * <p>The documentation for each non-abstract method in this class describes its
+ * implementation in detail.  Each of these methods may be overridden if the
+ * collection being implemented admits a more efficient implementation.
+ *
+ * <p>This class is a member of the
+ * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
+ * Java Collections Framework</a>.
+ *
+ * @author Josh Bloch
+ * @author Neal Gafter
  * @author XenoAmess
+ * @version 0.8.0
+ * @see AbstractList
+ * @since 1.2
  */
 public abstract class AbstractBooleanList extends AbstractList<Boolean> implements AbstractBooleanCollection,
         BooleanList
@@ -25,6 +68,9 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return AbstractBooleanCollection.toString(this);
@@ -32,8 +78,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
 
     /**
      * {@inheritDoc}
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public final Boolean get(int index) {
@@ -43,8 +87,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */
@@ -56,8 +98,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws ClassCastException   {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
      * @implSpec This implementation iterates over the elements in the collection,
      * checking each element in turn for equality with the specified element.
      */
@@ -96,6 +136,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     //----------
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Appends the specified element to the end of this list (optional
      * operation).
      *
@@ -106,16 +148,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
      * classes should clearly specify in their documentation any restrictions
      * on what elements may be added.
      *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link Collection#add})
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       list does not permit null elements
-     * @throws IllegalArgumentException      if some property of this element
-     *                                       prevents it from being added to this list
      * @implSpec This implementation calls {@code add(size(), e)}.
      *
      * <p>Note that this implementation throws an
@@ -128,21 +160,10 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of add(Boolean e)
      *
-     * @param e element whose presence in this collection is to be ensured
-     * @return {@code true} if this collection changed as a result of the
-     * call
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this collection
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this collection
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     * @throws IllegalArgumentException      if some property of the element
-     *                                       prevents it from being added to this collection
-     * @throws IllegalStateException         if the element cannot be added at this
-     *                                       time due to insertion restrictions
      * @see #add(Boolean e)
      */
     @Override
@@ -151,18 +172,10 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of add(Boolean e)
      *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link Collection#add})
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       list does not permit null elements
-     * @throws IllegalArgumentException      if some property of this element
-     *                                       prevents it from being added to this list
      * @implSpec This implementation calls {@code add(size(), e)}.
      *
      * <p>Note that this implementation throws an
@@ -179,11 +192,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */
@@ -193,13 +201,10 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of set(int index, Boolean element)
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */
@@ -209,13 +214,10 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of set(int index, Boolean element)
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */
@@ -227,11 +229,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */
@@ -241,6 +238,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of add(int index, Boolean element)
      *
      * @see #add(int index, Boolean element)
@@ -251,6 +250,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of add(int index, Boolean element)
      *
      * @see #add(int index, Boolean element)
@@ -261,6 +262,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of remove(int index)
      *
      * @see #remove(int index)
@@ -274,6 +277,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     // Search Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of indexOf(Object o)
      *
      * @see #indexOf(Object o)
@@ -290,6 +295,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of lastIndexOf(Object o)
      *
      * @see #lastIndexOf(Object o)
@@ -309,11 +316,11 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     // Bulk Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes all of the elements from this list (optional operation).
      * The list will be empty after this call returns.
      *
-     * @throws UnsupportedOperationException if the {@code clear} operation
-     *                                       is not supported by this list
      * @implSpec This implementation calls {@code removeRange(0, size())}.
      *
      * <p>Note that this implementation throws an
@@ -329,11 +336,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
      * @implSpec This implementation gets an iterator over the specified collection
      * and iterates over it, inserting the elements obtained from the
      * iterator into this list at the appropriate position, one at a time,
@@ -369,15 +371,16 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     // Iterators
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an iterator over the elements in this list in proper sequence.
      *
-     * @return an iterator over the elements in this list in proper sequence
      * @implSpec This implementation returns a straightforward implementation of the
      * iterator interface, relying on the backing list's {@code size()},
      * {@code get(int)}, and {@code remove(int)} methods.
      *
      * <p>Note that the iterator returned by this method will throw an
-     * {@link UnsupportedOperationException} in response to its
+     * {@link java.lang.UnsupportedOperationException} in response to its
      * {@code remove} method unless the list's {@code remove(int)} method is
      * overridden.
      *
@@ -404,7 +407,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      * @implSpec This implementation returns a straightforward implementation of the
      * {@code ListIterator} interface that extends the implementation of the
      * {@code Iterator} interface returned by the {@code iterator()} method.
@@ -413,7 +415,7 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
      * and {@code remove(int)} methods.
      *
      * <p>Note that the list iterator returned by this implementation will
-     * throw an {@link UnsupportedOperationException} in response to its
+     * throw an {@link java.lang.UnsupportedOperationException} in response to its
      * {@code remove}, {@code set} and {@code add} methods unless the
      * list's {@code remove(int)}, {@code set(int, E)}, and
      * {@code add(int, E)} methods are overridden.
@@ -563,10 +565,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     /**
      * {@inheritDoc}
      *
-     * @throws IndexOutOfBoundsException if an endpoint index value is out of range
-     *                                   {@code (fromIndex < 0 || toIndex > size)}
-     * @throws IllegalArgumentException  if the endpoint indices are out of order
-     *                                   {@code (fromIndex > toIndex)}
      * @implSpec This implementation returns a list that subclasses
      * {@code AbstractList}.  The subclass stores, in private fields, the
      * size of the subList (which can change over its lifetime), and the
@@ -626,6 +624,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     // Comparison and hashing
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Compares the specified object with this list for equality.  Returns
      * {@code true} if and only if the specified object is also a list, both
      * lists have the same size, and all corresponding pairs of elements in
@@ -634,8 +634,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
      * e1.equals(e2))}.)  In other words, two lists are defined to be
      * equal if they contain the same elements in the same order.
      *
-     * @param o the object to be compared for equality with this list
-     * @return {@code true} if the specified object is equal to this list
      * @implSpec This implementation first checks if the specified object is this
      * list. If so, it returns {@code true}; if not, it checks if the
      * specified object is a list. If not, it returns {@code false}; if so,
@@ -682,11 +680,12 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the hash code value for this list.
      *
-     * @return the hash code value for this list
      * @implSpec This implementation uses exactly the code that is used to define the
-     * list hash function in the documentation for the {@link List#hashCode}
+     * list hash function in the documentation for the {@link java.util.List#hashCode}
      * method.
      */
     @Override
@@ -701,6 +700,8 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes from this list all of the elements whose index is between
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
      * Shifts any succeeding elements to the left (reduces their index).
@@ -713,8 +714,6 @@ public abstract class AbstractBooleanList extends AbstractList<Boolean> implemen
      * improve the performance of the {@code clear} operation on this list
      * and its subLists.
      *
-     * @param fromIndex index of first element to be removed
-     * @param toIndex   index after last element to be removed
      * @implSpec This implementation gets a list iterator positioned before
      * {@code fromIndex}, and repeatedly calls {@code ListIterator.next}
      * followed by {@code ListIterator.remove} until the entire range has

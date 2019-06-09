@@ -35,17 +35,18 @@ import java.util.function.Predicate;
  * <p>This is a <a href="package-summary.html">functional interface</a>
  * whose functional method is {@link #test(Object)}.
  *
+ * @author XenoAmess
+ * @version 0.8.0
+ * @see Predicate
  * @since 1.8
  */
 @FunctionalInterface
 public interface ShortPredicate extends Predicate<Short>, Primitive {
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Evaluates this predicate on the given argument.
-     *
-     * @param t the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
      */
     @Override
     default boolean test(Short t) {
@@ -76,6 +77,8 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
 
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a composed predicate that represents a short-circuiting logical
      * AND of this predicate and another.  When evaluating the composed
      * predicate, if this predicate is {@code false}, then the {@code other}
@@ -84,12 +87,6 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
      * <p>Any exceptions thrown during evaluation of either predicate are relayed
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ANDed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * AND of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
      */
     @Override
     default Predicate<Short> and(final Predicate<? super Short> other) {
@@ -102,11 +99,10 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a predicate that represents the logical negation of this
      * predicate.
-     *
-     * @return a predicate that represents the logical negation of this
-     * predicate
      */
     @Override
     default ShortPredicate negate() {
@@ -114,6 +110,8 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a composed predicate that represents a short-circuiting logical
      * OR of this predicate and another.  When evaluating the composed
      * predicate, if this predicate is {@code true}, then the {@code other}
@@ -122,12 +120,6 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
      * <p>Any exceptions thrown during evaluation of either predicate are relayed
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ORed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * OR of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
      */
     @Override
     default Predicate<Short> or(Predicate<? super Short> other) {
@@ -141,26 +133,24 @@ public interface ShortPredicate extends Predicate<Short>, Primitive {
 
     /**
      * Returns a predicate that tests if two arguments are equal according
-     * to {@link Objects#equals(Object, Object)}.
+     * to {@link java.util.Objects#equals(Object, Object)}.
      *
      * @param targetPrimitive the object reference with which to compare for equality,
      *                        which may be {@code null}
      * @return a predicate that tests if two arguments are equal according
-     * to {@link Objects#equals(Object, Object)}
+     * to {@link java.util.Objects#equals(Object, Object)}
      */
     static ShortPredicate isEqual(short targetPrimitive) {
         return t -> t == targetPrimitive;
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a predicate that is the negation of the supplied predicate.
      * This is accomplished by returning result of the calling
      * {@code target.negate()}.
      *
-     * @param target predicate to negate
-     * @return a predicate that negates the results of the supplied
-     * predicate
-     * @throws NullPointerException if target is null
      * @since 11
      */
     @SuppressWarnings("unchecked")

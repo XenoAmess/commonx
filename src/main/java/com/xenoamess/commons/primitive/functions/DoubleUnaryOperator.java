@@ -24,17 +24,29 @@
 
 package com.xenoamess.commons.primitive.functions;
 
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
+ * Represents an operation on a single operand that produces a result of the
+ * same type as its operand.  This is a specialization of {@code Function} for
+ * the case where the operand and result are of the same type.
+ *
+ * <p>This is a <a href="package-summary.html">functional interface</a>
+ * whose functional method is {@link #apply(Object)}.
+ *
+ * @param <T> the type of the operand and result of the operator
  * @author XenoAmess
+ * @version 0.8.0
+ * @see Function
+ * @see UnaryOperator
+ * @since 1.8
  */
 public interface DoubleUnaryOperator extends UnaryOperator<Double> {
     /**
+     * {@inheritDoc}
+     * <p>
      * Applies this function to the given argument.
-     *
-     * @param t the function argument
-     * @return the function result
      */
     @Override
     default Double apply(Double t) {

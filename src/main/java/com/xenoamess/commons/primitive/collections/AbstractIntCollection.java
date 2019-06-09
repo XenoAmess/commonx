@@ -62,24 +62,27 @@ import java.util.Objects;
  *
  * @author Josh Bloch
  * @author Neal Gafter
+ * @version 0.8.0
  * @see Collection
  * @see java.util.AbstractCollection
  * @since 1.2
  */
-
 public interface AbstractIntCollection extends IntCollection,
         Primitive {
 
     // Query Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an iterator over the elements contained in this collection.
-     *
-     * @return an iterator over the elements contained in this collection
      */
     @Override
     IntIterator iterator();
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     int size();
 
@@ -96,8 +99,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws ClassCastException   {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
      * @implSpec This implementation iterates over the elements in the collection,
      * checking each element in turn for equality with the specified element.
      */
@@ -115,8 +116,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws ClassCastException   {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
      * @implSpec This implementation iterates over the elements in the collection,
      * checking each element in turn for equality with the specified element.
      */
@@ -171,6 +170,7 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
+     * @return an array of {@link int} objects.
      * @implSpec This implementation returns an array containing all the elements
      * returned by this collection's iterator, in the same order, stored in
      * consecutive elements of the array, starting with index {@code 0}.
@@ -207,8 +207,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws ArrayStoreException  {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
      * @implSpec This implementation returns an array containing all the elements
      * returned by this collection's iterator in the same order, stored in
      * consecutive elements of the array, starting with index {@code 0}.
@@ -263,8 +261,10 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws ArrayStoreException  {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
+     * @param a an array of {@link int} objects.
+     * @return an array of {@link int} objects.
+     * @throws java.lang.ArrayStoreException  {@inheritDoc}
+     * @throws java.lang.NullPointerException {@inheritDoc}
      * @implSpec This implementation returns an array containing all the elements
      * returned by this collection's iterator in the same order, stored in
      * consecutive elements of the array, starting with index {@code 0}.
@@ -326,8 +326,9 @@ public interface AbstractIntCollection extends IntCollection,
      * returned more elements than expected, and finishes filling it from
      * the iterator.
      *
-     * @param r  the array, replete with previously stored elements
-     * @param it the in-progress iterator over this collection
+     * @param r   the array, replete with previously stored elements
+     * @param it  the in-progress iterator over this collection
+     * @param <T> a T object.
      * @return array containing the elements in the given array, plus any
      * further elements returned by the iterator, trimmed to size
      */
@@ -380,6 +381,12 @@ public interface AbstractIntCollection extends IntCollection,
         return (i == r.length) ? r : Arrays.copyOf(r, i);
     }
 
+    /**
+     * <p>hugeCapacity.</p>
+     *
+     * @param minCapacity a int.
+     * @return a int.
+     */
     static int hugeCapacity(int minCapacity) {
         if (minCapacity < 0) // overflow
         {
@@ -396,9 +403,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
      * @implSpec This implementation iterates over the collection looking for the
      * specified element.  If it finds the element, it removes the element
      * from the collection using the iterator's remove method.
@@ -426,8 +430,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws ClassCastException   {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
      * @implSpec This implementation iterates over the specified collection,
      * checking each element returned by the iterator in turn to see
      * if it's contained in this collection.  If all elements are so
@@ -457,11 +459,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IllegalStateException         {@inheritDoc}
      * @implSpec This implementation iterates over the specified collection, and adds
      * each object returned by the iterator to this collection, in turn.
      *
@@ -494,9 +491,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
      * @implSpec This implementation iterates over this collection, checking each
      * element returned by the iterator in turn to see if it's contained
      * in the specified collection.  If it's so contained, it's removed from
@@ -537,9 +531,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
      * @implSpec This implementation iterates over this collection, checking each
      * element returned by the iterator in turn to see if it's contained
      * in the specified collection.  If it's not so contained, it's removed
@@ -580,7 +571,6 @@ public interface AbstractIntCollection extends IntCollection,
     /**
      * {@inheritDoc}
      *
-     * @throws UnsupportedOperationException {@inheritDoc}
      * @implSpec This implementation iterates over this collection, removing each
      * element using the {@code Iterator.remove} operation.  Most
      * implementations will probably choose to override this method for
@@ -609,8 +599,10 @@ public interface AbstractIntCollection extends IntCollection,
      * order they are returned by its iterator, enclosed in square brackets
      * ({@code "[]"}).  Adjacent elements are separated by the characters
      * {@code ", "} (comma and space).  Elements are converted to strings as
-     * by {@link String#valueOf(Object)}.
+     * by {@link java.lang.String#valueOf(Object)}.
      *
+     * @param abstractIntCollection a {@link com.xenoamess.commons.primitive.collections.AbstractIntCollection}
+     *                              object.
      * @return a string representation of this collection
      */
     static String toString(AbstractIntCollection abstractIntCollection) {

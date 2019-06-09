@@ -52,12 +52,14 @@ import java.util.ListIterator;
  * Java Collections Framework</a>.
  *
  * @author Josh Bloch
+ * @author XenoAmess
  * @version 0.6.0
  * @see java.util.Collection
  * @see java.util.List
  * @see java.util.Iterator
  * @see java.util.Enumeration
  * @see java.util.List#listIterator()
+ * @see BooleanIterator
  * @since 1.2
  */
 public interface BooleanListIterator extends BooleanIterator, ListIterator<Boolean> {

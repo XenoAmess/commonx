@@ -131,6 +131,8 @@ import java.util.function.UnaryOperator;
  *
  * @author Josh Bloch
  * @author Neal Gafter
+ * @author XenoAmess
+ * @version 0.8.0
  * @see Collection
  * @see Set
  * @see ArrayList
@@ -141,9 +143,9 @@ import java.util.function.UnaryOperator;
  * @see Collections#EMPTY_LIST
  * @see AbstractList
  * @see AbstractSequentialList
+ * @see List
  * @since 1.2
  */
-
 public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     /**
      * Returns an array containing all of the elements in this list in proper
@@ -164,19 +166,12 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     double[] toArrayPrimitive();
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns {@code true} if this list contains the specified element.
      * More formally, returns {@code true} if and only if this list contains
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
-     *
-     * @param o element whose presence in this list is to be tested
-     * @return {@code true} if this list contains the specified element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
     default boolean contains(Object o) {
@@ -184,6 +179,8 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes a single instance of the specified element from this
      * collection, if it is present (optional operation).  More formally,
      * removes an element {@code e} such that
@@ -191,19 +188,6 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * this collection contains one or more such elements.  Returns
      * {@code true} if this collection contained the specified element (or
      * equivalently, if this collection changed as a result of the call).
-     *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
-     * @throws ClassCastException            if the type of the specified element
-     *                                       is incompatible with this collection
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *                                       is not supported by this collection
      */
     @Override
     default boolean remove(Object o) {
@@ -212,6 +196,8 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
 
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Ensures that this collection contains the specified element (optional
      * operation).  Returns {@code true} if this collection changed as a
      * result of the call.  (Returns {@code false} if this collection does
@@ -229,20 +215,6 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * an exception (rather than returning {@code false}).  This preserves
      * the invariant that a collection always contains the specified element
      * after this call returns.
-     *
-     * @param e element whose presence in this collection is to be ensured
-     * @return {@code true} if this collection changed as a result of the
-     * call
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this collection
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this collection
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     * @throws IllegalArgumentException      if some property of the element
-     *                                       prevents it from being added to this collection
-     * @throws IllegalStateException         if the element cannot be added at this
-     *                                       time due to insertion restrictions
      */
     @Override
     default boolean add(Double e) {
@@ -515,19 +487,12 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
 //    boolean retainAll(Collection<?> c);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Replaces each element of this list with the result of applying the
      * operator to that element.  Errors or runtime exceptions thrown by
      * the operator are relayed to the caller.
      *
-     * @param operator the operator to apply to each element
-     * @throws UnsupportedOperationException if this list is unmodifiable.
-     *                                       Implementations may throw this exception if an element
-     *                                       cannot be replaced or if, in general, modification is not
-     *                                       supported
-     * @throws NullPointerException          if the specified operator is null or
-     *                                       if the operator result is a null value and this list does
-     *                                       not permit null elements
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
      * @implSpec The default implementation is equivalent to, for this {@code list}:
      * <pre>{@code
      *     final ListIterator<E> li = list.listIterator();
@@ -558,6 +523,8 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Sorts this list according to the order induced by the specified
      * {@link Comparator}.  The sort is <i>stable</i>: this method must not
      * reorder equal elements.
@@ -573,16 +540,6 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      *
      * <p>This list must be modifiable, but need not be resizable.
      *
-     * @param c the {@code Comparator} used to compare list elements.
-     *          A {@code null} value indicates that the elements'
-     *          {@linkplain Comparable natural ordering} should be used
-     * @throws ClassCastException            if the list contains elements that are not
-     *                                       <i>mutually comparable</i> using the specified comparator
-     * @throws UnsupportedOperationException if the list's list-iterator does
-     *                                       not support the {@code set} operation
-     * @throws IllegalArgumentException      (<a href="Collection.html#optional-restrictions">optional</a>)
-     *                                       if the comparator is found to violate the {@link Comparator}
-     *                                       contract
      * @implSpec The default implementation obtains an array containing all elements in
      * this list, sorts the array, and iterates over this list resetting each
      * element from the corresponding position in the array. (This avoids the
@@ -636,12 +593,9 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     // Positional Access Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the element at the specified position in this list.
-     *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   ({@code index < 0 || index >= size()})
      */
     @Override
     default Double get(int index) {
@@ -653,29 +607,17 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      *
      * @param index index of the element to return
      * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   ({@code index < 0 || index >= size()})
+     * @throws java.lang.IndexOutOfBoundsException if the index is out of range
+     *                                             ({@code index < 0 || index >= size()})
      * @see #get(int index)
      */
     double getPrimitive(int index);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the {@code set} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index >= size()})
      */
     @Override
     default Double set(int index, Double element) {
@@ -688,16 +630,16 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the {@code set} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index >= size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code set} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified element is null and
+     *                                                 this list does not permit null elements
+     * @throws java.lang.IllegalArgumentException      if some property of the specified
+     *                                                 element prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index >= size()})
      * @see #set(int index, Double element)
      */
     default double set(int index, double element) {
@@ -710,38 +652,27 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the {@code set} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index >= size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code set} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified element is null and
+     *                                                 this list does not permit null elements
+     * @throws java.lang.IllegalArgumentException      if some property of the specified
+     *                                                 element prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index >= size()})
      * @see #set(int index, Double element)
      */
     double setPrimitive(int index, double element);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Inserts the specified element at the specified position in this list
      * (optional operation).  Shifts the element currently at that position
      * (if any) and any subsequent elements to the right (adds one to their
      * indices).
-     *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
      */
     @Override
     default void add(int index, Double element) {
@@ -753,16 +684,16 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      *
      * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code add} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified element is null and
+     *                                                 this list does not permit null elements
+     * @throws java.lang.IllegalArgumentException      if some property of the specified
+     *                                                 element prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      * @see #add(int index, Double element)
      */
     default void add(int index, double element) {
@@ -774,32 +705,27 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      *
      * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index > size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code add} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this list
+     * @throws java.lang.NullPointerException          if the specified element is null and
+     *                                                 this list does not permit null elements
+     * @throws java.lang.IllegalArgumentException      if some property of the specified
+     *                                                 element prevents it from being added to this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index > size()})
      * @see #add(int index, Double element)
      */
     void addPrimitive(int index, double element);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes the element at the specified position in this list (optional
      * operation).  Shifts any subsequent elements to the left (subtracts one
      * from their indices).  Returns the element that was removed from the
      * list.
-     *
-     * @param index the index of the element to be removed
-     * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *                                       is not supported by this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index >= size()})
      */
     @Override
     default Double remove(int index) {
@@ -811,10 +737,10 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      *
      * @param index the index of the element to be removed
      * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *                                       is not supported by this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       ({@code index < 0 || index >= size()})
+     * @throws java.lang.UnsupportedOperationException if the {@code remove} operation
+     *                                                 is not supported by this list
+     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
+     *                                                 ({@code index < 0 || index >= size()})
      * @see #remove(int index)
      */
     double removeByIndexPrimitive(int index);
@@ -822,21 +748,13 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     // Search Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
-     *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
     default int indexOf(Object o) {
@@ -855,33 +773,25 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * @param o element to search for
      * @return the index of the first occurrence of the specified element in
      * this list, or -1 if this list does not contain the element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.ClassCastException   if the type of the specified element
+     *                                        is incompatible with this list
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException if the specified element is null and this
+     *                                        list does not permit null elements
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
      * @see #indexOf(Object o)
      */
     int indexOfPrimitive(double o);
 
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the highest index {@code i} such that
      * {@code Objects.equals(o, get(i))},
      * or -1 if there is no such index.
-     *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
     default int lastIndexOf(Object o) {
@@ -900,12 +810,12 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * @param o element to search for
      * @return the index of the last occurrence of the specified element in
      * this list, or -1 if this list does not contain the element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.ClassCastException   if the type of the specified element
+     *                                        is incompatible with this list
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException if the specified element is null and this
+     *                                        list does not permit null elements
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
      * @see #lastIndexOf(Object o)
      */
     int lastIndexOfPrimitive(double o);
@@ -914,29 +824,23 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     // List Iterators
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a list iterator over the elements in this list (in proper
      * sequence).
-     *
-     * @return a list iterator over the elements in this list (in proper
-     * sequence)
      */
     @Override
     DoubleListIterator listIterator();
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
      * The specified index indicates the first element that would be
      * returned by an initial call to {@link ListIterator#next next}.
      * An initial call to {@link ListIterator#previous previous} would
      * return the element with the specified index minus one.
-     *
-     * @param index index of the first element to be returned from the
-     *              list iterator (by a call to {@link ListIterator#next next})
-     * @return a list iterator over the elements in this list (in proper
-     * sequence), starting at the specified position in the list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   ({@code index < 0 || index > size()})
      */
     @Override
     DoubleListIterator listIterator(int index);
@@ -944,6 +848,8 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
     // View
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a view of the portion of this list between the specified
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.  (If
      * {@code fromIndex} and {@code toIndex} are equal, the returned list is
@@ -969,44 +875,38 @@ public interface DoubleList extends List<Double>, DoubleCollection, Primitive {
      * any way other than via the returned list.  (Structural modifications are
      * those that change the size of this list, or otherwise perturb it in such
      * a fashion that iterations in progress may yield incorrect results.)
-     *
-     * @param fromIndex low endpoint (inclusive) of the subList
-     * @param toIndex   high endpoint (exclusive) of the subList
-     * @return a view of the specified range within this list
-     * @throws IndexOutOfBoundsException for an illegal endpoint index value
-     *                                   ({@code fromIndex < 0 || toIndex > size ||
-     *                                   fromIndex > toIndex})
      */
     @Override
     DoubleList subList(int fromIndex, int toIndex);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Creates a {@link Spliterator} over the elements in this list.
      *
      * <p>The {@code Spliterator} reports {@link Spliterator#SIZED} and
      * {@link Spliterator#ORDERED}.  Implementations should document the
      * reporting of additional characteristic values.
      *
-     * @return a {@code Spliterator} over the elements in this list
      * @implSpec The default implementation creates a
      * <em><a href="Spliterator.html#binding">late-binding</a></em>
      * spliterator as follows:
      * <ul>
-     * <li>If the list is an instance of {@link RandomAccess} then the default
+     * <li>If the list is an instance of {@link java.util.RandomAccess} then the default
      * implementation creates a spliterator that traverses elements by
      * invoking the method {@link java.util.List#get}.  If such invocation results or
      * would result in an {@code IndexOutOfBoundsException} then the
      * spliterator will <em>fail-fast</em> and throw a
      * {@code ConcurrentModificationException}.
-     * If the list is also an instance of {@link AbstractList} then the
-     * spliterator will use the list's {@link AbstractList#modCount modCount}
+     * If the list is also an instance of {@link java.util.AbstractList} then the
+     * spliterator will use the list's {@link java.util.AbstractList#modCount modCount}
      * field to provide additional <em>fail-fast</em> behavior.
      * <li>Otherwise, the default implementation creates a spliterator from the
      * list's {@code Iterator}.  The spliterator inherits the
      * <em>fail-fast</em> of the list's iterator.
      * </ul>
      * @implNote The created {@code Spliterator} additionally reports
-     * {@link Spliterator#SUBSIZED}.
+     * {@link java.util.Spliterator#SUBSIZED}.
      * @since 1.8
      */
     @Override

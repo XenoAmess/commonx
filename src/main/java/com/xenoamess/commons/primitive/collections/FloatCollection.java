@@ -93,7 +93,7 @@ import java.util.stream.StreamSupport;
  * iterator to examine the collection.
  *
  * <p>Many methods in Collections Framework interfaces are defined in
- * terms of the {@link Object#equals(Object) equals} method.  For example,
+ * terms of the {@link java.lang.Object#equals(Object) equals} method.  For example,
  * the specification for the {@link #contains(Object) contains(Object o)}
  * method says: "returns {@code true} if and only if this collection
  * contains at least one element {@code e} such that
@@ -103,10 +103,10 @@ import java.util.stream.StreamSupport;
  * invoked for any element {@code e}.  Implementations are free to implement
  * optimizations whereby the {@code equals} invocation is avoided, for
  * example, by first comparing the hash codes of the two elements.  (The
- * {@link Object#hashCode()} specification guarantees that two objects with
+ * {@link java.lang.Object#hashCode()} specification guarantees that two objects with
  * unequal hash codes cannot be equal.)  More generally, implementations of
  * the various Collections Framework interfaces are free to take advantage of
- * the specified behavior of underlying {@link Object} methods wherever the
+ * the specified behavior of underlying {@link java.lang.Object} methods wherever the
  * implementor deems it appropriate.
  *
  * <p>Some collection operations which perform recursive traversal of the
@@ -203,6 +203,8 @@ import java.util.stream.StreamSupport;
  * @param <E> the type of elements in this collection
  * @author Josh Bloch
  * @author Neal Gafter
+ * @author XenoAmess
+ * @version 0.8.0
  * @implSpec The default method implementations (inherited or otherwise) do not apply any
  * synchronization protocol.  If a {@code Collection} implementation has a
  * specific synchronization protocol, then it must override default
@@ -220,26 +222,19 @@ import java.util.stream.StreamSupport;
  * @see Collections
  * @see Arrays
  * @see AbstractCollection
+ * @see Collection
  * @since 1.2
  */
-
 public interface FloatCollection extends Collection<Float>, FloatIterable, Primitive {
     // Query Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns {@code true} if this list contains the specified element.
      * More formally, returns {@code true} if and only if this list contains
      * at least one element {@code e} such that
      * {@code Objects.equals(o, e)}.
-     *
-     * @param o element whose presence in this list is to be tested
-     * @return {@code true} if this list contains the specified element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
     default boolean contains(Object o) {
@@ -257,12 +252,12 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      *
      * @param o element whose presence in this list is to be tested
      * @return {@code true} if this list contains the specified element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.ClassCastException   if the type of the specified element
+     *                                        is incompatible with this list
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException if the specified element is null and this
+     *                                        list does not permit null elements
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
      * @see #contains(Object o)
      */
     default boolean contains(float o) {
@@ -274,29 +269,31 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      *
      * @param o element whose presence in this list is to be tested
      * @return {@code true} if this list contains the specified element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.ClassCastException   if the type of the specified element
+     *                                        is incompatible with this list
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException if the specified element is null and this
+     *                                        list does not permit null elements
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
      * @see #contains(Object o)
      */
     boolean containsPrimitive(float o);
 
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an iterator over the elements in this collection.  There are no
      * guarantees concerning the order in which the elements are returned
      * (unless this collection is an instance of some class that provides a
      * guarantee).
-     *
-     * @return an {@code Iterator} over the elements in this collection
      */
     @Override
     FloatIterator iterator();
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an array containing all of the elements in this collection,
      * using the provided {@code generator} function to allocate the returned array.
      *
@@ -304,14 +301,6 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * are returned by its iterator, this method must return the elements in
      * the same order.
      *
-     * @param <T>       the component type of the array to contain the collection
-     * @param generator a function which produces a new array of the desired
-     *                  type and the provided length
-     * @return an array containing all of the elements in this collection
-     * @throws ArrayStoreException  if the runtime type of any element in this
-     *                              collection is not assignable to the {@linkplain Class#getComponentType
-     *                              runtime component type} of the generated array
-     * @throws NullPointerException if the generator function is null
      * @apiNote This method acts as a bridge between array-based and collection-based APIs.
      * It allows creation of an array of a particular runtime type. Use
      * {@link #toArray()} to create an array whose runtime type is {@code Object[]},
@@ -334,6 +323,8 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
     // Modification Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Ensures that this collection contains the specified element (optional
      * operation).  Returns {@code true} if this collection changed as a
      * result of the call.  (Returns {@code false} if this collection does
@@ -351,20 +342,6 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * an exception (rather than returning {@code false}).  This preserves
      * the invariant that a collection always contains the specified element
      * after this call returns.
-     *
-     * @param e element whose presence in this collection is to be ensured
-     * @return {@code true} if this collection changed as a result of the
-     * call
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this collection
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this collection
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     * @throws IllegalArgumentException      if some property of the element
-     *                                       prevents it from being added to this collection
-     * @throws IllegalStateException         if the element cannot be added at this
-     *                                       time due to insertion restrictions
      */
     @Override
     default boolean add(Float e) {
@@ -377,16 +354,16 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * @param e element whose presence in this collection is to be ensured
      * @return {@code true} if this collection changed as a result of the
      * call
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this collection
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this collection
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     * @throws IllegalArgumentException      if some property of the element
-     *                                       prevents it from being added to this collection
-     * @throws IllegalStateException         if the element cannot be added at this
-     *                                       time due to insertion restrictions
+     * @throws java.lang.UnsupportedOperationException if the {@code add} operation
+     *                                                 is not supported by this collection
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this collection
+     * @throws java.lang.NullPointerException          if the specified element is null and this
+     *                                                 collection does not permit null elements
+     * @throws java.lang.IllegalArgumentException      if some property of the element
+     *                                                 prevents it from being added to this collection
+     * @throws java.lang.IllegalStateException         if the element cannot be added at this
+     *                                                 time due to insertion restrictions
      * @see #add(Float e)
      */
     default boolean add(float e) {
@@ -399,21 +376,23 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * @param e element whose presence in this collection is to be ensured
      * @return {@code true} if this collection changed as a result of the
      * call
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *                                       is not supported by this collection
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this collection
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     * @throws IllegalArgumentException      if some property of the element
-     *                                       prevents it from being added to this collection
-     * @throws IllegalStateException         if the element cannot be added at this
-     *                                       time due to insertion restrictions
+     * @throws java.lang.UnsupportedOperationException if the {@code add} operation
+     *                                                 is not supported by this collection
+     * @throws java.lang.ClassCastException            if the class of the specified element
+     *                                                 prevents it from being added to this collection
+     * @throws java.lang.NullPointerException          if the specified element is null and this
+     *                                                 collection does not permit null elements
+     * @throws java.lang.IllegalArgumentException      if some property of the element
+     *                                                 prevents it from being added to this collection
+     * @throws java.lang.IllegalStateException         if the element cannot be added at this
+     *                                                 time due to insertion restrictions
      * @see #add(Float e)
      */
     boolean addPrimitive(float e);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes a single instance of the specified element from this
      * collection, if it is present (optional operation).  More formally,
      * removes an element {@code e} such that
@@ -421,19 +400,6 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * this collection contains one or more such elements.  Returns
      * {@code true} if this collection contained the specified element (or
      * equivalently, if this collection changed as a result of the call).
-     *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
-     * @throws ClassCastException            if the type of the specified element
-     *                                       is incompatible with this collection
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *                                       is not supported by this collection
      */
     @Override
     default boolean remove(Object o) {
@@ -451,16 +417,16 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      *
      * @param o element to be removed from this collection, if present
      * @return {@code true} if an element was removed as a result of this call
-     * @throws ClassCastException            if the type of the specified element
-     *                                       is incompatible with this collection
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *                                       is not supported by this collection
+     * @throws java.lang.ClassCastException            if the type of the specified element
+     *                                                 is incompatible with this collection
+     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
+     *                                                 .html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException          if the specified element is null and this
+     *                                                 collection does not permit null elements
+     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
+     *                                                 .html#optional-restrictions">optional</a>)
+     * @throws java.lang.UnsupportedOperationException if the {@code remove} operation
+     *                                                 is not supported by this collection
      * @see #remove(Object o)
      */
     default boolean removeByContent(float o) {
@@ -472,16 +438,16 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      *
      * @param o element to be removed from this collection, if present
      * @return {@code true} if an element was removed as a result of this call
-     * @throws ClassCastException            if the type of the specified element
-     *                                       is incompatible with this collection
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       collection does not permit null elements
-     *                                       (<a href="{@docRoot}/java.base/java/util/Collection
-     *                                       .html#optional-restrictions">optional</a>)
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *                                       is not supported by this collection
+     * @throws java.lang.ClassCastException            if the type of the specified element
+     *                                                 is incompatible with this collection
+     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
+     *                                                 .html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException          if the specified element is null and this
+     *                                                 collection does not permit null elements
+     *                                                 (<a href="{@docRoot}/java.base/java/util/Collection
+     *                                                 .html#optional-restrictions">optional</a>)
+     * @throws java.lang.UnsupportedOperationException if the {@code remove} operation
+     *                                                 is not supported by this collection
      * @see #remove(Object o)
      */
     boolean removeByContentPrimitive(float o);
@@ -489,18 +455,12 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
     // Bulk Operations
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes all of the elements of this collection that satisfy the given
      * predicate.  Errors or runtime exceptions thrown during iteration or by
      * the predicate are relayed to the caller.
      *
-     * @param filter a predicate which returns {@code true} for elements to be
-     *               removed
-     * @return {@code true} if any elements were removed
-     * @throws NullPointerException          if the specified filter is null
-     * @throws UnsupportedOperationException if elements cannot be removed
-     *                                       from this collection.  Implementations may throw this exception if a
-     *                                       matching element cannot be removed or if, in general, removal is not
-     *                                       supported.
      * @implSpec The default implementation traverses all elements of the collection using
      * its {@link #iterator}.  Each matching element is removed using
      * {@link Iterator#remove()}.  If the collection's iterator does not
@@ -536,6 +496,8 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
     // Comparison and hashing
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Creates a {@link Spliterator} over the elements in this collection.
      * <p>
      * Implementations should document characteristic values reported by the
@@ -562,7 +524,6 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * contents of the collection as of initiation of the terminal stream
      * operation.
      *
-     * @return a {@code Spliterator} over the elements in this collection
      * @implSpec The default implementation creates a
      * <em><a href="Spliterator.html#binding">late-binding</a></em> spliterator
      * from the collection's {@code Iterator}.  The spliterator inherits the
@@ -587,6 +548,8 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a sequential {@code Stream} with this collection as its source.
      *
      * <p>This method should be overridden when the {@link #spliterator()}
@@ -594,7 +557,6 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * {@code CONCURRENT}, or <em>late-binding</em>. (See {@link #spliterator()}
      * for details.)
      *
-     * @return a sequential {@code Stream} over the elements in this collection
      * @implSpec The default implementation creates a sequential {@code Stream} from the
      * collection's {@code Spliterator}.
      * @since 1.8
@@ -605,6 +567,8 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a possibly parallel {@code Stream} with this collection as its
      * source.  It is allowable for this method to return a sequential stream.
      *
@@ -613,8 +577,6 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * {@code CONCURRENT}, or <em>late-binding</em>. (See {@link #spliterator()}
      * for details.)
      *
-     * @return a possibly parallel {@code Stream} over the elements in this
-     * collection
      * @implSpec The default implementation creates a parallel {@code Stream} from the
      * collection's {@code Spliterator}.
      * @since 1.8

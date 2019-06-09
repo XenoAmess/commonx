@@ -1,3 +1,28 @@
+/*
+ * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+ */
+
 package com.xenoamess.commons.primitive.iterators;
 
 import com.xenoamess.commons.primitive.comparators.CharComparator;
@@ -8,6 +33,10 @@ import java.util.Spliterator;
 /**
  * A CharSpliterator.CharOfCharacter designed for use by sources that traverse and split
  * elements maintained in an unmodifiable {@code int[]} array.
+ *
+ * @author XenoAmess
+ * @version 0.8.0
+ * @see CharSpliterator
  */
 public class CharArraySpliterator implements CharSpliterator.CharOfCharacter {
     private final char[] array;
@@ -44,6 +73,9 @@ public class CharArraySpliterator implements CharSpliterator.CharOfCharacter {
         this.characteristics = additionalCharacteristics | CharSpliterator.SIZED | CharSpliterator.SUBSIZED;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CharOfCharacter trySplit() {
         int lo = index, mid = (lo + fence) >>> 1;
@@ -52,6 +84,9 @@ public class CharArraySpliterator implements CharSpliterator.CharOfCharacter {
                 : new CharArraySpliterator(array, lo, index = mid, characteristics);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void forEachRemaining(CharConsumer action) {
         char[] a;
@@ -67,6 +102,9 @@ public class CharArraySpliterator implements CharSpliterator.CharOfCharacter {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean tryAdvance(CharConsumer action) {
         if (action == null) {
@@ -79,16 +117,25 @@ public class CharArraySpliterator implements CharSpliterator.CharOfCharacter {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long estimateSize() {
         return (long) (fence - index);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int characteristics() {
         return characteristics;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CharComparator getComparator() {
         if (hasCharacteristics(Spliterator.SORTED)) {

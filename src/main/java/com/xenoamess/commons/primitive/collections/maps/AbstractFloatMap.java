@@ -38,12 +38,12 @@ import java.util.Map;
  * @param <V> the type of mapped values
  * @author Josh Bloch
  * @author Neal Gafter
+ * @version 0.8.0
  * @see Map
  * @see Collection
  * @see AbstractMap
  * @since 1.2
  */
-
 public abstract class AbstractFloatMap<V> extends AbstractMap<Float, V> implements Primitive {
 
 }

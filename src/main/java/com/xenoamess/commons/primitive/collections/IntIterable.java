@@ -38,19 +38,24 @@ import java.util.function.Consumer;
  * Implementing this interface allows an object to be the target of the enhanced
  * {@code for} statement (sometimes called the "for-each loop" statement).
  *
+ * @author XenoAmess
+ * @version 0.8.0
  * @jls 14.14.2 The enhanced {@code for} statement
+ * @see Iterable
  * @since 1.5
  */
 public interface IntIterable extends Iterable<Integer>, Primitive {
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an iterator over elements of type {@code T}.
-     *
-     * @return an Iterator.
      */
     @Override
     IntIterator iterator();
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Performs the given action for each element of the {@code Iterable}
      * until all elements have been processed or the action throws an
      * exception.  Actions are performed in the order of iteration, if that
@@ -61,8 +66,6 @@ public interface IntIterable extends Iterable<Integer>, Primitive {
      * side-effects that modify the underlying source of elements, unless an
      * overriding class has specified a concurrent modification policy.
      *
-     * @param action The action to be performed for each element
-     * @throws NullPointerException if the specified action is null
      * @implSpec <p>The default implementation behaves as if:
      * <pre>{@code
      *     for (T t : this)
@@ -88,11 +91,11 @@ public interface IntIterable extends Iterable<Integer>, Primitive {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Creates a {@link Spliterator} over the elements described by this
      * {@code Iterable}.
      *
-     * @return a {@code Spliterator} over the elements described by this
-     * {@code Iterable}.
      * @implSpec The default implementation creates an
      * <em><a href="../util/Spliterator.html#binding">early-binding</a></em>
      * spliterator from the iterable's {@code Iterator}.  The spliterator

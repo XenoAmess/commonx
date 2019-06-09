@@ -22,6 +22,7 @@
  * or visit www.oracle.com if you need additional information or have any
  * questions.
  */
+
 package com.xenoamess.commons.primitive.iterators;
 
 import com.xenoamess.commons.primitive.Primitive;
@@ -31,12 +32,13 @@ import com.xenoamess.commons.primitive.functions.FloatConsumer;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Spliterator;
 
 /**
  * Static classes and methods for operating on or creating instances of
- * {@link FloatSpliterators}
+ * {@link com.xenoamess.commons.primitive.iterators.FloatSpliterators}
  *
+ * @author XenoAmess
+ * @version 0.8.0
  * @see FloatSpliterators
  * @see java.util.Spliterators
  * @since 1.8
@@ -50,8 +52,8 @@ public final class FloatSpliterators implements Primitive {
     /**
      * Creates an empty {@code FloatSpliterator.FloatOfFloat}
      *
-     * <p>The empty spliterator reports {@link Spliterator#SIZED} and
-     * {@link Spliterator#SUBSIZED}.  Calls to
+     * <p>The empty spliterator reports {@link java.util.Spliterator#SIZED} and
+     * {@link java.util.Spliterator#SUBSIZED}.  Calls to
      * {@link java.util.Spliterator#trySplit()} always return {@code null}.
      *
      * @return An empty spliterator
@@ -137,7 +139,7 @@ public final class FloatSpliterators implements Primitive {
      * Spliterators which store portions of their elements in arrays, and need
      * fine control over Spliterator characteristics.  Most other situations in
      * which a Spliterator for an array is needed should use
-     * {@link Arrays#spliterator(float[])}.
+     * {@link java.util.Arrays#spliterator(float[])}.
      *
      * <p>The returned spliterator always reports the characteristics
      * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
@@ -149,7 +151,7 @@ public final class FloatSpliterators implements Primitive {
      *                                  of this spliterator's source or elements beyond {@code SIZED} and
      *                                  {@code SUBSIZED} which are always reported
      * @return A spliterator for an array
-     * @throws NullPointerException if the given array is {@code null}
+     * @throws java.lang.NullPointerException if the given array is {@code null}
      * @see Arrays#spliterator(float[])
      */
     public static FloatSpliterator.FloatOfFloat spliterator(float[] array,
@@ -165,14 +167,14 @@ public final class FloatSpliterators implements Primitive {
      * Spliterators which store portions of their elements in arrays, and need
      * fine control over Spliterator characteristics.  Most other situations in
      * which a Spliterator for an array is needed should use
-     * {@link Arrays#spliterator(float[], int, int)}.
+     * {@link java.util.Arrays#spliterator(float[], int, int)}.
      *
      * <p>The returned spliterator always reports the characteristics
      * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
      * characteristics for the spliterator to report.  (For example, if it is
      * known the array will not be further modified, specify {@code IMMUTABLE};
      * if the array data is considered to have an encounter order, specify
-     * {@code ORDERED}).  The method {@link Arrays#spliterator(long[], int, int)} can
+     * {@code ORDERED}).  The method {@link java.util.Arrays#spliterator(long[], int, int)} can
      * often be used instead, which returns a spliterator that reports
      * {@code SIZED}, {@code SUBSIZED}, {@code IMMUTABLE}, and {@code ORDERED}.
      *
@@ -183,10 +185,10 @@ public final class FloatSpliterators implements Primitive {
      *                                  of this spliterator's source or elements beyond {@code SIZED} and
      *                                  {@code SUBSIZED} which are always reported
      * @return A spliterator for an array
-     * @throws NullPointerException           if the given array is {@code null}
-     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex} is negative,
-     *                                        {@code toIndex} is less than {@code fromIndex}, or
-     *                                        {@code toIndex} is greater than the array size
+     * @throws java.lang.NullPointerException           if the given array is {@code null}
+     * @throws java.lang.ArrayIndexOutOfBoundsException if {@code fromIndex} is negative,
+     *                                                  {@code toIndex} is less than {@code fromIndex}, or
+     *                                                  {@code toIndex} is greater than the array size
      * @see Arrays#spliterator(float[], int, int)
      */
     public static FloatSpliterator.FloatOfFloat spliterator(float[] array, int fromIndex, int toIndex,
@@ -236,7 +238,7 @@ public final class FloatSpliterators implements Primitive {
      *                        elements.  The characteristics {@code SIZED} and {@code SUBSIZED}
      *                        are additionally reported unless {@code CONCURRENT} is supplied.
      * @return A spliterator from an iterator
-     * @throws NullPointerException if the given collection is {@code null}
+     * @throws java.lang.NullPointerException if the given collection is {@code null}
      */
     public static FloatSpliterator spliterator(FloatCollection c,
                                                int characteristics) {
@@ -324,7 +326,7 @@ public final class FloatSpliterators implements Primitive {
      *                        elements.  The characteristics {@code SIZED} and {@code SUBSIZED}
      *                        are additionally reported unless {@code CONCURRENT} is supplied.
      * @return A spliterator from an iterator
-     * @throws NullPointerException if the given iterator is {@code null}
+     * @throws java.lang.NullPointerException if the given iterator is {@code null}
      */
     public static FloatSpliterator.FloatOfFloat spliterator(FloatIterator iterator,
                                                             long size,
@@ -352,7 +354,7 @@ public final class FloatSpliterators implements Primitive {
      *                        or elements ({@code SIZED} and {@code SUBSIZED}, if supplied, are
      *                        ignored and are not reported.)
      * @return A spliterator from an iterator
-     * @throws NullPointerException if the given iterator is {@code null}
+     * @throws java.lang.NullPointerException if the given iterator is {@code null}
      */
     public static FloatSpliterator.FloatOfFloat spliteratorUnknownSize(FloatIterator iterator,
                                                                        int characteristics) {
@@ -370,7 +372,7 @@ public final class FloatSpliterators implements Primitive {
      *
      * @param floatSpliterator The spliterator
      * @return An iterator
-     * @throws NullPointerException if the given spliterator is {@code null}
+     * @throws java.lang.NullPointerException if the given spliterator is {@code null}
      */
     public static FloatIterator iterator(FloatSpliterator floatSpliterator) {
         Objects.requireNonNull(floatSpliterator);
@@ -414,9 +416,10 @@ public final class FloatSpliterators implements Primitive {
      * The behaviour of traversal is undefined if the spliterator is operated
      * after the iterator is returned.
      *
-     * @param spliterator The spliterator
+     * @param floatSpliterator a {@link com.xenoamess.commons.primitive.iterators.FloatSpliterator.FloatOfFloat}
+     *                         object.
      * @return An iterator
-     * @throws NullPointerException if the given spliterator is {@code null}
+     * @throws java.lang.NullPointerException if the given spliterator is {@code null}
      */
     public static FloatIterator iterator(FloatSpliterator.FloatOfFloat floatSpliterator) {
         Objects.requireNonNull(floatSpliterator);

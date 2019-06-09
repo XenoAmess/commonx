@@ -33,6 +33,10 @@ import java.util.Spliterator;
 /**
  * A DoubleSpliterator.DoubleOfDouble designed for use by sources that traverse and split
  * elements maintained in an unmodifiable {@code int[]} array.
+ *
+ * @author XenoAmess
+ * @version 0.8.0
+ * @see DoubleSpliterator
  */
 public class DoubleArraySpliterator implements DoubleSpliterator.DoubleOfDouble {
     private final double[] array;
@@ -69,6 +73,9 @@ public class DoubleArraySpliterator implements DoubleSpliterator.DoubleOfDouble 
         this.characteristics = additionalCharacteristics | DoubleSpliterator.SIZED | DoubleSpliterator.SUBSIZED;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DoubleOfDouble trySplit() {
         int lo = index, mid = (lo + fence) >>> 1;
@@ -77,6 +84,9 @@ public class DoubleArraySpliterator implements DoubleSpliterator.DoubleOfDouble 
                 : new DoubleArraySpliterator(array, lo, index = mid, characteristics);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void forEachRemaining(DoubleConsumer action) {
         double[] a;
@@ -92,6 +102,9 @@ public class DoubleArraySpliterator implements DoubleSpliterator.DoubleOfDouble 
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean tryAdvance(DoubleConsumer action) {
         if (action == null) {
@@ -104,16 +117,25 @@ public class DoubleArraySpliterator implements DoubleSpliterator.DoubleOfDouble 
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long estimateSize() {
         return (long) (fence - index);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int characteristics() {
         return characteristics;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DoubleComparator getComparator() {
         if (hasCharacteristics(Spliterator.SORTED)) {

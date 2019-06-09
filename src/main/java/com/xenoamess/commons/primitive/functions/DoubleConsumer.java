@@ -30,13 +30,17 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
+ * <p>DoubleConsumer interface.</p>
+ *
  * @author XenoAmess
+ * @version 0.8.0
+ * @see Consumer
  */
 public interface DoubleConsumer extends Consumer<Double>, Primitive {
     /**
+     * {@inheritDoc}
+     * <p>
      * Performs this operation on the given argument.
-     *
-     * @param t the input argument
      */
     @Override
     default void accept(Double t) {
@@ -60,16 +64,13 @@ public interface DoubleConsumer extends Consumer<Double>, Primitive {
     void acceptPrimitive(double t);
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns a composed {@code Consumer} that performs, in sequence, this
      * operation followed by the {@code after} operation. If performing either
      * operation throws an exception, it is relayed to the caller of the
      * composed operation.  If performing this operation throws an exception,
      * the {@code after} operation will not be performed.
-     *
-     * @param after the operation to perform after this operation
-     * @return a composed {@code Consumer} that performs in sequence this
-     * operation followed by the {@code after} operation
-     * @throws NullPointerException if {@code after} is null
      */
     @Override
     default DoubleConsumer andThen(Consumer<? super Double> after) {

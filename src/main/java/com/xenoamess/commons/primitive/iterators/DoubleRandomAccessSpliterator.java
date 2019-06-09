@@ -29,12 +29,15 @@ import com.xenoamess.commons.primitive.collections.lists.AbstractDoubleList;
 import com.xenoamess.commons.primitive.collections.lists.DoubleList;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
 
-import java.util.*;
+import java.util.ConcurrentModificationException;
+import java.util.Objects;
+import java.util.RandomAccess;
+import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**
  * An index-based split-by-two, lazily initialized Spliterator covering
- * a List that access elements via {@link List#get}.
+ * a List that access elements via {@link java.util.List#get}.
  * <p>
  * If access results in an IndexOutOfBoundsException then a
  * ConcurrentModificationException is thrown instead (since the list has
@@ -42,6 +45,10 @@ import java.util.function.Consumer;
  * <p>
  * If the List is an instance of AbstractList then concurrent modification
  * checking is performed using the AbstractList's modCount field.
+ *
+ * @author XenoAmess
+ * @version 0.8.0
+ * @see DoubleSpliterator
  */
 public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
 
@@ -53,6 +60,11 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
     private final AbstractDoubleList alist;
     private int expectedModCount; // initialized when fence set
 
+    /**
+     * <p>Constructor for DoubleRandomAccessSpliterator.</p>
+     *
+     * @param list a {@link com.xenoamess.commons.primitive.collections.lists.DoubleList} object.
+     */
     public DoubleRandomAccessSpliterator(DoubleList list) {
         assert list instanceof RandomAccess;
 
@@ -66,6 +78,10 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
 
     /**
      * Create new spliterator covering the given  range
+     *
+     * @param parent a {@link com.xenoamess.commons.primitive.iterators.DoubleRandomAccessSpliterator} object.
+     * @param origin a int.
+     * @param fence  a int.
      */
     public DoubleRandomAccessSpliterator(DoubleRandomAccessSpliterator parent,
                                          int origin, int fence) {
@@ -89,6 +105,9 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
         return hi;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DoubleSpliterator trySplit() {
         int hi = getFence(), lo = index, mid = (lo + hi) >>> 1;
@@ -96,6 +115,9 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
                 new DoubleRandomAccessSpliterator(this, lo, index = mid);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean tryAdvance(Consumer<? super Double> action) {
         if (action == null) {
@@ -116,6 +138,9 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void forEachRemaining(Consumer<? super Double> action) {
         Objects.requireNonNull(action);
@@ -136,11 +161,17 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
         checkAbstractListModCount(alist, expectedModCount);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long estimateSize() {
         return (long) (getFence() - index);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int characteristics() {
         return Spliterator.ORDERED | Spliterator.SIZED | Spliterator.SUBSIZED;

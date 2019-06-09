@@ -326,11 +326,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.contains(Object o)}
      *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     * element
      * @see ByteArrayList#contains(Object o)
      */
     @Override
@@ -339,11 +338,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.contains(Object o)}
      *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     * element
      * @see ByteArrayList#contains(Object o)
      */
     @Override
@@ -379,11 +377,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.indexOf(Object o)}
      *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
      * @see ByteArrayList#indexOf(Object o)
      */
     @Override
@@ -472,11 +469,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.lastIndexOf(Object o)}
      *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
      * @see ByteArrayList#lastIndexOf(Object o)
      */
     @Override
@@ -577,6 +573,8 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -586,8 +584,6 @@ public class ByteArrayList extends AbstractByteList
      *
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
-     *
-     * @return an array of {@link byte}.
      */
     @Override
     public byte[] toArrayPrimitive() {
@@ -665,9 +661,6 @@ public class ByteArrayList extends AbstractByteList
      * {@code null}.  (This is useful in determining the length of the
      * list <i>only</i> if the caller knows that the list does not contain
      * any null elements.)
-     *
-     * @param a an array of {@link byte} objects.
-     * @return an array of {@link byte} objects.
      */
     @Override
     public byte[] toArrayPrimitive(byte[] a) {
@@ -716,11 +709,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.get(int index)}
      *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see ByteArrayList#get(int index)
      */
     @Override
@@ -730,12 +722,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.set(int index, Byte element)}
      *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see ByteArrayList#set(int index, Byte element)
      */
     @Override
@@ -760,10 +750,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.add(Byte e)}
      *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
      * @see ByteArrayList#add(Byte e)
      */
     @Override
@@ -774,11 +764,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.add(int index, Byte element)}
      *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see ByteArrayList#add(int index, Byte element)
      */
     @Override
@@ -798,13 +787,11 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
-     *
-     * @param index the index of the element to be removed
-     * @return the element that was removed from the list
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public byte removeByIndexPrimitive(int index) {
@@ -937,10 +924,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.remove(Object o)}
      *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
      * @see ByteArrayList#remove(Object o)
      */
     @Override
@@ -949,10 +936,10 @@ public class ByteArrayList extends AbstractByteList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code ByteArrayList.remove(Object o)}
      *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
      * @see ByteArrayList#remove(Object o)
      */
     public boolean removeByContentPrimitive(byte o) {
@@ -2414,7 +2401,7 @@ public class ByteArrayList extends AbstractByteList
     /**
      * <p>sort.</p>
      *
-     * @param c a {@link ByteComparator} object.
+     * @param c a {@link com.xenoamess.commons.primitive.comparators.ByteComparator} object.
      */
     public void sort(ByteComparator c) {
         final int expectedModCount = modCount;

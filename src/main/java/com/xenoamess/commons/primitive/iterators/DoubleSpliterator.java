@@ -28,13 +28,15 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.comparators.DoubleComparator;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**
  * An object for traversing and partitioning elements of a source.  The source
  * of elements covered by a Spliterator could be, for example, an array, a
- * {@link Collection}, an IO channel, or a generator function.
+ * {@link java.util.Collection}, an IO channel, or a generator function.
  *
  * <p>A Spliterator may traverse elements individually ({@link
  * #tryAdvance tryAdvance()}) or sequentially in bulk
@@ -53,9 +55,9 @@ import java.util.function.Consumer;
  * {@link #DISTINCT}, {@link #SORTED}, {@link #SIZED}, {@link #NONNULL},
  * {@link #IMMUTABLE}, {@link #CONCURRENT}, and {@link #SUBSIZED}. These may
  * be employed by Spliterator clients to control, specialize or simplify
- * computation.  For example, a Spliterator for a {@link Collection} would
- * report {@code SIZED}, a Spliterator for a {@link Set} would report
- * {@code DISTINCT}, and a Spliterator for a {@link SortedSet} would also
+ * computation.  For example, a Spliterator for a {@link java.util.Collection} would
+ * report {@code SIZED}, a Spliterator for a {@link java.util.Set} would report
+ * {@code DISTINCT}, and a Spliterator for a {@link java.util.SortedSet} would also
  * report {@code SORTED}.  Characteristics are reported as a simple unioned bit
  * set.
  * <p>
@@ -75,7 +77,7 @@ import java.util.function.Consumer;
  * construction or first invocation of any method.  Modifications made to the
  * source prior to binding are reflected when the Spliterator is traversed.
  * After binding a Spliterator should, on a best-effort basis, throw
- * {@link ConcurrentModificationException} if structural interference is
+ * {@link java.util.ConcurrentModificationException} if structural interference is
  * detected.  Spliterators that do this are called <em>fail-fast</em>.  The
  * bulk traversal method ({@link #forEachRemaining forEachRemaining()}) of a
  * Spliterator may optimize traversal and check for structural interference
@@ -109,23 +111,25 @@ import java.util.function.Consumer;
  * <p>Primitive subtype specializations of {@code Spliterator} are provided for
  * {@link OfInt int}, {@link OfLong long}, and {@link OfDouble double} values.
  * The subtype default implementations of
- * {@link Spliterator#tryAdvance(java.util.function.Consumer)}
- * and {@link Spliterator#forEachRemaining(java.util.function.Consumer)} box
+ * {@link java.util.Spliterator#tryAdvance(java.util.function.Consumer)}
+ * and {@link java.util.Spliterator#forEachRemaining(java.util.function.Consumer)} box
  * primitive values to instances of their corresponding wrapper class.  Such
  * boxing may undermine any performance advantages gained by using the primitive
  * specializations.  To avoid boxing, the corresponding primitive-based methods
  * should be used.  For example,
- * {@link Spliterator.OfInt#tryAdvance(java.util.function.IntConsumer)}
- * and {@link Spliterator.OfInt#forEachRemaining(java.util.function.IntConsumer)}
+ * {@link java.util.Spliterator.OfInt#tryAdvance(java.util.function.IntConsumer)}
+ * and {@link java.util.Spliterator.OfInt#forEachRemaining(java.util.function.IntConsumer)}
  * should be used in preference to
- * {@link Spliterator.OfInt#tryAdvance(java.util.function.Consumer)} and
- * {@link Spliterator.OfInt#forEachRemaining(java.util.function.Consumer)}.
+ * {@link java.util.Spliterator.OfInt#tryAdvance(java.util.function.Consumer)} and
+ * {@link java.util.Spliterator.OfInt#forEachRemaining(java.util.function.Consumer)}.
  * Traversal of primitive values using boxing-based methods
  * {@link #tryAdvance tryAdvance()} and
  * {@link #forEachRemaining(java.util.function.Consumer) forEachRemaining()}
  * does not affect the order in which the values, transformed to boxed values,
  * are encountered.
  *
+ * @author XenoAmess
+ * @version 0.8.0
  * @apiNote <p>Spliterators, like {@code Iterator}s, are for traversing the elements of
  * a source.  The {@code Spliterator} API was designed to support efficient
  * parallel traversal in addition to sequential traversal, by supporting
@@ -157,7 +161,7 @@ import java.util.function.Consumer;
  * <br>Late binding narrows the window during which interference can affect
  * the calculation; fail-fast detects, on a best-effort basis, that structural
  * interference has occurred after traversal has commenced and throws
- * {@link ConcurrentModificationException}.  For example, {@link ArrayList},
+ * {@link java.util.ConcurrentModificationException}.  For example, {@link java.util.ArrayList},
  * and many other non-concurrent {@code Collection} classes in the JDK, provide
  * a late-binding, fail-fast spliterator.</li>
  * <li>The mutable source provides a non-late-binding but fail-fast Spliterator.
@@ -287,10 +291,13 @@ import java.util.function.Consumer;
  * is set to {@code true} then diagnostic warnings are reported if boxing of
  * primitive values occur when operating on primitive subtype specializations.
  * @see Collection
+ * @see Spliterator
  * @since 1.8
  */
 public interface DoubleSpliterator extends Spliterator<Double>, Primitive {
     /**
+     * {@inheritDoc}
+     * <p>
      * If this spliterator can be partitioned, returns a Spliterator
      * covering elements, that will, upon return from this method, not
      * be covered by this Spliterator.
@@ -316,8 +323,6 @@ public interface DoubleSpliterator extends Spliterator<Double>, Primitive {
      * commenced, data structure constraints, and efficiency
      * considerations.
      *
-     * @return a {@code Spliterator} covering some portion of the
-     * elements, or {@code null} if this spliterator cannot be split
      * @apiNote An ideal {@code trySplit} method efficiently (without
      * traversal) divides its elements exactly in half, allowing
      * balanced parallel computation.  Many departures from this ideal
@@ -333,16 +338,14 @@ public interface DoubleSpliterator extends Spliterator<Double>, Primitive {
     DoubleSpliterator trySplit();
 
     /**
+     * {@inheritDoc}
+     * <p>
      * If this Spliterator's source is {@link #SORTED} by a {@link Comparator},
      * returns that {@code Comparator}. If the source is {@code SORTED} in
      * {@linkplain Comparable natural order}, returns {@code null}.  Otherwise,
      * if the source is not {@code SORTED}, throws {@link IllegalStateException}.
      *
-     * @return a Comparator, or {@code null} if the elements are sorted in the
-     * natural order.
-     * @throws IllegalStateException if the spliterator does not report
-     *                               a characteristic of {@code SORTED}.
-     * @implSpec The default implementation always throws {@link IllegalStateException}.
+     * @implSpec The default implementation always throws {@link java.lang.IllegalStateException}.
      */
     @Override
     default DoubleComparator getComparator() {

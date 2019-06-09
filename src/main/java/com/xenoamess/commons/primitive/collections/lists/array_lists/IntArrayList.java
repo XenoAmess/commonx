@@ -326,11 +326,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.contains(Object o)}
      *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     * element
      * @see IntArrayList#contains(Object o)
      */
     @Override
@@ -339,11 +338,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.contains(Object o)}
      *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     * element
      * @see IntArrayList#contains(Object o)
      */
     @Override
@@ -379,11 +377,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.indexOf(Object o)}
      *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
      * @see IntArrayList#indexOf(Object o)
      */
     @Override
@@ -472,11 +469,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.lastIndexOf(Object o)}
      *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
      * @see IntArrayList#lastIndexOf(Object o)
      */
     @Override
@@ -577,6 +573,8 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -586,8 +584,6 @@ public class IntArrayList extends AbstractIntList
      *
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
-     *
-     * @return an array of {@link int}.
      */
     @Override
     public int[] toArrayPrimitive() {
@@ -665,9 +661,6 @@ public class IntArrayList extends AbstractIntList
      * {@code null}.  (This is useful in determining the length of the
      * list <i>only</i> if the caller knows that the list does not contain
      * any null elements.)
-     *
-     * @param a an array of {@link int} objects.
-     * @return an array of {@link int} objects.
      */
     @Override
     public int[] toArrayPrimitive(int[] a) {
@@ -716,11 +709,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.get(int index)}
      *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see IntArrayList#get(int index)
      */
     @Override
@@ -730,12 +722,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.set(int index, Integer element)}
      *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see IntArrayList#set(int index, Integer element)
      */
     @Override
@@ -760,10 +750,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.add(Integer e)}
      *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
      * @see IntArrayList#add(Integer e)
      */
     @Override
@@ -774,11 +764,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.add(int index, Integer element)}
      *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see IntArrayList#add(int index, Integer element)
      */
     @Override
@@ -798,13 +787,11 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
-     *
-     * @param index the index of the element to be removed
-     * @return the element that was removed from the list
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public int removeByIndexPrimitive(int index) {
@@ -937,10 +924,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.remove(Object o)}
      *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
      * @see IntArrayList#remove(Object o)
      */
     @Override
@@ -949,10 +936,10 @@ public class IntArrayList extends AbstractIntList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code IntArrayList.remove(Object o)}
      *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
      * @see IntArrayList#remove(Object o)
      */
     public boolean removeByContentPrimitive(int o) {
@@ -2414,7 +2401,7 @@ public class IntArrayList extends AbstractIntList
     /**
      * <p>sort.</p>
      *
-     * @param c a {@link IntComparator} object.
+     * @param c a {@link com.xenoamess.commons.primitive.comparators.IntComparator} object.
      */
     public void sort(IntComparator c) {
         final int expectedModCount = modCount;

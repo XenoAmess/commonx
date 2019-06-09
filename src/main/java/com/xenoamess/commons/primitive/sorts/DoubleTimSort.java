@@ -60,6 +60,7 @@ import com.xenoamess.commons.primitive.comparators.DoubleComparator;
  * TimSort. Small arrays are sorted in place, using a binary insertion sort.
  *
  * @author Josh Bloch
+ * @author XenoAmess
  * @version 0.6.0
  */
 public class DoubleTimSort {

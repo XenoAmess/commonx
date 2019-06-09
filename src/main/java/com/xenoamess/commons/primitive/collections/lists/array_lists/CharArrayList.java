@@ -326,11 +326,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.contains(Object o)}
      *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     * element
      * @see CharArrayList#contains(Object o)
      */
     @Override
@@ -339,11 +338,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.contains(Object o)}
      *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     * element
      * @see CharArrayList#contains(Object o)
      */
     @Override
@@ -379,11 +377,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.indexOf(Object o)}
      *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
      * @see CharArrayList#indexOf(Object o)
      */
     @Override
@@ -472,11 +469,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.lastIndexOf(Object o)}
      *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
      * @see CharArrayList#lastIndexOf(Object o)
      */
     @Override
@@ -577,6 +573,8 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
@@ -586,8 +584,6 @@ public class CharArrayList extends AbstractCharList
      *
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
-     *
-     * @return an array of {@link char}.
      */
     @Override
     public char[] toArrayPrimitive() {
@@ -665,9 +661,6 @@ public class CharArrayList extends AbstractCharList
      * {@code null}.  (This is useful in determining the length of the
      * list <i>only</i> if the caller knows that the list does not contain
      * any null elements.)
-     *
-     * @param a an array of {@link char} objects.
-     * @return an array of {@link char} objects.
      */
     @Override
     public char[] toArrayPrimitive(char[] a) {
@@ -716,11 +709,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.get(int index)}
      *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see CharArrayList#get(int index)
      */
     @Override
@@ -730,12 +722,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.set(int index, Character element)}
      *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see CharArrayList#set(int index, Character element)
      */
     @Override
@@ -760,10 +750,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.add(Character e)}
      *
-     * @param e element to be appended to this list
-     * @return {@code true} (as specified by {@link java.util.Collection#add})
      * @see CharArrayList#add(Character e)
      */
     @Override
@@ -774,11 +764,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.add(int index, Character element)}
      *
-     * @param index   index at which the specified element is to be inserted
-     * @param element element to be inserted
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      * @see CharArrayList#add(int index, Character element)
      */
     @Override
@@ -798,13 +787,11 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
-     *
-     * @param index the index of the element to be removed
-     * @return the element that was removed from the list
-     * @throws java.lang.IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public char removeByIndexPrimitive(int index) {
@@ -937,10 +924,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.remove(Object o)}
      *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
      * @see CharArrayList#remove(Object o)
      */
     @Override
@@ -949,10 +936,10 @@ public class CharArrayList extends AbstractCharList
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
      * Primitive replacement of {@code CharArrayList.remove(Object o)}
      *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
      * @see CharArrayList#remove(Object o)
      */
     public boolean removeByContentPrimitive(char o) {
@@ -2414,7 +2401,7 @@ public class CharArrayList extends AbstractCharList
     /**
      * <p>sort.</p>
      *
-     * @param c a {@link CharComparator} object.
+     * @param c a {@link com.xenoamess.commons.primitive.comparators.CharComparator} object.
      */
     public void sort(CharComparator c) {
         final int expectedModCount = modCount;

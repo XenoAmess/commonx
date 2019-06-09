@@ -37,6 +37,8 @@ import com.xenoamess.commons.primitive.functions.DoubleConsumer;
  * {@link #forEachRemaining(java.util.function.DoubleConsumer) forEachRemaining}
  * if it can provide a more performant implementation.
  *
+ * @author XenoAmess
+ * @version 0.8.0
  * @apiNote This class is a useful aid for creating a spliterator when it is not
  * possible or difficult to efficiently partition elements in a manner
  * allowing balanced parallel computation.
