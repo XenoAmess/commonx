@@ -11,24 +11,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * @author XenoAmess
  */
-public class LongArrayListTest {
+public class ByteArrayListTest {
 
-    public void checkEqual(LongArrayList a1, ArrayList<Long> a2) {
+    public void checkEqual(ByteArrayList a1, ArrayList<Byte> a2) {
         assertEquals(a1.size(), a2.size());
         for (int i = 0; i < a1.size(); i++) {
             assertEquals(a1.get(i), a2.get(i));
-            assertEquals(a1.getPrimitive(i), (long) a2.get(i));
+            assertEquals(a1.getPrimitive(i), (byte) a2.get(i));
         }
         assertEquals(a1, a2);
         assertEquals(a2, a1);
     }
 
     public void check(int length) {
-        LongArrayList a1 = new LongArrayList();
-        ArrayList<Long> a2 = new ArrayList<>();
+        ByteArrayList a1 = new ByteArrayList();
+        ArrayList<Byte> a2 = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
-            long l = random.nextLong();
+            byte l = ((byte) random.nextInt());
             a1.add(l);
             a2.add(l);
         }
@@ -36,7 +36,7 @@ public class LongArrayListTest {
         checkEqual(a1, a2);
 
         boolean flag = false;
-        for (Long l : a2) {
+        for (Byte l : a2) {
             flag = !flag;
             if (flag) {
                 a1.remove(l);
@@ -59,14 +59,14 @@ public class LongArrayListTest {
 
     public void performanceChecks(int length) {
         Random random = new Random();
-        LongArrayList data = new LongArrayList();
+        ByteArrayList data = new ByteArrayList();
         for (int i = 0; i < length; i++) {
-            long l = random.nextLong();
+            byte l = ((byte) random.nextInt());
             data.add(l);
         }
 
         long begin1 = System.nanoTime();
-        LongArrayList a1 = new LongArrayList();
+        ByteArrayList a1 = new ByteArrayList();
         for (int i = 0; i < length; i++) {
             a1.addPrimitive(data.getPrimitive(i));
         }
@@ -75,10 +75,10 @@ public class LongArrayListTest {
         }
         a1.sort(null);
         long score1 = (System.nanoTime() - begin1);
-        System.out.println("LongArrayList time : " + score1);
+        System.out.println("ByteArrayList time : " + score1);
 
         long begin2 = System.nanoTime();
-        ArrayList<Long> a2 = new ArrayList<>();
+        ArrayList<Byte> a2 = new ArrayList<>();
         for (int i = 0; i < length; i++) {
             a2.add(data.getPrimitive(i));
         }
@@ -87,7 +87,7 @@ public class LongArrayListTest {
         }
         a2.sort(null);
         long score2 = (System.nanoTime() - begin2);
-        System.out.println("ArrayList<Long> time : " + score2);
+        System.out.println("ArrayList<Byte> time : " + score2);
         assert (score2 > score1);
     }
 

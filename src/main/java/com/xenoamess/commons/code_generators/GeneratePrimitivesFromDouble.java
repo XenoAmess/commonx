@@ -86,7 +86,8 @@ public class GeneratePrimitivesFromDouble {
 //                        line = line.replaceAll("CharacterList", "CharList");
                         line = line.replaceAll("(Character)([a-zA-Z])", "Char$2");
                         line = line.replaceAll("Charistics", "Characteristics");
-
+                        //test
+                        line = line.replaceAll("random.nextCharacter\\(\\)", "((char)random.nextInt())");
                         break;
                     case "int":
 //                        line = line.replaceAll("IntegerArrayList", "IntArrayList");
@@ -105,10 +106,21 @@ public class GeneratePrimitivesFromDouble {
 //                            line = line.replaceAll("Integer" + chr, "Int" + chr);
 //                        }
                         line = line.replaceAll("(Integer)([a-zA-Z])", "Int$2");
+                        //test
+                        line = line.replaceAll("random.nextInteger\\(\\)", "(random.nextInt())");
+                        break;
+                    case "byte":
+                        //test
+                        line = line.replaceAll("random.nextByte\\(\\)", "((byte)random.nextInt())");
+                        break;
+                    case "short":
+                        //test
+                        line = line.replaceAll("random.nextShort\\(\\)", "((short)random.nextInt())");
                         break;
                     case "boolean":
                         line = line.replaceAll("] = 0;", "] = false;");
                         break;
+
                 }
 
                 tempStream.write(line);
@@ -126,22 +138,8 @@ public class GeneratePrimitivesFromDouble {
      * @param args an array of {@link java.lang.String} objects.
      */
     public static void main(String[] args) {
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-//                "\\list\\array_lists\\DoubleArrayList.java");
-//
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-//                "\\list\\array_lists\\DoubleIterator.java");
-//
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\collections" +
-//                "\\list\\array_lists\\DoubleListIterator.java");
-//
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
-//                "\\sorts\\DoubleTimSort.java");
-//
-//        generatePrimitivesFromFile("D:\\workspace\\commonx\\src\\main\\java\\com\\xenoamess\\commons\\primitive" +
-//                "\\comparators\\DoubleComparator.java");
-
         processFile("src/main/java/com/xenoamess/commons/primitive/");
+        processFile("src/test/java/com/xenoamess/commons/primitive/");
     }
 
     private static void processFile(String path) {
