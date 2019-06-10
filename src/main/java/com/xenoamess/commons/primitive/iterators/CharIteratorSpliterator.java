@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.CharCollection;
 import com.xenoamess.commons.primitive.comparators.CharComparator;
 import com.xenoamess.commons.primitive.functions.CharConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see CharSpliterator
  * @since 1.8
  */
-public class CharIteratorSpliterator implements CharSpliterator.CharOfCharacter {
+public class CharIteratorSpliterator implements CharSpliterator.CharOfCharacter, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final CharCollection collection; // null OK

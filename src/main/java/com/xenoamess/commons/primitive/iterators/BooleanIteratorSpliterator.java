@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.BooleanCollection;
 import com.xenoamess.commons.primitive.comparators.BooleanComparator;
 import com.xenoamess.commons.primitive.functions.BooleanConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see BooleanSpliterator
  * @since 1.8
  */
-public class BooleanIteratorSpliterator implements BooleanSpliterator.BooleanOfBoolean {
+public class BooleanIteratorSpliterator implements BooleanSpliterator.BooleanOfBoolean, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final BooleanCollection collection; // null OK

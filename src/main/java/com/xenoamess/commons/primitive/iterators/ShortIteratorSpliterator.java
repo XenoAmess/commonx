@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.ShortCollection;
 import com.xenoamess.commons.primitive.comparators.ShortComparator;
 import com.xenoamess.commons.primitive.functions.ShortConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see ShortSpliterator
  * @since 1.8
  */
-public class ShortIteratorSpliterator implements ShortSpliterator.ShortOfShort {
+public class ShortIteratorSpliterator implements ShortSpliterator.ShortOfShort, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final ShortCollection collection; // null OK

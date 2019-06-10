@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractLongList;
 import com.xenoamess.commons.primitive.collections.lists.LongList;
 import com.xenoamess.commons.primitive.functions.LongConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see LongSpliterator
  */
-public class LongRandomAccessSpliterator implements LongSpliterator {
+public class LongRandomAccessSpliterator implements LongSpliterator, Primitive {
 
     private final LongList list;
     private int index; // current index, modified on advance/split

@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractCharList;
 import com.xenoamess.commons.primitive.collections.lists.CharList;
 import com.xenoamess.commons.primitive.comparators.CharComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class CharArrayList extends AbstractCharList
-        implements CharList, RandomAccess, Cloneable, java.io.Serializable {
+        implements CharList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code char[]}

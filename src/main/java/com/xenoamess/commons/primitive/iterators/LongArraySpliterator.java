@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.comparators.LongComparator;
 import com.xenoamess.commons.primitive.functions.LongConsumer;
 
@@ -38,7 +39,7 @@ import java.util.Spliterator;
  * @version 0.8.0
  * @see LongSpliterator
  */
-public class LongArraySpliterator implements LongSpliterator.LongOfLong {
+public class LongArraySpliterator implements LongSpliterator.LongOfLong, Primitive {
     private final long[] array;
     private int index;        // current index, modified on advance/split
     private final int fence;  // one past last index

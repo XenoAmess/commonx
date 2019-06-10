@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.comparators.CharComparator;
 import com.xenoamess.commons.primitive.functions.CharConsumer;
 
@@ -38,7 +39,7 @@ import java.util.Spliterator;
  * @version 0.8.0
  * @see CharSpliterator
  */
-public class CharArraySpliterator implements CharSpliterator.CharOfCharacter {
+public class CharArraySpliterator implements CharSpliterator.CharOfCharacter, Primitive {
     private final char[] array;
     private int index;        // current index, modified on advance/split
     private final int fence;  // one past last index

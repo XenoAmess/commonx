@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractCharList;
 import com.xenoamess.commons.primitive.collections.lists.CharList;
 import com.xenoamess.commons.primitive.functions.CharConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see CharSpliterator
  */
-public class CharRandomAccessSpliterator implements CharSpliterator {
+public class CharRandomAccessSpliterator implements CharSpliterator, Primitive {
 
     private final CharList list;
     private int index; // current index, modified on advance/split

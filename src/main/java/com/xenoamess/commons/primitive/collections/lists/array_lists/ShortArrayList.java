@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractShortList;
 import com.xenoamess.commons.primitive.collections.lists.ShortList;
 import com.xenoamess.commons.primitive.comparators.ShortComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class ShortArrayList extends AbstractShortList
-        implements ShortList, RandomAccess, Cloneable, java.io.Serializable {
+        implements ShortList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code short[]}

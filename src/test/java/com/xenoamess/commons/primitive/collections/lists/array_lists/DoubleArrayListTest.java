@@ -87,7 +87,7 @@ public class DoubleArrayListTest {
         a2.sort(null);
         Object a2c = a2.clone();
         for (int i = 0; i < length; i++) {
-            a2.remove((Object) data.getPrimitive(i));
+            a2.remove(data.getPrimitive(i));
         }
         long score2 = (System.currentTimeMillis() - begin2);
         System.out.println("ArrayList<Double> time : " + score2);

@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractBooleanList;
 import com.xenoamess.commons.primitive.collections.lists.BooleanList;
 import com.xenoamess.commons.primitive.functions.BooleanConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see BooleanSpliterator
  */
-public class BooleanRandomAccessSpliterator implements BooleanSpliterator {
+public class BooleanRandomAccessSpliterator implements BooleanSpliterator, Primitive {
 
     private final BooleanList list;
     private int index; // current index, modified on advance/split

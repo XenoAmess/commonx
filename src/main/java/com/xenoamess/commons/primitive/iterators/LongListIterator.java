@@ -25,6 +25,8 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.ListIterator;
 
 /**
@@ -62,7 +64,7 @@ import java.util.ListIterator;
  * @see LongIterator
  * @since 1.2
  */
-public interface LongListIterator extends LongIterator, ListIterator<Long> {
+public interface LongListIterator extends LongIterator, ListIterator<Long>, Primitive {
     // Query Operations
 
     /**

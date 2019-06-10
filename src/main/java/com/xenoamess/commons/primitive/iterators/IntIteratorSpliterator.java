@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.IntCollection;
 import com.xenoamess.commons.primitive.comparators.IntComparator;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see IntSpliterator
  * @since 1.8
  */
-public class IntIteratorSpliterator implements IntSpliterator.IntOfInteger {
+public class IntIteratorSpliterator implements IntSpliterator.IntOfInteger, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final IntCollection collection; // null OK

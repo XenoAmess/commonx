@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractIntList;
 import com.xenoamess.commons.primitive.collections.lists.IntList;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see IntSpliterator
  */
-public class IntRandomAccessSpliterator implements IntSpliterator {
+public class IntRandomAccessSpliterator implements IntSpliterator, Primitive {
 
     private final IntList list;
     private int index; // current index, modified on advance/split

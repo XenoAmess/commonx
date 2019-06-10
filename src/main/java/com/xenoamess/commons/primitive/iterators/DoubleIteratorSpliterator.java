@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.DoubleCollection;
 import com.xenoamess.commons.primitive.comparators.DoubleComparator;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see DoubleSpliterator
  * @since 1.8
  */
-public class DoubleIteratorSpliterator implements DoubleSpliterator.DoubleOfDouble {
+public class DoubleIteratorSpliterator implements DoubleSpliterator.DoubleOfDouble, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final DoubleCollection collection; // null OK

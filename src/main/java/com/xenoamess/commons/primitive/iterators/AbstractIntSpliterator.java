@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
 
 /**
@@ -52,7 +53,7 @@ import com.xenoamess.commons.primitive.functions.IntConsumer;
  * @see IntSpliterators#spliterator(IntIterator, long, int)
  * @since 1.8
  */
-public abstract class AbstractIntSpliterator implements IntSpliterator.IntOfInteger {
+public abstract class AbstractIntSpliterator implements IntSpliterator.IntOfInteger, Primitive {
     static final int MAX_BATCH = 1 << 10;
     static final int BATCH_UNIT = 1 << 25;
     private final int characteristics;

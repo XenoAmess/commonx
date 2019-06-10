@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.LongCollection;
 import com.xenoamess.commons.primitive.comparators.LongComparator;
 import com.xenoamess.commons.primitive.functions.LongConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see LongSpliterator
  * @since 1.8
  */
-public class LongIteratorSpliterator implements LongSpliterator.LongOfLong {
+public class LongIteratorSpliterator implements LongSpliterator.LongOfLong, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final LongCollection collection; // null OK

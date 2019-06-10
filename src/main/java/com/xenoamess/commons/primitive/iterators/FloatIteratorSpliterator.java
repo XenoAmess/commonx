@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.FloatCollection;
 import com.xenoamess.commons.primitive.comparators.FloatComparator;
 import com.xenoamess.commons.primitive.functions.FloatConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see FloatSpliterator
  * @since 1.8
  */
-public class FloatIteratorSpliterator implements FloatSpliterator.FloatOfFloat {
+public class FloatIteratorSpliterator implements FloatSpliterator.FloatOfFloat, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final FloatCollection collection; // null OK

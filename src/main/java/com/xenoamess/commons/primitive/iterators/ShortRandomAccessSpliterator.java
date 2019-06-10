@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractShortList;
 import com.xenoamess.commons.primitive.collections.lists.ShortList;
 import com.xenoamess.commons.primitive.functions.ShortConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see ShortSpliterator
  */
-public class ShortRandomAccessSpliterator implements ShortSpliterator {
+public class ShortRandomAccessSpliterator implements ShortSpliterator, Primitive {
 
     private final ShortList list;
     private int index; // current index, modified on advance/split

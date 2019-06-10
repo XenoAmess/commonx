@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractBooleanList;
 import com.xenoamess.commons.primitive.collections.lists.BooleanList;
 import com.xenoamess.commons.primitive.comparators.BooleanComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class BooleanArrayList extends AbstractBooleanList
-        implements BooleanList, RandomAccess, Cloneable, java.io.Serializable {
+        implements BooleanList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code boolean[]}

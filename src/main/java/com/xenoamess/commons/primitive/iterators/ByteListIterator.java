@@ -25,6 +25,8 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.ListIterator;
 
 /**
@@ -62,7 +64,7 @@ import java.util.ListIterator;
  * @see ByteIterator
  * @since 1.2
  */
-public interface ByteListIterator extends ByteIterator, ListIterator<Byte> {
+public interface ByteListIterator extends ByteIterator, ListIterator<Byte>, Primitive {
     // Query Operations
 
     /**

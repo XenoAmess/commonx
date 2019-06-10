@@ -25,6 +25,8 @@
 
 package com.xenoamess.commons.primitive.functions;
 
+import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
@@ -42,7 +44,7 @@ import java.util.function.UnaryOperator;
  * @see UnaryOperator
  * @since 1.8
  */
-public interface FloatUnaryOperator extends UnaryOperator<Float> {
+public interface FloatUnaryOperator extends UnaryOperator<Float>, Primitive {
     /**
      * {@inheritDoc}
      * <p>

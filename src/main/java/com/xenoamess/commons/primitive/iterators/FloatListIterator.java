@@ -25,6 +25,8 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.ListIterator;
 
 /**
@@ -62,7 +64,7 @@ import java.util.ListIterator;
  * @see FloatIterator
  * @since 1.2
  */
-public interface FloatListIterator extends FloatIterator, ListIterator<Float> {
+public interface FloatListIterator extends FloatIterator, ListIterator<Float>, Primitive {
     // Query Operations
 
     /**

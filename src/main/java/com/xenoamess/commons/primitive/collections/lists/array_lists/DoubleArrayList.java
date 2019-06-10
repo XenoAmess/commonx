@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractDoubleList;
 import com.xenoamess.commons.primitive.collections.lists.DoubleList;
 import com.xenoamess.commons.primitive.comparators.DoubleComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class DoubleArrayList extends AbstractDoubleList
-        implements DoubleList, RandomAccess, Cloneable, java.io.Serializable {
+        implements DoubleList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code double[]}

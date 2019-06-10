@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractLongList;
 import com.xenoamess.commons.primitive.collections.lists.LongList;
 import com.xenoamess.commons.primitive.comparators.LongComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class LongArrayList extends AbstractLongList
-        implements LongList, RandomAccess, Cloneable, java.io.Serializable {
+        implements LongList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code long[]}

@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.ByteCollection;
 import com.xenoamess.commons.primitive.comparators.ByteComparator;
 import com.xenoamess.commons.primitive.functions.ByteConsumer;
@@ -291,7 +292,7 @@ import java.util.function.Consumer;
  * @see ByteSpliterator
  * @since 1.8
  */
-public class ByteIteratorSpliterator implements ByteSpliterator.ByteOfByte {
+public class ByteIteratorSpliterator implements ByteSpliterator.ByteOfByte, Primitive {
     static final int BATCH_UNIT = 1 << 10;  // batch array size increment
     static final int MAX_BATCH = 1 << 25;  // max batch array size;
     private final ByteCollection collection; // null OK

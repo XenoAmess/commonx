@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.comparators.FloatComparator;
 import com.xenoamess.commons.primitive.functions.FloatConsumer;
 
@@ -38,7 +39,7 @@ import java.util.Spliterator;
  * @version 0.8.0
  * @see FloatSpliterator
  */
-public class FloatArraySpliterator implements FloatSpliterator.FloatOfFloat {
+public class FloatArraySpliterator implements FloatSpliterator.FloatOfFloat, Primitive {
     private final float[] array;
     private int index;        // current index, modified on advance/split
     private final int fence;  // one past last index

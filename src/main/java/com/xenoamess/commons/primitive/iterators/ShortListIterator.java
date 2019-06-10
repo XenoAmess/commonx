@@ -25,6 +25,8 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.ListIterator;
 
 /**
@@ -62,7 +64,7 @@ import java.util.ListIterator;
  * @see ShortIterator
  * @since 1.2
  */
-public interface ShortListIterator extends ShortIterator, ListIterator<Short> {
+public interface ShortListIterator extends ShortIterator, ListIterator<Short>, Primitive {
     // Query Operations
 
     /**

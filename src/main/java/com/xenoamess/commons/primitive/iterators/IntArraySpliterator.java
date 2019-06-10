@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.comparators.IntComparator;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
 
@@ -38,7 +39,7 @@ import java.util.Spliterator;
  * @version 0.8.0
  * @see IntSpliterator
  */
-public class IntArraySpliterator implements IntSpliterator.IntOfInteger {
+public class IntArraySpliterator implements IntSpliterator.IntOfInteger, Primitive {
     private final int[] array;
     private int index;        // current index, modified on advance/split
     private final int fence;  // one past last index

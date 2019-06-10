@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractByteList;
 import com.xenoamess.commons.primitive.collections.lists.ByteList;
 import com.xenoamess.commons.primitive.comparators.ByteComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class ByteArrayList extends AbstractByteList
-        implements ByteList, RandomAccess, Cloneable, java.io.Serializable {
+        implements ByteList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code byte[]}

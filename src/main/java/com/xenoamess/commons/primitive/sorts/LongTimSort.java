@@ -26,6 +26,7 @@
 
 package com.xenoamess.commons.primitive.sorts;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.comparators.LongComparator;
 
 /**
@@ -63,7 +64,7 @@ import com.xenoamess.commons.primitive.comparators.LongComparator;
  * @author XenoAmess
  * @version 0.6.0
  */
-public class LongTimSort {
+public class LongTimSort implements Primitive {
     /**
      * This is the minimum sized sequence that will be merged.  Shorter
      * sequences will be lengthened by calling binarySort.  If the entire

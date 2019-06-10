@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractIntList;
 import com.xenoamess.commons.primitive.collections.lists.IntList;
 import com.xenoamess.commons.primitive.comparators.IntComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class IntArrayList extends AbstractIntList
-        implements IntList, RandomAccess, Cloneable, java.io.Serializable {
+        implements IntList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code int[]}

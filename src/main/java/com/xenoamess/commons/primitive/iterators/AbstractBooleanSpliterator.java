@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.functions.BooleanConsumer;
 
 /**
@@ -52,7 +53,7 @@ import com.xenoamess.commons.primitive.functions.BooleanConsumer;
  * @see BooleanSpliterators#spliterator(BooleanIterator, long, int)
  * @since 1.8
  */
-public abstract class AbstractBooleanSpliterator implements BooleanSpliterator.BooleanOfBoolean {
+public abstract class AbstractBooleanSpliterator implements BooleanSpliterator.BooleanOfBoolean, Primitive {
     static final int MAX_BATCH = 1 << 10;
     static final int BATCH_UNIT = 1 << 25;
     private final int characteristics;

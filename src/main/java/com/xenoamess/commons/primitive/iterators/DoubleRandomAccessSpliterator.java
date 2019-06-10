@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractDoubleList;
 import com.xenoamess.commons.primitive.collections.lists.DoubleList;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see DoubleSpliterator
  */
-public class DoubleRandomAccessSpliterator implements DoubleSpliterator {
+public class DoubleRandomAccessSpliterator implements DoubleSpliterator, Primitive {
 
     private final DoubleList list;
     private int index; // current index, modified on advance/split

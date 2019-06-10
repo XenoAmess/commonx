@@ -24,6 +24,7 @@
  */
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractFloatList;
 import com.xenoamess.commons.primitive.collections.lists.FloatList;
 import com.xenoamess.commons.primitive.comparators.FloatComparator;
@@ -67,7 +68,7 @@ import java.util.function.UnaryOperator;
  * @since 1.2
  */
 public class FloatArrayList extends AbstractFloatList
-        implements FloatList, RandomAccess, Cloneable, java.io.Serializable {
+        implements FloatList, RandomAccess, Cloneable, java.io.Serializable, Primitive {
 
     /**
      * function to copy from {@code Object[]} to {@code float[]}

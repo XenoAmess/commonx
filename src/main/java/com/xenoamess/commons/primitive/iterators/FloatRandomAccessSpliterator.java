@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractFloatList;
 import com.xenoamess.commons.primitive.collections.lists.FloatList;
 import com.xenoamess.commons.primitive.functions.FloatConsumer;
@@ -50,7 +51,7 @@ import java.util.function.Consumer;
  * @version 0.8.0
  * @see FloatSpliterator
  */
-public class FloatRandomAccessSpliterator implements FloatSpliterator {
+public class FloatRandomAccessSpliterator implements FloatSpliterator, Primitive {
 
     private final FloatList list;
     private int index; // current index, modified on advance/split

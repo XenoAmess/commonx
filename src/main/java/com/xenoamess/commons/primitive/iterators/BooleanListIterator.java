@@ -25,6 +25,8 @@
 
 package com.xenoamess.commons.primitive.iterators;
 
+import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.ListIterator;
 
 /**
@@ -62,7 +64,7 @@ import java.util.ListIterator;
  * @see BooleanIterator
  * @since 1.2
  */
-public interface BooleanListIterator extends BooleanIterator, ListIterator<Boolean> {
+public interface BooleanListIterator extends BooleanIterator, ListIterator<Boolean>, Primitive {
     // Query Operations
 
     /**
