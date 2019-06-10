@@ -55,11 +55,19 @@ Primitive collections that compatible with generic interfaces.
 
 For example, DoubleArrayList is an AbstractList<Double> and List<Double>, but in core it is primitive implement, and provides primitive method choice, and is very fast.
 
-Now we only translated class about ArrayList.
+The basic usage of such classes is:
+1. when you want to use a method that accept or return generic, use methodname + Primitive instead.
+for example, add -> addPrimitive,set -> setPrimitive
+2. do not use foreach, use iterator and nextPrimitive instead.
+
+Now we only translated class about ArrayList, and primitive array lists can run 10 times faster than ArrayList(according to test data.).
 
 We planned to translate at least LinkedList, HashSet, TreeSet, HashMap, TreeMap.
 
 And if I still have time for this, ConcurrentHashMap will be considered.
+
+![DoubleArrayList](pictures\DoubleArrayList.png)
+
 
 ---------- 
 
