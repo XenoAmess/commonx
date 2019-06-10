@@ -66,7 +66,7 @@ We planned to translate at least LinkedList, HashSet, TreeSet, HashMap, TreeMap.
 
 And if I still have time for this, ConcurrentHashMap will be considered.
 
-![DoubleArrayList](pictures\DoubleArrayList.png)
+![DoubleArrayList](pictures/DoubleArrayList.png)
 
 
 ---------- 
