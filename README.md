@@ -35,9 +35,49 @@ brief introduction
 
 In short this library are composed by two parts:
 
-##commons: 
+---------- 
+
+#commons: 
 some commonly used classes / utils.
 
-##commonx: 
-extensions of some libraries / utility of some java core classes.
+###commons.as_final_field:
+To mark a field as "AsFinal".
 
+This annotation is mainly used when a field shall be final, but it can't.
+
+For example, lazy build for a singleton factory, or a resource field which shall be final but have to wait aftersome other classes init.
+
+###commons.code_generators:
+Utils for generating codes of this library. No meaning for others.
+
+###commons.primitive:
+Primitive collections that compatible with generic interfaces.
+
+For example, DoubleArrayList is an AbstractList<Double> and List<Double>, but in core it is primitive implement, and provides primitive method choice, and is very fast.
+
+Now we only translated class about ArrayList.
+
+We planned to translate at least LinkedList, HashSet, TreeSet, HashMap, TreeMap.
+
+And if I still have time for this, ConcurrentHashMap will be considered.
+
+---------- 
+
+##commonx: 
+Extensions of some libraries / utility of some java core classes.
+
+###commonx.org.apache.commons.lang3
+Some utils that too crazy / unsafe / unclear that refused by org.apache.commons.lang3.
+
+But they are good functions... at least they are useful... sometimes... 
+
+###commonx.java.util.Arraysx
+Some extends for java.util.Arrays
+
+###commonx.java.util.concurrent.atomic
+Flip method for AtomicBoolean.
+
+###commonx.java.lang.IllegalArgumentExceptionUtilsx
+Util for detecting null parameters and creating IllegalArgumentExceptions
+
+Notice that most methods of this classes are generated, so be careful when changing it.
