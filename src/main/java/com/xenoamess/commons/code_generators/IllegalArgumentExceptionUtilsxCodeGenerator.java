@@ -209,7 +209,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append(i);
         }
         stringBuilder.append("){\\n");
-        stringBuilder.append("    if (isAnyNullInParams(");
+        stringBuilder.append("        if (isAnyNullInParams(");
         for (int i = 0; i < paramNum; i++) {
             if (i != 0) {
                 stringBuilder.append(", ");
@@ -217,7 +217,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(")){\\n        throw new IllegalArgumentException(\"caused by any of the following be " +
+        stringBuilder.append(")){\\n            throw new IllegalArgumentException(\"caused by any of the following be " +
                 "null: \"");
 
         if (paramNum != 0) {
@@ -231,7 +231,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(");\\n    }\\n}\\n");
+        stringBuilder.append(");\\n        }\\n    }\\n");
     }
 
     /**
@@ -418,7 +418,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append(i);
         }
         stringBuilder.append("){\\n");
-        stringBuilder.append("    if (isAllNullInParams(");
+        stringBuilder.append("        if (isAllNullInParams(");
         for (int i = 0; i < paramNum; i++) {
             if (i != 0) {
                 stringBuilder.append(", ");
@@ -426,7 +426,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(")){\\n        throw new IllegalArgumentException(\"caused by all of the following be " +
+        stringBuilder.append(")){\\n            throw new IllegalArgumentException(\"caused by all of the following be " +
                 "null: \"");
 
         if (paramNum != 0) {
@@ -440,7 +440,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(");\\n    }\\n}\\n");
+        stringBuilder.append(");\\n        }\\n    }\\n");
     }
 }
 
