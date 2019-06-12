@@ -55,3 +55,6 @@ replay_pid*
 
 Gamepad_Massage_for_Beta_Testing_1_key_pkg330019_start0_num100.txt
 **/pom.xml.versionsBackup
+
+**/processing_tests/jdk/
+**/test/java/jdk/
