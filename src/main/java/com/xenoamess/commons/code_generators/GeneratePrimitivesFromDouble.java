@@ -150,13 +150,13 @@ public class GeneratePrimitivesFromDouble {
 
         ArrayList<String> banFiles = new ArrayList<>();
         banFiles.add("src/test/java/jdk/java/util/AbstractList" +
-                "/BooleanCheckForComodification.java");
+                "/BooleanCheckForComodificationTest.java");
         banFiles.add("src/test/java/jdk/java/util/ArrayList" +
-                "/BooleanRangeCheckMicroBenchmark.java");
+                "/BooleanRangeCheckMicroBenchmarkTest.java");
         banFiles.add("src/test/java/jdk/java/util/AbstractCollection" +
                 "/BooleanToArrayTest.java");
         banFiles.add("src/test/java/jdk/java/util/AbstractList" +
-                "/BooleanFailFastIterator.java");
+                "/BooleanFailFastIteratorTest.java");
 
         for (String fileName : banFiles) {
             File nowFile = new File(fileName);
@@ -169,6 +169,9 @@ public class GeneratePrimitivesFromDouble {
     private static void processFile(String path) {
         // get file list where the path has
         File file = new File(path);
+        if (!file.exists()) {
+            return;
+        }
         // get the folder list
         File[] array = file.listFiles();
 
