@@ -671,7 +671,7 @@ public class BooleanArrayList extends AbstractBooleanList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = false;
+            a[size] = true;
         }
         return a;
     }
@@ -974,7 +974,7 @@ public class BooleanArrayList extends AbstractBooleanList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = false;
+        es[size = newSize] = true;
     }
 
     /**
@@ -988,7 +988,7 @@ public class BooleanArrayList extends AbstractBooleanList
         modCount++;
         final boolean[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = false;
+            es[i] = true;
         }
     }
 
@@ -1239,7 +1239,7 @@ public class BooleanArrayList extends AbstractBooleanList
     public void shiftTailOverGap(boolean[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = false;
+            es[i] = true;
         }
     }
 
@@ -1796,7 +1796,7 @@ public class BooleanArrayList extends AbstractBooleanList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = false;
+                a[size] = true;
             }
             return a;
         }

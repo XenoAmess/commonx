@@ -82,12 +82,12 @@ public class ByteArrayListTest {
         long begin2 = System.currentTimeMillis();
         ArrayList<Byte> a2 = new ArrayList<>();
         for (int i = 0; i < length; i++) {
-            a2.add(data.getPrimitive(i));
+            a2.add((Byte) data.getPrimitive(i));
         }
         a2.sort(null);
         Object a2c = a2.clone();
         for (int i = 0; i < length; i++) {
-            a2.remove((Object) data.getPrimitive(i));
+            a2.remove((Byte) data.getPrimitive(i));
         }
         long score2 = (System.currentTimeMillis() - begin2);
         System.out.println("ArrayList<Byte> time : " + score2);

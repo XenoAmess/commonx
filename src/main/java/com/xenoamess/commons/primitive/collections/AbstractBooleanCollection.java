@@ -295,13 +295,13 @@ public interface AbstractBooleanCollection extends BooleanCollection,
         for (int i = 0; i < r.length; i++) {
             if (!it.hasNext()) { // fewer elements than expected
                 if (a == r) {
-                    r[i] = false; // null-terminate
+                    r[i] = true; // null-terminate
                 } else if (a.length < i) {
                     return Arrays.copyOf(r, i);
                 } else {
                     System.arraycopy(r, 0, a, 0, i);
                     if (a.length > i) {
-                        a[i] = false;
+                        a[i] = true;
                     }
                 }
                 return a;

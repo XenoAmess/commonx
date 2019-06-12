@@ -289,6 +289,79 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
     DoubleIterator iterator();
 
     /**
+     * Returns an double array containing all of the elements in this double collection.
+     * If this double collection makes any guarantees as to what order its elements
+     * are returned by its iterator, this method must return the elements in
+     * the same order. The returned array's {@linkplain Class#getComponentType
+     * runtime component type} is {@code double}.
+     *
+     * <p>The returned array will be "safe" in that no references to it are
+     * maintained by this collection.  (In other words, this method must
+     * allocate a new array even if this collection is backed by an array).
+     * The caller is thus free to modify the returned array.
+     *
+     * @return an array, whose {@linkplain Class#getComponentType runtime component
+     * type} is {@code Object}, containing all of the elements in this collection
+     * @apiNote This method acts as a bridge between array-based and collection-based APIs.
+     * It returns an array whose runtime type is {@code Object[]}.
+     * Use {@link #toArray(Object[]) toArray(T[])} to reuse an existing
+     * array, or use {@link #toArray(IntFunction)} to control the runtime type
+     * of the array.
+     */
+    double[] toArrayPrimitive();
+
+
+    /**
+     * Returns an array containing all of the elements in this double collection;
+     * the runtime type of the returned array is that of the specified array.
+     * If the double collection fits in the specified array, it is returned therein.
+     * Otherwise, a new array is allocated with the runtime type of the
+     * specified array and the size of this double collection.
+     *
+     * <p>If this collection fits in the specified array with room to spare
+     * (i.e., the array has more elements than this collection), the element
+     * in the array immediately following the end of the collection is set to
+     * {@code null}.  (This is useful in determining the length of this
+     * collection <i>only</i> if the caller knows that this collection does
+     * not contain any {@code null} elements.)
+     *
+     * <p>If this double collection makes any guarantees as to what order its elements
+     * are returned by its iterator, this method must return the elements in
+     * the same order.
+     *
+     * @param a the array into which the elements of this collection are to be
+     *          stored, if it is big enough; otherwise, a new array of the same
+     *          runtime type is allocated for this purpose.
+     * @return an array containing all of the elements in this collection
+     * @throws ArrayStoreException  if the runtime type of any element in this
+     *                              collection is not assignable to the {@linkplain Class#getComponentType
+     *                              runtime component type} of the specified array
+     * @throws NullPointerException if the specified array is null
+     * @apiNote This method acts as a bridge between array-based and collection-based APIs.
+     * It allows an existing array to be reused under certain circumstances.
+     * Use {@link #toArrayPrimitive()} to create an array whose runtime type is {@code double[]},
+     * or use {@link #toArray(IntFunction)} to control the runtime type of
+     * the array.
+     *
+     * <p>Suppose {@code x} is a double collection.
+     * The following code can be used to dump the collection into a previously
+     * allocated {@code double} array:
+     *
+     * <pre>
+     *     String[] y = new String[SIZE];
+     *     ...
+     *     y = x.toArray(y);</pre>
+     *
+     * <p>The return value is reassigned to the variable {@code y}, because a
+     * new array will be allocated and returned if the collection {@code x} has
+     * too many elements to fit into the existing array {@code y}.
+     *
+     * <p>Note that {@code toArray(new Object[0])} is identical in function to
+     * {@code toArray()}.
+     */
+    double[] toArrayPrimitive(double[] a);
+
+    /**
      * {@inheritDoc}
      * <p>
      * Returns an array containing all of the elements in this collection,
@@ -316,6 +389,36 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
     default <T> T[] toArray(IntFunction<T[]> generator) {
         return toArray(generator.apply(0));
     }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns an array containing all of the elements in this double collection,
+     * using the provided {@code generator} function to allocate the returned array.
+     *
+     * <p>If this double collection makes any guarantees as to what order its elements
+     * are returned by its iterator, this method must return the elements in
+     * the same order.
+     *
+     * @apiNote This method acts as a bridge between array-based and collection-based APIs.
+     * It allows creation of an array of a particular runtime type. Use
+     * {@link #toArrayPrimitive()} to create an array whose runtime type is {@code double[]},
+     * or use {@link #toArrayPrimitive(double[])} to reuse an existing array.
+     *
+     * <p>Suppose {@code x} is a collection known to contain only strings.
+     * The following code can be used to dump the collection into a newly
+     * allocated array of {@code double}:
+     *
+     * <pre>
+     *     double[] y = x.toArrayPrimitive(double[]::new);</pre>
+     * @implSpec The default implementation calls the generator function with zero
+     * and then passes the resulting array to {@link #toArrayPrimitive(double[])}.
+     * @since 11
+     */
+    default double[] toArrayPrimitive(IntFunction<double[]> generator) {
+        return toArrayPrimitive(generator.apply(0));
+    }
+
 
     // Modification Operations
 
@@ -385,7 +488,9 @@ public interface DoubleCollection extends Collection<Double>, DoubleIterable, Pr
      *                                                 time due to insertion restrictions
      * @see #add(Double e)
      */
-    boolean addPrimitive(double e);
+    default boolean addPrimitive(double e) {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * {@inheritDoc}

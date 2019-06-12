@@ -82,12 +82,12 @@ public class FloatArrayListTest {
         long begin2 = System.currentTimeMillis();
         ArrayList<Float> a2 = new ArrayList<>();
         for (int i = 0; i < length; i++) {
-            a2.add(data.getPrimitive(i));
+            a2.add((Float) data.getPrimitive(i));
         }
         a2.sort(null);
         Object a2c = a2.clone();
         for (int i = 0; i < length; i++) {
-            a2.remove(data.getPrimitive(i));
+            a2.remove((Float) data.getPrimitive(i));
         }
         long score2 = (System.currentTimeMillis() - begin2);
         System.out.println("ArrayList<Float> time : " + score2);

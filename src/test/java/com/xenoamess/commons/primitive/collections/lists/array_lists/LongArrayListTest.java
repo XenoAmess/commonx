@@ -82,12 +82,12 @@ public class LongArrayListTest {
         long begin2 = System.currentTimeMillis();
         ArrayList<Long> a2 = new ArrayList<>();
         for (int i = 0; i < length; i++) {
-            a2.add(data.getPrimitive(i));
+            a2.add((Long) data.getPrimitive(i));
         }
         a2.sort(null);
         Object a2c = a2.clone();
         for (int i = 0; i < length; i++) {
-            a2.remove(data.getPrimitive(i));
+            a2.remove((Long) data.getPrimitive(i));
         }
         long score2 = (System.currentTimeMillis() - begin2);
         System.out.println("ArrayList<Long> time : " + score2);

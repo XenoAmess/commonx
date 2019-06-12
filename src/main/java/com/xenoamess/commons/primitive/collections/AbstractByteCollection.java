@@ -295,13 +295,13 @@ public interface AbstractByteCollection extends ByteCollection,
         for (int i = 0; i < r.length; i++) {
             if (!it.hasNext()) { // fewer elements than expected
                 if (a == r) {
-                    r[i] = 0; // null-terminate
+                    r[i] = (byte) 0; // null-terminate
                 } else if (a.length < i) {
                     return Arrays.copyOf(r, i);
                 } else {
                     System.arraycopy(r, 0, a, 0, i);
                     if (a.length > i) {
-                        a[i] = 0;
+                        a[i] = (byte) 0;
                     }
                 }
                 return a;

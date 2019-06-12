@@ -1,6 +1,7 @@
 package com.xenoamess.commons.code_generators;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * <p>GeneratePrimitivesFromDouble class.</p>
@@ -118,7 +119,12 @@ public class GeneratePrimitivesFromDouble {
                         line = line.replaceAll("random.nextShort\\(\\)", "((short)random.nextInt())");
                         break;
                     case "boolean":
-                        line = line.replaceAll("] = 0;", "] = false;");
+//                        line = line.replaceAll("] = 0;", "] = false;");
+                        line = line.replaceAll("\\(boolean\\) 0[0-9]+", "false");
+                        line = line.replaceAll("\\(boolean\\) [0-9]+", "true");
+                        line = line.replaceAll("new boolean\\[]\\{1, 2}", "new boolean\\[]\\{false, true}");
+                        line = line.replaceAll("\\(boolean\\) i", "false");
+                        line = line.replaceAll("\\(boolean\\) w+ ", "false ");
                         break;
 
                 }
@@ -140,6 +146,24 @@ public class GeneratePrimitivesFromDouble {
     public static void main(String[] args) {
         processFile("src/main/java/com/xenoamess/commons/primitive/");
         processFile("src/test/java/com/xenoamess/commons/primitive/");
+        processFile("src/test/java/jdk/java/util/");
+
+        ArrayList<String> banFiles = new ArrayList<>();
+        banFiles.add("src/test/java/jdk/java/util/AbstractList" +
+                "/BooleanCheckForComodification.java");
+        banFiles.add("src/test/java/jdk/java/util/ArrayList" +
+                "/BooleanRangeCheckMicroBenchmark.java");
+        banFiles.add("src/test/java/jdk/java/util/AbstractCollection" +
+                "/BooleanToArrayTest.java");
+        banFiles.add("src/test/java/jdk/java/util/AbstractList" +
+                "/BooleanFailFastIterator.java");
+
+        for (String fileName : banFiles) {
+            File nowFile = new File(fileName);
+            if (nowFile.exists()) {
+                nowFile.delete();
+            }
+        }
     }
 
     private static void processFile(String path) {

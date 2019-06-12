@@ -82,12 +82,12 @@ public class ShortArrayListTest {
         long begin2 = System.currentTimeMillis();
         ArrayList<Short> a2 = new ArrayList<>();
         for (int i = 0; i < length; i++) {
-            a2.add(data.getPrimitive(i));
+            a2.add((Short) data.getPrimitive(i));
         }
         a2.sort(null);
         Object a2c = a2.clone();
         for (int i = 0; i < length; i++) {
-            a2.remove((Object) data.getPrimitive(i));
+            a2.remove((Short) data.getPrimitive(i));
         }
         long score2 = (System.currentTimeMillis() - begin2);
         System.out.println("ArrayList<Short> time : " + score2);

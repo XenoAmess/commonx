@@ -671,7 +671,7 @@ public class IntArrayList extends AbstractIntList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = 0;
+            a[size] = (int) 0;
         }
         return a;
     }
@@ -974,7 +974,7 @@ public class IntArrayList extends AbstractIntList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = 0;
+        es[size = newSize] = (int) 0;
     }
 
     /**
@@ -988,7 +988,7 @@ public class IntArrayList extends AbstractIntList
         modCount++;
         final int[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = 0;
+            es[i] = (int) 0;
         }
     }
 
@@ -1239,7 +1239,7 @@ public class IntArrayList extends AbstractIntList
     public void shiftTailOverGap(int[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = 0;
+            es[i] = (int) 0;
         }
     }
 
@@ -1796,7 +1796,7 @@ public class IntArrayList extends AbstractIntList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = 0;
+                a[size] = (int) 0;
             }
             return a;
         }
