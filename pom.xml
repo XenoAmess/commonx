@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.8.3-SNAPSHOT</version>
+    <version>0.8.3</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for common use.
@@ -219,41 +219,9 @@
 
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>${properties-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>read-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <files>
-                                <file>
-                                    src/main/resources/templates/generateIsAnyNullInParams.template
-                                </file>
-                                <file>
-                                    src/main/resources/templates/generateIsAnyNullInParamsThenThrowIllegalArgumentException.template
-                                </file>
-                                <file>
-                                    src/main/resources/templates/generateIsNoneNullInParams.template
-                                </file>
-                                <file>
-                                    src/main/resources/templates/generateIsAllNullInParams.template
-                                </file>
-                                <file>
-                                    src/main/resources/templates/generateIsAllNullInParamsThenThrowIllegalArgumentException.template
-                                </file>
-                            </files>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>com.xenoamess</groupId>
                 <artifactId>jcpp-maven-plugin</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.2.0</version>
                 <executions>
                     <execution>
                         <id>preprocess-sources</id>
@@ -268,6 +236,10 @@
                             <outputDirectory>
                                 ${project.build.directory}/generated-sources/src/main/java
                             </outputDirectory>
+                            <libPaths>
+                                <param>${basedir}/src/main/resources/templates
+                                </param>
+                            </libPaths>
                         </configuration>
                     </execution>
                     <execution>

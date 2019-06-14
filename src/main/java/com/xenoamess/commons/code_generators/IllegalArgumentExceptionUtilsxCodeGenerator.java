@@ -46,7 +46,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      */
     public static void generateFile(String name, Function<String, String> functionalInterface) {
         String content = functionalInterface.apply(name);
-        File file = new File("src/main/java-templates/com/xenoamess/commonx/java/lang/" + name + ".template");
+        File file = new File("src/main/resources/templates/" + name + ".template");
         try {
             file.createNewFile();
         } catch (IOException e) {

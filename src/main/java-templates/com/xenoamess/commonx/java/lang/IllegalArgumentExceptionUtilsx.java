@@ -62,14 +62,14 @@ public class IllegalArgumentExceptionUtilsx {
      * @return {@code true} if any of the parameters are null
      * @author XenoAmess
      */
-    #include "com/xenoamess/commonx/java/lang/generateIsAnyNullInParams.template"
+    #include "generateIsAnyNullInParams.template"
 
     /**
      * <p>If any of the parameters are null, throw an IllegalArgumentException about it.</p>
      *
      * @author XenoAmess
      */
-    #include "com/xenoamess/commonx/java/lang/generateIsAnyNullInParamsThenThrowIllegalArgumentException.template"
+    #include "generateIsAnyNullInParamsThenThrowIllegalArgumentException.template"
 
     /**
      * <p>Checks if none of the parameters are null.</p>
@@ -90,7 +90,7 @@ public class IllegalArgumentExceptionUtilsx {
      * @return {@code true} if none of the parameters are null
      * @author XenoAmess
      */
-    #include "com/xenoamess/commonx/java/lang/generateIsNoneNullInParams.template"
+    #include "generateIsNoneNullInParams.template"
 
     /**
      * <p>Checks if all of the parameters are null.</p>
@@ -98,14 +98,14 @@ public class IllegalArgumentExceptionUtilsx {
      * @return {@code true} if all of the parameters are null
      * @author XenoAmess
      */
-    #include "com/xenoamess/commonx/java/lang/generateIsAllNullInParams.template"
+    #include "generateIsAllNullInParams.template"
 
     /**
      * <p>If all of the parameters are null, throw an IllegalArgumentException about it.</p>
      *
      * @author XenoAmess
      */
-    #include "com/xenoamess/commonx/java/lang/generateIsAllNullInParamsThenThrowIllegalArgumentException.template"
+    #include "generateIsAllNullInParamsThenThrowIllegalArgumentException.template"
 
     // generated ends
     //-----------------------------------------------------------------------
