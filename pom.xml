@@ -251,14 +251,15 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>templating-maven-plugin</artifactId>
-                <version>${templating-maven-plugin.version}</version>
+                <groupId>com.xenoamess</groupId>
+                <artifactId>jcpp-maven-plugin</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
                 <executions>
                     <execution>
-                        <id>filter-src</id>
+                        <id>preprocess-sources</id>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>filter-sources</goal>
+                            <goal>preprocess-sources</goal>
                         </goals>
                         <configuration>
                             <sourceDirectory>
@@ -270,9 +271,10 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>filter-test-src</id>
+                        <id>preprocess-test-sources</id>
+                        <phase>generate-test-sources</phase>
                         <goals>
-                            <goal>filter-test-sources</goal>
+                            <goal>preprocess-test-sources</goal>
                         </goals>
                         <configuration>
                             <testSourceDirectory>

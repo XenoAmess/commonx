@@ -46,7 +46,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      */
     public static void generateFile(String name, Function<String, String> functionalInterface) {
         String content = functionalInterface.apply(name);
-        File file = new File("src/main/resources/templates/" + name + ".template");
+        File file = new File("src/main/java-templates/com/xenoamess/commonx/java/lang/" + name + ".template");
         try {
             file.createNewFile();
         } catch (IOException e) {
@@ -94,32 +94,32 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAnyNullInParams(String name) {
-        String javadocHeader = "    /**\\n" +
-                "     * <p>Checks if any of the parameters are null.</p>\\n" +
-                "     *\\n" +
-                "     * <pre>\\n" +
-                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams());\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(null));\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(1, null));\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(2, 2, 2, null));\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(null, 4, 3, 3, 5));\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(4, null, 3, 5));\\n" +
-                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams(4, true, 3, 5));\\n" +
+        String javadocHeader = "    /**\n" +
+                "     * <p>Checks if any of the parameters are null.</p>\n" +
+                "     *\n" +
+                "     * <pre>\n" +
+                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams());\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(null));\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(1, null));\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(2, 2, 2, null));\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(null, 4, 3, 3, 5));\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isAnyNullInParams(4, null, 3, 5));\n" +
+                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams(4, true, 3, 5));\n" +
                 "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams(new Object[]{null, " +
-                "null, null}));\\n" +
-                "     * </pre>\\n" +
-                "     * <p>\\n" +
-                "     * @return {@code true} if any of the parameters are null\\n" +
-                "     * @author XenoAmess\\n" +
-                "     */\\n";
+                "null, null}));\n" +
+                "     * </pre>\n" +
+                "     * <p>\n" +
+                "     * @return {@code true} if any of the parameters are null\n" +
+                "     * @author XenoAmess\n" +
+                "     */\n";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name).append(" = \\n");
+        stringBuilder.append("\n");
         for (int i = 0; i < 256; i++) {
             if (i != 0) {
                 stringBuilder.append(javadocHeader);
             }
             generateIsAnyNullInParams(stringBuilder, i);
-            stringBuilder.append("\\n");
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }
@@ -144,7 +144,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("final Object param");
             stringBuilder.append(i);
         }
-        stringBuilder.append("){\\n        return ");
+        stringBuilder.append("){\n        return ");
         if (paramNum == 0) {
             stringBuilder.append("false");
         }
@@ -156,7 +156,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append(i);
             stringBuilder.append(" == null");
         }
-        stringBuilder.append(";\\n    }\\n");
+        stringBuilder.append(";\n    }\n");
     }
 
     /**
@@ -166,19 +166,19 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAnyNullInParamsThenThrowIllegalArgumentException(String name) {
-        String javadocHeader = "    /**\\n" +
-                "     * <p>If any of the parameters are null, throw an IllegalArgumentException about it.</p>\\n" +
-                "     *\\n" +
-                "     * @author XenoAmess\\n" +
-                "     */\\n";
+        String javadocHeader = "    /**\n" +
+                "     * <p>If any of the parameters are null, throw an IllegalArgumentException about it.</p>\n" +
+                "     *\n" +
+                "     * @author XenoAmess\n" +
+                "     */\n";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name).append(" = \\n");
+        stringBuilder.append("\n");
         for (int i = 0; i < 256; i++) {
             if (i != 0) {
                 stringBuilder.append(javadocHeader);
             }
             generateIsAnyNullInParamsThenThrowIllegalArgumentException(stringBuilder, i);
-            stringBuilder.append("\\n");
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }
@@ -208,7 +208,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("final Object param");
             stringBuilder.append(i);
         }
-        stringBuilder.append("){\\n");
+        stringBuilder.append("){\n");
         stringBuilder.append("        if (isAnyNullInParams(");
         for (int i = 0; i < paramNum; i++) {
             if (i != 0) {
@@ -217,7 +217,8 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(")){\\n            throw new IllegalArgumentException(\"caused by any of the following be " +
+        stringBuilder.append(")){\n            throw new IllegalArgumentException(\"caused by any of the following " +
+                "be " +
                 "null: \"");
 
         if (paramNum != 0) {
@@ -231,7 +232,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(");\\n        }\\n    }\\n");
+        stringBuilder.append(");\n        }\n    }\n");
     }
 
     /**
@@ -241,37 +242,37 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsNoneNullInParams(String name) {
-        String javadocHeader = "    /**\\n" +
-                "     * <p>Checks if none of the parameters are null.</p>\\n" +
-                "     *\\n" +
-                "     * <pre>\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams());\\n" +
-                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(null));\\n" +
-                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, null));\\n" +
-                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(2, 2, 2, null));\\n" +
+        String javadocHeader = "    /**\n" +
+                "     * <p>Checks if none of the parameters are null.</p>\n" +
+                "     *\n" +
+                "     * <pre>\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams());\n" +
+                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(null));\n" +
+                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, null));\n" +
+                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(2, 2, 2, null));\n" +
                 "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(null, 4, 3, 3, 5));" +
-                "\\n" +
-                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(4, null, 3, 5));\\n" +
-                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(4, true, 3, 5));\\n" +
+                "\n" +
+                "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isNoneNullInParams(4, null, 3, 5));\n" +
+                "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(4, true, 3, 5));\n" +
                 "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(new Object[]{null, " +
-                "null, null}));\\n" +
+                "null, null}));\n" +
                 "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, new " +
-                "Object[]{null}));\\n" +
+                "Object[]{null}));\n" +
                 "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams(1, (Object) new " +
-                "Object[]{null}));\\n" +
-                "     * </pre>\\n" +
-                "     * <p>\\n" +
-                "     * @return {@code true} if none of the parameters are null\\n" +
-                "     * @author XenoAmess\\n" +
-                "     */\\n";
+                "Object[]{null}));\n" +
+                "     * </pre>\n" +
+                "     * <p>\n" +
+                "     * @return {@code true} if none of the parameters are null\n" +
+                "     * @author XenoAmess\n" +
+                "     */\n";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name).append(" = \\n");
+        stringBuilder.append("\n");
         for (int i = 0; i < 256; i++) {
             if (i != 0) {
                 stringBuilder.append(javadocHeader);
             }
             generateIsNoneNullInParams(stringBuilder, i);
-            stringBuilder.append("\\n");
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }
@@ -296,7 +297,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("final Object param");
             stringBuilder.append(i);
         }
-        stringBuilder.append("){\\n        return !isAnyNullInParams(");
+        stringBuilder.append("){\n        return !isAnyNullInParams(");
         for (int i = 0; i < paramNum; i++) {
             if (i != 0) {
                 stringBuilder.append(", ");
@@ -304,7 +305,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(");\\n    }\\n");
+        stringBuilder.append(");\n    }\n");
     }
 
 
@@ -315,20 +316,20 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAllNullInParams(String name) {
-        String javadocHeader = "    /**\\n" +
-                "     * <p>Checks if all of the parameters are null.</p>\\n" +
-                "     *\\n" +
-                "     * @return {@code true} if all of the parameters are null\\n" +
-                "     * @author XenoAmess\\n" +
-                "     */\\n";
+        String javadocHeader = "    /**\n" +
+                "     * <p>Checks if all of the parameters are null.</p>\n" +
+                "     *\n" +
+                "     * @return {@code true} if all of the parameters are null\n" +
+                "     * @author XenoAmess\n" +
+                "     */\n";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name).append(" = \\n");
+        stringBuilder.append("\n");
         for (int i = 0; i < 256; i++) {
             if (i != 0) {
                 stringBuilder.append(javadocHeader);
             }
             generateIsAllNullInParams(stringBuilder, i);
-            stringBuilder.append("\\n");
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }
@@ -353,7 +354,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("final Object param");
             stringBuilder.append(i);
         }
-        stringBuilder.append("){\\n        return ");
+        stringBuilder.append("){\n        return ");
         if (paramNum == 0) {
             stringBuilder.append("false");
         }
@@ -365,7 +366,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append(i);
             stringBuilder.append(" == null");
         }
-        stringBuilder.append(";\\n    }\\n");
+        stringBuilder.append(";\n    }\n");
     }
 
     /**
@@ -375,19 +376,19 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAllNullInParamsThenThrowIllegalArgumentException(String name) {
-        String javadocHeader = "    /**\\n" +
-                "     * <p>If all of the parameters are null, throw an IllegalArgumentException about it.</p>\\n" +
-                "     *\\n" +
-                "     * @author XenoAmess\\n" +
-                "     */\\n";
+        String javadocHeader = "    /**\n" +
+                "     * <p>If all of the parameters are null, throw an IllegalArgumentException about it.</p>\n" +
+                "     *\n" +
+                "     * @author XenoAmess\n" +
+                "     */\n";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name).append(" = \\n");
+        stringBuilder.append("\n");
         for (int i = 0; i < 256; i++) {
             if (i != 0) {
                 stringBuilder.append(javadocHeader);
             }
             generateIsAllNullInParamsThenThrowIllegalArgumentException(stringBuilder, i);
-            stringBuilder.append("\\n");
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }
@@ -417,7 +418,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("final Object param");
             stringBuilder.append(i);
         }
-        stringBuilder.append("){\\n");
+        stringBuilder.append("){\n");
         stringBuilder.append("        if (isAllNullInParams(");
         for (int i = 0; i < paramNum; i++) {
             if (i != 0) {
@@ -426,7 +427,8 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(")){\\n            throw new IllegalArgumentException(\"caused by all of the following be " +
+        stringBuilder.append(")){\n            throw new IllegalArgumentException(\"caused by all of the following " +
+                "be " +
                 "null: \"");
 
         if (paramNum != 0) {
@@ -440,7 +442,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
             stringBuilder.append("param");
             stringBuilder.append(i);
         }
-        stringBuilder.append(");\\n        }\\n    }\\n");
+        stringBuilder.append(");\n        }\n    }\n");
     }
 }
 
