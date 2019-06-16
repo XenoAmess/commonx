@@ -25,6 +25,7 @@
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
 import com.xenoamess.commons.primitive.Primitive;
+import com.xenoamess.commons.primitive.collections.ByteCollection;
 import com.xenoamess.commons.primitive.collections.lists.AbstractByteList;
 import com.xenoamess.commons.primitive.collections.lists.ByteList;
 import com.xenoamess.commons.primitive.comparators.ByteComparator;
@@ -334,47 +335,8 @@ public class ByteArrayList extends AbstractByteList
      * @see ByteArrayList#contains(Object o)
      */
     @Override
-    public boolean contains(byte o) {
-        return this.containsPrimitive(o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code ByteArrayList.contains(Object o)}
-     *
-     * @see ByteArrayList#contains(Object o)
-     */
-    @Override
     public boolean containsPrimitive(byte o) {
         return indexOfPrimitive(o) >= 0;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int indexOf(Object o) {
-        return indexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.indexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see ByteArrayList#indexOf(Object o)
-     */
-    public int indexOf(byte o) {
-        return this.indexOfPrimitive(o);
     }
 
     /**
@@ -441,32 +403,6 @@ public class ByteArrayList extends AbstractByteList
             }
         }
         return -1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int lastIndexOf(Object o) {
-        return lastIndexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code ByteArrayList.lastIndexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see ByteArrayList#lastIndexOf(Object o)
-     */
-    public int lastIndexOf(byte o) {
-        return this.lastIndexOfPrimitive(o);
     }
 
     /**
@@ -642,7 +578,8 @@ public class ByteArrayList extends AbstractByteList
      * @param a an array of {@link byte} objects.
      * @return an array of {@link byte} objects.
      */
-    public byte[] toArray(byte[] a) {
+    @Override
+    public final byte[] toArray(byte[] a) {
         return this.toArrayPrimitive(a);
     }
 
@@ -671,7 +608,7 @@ public class ByteArrayList extends AbstractByteList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = (byte) 0;
+            a[size] = Primitive.BYTE_DEFAULT;
         }
         return a;
     }
@@ -901,40 +838,22 @@ public class ByteArrayList extends AbstractByteList
         return hashCode;
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present.  If the list does not contain the element, it is
-     * unchanged.  More formally, removes the element with the lowest index
-     * {@code i} such that
-     * {@code Objects.equals(o, get(i))}
-     * (if such an element exists).  Returns {@code true} if this list
-     * contained the specified element (or equivalently, if this list
-     * changed as a result of the call).
-     */
-    @Override
-    public boolean remove(Object o) {
-        if (o == null) {
-            return false;
-        }
-        if (!(o instanceof Byte)) {
-            return false;
-        }
-        return this.removeByContentPrimitive((Byte) o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code ByteArrayList.remove(Object o)}
-     *
-     * @see ByteArrayList#remove(Object o)
-     */
-    @Override
-    public boolean removeByContent(byte o) {
-        return this.removeByContentPrimitive(o);
-    }
+//    /**
+//     * {@inheritDoc}
+//     * <p>
+//     * Removes the first occurrence of the specified element from this list,
+//     * if it is present.  If the list does not contain the element, it is
+//     * unchanged.  More formally, removes the element with the lowest index
+//     * {@code i} such that
+//     * {@code Objects.equals(o, get(i))}
+//     * (if such an element exists).  Returns {@code true} if this list
+//     * contained the specified element (or equivalently, if this list
+//     * changed as a result of the call).
+//     */
+//    @Override
+//    public final boolean remove(Object o) {
+//        return ByteList.super.remove(o);
+//    }
 
     /**
      * {@inheritDoc}
@@ -974,7 +893,7 @@ public class ByteArrayList extends AbstractByteList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = (byte) 0;
+        es[size = newSize] = Primitive.BYTE_DEFAULT;
     }
 
     /**
@@ -988,7 +907,7 @@ public class ByteArrayList extends AbstractByteList
         modCount++;
         final byte[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = (byte) 0;
+            es[i] = Primitive.BYTE_DEFAULT;
         }
     }
 
@@ -1006,64 +925,56 @@ public class ByteArrayList extends AbstractByteList
     @Override
     public boolean addAll(Collection<? extends Byte> c) {
         if (c instanceof ByteArrayList) {
-            return this.addAll((ByteArrayList) c);
-        }
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        byte[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            ByteArrayList cByteArrayList = (ByteArrayList) c;
+            final byte[] a = cByteArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            byte[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof ByteCollection) {
+            ByteCollection cByteCollection = (ByteCollection) c;
+            final byte[] a = cByteCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            byte[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            byte[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        ByteArrayList.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
+            ByteArrayList.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        }
     }
 
-    /**
-     * Appends all of the elements in the specified ByteArrayList to the end of
-     * this list, in the order that they are returned by the
-     * specified ByteArrayList's Iterator.  The behavior of this operation is
-     * undefined if the specified ByteArrayList is modified while the operation
-     * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified ByteArrayList is this list, and this
-     * list is nonempty.)
-     *
-     * @param c ByteArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(ByteArrayList c) {
-        final byte[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        byte[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-        System.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
-    }
 
     /**
      * Appends all of the elements in the specified byte[] to the end of
@@ -1104,81 +1015,77 @@ public class ByteArrayList extends AbstractByteList
      */
     @Override
     public boolean addAll(int index, Collection<? extends Byte> c) {
+        rangeCheckForAdd(index);
+
         if (c instanceof ByteArrayList) {
-            return this.addAll(index, (ByteArrayList) c);
-        }
-        rangeCheckForAdd(index);
+            ByteArrayList cByteArrayList = (ByteArrayList) c;
+            final byte[] a = cByteArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            byte[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        byte[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof ByteCollection) {
+            ByteCollection cByteCollection = (ByteCollection) c;
+            final byte[] a = cByteCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            byte[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        ByteArrayList.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
-    }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            byte[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-    /**
-     * Inserts all of the elements in the specified ByteArrayList into this
-     * list, starting at the specified position.  Shifts the element
-     * currently at that position (if any) and any subsequent elements to
-     * the right (increases their indices).  The new elements will appear
-     * in the list in the order that they are returned by the
-     * specified collection's iterator.
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     ByteArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(int index, ByteArrayList c) {
-        rangeCheckForAdd(index);
-        final byte[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            ByteArrayList.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
         }
-        byte[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        System.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
     }
 
     /**
@@ -1239,7 +1146,7 @@ public class ByteArrayList extends AbstractByteList
     public void shiftTailOverGap(byte[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = (byte) 0;
+            es[i] = Primitive.BYTE_DEFAULT;
         }
     }
 
@@ -1315,35 +1222,69 @@ public class ByteArrayList extends AbstractByteList
     public boolean batchRemove(Collection<?> c, boolean complement,
                                final int from, final int end) {
         Objects.requireNonNull(c);
-        final byte[] es = elementData;
-        int r;
-        // Optimize for initial run of survivors
-        for (r = from; ; r++) {
-            if (r == end) {
-                return false;
-            }
-            if (c.contains(es[r]) != complement) {
-                break;
-            }
-        }
-        int w = r++;
-        try {
-            for (byte e; r < end; r++) {
-                if (c.contains(e = es[r]) == complement) {
-                    es[w++] = e;
+
+        if (c instanceof ByteCollection) {
+            ByteCollection cByteCollection = (ByteCollection) c;
+            final byte[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (cByteCollection.containsPrimitive(es[r]) != complement) {
+                    break;
                 }
             }
-        } catch (Throwable ex) {
-            // Preserve behavioral compatibility with AbstractCollection,
-            // even if c.contains() throws.
-            System.arraycopy(es, r, es, w, end - r);
-            w += end - r;
-            throw ex;
-        } finally {
-            modCount += end - w;
-            shiftTailOverGap(es, w, end);
+            int w = r++;
+            try {
+                for (byte e; r < end; r++) {
+                    if (cByteCollection.containsPrimitive(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
+        } else {
+            final byte[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (c.contains(es[r]) != complement) {
+                    break;
+                }
+            }
+            int w = r++;
+            try {
+                for (byte e; r < end; r++) {
+                    if (c.contains(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
         }
-        return true;
     }
 
     /**
@@ -1789,6 +1730,11 @@ public class ByteArrayList extends AbstractByteList
         }
 
         @Override
+        public byte[] toArray(byte[] a) {
+            return this.toArrayPrimitive(a);
+        }
+
+        @Override
         public byte[] toArrayPrimitive(byte[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1796,7 +1742,7 @@ public class ByteArrayList extends AbstractByteList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = (byte) 0;
+                a[size] = Primitive.BYTE_DEFAULT;
             }
             return a;
         }
@@ -1824,32 +1770,10 @@ public class ByteArrayList extends AbstractByteList
         }
 
         @Override
-        public int indexOf(Object o) {
-            int index = root.indexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int indexOf(byte o) {
-            return this.indexOfPrimitive(o);
-        }
-
-        @Override
         public int indexOfPrimitive(byte o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
-        }
-
-        @Override
-        public int lastIndexOf(Object o) {
-            int index = root.lastIndexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int lastIndexOf(byte o) {
-            return this.lastIndexOfPrimitive(o);
         }
 
         @Override
@@ -1860,15 +1784,9 @@ public class ByteArrayList extends AbstractByteList
         }
 
         @Override
-        public boolean contains(byte o) {
-            return this.containsPrimitive(o);
-        }
-
-        @Override
         public boolean containsPrimitive(byte o) {
             return indexOfPrimitive(o) >= 0;
         }
-
 
         @Override
         public ByteIterator iterator() {

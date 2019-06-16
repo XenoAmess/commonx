@@ -61,7 +61,7 @@ import java.util.function.UnaryOperator;
  * The {@code List} interface provides four methods for positional (indexed)
  * access to list elements.  Lists (like Java arrays) are zero based.  Note
  * that these operations may execute in time proportional to the index value
- * for some implementations (the {@code DoubleLinkedList} class, for
+ * for some implementations (the {@code ShortLinkedList} class, for
  * example). Thus, iterating over the elements in a list is typically
  * preferable to indexing through it if the caller does not know the
  * implementation.
@@ -142,7 +142,7 @@ import java.util.function.UnaryOperator;
  * @see Collections#nCopies(int, Object)
  * @see Collections#EMPTY_LIST
  * @see AbstractList
- * @see AbstractDoubleSequentialList
+ * @see AbstractShortSequentialList
  * @see List
  * @since 1.2
  */
@@ -163,6 +163,7 @@ public interface ShortList extends List<Short>, ShortCollection, Primitive {
      * sequence
      * @see Arrays#asList(Object[])
      */
+    @Override
     short[] toArrayPrimitive();
 
     /**
@@ -768,6 +769,19 @@ public interface ShortList extends List<Short>, ShortCollection, Primitive {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    default int indexOf(short o) {
+        return this.indexOfPrimitive(o);
+    }
+
+    /**
      * Primitive replacement of indexOf(Object o)
      *
      * @param o element to search for
@@ -801,8 +815,27 @@ public interface ShortList extends List<Short>, ShortCollection, Primitive {
         if (!(o instanceof Short)) {
             return -1;
         }
-        return this.indexOfPrimitive((Short) o);
+        return this.lastIndexOfPrimitive((Short) o);
     }
+
+    /**
+     * Primitive replacement of lastIndexOf(Object o)
+     *
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @throws java.lang.ClassCastException   if the type of the specified element
+     *                                        is incompatible with this list
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws java.lang.NullPointerException if the specified element is null and this
+     *                                        list does not permit null elements
+     *                                        (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @see #lastIndexOf(Object o)
+     */
+    default int lastIndexOf(short o) {
+        return this.lastIndexOfPrimitive(o);
+    }
+
 
     /**
      * Primitive replacement of lastIndexOf(Object o)

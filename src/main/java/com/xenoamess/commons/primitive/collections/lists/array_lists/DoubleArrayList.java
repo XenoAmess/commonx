@@ -608,7 +608,7 @@ public class DoubleArrayList extends AbstractDoubleList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = (double) 0;
+            a[size] = Primitive.DOUBLE_DEFAULT;
         }
         return a;
     }
@@ -838,22 +838,22 @@ public class DoubleArrayList extends AbstractDoubleList
         return hashCode;
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present.  If the list does not contain the element, it is
-     * unchanged.  More formally, removes the element with the lowest index
-     * {@code i} such that
-     * {@code Objects.equals(o, get(i))}
-     * (if such an element exists).  Returns {@code true} if this list
-     * contained the specified element (or equivalently, if this list
-     * changed as a result of the call).
-     */
-    @Override
-    public final boolean remove(Object o) {
-        return DoubleList.super.remove(o);
-    }
+//    /**
+//     * {@inheritDoc}
+//     * <p>
+//     * Removes the first occurrence of the specified element from this list,
+//     * if it is present.  If the list does not contain the element, it is
+//     * unchanged.  More formally, removes the element with the lowest index
+//     * {@code i} such that
+//     * {@code Objects.equals(o, get(i))}
+//     * (if such an element exists).  Returns {@code true} if this list
+//     * contained the specified element (or equivalently, if this list
+//     * changed as a result of the call).
+//     */
+//    @Override
+//    public final boolean remove(Object o) {
+//        return DoubleList.super.remove(o);
+//    }
 
     /**
      * {@inheritDoc}
@@ -893,7 +893,7 @@ public class DoubleArrayList extends AbstractDoubleList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = (double) 0;
+        es[size = newSize] = Primitive.DOUBLE_DEFAULT;
     }
 
     /**
@@ -907,7 +907,7 @@ public class DoubleArrayList extends AbstractDoubleList
         modCount++;
         final double[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = (double) 0;
+            es[i] = Primitive.DOUBLE_DEFAULT;
         }
     }
 
@@ -1146,7 +1146,7 @@ public class DoubleArrayList extends AbstractDoubleList
     public void shiftTailOverGap(double[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = (double) 0;
+            es[i] = Primitive.DOUBLE_DEFAULT;
         }
     }
 
@@ -1742,7 +1742,7 @@ public class DoubleArrayList extends AbstractDoubleList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = (double) 0;
+                a[size] = Primitive.DOUBLE_DEFAULT;
             }
             return a;
         }

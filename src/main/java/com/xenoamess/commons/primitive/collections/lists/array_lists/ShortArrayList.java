@@ -25,6 +25,7 @@
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
 import com.xenoamess.commons.primitive.Primitive;
+import com.xenoamess.commons.primitive.collections.ShortCollection;
 import com.xenoamess.commons.primitive.collections.lists.AbstractShortList;
 import com.xenoamess.commons.primitive.collections.lists.ShortList;
 import com.xenoamess.commons.primitive.comparators.ShortComparator;
@@ -334,47 +335,8 @@ public class ShortArrayList extends AbstractShortList
      * @see ShortArrayList#contains(Object o)
      */
     @Override
-    public boolean contains(short o) {
-        return this.containsPrimitive(o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code ShortArrayList.contains(Object o)}
-     *
-     * @see ShortArrayList#contains(Object o)
-     */
-    @Override
     public boolean containsPrimitive(short o) {
         return indexOfPrimitive(o) >= 0;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int indexOf(Object o) {
-        return indexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.indexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see ShortArrayList#indexOf(Object o)
-     */
-    public int indexOf(short o) {
-        return this.indexOfPrimitive(o);
     }
 
     /**
@@ -441,32 +403,6 @@ public class ShortArrayList extends AbstractShortList
             }
         }
         return -1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int lastIndexOf(Object o) {
-        return lastIndexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code ShortArrayList.lastIndexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see ShortArrayList#lastIndexOf(Object o)
-     */
-    public int lastIndexOf(short o) {
-        return this.lastIndexOfPrimitive(o);
     }
 
     /**
@@ -642,7 +578,8 @@ public class ShortArrayList extends AbstractShortList
      * @param a an array of {@link short} objects.
      * @return an array of {@link short} objects.
      */
-    public short[] toArray(short[] a) {
+    @Override
+    public final short[] toArray(short[] a) {
         return this.toArrayPrimitive(a);
     }
 
@@ -671,7 +608,7 @@ public class ShortArrayList extends AbstractShortList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = (short) 0;
+            a[size] = Primitive.SHORT_DEFAULT;
         }
         return a;
     }
@@ -901,40 +838,22 @@ public class ShortArrayList extends AbstractShortList
         return hashCode;
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present.  If the list does not contain the element, it is
-     * unchanged.  More formally, removes the element with the lowest index
-     * {@code i} such that
-     * {@code Objects.equals(o, get(i))}
-     * (if such an element exists).  Returns {@code true} if this list
-     * contained the specified element (or equivalently, if this list
-     * changed as a result of the call).
-     */
-    @Override
-    public boolean remove(Object o) {
-        if (o == null) {
-            return false;
-        }
-        if (!(o instanceof Short)) {
-            return false;
-        }
-        return this.removeByContentPrimitive((Short) o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code ShortArrayList.remove(Object o)}
-     *
-     * @see ShortArrayList#remove(Object o)
-     */
-    @Override
-    public boolean removeByContent(short o) {
-        return this.removeByContentPrimitive(o);
-    }
+//    /**
+//     * {@inheritDoc}
+//     * <p>
+//     * Removes the first occurrence of the specified element from this list,
+//     * if it is present.  If the list does not contain the element, it is
+//     * unchanged.  More formally, removes the element with the lowest index
+//     * {@code i} such that
+//     * {@code Objects.equals(o, get(i))}
+//     * (if such an element exists).  Returns {@code true} if this list
+//     * contained the specified element (or equivalently, if this list
+//     * changed as a result of the call).
+//     */
+//    @Override
+//    public final boolean remove(Object o) {
+//        return ShortList.super.remove(o);
+//    }
 
     /**
      * {@inheritDoc}
@@ -974,7 +893,7 @@ public class ShortArrayList extends AbstractShortList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = (short) 0;
+        es[size = newSize] = Primitive.SHORT_DEFAULT;
     }
 
     /**
@@ -988,7 +907,7 @@ public class ShortArrayList extends AbstractShortList
         modCount++;
         final short[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = (short) 0;
+            es[i] = Primitive.SHORT_DEFAULT;
         }
     }
 
@@ -1006,64 +925,56 @@ public class ShortArrayList extends AbstractShortList
     @Override
     public boolean addAll(Collection<? extends Short> c) {
         if (c instanceof ShortArrayList) {
-            return this.addAll((ShortArrayList) c);
-        }
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        short[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            ShortArrayList cShortArrayList = (ShortArrayList) c;
+            final short[] a = cShortArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            short[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof ShortCollection) {
+            ShortCollection cShortCollection = (ShortCollection) c;
+            final short[] a = cShortCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            short[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            short[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        ShortArrayList.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
+            ShortArrayList.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        }
     }
 
-    /**
-     * Appends all of the elements in the specified ShortArrayList to the end of
-     * this list, in the order that they are returned by the
-     * specified ShortArrayList's Iterator.  The behavior of this operation is
-     * undefined if the specified ShortArrayList is modified while the operation
-     * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified ShortArrayList is this list, and this
-     * list is nonempty.)
-     *
-     * @param c ShortArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(ShortArrayList c) {
-        final short[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        short[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-        System.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
-    }
 
     /**
      * Appends all of the elements in the specified short[] to the end of
@@ -1104,81 +1015,77 @@ public class ShortArrayList extends AbstractShortList
      */
     @Override
     public boolean addAll(int index, Collection<? extends Short> c) {
+        rangeCheckForAdd(index);
+
         if (c instanceof ShortArrayList) {
-            return this.addAll(index, (ShortArrayList) c);
-        }
-        rangeCheckForAdd(index);
+            ShortArrayList cShortArrayList = (ShortArrayList) c;
+            final short[] a = cShortArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            short[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        short[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof ShortCollection) {
+            ShortCollection cShortCollection = (ShortCollection) c;
+            final short[] a = cShortCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            short[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        ShortArrayList.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
-    }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            short[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-    /**
-     * Inserts all of the elements in the specified ShortArrayList into this
-     * list, starting at the specified position.  Shifts the element
-     * currently at that position (if any) and any subsequent elements to
-     * the right (increases their indices).  The new elements will appear
-     * in the list in the order that they are returned by the
-     * specified collection's iterator.
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     ShortArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(int index, ShortArrayList c) {
-        rangeCheckForAdd(index);
-        final short[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            ShortArrayList.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
         }
-        short[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        System.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
     }
 
     /**
@@ -1239,7 +1146,7 @@ public class ShortArrayList extends AbstractShortList
     public void shiftTailOverGap(short[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = (short) 0;
+            es[i] = Primitive.SHORT_DEFAULT;
         }
     }
 
@@ -1315,35 +1222,69 @@ public class ShortArrayList extends AbstractShortList
     public boolean batchRemove(Collection<?> c, boolean complement,
                                final int from, final int end) {
         Objects.requireNonNull(c);
-        final short[] es = elementData;
-        int r;
-        // Optimize for initial run of survivors
-        for (r = from; ; r++) {
-            if (r == end) {
-                return false;
-            }
-            if (c.contains(es[r]) != complement) {
-                break;
-            }
-        }
-        int w = r++;
-        try {
-            for (short e; r < end; r++) {
-                if (c.contains(e = es[r]) == complement) {
-                    es[w++] = e;
+
+        if (c instanceof ShortCollection) {
+            ShortCollection cShortCollection = (ShortCollection) c;
+            final short[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (cShortCollection.containsPrimitive(es[r]) != complement) {
+                    break;
                 }
             }
-        } catch (Throwable ex) {
-            // Preserve behavioral compatibility with AbstractCollection,
-            // even if c.contains() throws.
-            System.arraycopy(es, r, es, w, end - r);
-            w += end - r;
-            throw ex;
-        } finally {
-            modCount += end - w;
-            shiftTailOverGap(es, w, end);
+            int w = r++;
+            try {
+                for (short e; r < end; r++) {
+                    if (cShortCollection.containsPrimitive(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
+        } else {
+            final short[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (c.contains(es[r]) != complement) {
+                    break;
+                }
+            }
+            int w = r++;
+            try {
+                for (short e; r < end; r++) {
+                    if (c.contains(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
         }
-        return true;
     }
 
     /**
@@ -1789,6 +1730,11 @@ public class ShortArrayList extends AbstractShortList
         }
 
         @Override
+        public short[] toArray(short[] a) {
+            return this.toArrayPrimitive(a);
+        }
+
+        @Override
         public short[] toArrayPrimitive(short[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1796,7 +1742,7 @@ public class ShortArrayList extends AbstractShortList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = (short) 0;
+                a[size] = Primitive.SHORT_DEFAULT;
             }
             return a;
         }
@@ -1824,32 +1770,10 @@ public class ShortArrayList extends AbstractShortList
         }
 
         @Override
-        public int indexOf(Object o) {
-            int index = root.indexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int indexOf(short o) {
-            return this.indexOfPrimitive(o);
-        }
-
-        @Override
         public int indexOfPrimitive(short o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
-        }
-
-        @Override
-        public int lastIndexOf(Object o) {
-            int index = root.lastIndexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int lastIndexOf(short o) {
-            return this.lastIndexOfPrimitive(o);
         }
 
         @Override
@@ -1860,15 +1784,9 @@ public class ShortArrayList extends AbstractShortList
         }
 
         @Override
-        public boolean contains(short o) {
-            return this.containsPrimitive(o);
-        }
-
-        @Override
         public boolean containsPrimitive(short o) {
             return indexOfPrimitive(o) >= 0;
         }
-
 
         @Override
         public ShortIterator iterator() {

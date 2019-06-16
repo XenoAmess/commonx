@@ -25,6 +25,7 @@
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
 import com.xenoamess.commons.primitive.Primitive;
+import com.xenoamess.commons.primitive.collections.IntCollection;
 import com.xenoamess.commons.primitive.collections.lists.AbstractIntList;
 import com.xenoamess.commons.primitive.collections.lists.IntList;
 import com.xenoamess.commons.primitive.comparators.IntComparator;
@@ -334,47 +335,8 @@ public class IntArrayList extends AbstractIntList
      * @see IntArrayList#contains(Object o)
      */
     @Override
-    public boolean contains(int o) {
-        return this.containsPrimitive(o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code IntArrayList.contains(Object o)}
-     *
-     * @see IntArrayList#contains(Object o)
-     */
-    @Override
     public boolean containsPrimitive(int o) {
         return indexOfPrimitive(o) >= 0;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int indexOf(Object o) {
-        return indexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.indexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see IntArrayList#indexOf(Object o)
-     */
-    public int indexOf(int o) {
-        return this.indexOfPrimitive(o);
     }
 
     /**
@@ -441,32 +403,6 @@ public class IntArrayList extends AbstractIntList
             }
         }
         return -1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int lastIndexOf(Object o) {
-        return lastIndexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code IntArrayList.lastIndexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see IntArrayList#lastIndexOf(Object o)
-     */
-    public int lastIndexOf(int o) {
-        return this.lastIndexOfPrimitive(o);
     }
 
     /**
@@ -642,7 +578,8 @@ public class IntArrayList extends AbstractIntList
      * @param a an array of {@link int} objects.
      * @return an array of {@link int} objects.
      */
-    public int[] toArray(int[] a) {
+    @Override
+    public final int[] toArray(int[] a) {
         return this.toArrayPrimitive(a);
     }
 
@@ -671,7 +608,7 @@ public class IntArrayList extends AbstractIntList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = (int) 0;
+            a[size] = Primitive.INT_DEFAULT;
         }
         return a;
     }
@@ -901,40 +838,22 @@ public class IntArrayList extends AbstractIntList
         return hashCode;
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present.  If the list does not contain the element, it is
-     * unchanged.  More formally, removes the element with the lowest index
-     * {@code i} such that
-     * {@code Objects.equals(o, get(i))}
-     * (if such an element exists).  Returns {@code true} if this list
-     * contained the specified element (or equivalently, if this list
-     * changed as a result of the call).
-     */
-    @Override
-    public boolean remove(Object o) {
-        if (o == null) {
-            return false;
-        }
-        if (!(o instanceof Integer)) {
-            return false;
-        }
-        return this.removeByContentPrimitive((Integer) o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code IntArrayList.remove(Object o)}
-     *
-     * @see IntArrayList#remove(Object o)
-     */
-    @Override
-    public boolean removeByContent(int o) {
-        return this.removeByContentPrimitive(o);
-    }
+//    /**
+//     * {@inheritDoc}
+//     * <p>
+//     * Removes the first occurrence of the specified element from this list,
+//     * if it is present.  If the list does not contain the element, it is
+//     * unchanged.  More formally, removes the element with the lowest index
+//     * {@code i} such that
+//     * {@code Objects.equals(o, get(i))}
+//     * (if such an element exists).  Returns {@code true} if this list
+//     * contained the specified element (or equivalently, if this list
+//     * changed as a result of the call).
+//     */
+//    @Override
+//    public final boolean remove(Object o) {
+//        return IntList.super.remove(o);
+//    }
 
     /**
      * {@inheritDoc}
@@ -974,7 +893,7 @@ public class IntArrayList extends AbstractIntList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = (int) 0;
+        es[size = newSize] = Primitive.INT_DEFAULT;
     }
 
     /**
@@ -988,7 +907,7 @@ public class IntArrayList extends AbstractIntList
         modCount++;
         final int[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = (int) 0;
+            es[i] = Primitive.INT_DEFAULT;
         }
     }
 
@@ -1006,64 +925,56 @@ public class IntArrayList extends AbstractIntList
     @Override
     public boolean addAll(Collection<? extends Integer> c) {
         if (c instanceof IntArrayList) {
-            return this.addAll((IntArrayList) c);
-        }
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        int[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            IntArrayList cIntArrayList = (IntArrayList) c;
+            final int[] a = cIntArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            int[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof IntCollection) {
+            IntCollection cIntCollection = (IntCollection) c;
+            final int[] a = cIntCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            int[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            int[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        IntArrayList.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
+            IntArrayList.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        }
     }
 
-    /**
-     * Appends all of the elements in the specified IntArrayList to the end of
-     * this list, in the order that they are returned by the
-     * specified IntArrayList's Iterator.  The behavior of this operation is
-     * undefined if the specified IntArrayList is modified while the operation
-     * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified IntArrayList is this list, and this
-     * list is nonempty.)
-     *
-     * @param c IntArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(IntArrayList c) {
-        final int[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        int[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-        System.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
-    }
 
     /**
      * Appends all of the elements in the specified int[] to the end of
@@ -1104,81 +1015,77 @@ public class IntArrayList extends AbstractIntList
      */
     @Override
     public boolean addAll(int index, Collection<? extends Integer> c) {
+        rangeCheckForAdd(index);
+
         if (c instanceof IntArrayList) {
-            return this.addAll(index, (IntArrayList) c);
-        }
-        rangeCheckForAdd(index);
+            IntArrayList cIntArrayList = (IntArrayList) c;
+            final int[] a = cIntArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            int[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        int[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof IntCollection) {
+            IntCollection cIntCollection = (IntCollection) c;
+            final int[] a = cIntCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            int[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        IntArrayList.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
-    }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            int[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-    /**
-     * Inserts all of the elements in the specified IntArrayList into this
-     * list, starting at the specified position.  Shifts the element
-     * currently at that position (if any) and any subsequent elements to
-     * the right (increases their indices).  The new elements will appear
-     * in the list in the order that they are returned by the
-     * specified collection's iterator.
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     IntArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(int index, IntArrayList c) {
-        rangeCheckForAdd(index);
-        final int[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            IntArrayList.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
         }
-        int[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        System.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
     }
 
     /**
@@ -1239,7 +1146,7 @@ public class IntArrayList extends AbstractIntList
     public void shiftTailOverGap(int[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = (int) 0;
+            es[i] = Primitive.INT_DEFAULT;
         }
     }
 
@@ -1315,35 +1222,69 @@ public class IntArrayList extends AbstractIntList
     public boolean batchRemove(Collection<?> c, boolean complement,
                                final int from, final int end) {
         Objects.requireNonNull(c);
-        final int[] es = elementData;
-        int r;
-        // Optimize for initial run of survivors
-        for (r = from; ; r++) {
-            if (r == end) {
-                return false;
-            }
-            if (c.contains(es[r]) != complement) {
-                break;
-            }
-        }
-        int w = r++;
-        try {
-            for (int e; r < end; r++) {
-                if (c.contains(e = es[r]) == complement) {
-                    es[w++] = e;
+
+        if (c instanceof IntCollection) {
+            IntCollection cIntCollection = (IntCollection) c;
+            final int[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (cIntCollection.containsPrimitive(es[r]) != complement) {
+                    break;
                 }
             }
-        } catch (Throwable ex) {
-            // Preserve behavioral compatibility with AbstractCollection,
-            // even if c.contains() throws.
-            System.arraycopy(es, r, es, w, end - r);
-            w += end - r;
-            throw ex;
-        } finally {
-            modCount += end - w;
-            shiftTailOverGap(es, w, end);
+            int w = r++;
+            try {
+                for (int e; r < end; r++) {
+                    if (cIntCollection.containsPrimitive(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
+        } else {
+            final int[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (c.contains(es[r]) != complement) {
+                    break;
+                }
+            }
+            int w = r++;
+            try {
+                for (int e; r < end; r++) {
+                    if (c.contains(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
         }
-        return true;
     }
 
     /**
@@ -1789,6 +1730,11 @@ public class IntArrayList extends AbstractIntList
         }
 
         @Override
+        public int[] toArray(int[] a) {
+            return this.toArrayPrimitive(a);
+        }
+
+        @Override
         public int[] toArrayPrimitive(int[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1796,7 +1742,7 @@ public class IntArrayList extends AbstractIntList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = (int) 0;
+                a[size] = Primitive.INT_DEFAULT;
             }
             return a;
         }
@@ -1824,32 +1770,10 @@ public class IntArrayList extends AbstractIntList
         }
 
         @Override
-        public int indexOf(Object o) {
-            int index = root.indexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int indexOf(int o) {
-            return this.indexOfPrimitive(o);
-        }
-
-        @Override
         public int indexOfPrimitive(int o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
-        }
-
-        @Override
-        public int lastIndexOf(Object o) {
-            int index = root.lastIndexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int lastIndexOf(int o) {
-            return this.lastIndexOfPrimitive(o);
         }
 
         @Override
@@ -1860,15 +1784,9 @@ public class IntArrayList extends AbstractIntList
         }
 
         @Override
-        public boolean contains(int o) {
-            return this.containsPrimitive(o);
-        }
-
-        @Override
         public boolean containsPrimitive(int o) {
             return indexOfPrimitive(o) >= 0;
         }
-
 
         @Override
         public IntIterator iterator() {

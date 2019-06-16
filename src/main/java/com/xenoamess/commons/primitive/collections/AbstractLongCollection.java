@@ -286,6 +286,7 @@ public interface AbstractLongCollection extends LongCollection,
      * return list.toArray(a);
      * }</pre>
      */
+    @Override
     default long[] toArrayPrimitive(long[] a) {
         // Estimate size of array; be prepared to see more or fewer elements
         int size = size();
@@ -295,13 +296,13 @@ public interface AbstractLongCollection extends LongCollection,
         for (int i = 0; i < r.length; i++) {
             if (!it.hasNext()) { // fewer elements than expected
                 if (a == r) {
-                    r[i] = (long) 0; // null-terminate
+                    r[i] = Primitive.LONG_DEFAULT; // null-terminate
                 } else if (a.length < i) {
                     return Arrays.copyOf(r, i);
                 } else {
                     System.arraycopy(r, 0, a, 0, i);
                     if (a.length > i) {
-                        a[i] = (long) 0;
+                        a[i] = Primitive.LONG_DEFAULT;
                     }
                 }
                 return a;
@@ -397,6 +398,32 @@ public interface AbstractLongCollection extends LongCollection,
     }
 
     // Modification Operations
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws ClassCastException            {@inheritDoc}
+     * @throws NullPointerException          {@inheritDoc}
+     * @implSpec This implementation iterates over the collection looking for the
+     * specified element.  If it finds the element, it removes the element
+     * from the collection using the iterator's remove method.
+     *
+     * <p>Note that this implementation throws an
+     * {@code UnsupportedOperationException} if the iterator returned by this
+     * collection's iterator method does not implement the {@code remove}
+     * method and this collection contains the specified object.
+     */
+    @Override
+    default boolean remove(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (!(o instanceof Long)) {
+            return false;
+        }
+        return this.removeByContentPrimitive((Long) o);
+    }
 
     /**
      * {@inheritDoc}

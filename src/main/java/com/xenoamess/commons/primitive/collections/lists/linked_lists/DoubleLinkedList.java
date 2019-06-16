@@ -25,6 +25,7 @@
 
 package com.xenoamess.commons.primitive.collections.lists.linked_lists;
 
+import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.DoubleCollection;
 import com.xenoamess.commons.primitive.collections.lists.AbstractDoubleSequentialList;
 import com.xenoamess.commons.primitive.collections.lists.DoubleList;
@@ -237,7 +238,7 @@ public class DoubleLinkedList
         // assert f == first && f != null;
         final double element = f.item;
         final DoubleNode next = f.next;
-        f.item = 0;
+        f.item = Primitive.DOUBLE_DEFAULT;
         f.next = null; // help GC
         first = next;
         if (next == null) {
@@ -264,7 +265,7 @@ public class DoubleLinkedList
         // assert l == last && l != null;
         final double element = l.item;
         final DoubleNode prev = l.prev;
-        l.item = 0;
+        l.item = Primitive.DOUBLE_DEFAULT;
         l.prev = null; // help GC
         last = prev;
         if (prev == null) {
@@ -307,7 +308,7 @@ public class DoubleLinkedList
             x.next = null;
         }
 
-        x.item = 0;
+        x.item = Primitive.DOUBLE_DEFAULT;
         size--;
         modCount++;
         return element;
@@ -669,7 +670,7 @@ public class DoubleLinkedList
         // - is sure to free memory even if there is a reachable Iterator
         for (DoubleNode x = first; x != null; ) {
             DoubleNode next = x.next;
-            x.item = 0;
+            x.item = Primitive.DOUBLE_DEFAULT;
             x.next = null;
             x.prev = null;
             x = next;
@@ -922,7 +923,7 @@ public class DoubleLinkedList
     @Override
     public double pollPrimitive() {
         final DoubleNode f = first;
-        return (f == null) ? 0 : unlinkFirstPrimitive(f);
+        return (f == null) ? Primitive.DOUBLE_DEFAULT : unlinkFirstPrimitive(f);
     }
 
     /**
@@ -1086,7 +1087,7 @@ public class DoubleLinkedList
     @Override
     public double peekFirstPrimitive() {
         final DoubleNode f = first;
-        return (f == null) ? 0 : f.item;
+        return (f == null) ? Primitive.DOUBLE_DEFAULT : f.item;
     }
 
     /**
@@ -1113,7 +1114,7 @@ public class DoubleLinkedList
     @Override
     public double peekLastPrimitive() {
         final DoubleNode l = last;
-        return (l == null) ? 0 : l.item;
+        return (l == null) ? Primitive.DOUBLE_DEFAULT : l.item;
     }
 
     /**
@@ -1140,7 +1141,7 @@ public class DoubleLinkedList
     @Override
     public double pollFirstPrimitive() {
         final DoubleNode f = first;
-        return (f == null) ? 0 : unlinkFirst(f);
+        return (f == null) ? Primitive.DOUBLE_DEFAULT : unlinkFirst(f);
     }
 
     /**
@@ -1167,7 +1168,7 @@ public class DoubleLinkedList
     @Override
     public double pollLastPrimitive() {
         final DoubleNode l = last;
-        return (l == null) ? 0 : unlinkLast(l);
+        return (l == null) ? Primitive.DOUBLE_DEFAULT : unlinkLast(l);
     }
 
     /**
@@ -1283,7 +1284,7 @@ public class DoubleLinkedList
      */
     @Override
     public boolean removeFirstOccurrencePrimitive(double o) {
-        return remove(o);
+        return removeByContentPrimitive(o);
     }
 
     /**
@@ -1720,7 +1721,7 @@ public class DoubleLinkedList
         }
 
         if (a.length > size) {
-            a[size] = 0;
+            a[size] = Primitive.DOUBLE_DEFAULT;
         }
 
         return a;

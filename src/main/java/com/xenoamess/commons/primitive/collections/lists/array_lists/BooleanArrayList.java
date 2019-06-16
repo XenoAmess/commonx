@@ -25,6 +25,7 @@
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
 import com.xenoamess.commons.primitive.Primitive;
+import com.xenoamess.commons.primitive.collections.BooleanCollection;
 import com.xenoamess.commons.primitive.collections.lists.AbstractBooleanList;
 import com.xenoamess.commons.primitive.collections.lists.BooleanList;
 import com.xenoamess.commons.primitive.comparators.BooleanComparator;
@@ -334,47 +335,8 @@ public class BooleanArrayList extends AbstractBooleanList
      * @see BooleanArrayList#contains(Object o)
      */
     @Override
-    public boolean contains(boolean o) {
-        return this.containsPrimitive(o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code BooleanArrayList.contains(Object o)}
-     *
-     * @see BooleanArrayList#contains(Object o)
-     */
-    @Override
     public boolean containsPrimitive(boolean o) {
         return indexOfPrimitive(o) >= 0;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int indexOf(Object o) {
-        return indexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.indexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see BooleanArrayList#indexOf(Object o)
-     */
-    public int indexOf(boolean o) {
-        return this.indexOfPrimitive(o);
     }
 
     /**
@@ -441,32 +403,6 @@ public class BooleanArrayList extends AbstractBooleanList
             }
         }
         return -1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index {@code i} such that
-     * {@code Objects.equals(o, get(i))},
-     * or -1 if there is no such index.
-     */
-    @Override
-    public int lastIndexOf(Object o) {
-        return lastIndexOfRange(o, 0, size);
-    }
-
-    /**
-     * Primitive replacement of {@code BooleanArrayList.lastIndexOf(Object o)}
-     *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @see BooleanArrayList#lastIndexOf(Object o)
-     */
-    public int lastIndexOf(boolean o) {
-        return this.lastIndexOfPrimitive(o);
     }
 
     /**
@@ -642,7 +578,8 @@ public class BooleanArrayList extends AbstractBooleanList
      * @param a an array of {@link boolean} objects.
      * @return an array of {@link boolean} objects.
      */
-    public boolean[] toArray(boolean[] a) {
+    @Override
+    public final boolean[] toArray(boolean[] a) {
         return this.toArrayPrimitive(a);
     }
 
@@ -671,7 +608,7 @@ public class BooleanArrayList extends AbstractBooleanList
         }
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size) {
-            a[size] = true;
+            a[size] = Primitive.BOOLEAN_DEFAULT;
         }
         return a;
     }
@@ -901,40 +838,22 @@ public class BooleanArrayList extends AbstractBooleanList
         return hashCode;
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present.  If the list does not contain the element, it is
-     * unchanged.  More formally, removes the element with the lowest index
-     * {@code i} such that
-     * {@code Objects.equals(o, get(i))}
-     * (if such an element exists).  Returns {@code true} if this list
-     * contained the specified element (or equivalently, if this list
-     * changed as a result of the call).
-     */
-    @Override
-    public boolean remove(Object o) {
-        if (o == null) {
-            return false;
-        }
-        if (!(o instanceof Boolean)) {
-            return false;
-        }
-        return this.removeByContentPrimitive((Boolean) o);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Primitive replacement of {@code BooleanArrayList.remove(Object o)}
-     *
-     * @see BooleanArrayList#remove(Object o)
-     */
-    @Override
-    public boolean removeByContent(boolean o) {
-        return this.removeByContentPrimitive(o);
-    }
+//    /**
+//     * {@inheritDoc}
+//     * <p>
+//     * Removes the first occurrence of the specified element from this list,
+//     * if it is present.  If the list does not contain the element, it is
+//     * unchanged.  More formally, removes the element with the lowest index
+//     * {@code i} such that
+//     * {@code Objects.equals(o, get(i))}
+//     * (if such an element exists).  Returns {@code true} if this list
+//     * contained the specified element (or equivalently, if this list
+//     * changed as a result of the call).
+//     */
+//    @Override
+//    public final boolean remove(Object o) {
+//        return BooleanList.super.remove(o);
+//    }
 
     /**
      * {@inheritDoc}
@@ -974,7 +893,7 @@ public class BooleanArrayList extends AbstractBooleanList
         if ((newSize = size - 1) > i) {
             System.arraycopy(es, i + 1, es, i, newSize - i);
         }
-        es[size = newSize] = true;
+        es[size = newSize] = Primitive.BOOLEAN_DEFAULT;
     }
 
     /**
@@ -988,7 +907,7 @@ public class BooleanArrayList extends AbstractBooleanList
         modCount++;
         final boolean[] es = elementData;
         for (int to = size, i = size = 0; i < to; i++) {
-            es[i] = true;
+            es[i] = Primitive.BOOLEAN_DEFAULT;
         }
     }
 
@@ -1006,64 +925,56 @@ public class BooleanArrayList extends AbstractBooleanList
     @Override
     public boolean addAll(Collection<? extends Boolean> c) {
         if (c instanceof BooleanArrayList) {
-            return this.addAll((BooleanArrayList) c);
-        }
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        boolean[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            BooleanArrayList cBooleanArrayList = (BooleanArrayList) c;
+            final boolean[] a = cBooleanArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            boolean[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof BooleanCollection) {
+            BooleanCollection cBooleanCollection = (BooleanCollection) c;
+            final boolean[] a = cBooleanCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            boolean[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
+            System.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            boolean[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        BooleanArrayList.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
+            BooleanArrayList.arraycopy(a, 0, elementData, s, numNew);
+            size = s + numNew;
+            return true;
+        }
     }
 
-    /**
-     * Appends all of the elements in the specified BooleanArrayList to the end of
-     * this list, in the order that they are returned by the
-     * specified BooleanArrayList's Iterator.  The behavior of this operation is
-     * undefined if the specified BooleanArrayList is modified while the operation
-     * is in progress.  (This implies that the behavior of this call is
-     * undefined if the specified BooleanArrayList is this list, and this
-     * list is nonempty.)
-     *
-     * @param c BooleanArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(BooleanArrayList c) {
-        final boolean[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        boolean[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-        System.arraycopy(a, 0, elementData, s, numNew);
-        size = s + numNew;
-        return true;
-    }
 
     /**
      * Appends all of the elements in the specified boolean[] to the end of
@@ -1104,81 +1015,77 @@ public class BooleanArrayList extends AbstractBooleanList
      */
     @Override
     public boolean addAll(int index, Collection<? extends Boolean> c) {
+        rangeCheckForAdd(index);
+
         if (c instanceof BooleanArrayList) {
-            return this.addAll(index, (BooleanArrayList) c);
-        }
-        rangeCheckForAdd(index);
+            BooleanArrayList cBooleanArrayList = (BooleanArrayList) c;
+            final boolean[] a = cBooleanArrayList.getElementData();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            boolean[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
-        }
-        boolean[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else if (c instanceof BooleanCollection) {
+            BooleanCollection cBooleanCollection = (BooleanCollection) c;
+            final boolean[] a = cBooleanCollection.toArrayPrimitive();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            boolean[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        BooleanArrayList.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
-    }
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            System.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
+        } else {
+            Object[] a = c.toArray();
+            modCount++;
+            int numNew = a.length;
+            if (numNew == 0) {
+                return false;
+            }
+            boolean[] elementData;
+            final int s;
+            if (numNew > (elementData = this.elementData).length - (s = size)) {
+                elementData = grow(s + numNew);
+            }
 
-    /**
-     * Inserts all of the elements in the specified BooleanArrayList into this
-     * list, starting at the specified position.  Shifts the element
-     * currently at that position (if any) and any subsequent elements to
-     * the right (increases their indices).  The new elements will appear
-     * in the list in the order that they are returned by the
-     * specified collection's iterator.
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     BooleanArrayList containing elements to be added to this list
-     * @return {@code true} if this list changed as a result of the call
-     * @throws java.lang.UnsupportedOperationException if the {@code addAll} operation
-     *                                                 is not supported by this list
-     * @throws java.lang.ClassCastException            if the class of an element of the specified
-     *                                                 collection prevents it from being added to this list
-     * @throws java.lang.NullPointerException          if the specified collection contains one
-     *                                                 or more null elements and this list does not permit null
-     *                                                 elements, or if the specified collection is null
-     * @throws java.lang.IllegalArgumentException      if some property of an element of the
-     *                                                 specified collection prevents it from being added to this list
-     * @throws java.lang.IndexOutOfBoundsException     if the index is out of range
-     *                                                 ({@code index < 0 || index > size()})
-     */
-    public boolean addAll(int index, BooleanArrayList c) {
-        rangeCheckForAdd(index);
-        final boolean[] a = c.getElementData();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0) {
-            return false;
+            int numMoved = s - index;
+            if (numMoved > 0) {
+                System.arraycopy(elementData, index,
+                        elementData, index + numNew,
+                        numMoved);
+            }
+            BooleanArrayList.arraycopy(a, 0, elementData, index, numNew);
+            size = s + numNew;
+            return true;
         }
-        boolean[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size)) {
-            elementData = grow(s + numNew);
-        }
-
-        int numMoved = s - index;
-        if (numMoved > 0) {
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        }
-        System.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
     }
 
     /**
@@ -1239,7 +1146,7 @@ public class BooleanArrayList extends AbstractBooleanList
     public void shiftTailOverGap(boolean[] es, int lo, int hi) {
         System.arraycopy(es, hi, es, lo, size - hi);
         for (int to = size, i = (size -= hi - lo); i < to; i++) {
-            es[i] = true;
+            es[i] = Primitive.BOOLEAN_DEFAULT;
         }
     }
 
@@ -1315,35 +1222,69 @@ public class BooleanArrayList extends AbstractBooleanList
     public boolean batchRemove(Collection<?> c, boolean complement,
                                final int from, final int end) {
         Objects.requireNonNull(c);
-        final boolean[] es = elementData;
-        int r;
-        // Optimize for initial run of survivors
-        for (r = from; ; r++) {
-            if (r == end) {
-                return false;
-            }
-            if (c.contains(es[r]) != complement) {
-                break;
-            }
-        }
-        int w = r++;
-        try {
-            for (boolean e; r < end; r++) {
-                if (c.contains(e = es[r]) == complement) {
-                    es[w++] = e;
+
+        if (c instanceof BooleanCollection) {
+            BooleanCollection cBooleanCollection = (BooleanCollection) c;
+            final boolean[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (cBooleanCollection.containsPrimitive(es[r]) != complement) {
+                    break;
                 }
             }
-        } catch (Throwable ex) {
-            // Preserve behavioral compatibility with AbstractCollection,
-            // even if c.contains() throws.
-            System.arraycopy(es, r, es, w, end - r);
-            w += end - r;
-            throw ex;
-        } finally {
-            modCount += end - w;
-            shiftTailOverGap(es, w, end);
+            int w = r++;
+            try {
+                for (boolean e; r < end; r++) {
+                    if (cBooleanCollection.containsPrimitive(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
+        } else {
+            final boolean[] es = elementData;
+            int r;
+            // Optimize for initial run of survivors
+            for (r = from; ; r++) {
+                if (r == end) {
+                    return false;
+                }
+                if (c.contains(es[r]) != complement) {
+                    break;
+                }
+            }
+            int w = r++;
+            try {
+                for (boolean e; r < end; r++) {
+                    if (c.contains(e = es[r]) == complement) {
+                        es[w++] = e;
+                    }
+                }
+            } catch (Throwable ex) {
+                // Preserve behavioral compatibility with AbstractCollection,
+                // even if c.contains() throws.
+                System.arraycopy(es, r, es, w, end - r);
+                w += end - r;
+                throw ex;
+            } finally {
+                modCount += end - w;
+                shiftTailOverGap(es, w, end);
+            }
+            return true;
         }
-        return true;
     }
 
     /**
@@ -1789,6 +1730,11 @@ public class BooleanArrayList extends AbstractBooleanList
         }
 
         @Override
+        public boolean[] toArray(boolean[] a) {
+            return this.toArrayPrimitive(a);
+        }
+
+        @Override
         public boolean[] toArrayPrimitive(boolean[] a) {
             checkForComodification();
             if (a.length < size) {
@@ -1796,7 +1742,7 @@ public class BooleanArrayList extends AbstractBooleanList
             }
             System.arraycopy(root.elementData, offset, a, 0, size);
             if (a.length > size) {
-                a[size] = true;
+                a[size] = Primitive.BOOLEAN_DEFAULT;
             }
             return a;
         }
@@ -1824,32 +1770,10 @@ public class BooleanArrayList extends AbstractBooleanList
         }
 
         @Override
-        public int indexOf(Object o) {
-            int index = root.indexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int indexOf(boolean o) {
-            return this.indexOfPrimitive(o);
-        }
-
-        @Override
         public int indexOfPrimitive(boolean o) {
             int index = root.indexOfRangePrimitive(o, offset, offset + size);
             checkForComodification();
             return index >= 0 ? index - offset : -1;
-        }
-
-        @Override
-        public int lastIndexOf(Object o) {
-            int index = root.lastIndexOfRange(o, offset, offset + size);
-            checkForComodification();
-            return index >= 0 ? index - offset : -1;
-        }
-
-        public int lastIndexOf(boolean o) {
-            return this.lastIndexOfPrimitive(o);
         }
 
         @Override
@@ -1860,15 +1784,9 @@ public class BooleanArrayList extends AbstractBooleanList
         }
 
         @Override
-        public boolean contains(boolean o) {
-            return this.containsPrimitive(o);
-        }
-
-        @Override
         public boolean containsPrimitive(boolean o) {
             return indexOfPrimitive(o) >= 0;
         }
-
 
         @Override
         public BooleanIterator iterator() {

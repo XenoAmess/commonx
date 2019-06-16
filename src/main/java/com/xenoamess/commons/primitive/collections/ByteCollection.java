@@ -310,6 +310,57 @@ public interface ByteCollection extends Collection<Byte>, ByteIterable, Primitiv
      */
     byte[] toArrayPrimitive();
 
+    /**
+     * Returns an array containing all of the elements in this byte collection;
+     * the runtime type of the returned array is that of the specified array.
+     * If the byte collection fits in the specified array, it is returned therein.
+     * Otherwise, a new array is allocated with the runtime type of the
+     * specified array and the size of this byte collection.
+     *
+     * <p>If this collection fits in the specified array with room to spare
+     * (i.e., the array has more elements than this collection), the element
+     * in the array immediately following the end of the collection is set to
+     * {@code null}.  (This is useful in determining the length of this
+     * collection <i>only</i> if the caller knows that this collection does
+     * not contain any {@code null} elements.)
+     *
+     * <p>If this byte collection makes any guarantees as to what order its elements
+     * are returned by its iterator, this method must return the elements in
+     * the same order.
+     *
+     * @param a the array into which the elements of this collection are to be
+     *          stored, if it is big enough; otherwise, a new array of the same
+     *          runtime type is allocated for this purpose.
+     * @return an array containing all of the elements in this collection
+     * @throws ArrayStoreException  if the runtime type of any element in this
+     *                              collection is not assignable to the {@linkplain Class#getComponentType
+     *                              runtime component type} of the specified array
+     * @throws NullPointerException if the specified array is null
+     * @apiNote This method acts as a bridge between array-based and collection-based APIs.
+     * It allows an existing array to be reused under certain circumstances.
+     * Use {@link #toArrayPrimitive()} to create an array whose runtime type is {@code byte[]},
+     * or use {@link #toArray(IntFunction)} to control the runtime type of
+     * the array.
+     *
+     * <p>Suppose {@code x} is a byte collection.
+     * The following code can be used to dump the collection into a previously
+     * allocated {@code byte} array:
+     *
+     * <pre>
+     *     String[] y = new String[SIZE];
+     *     ...
+     *     y = x.toArray(y);</pre>
+     *
+     * <p>The return value is reassigned to the variable {@code y}, because a
+     * new array will be allocated and returned if the collection {@code x} has
+     * too many elements to fit into the existing array {@code y}.
+     *
+     * <p>Note that {@code toArray(new Object[0])} is identical in function to
+     * {@code toArray()}.
+     */
+    default byte[] toArray(byte[] a) {
+        return toArrayPrimitive(a);
+    }
 
     /**
      * Returns an array containing all of the elements in this byte collection;

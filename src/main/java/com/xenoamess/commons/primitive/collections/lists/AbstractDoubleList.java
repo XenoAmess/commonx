@@ -86,6 +86,32 @@ public abstract class AbstractDoubleList extends AbstractList<Double> implements
     /**
      * {@inheritDoc}
      *
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws ClassCastException            {@inheritDoc}
+     * @throws NullPointerException          {@inheritDoc}
+     * @implSpec This implementation iterates over the collection looking for the
+     * specified element.  If it finds the element, it removes the element
+     * from the collection using the iterator's remove method.
+     *
+     * <p>Note that this implementation throws an
+     * {@code UnsupportedOperationException} if the iterator returned by this
+     * collection's iterator method does not implement the {@code remove}
+     * method and this collection contains the specified object.
+     */
+    @Override
+    public final boolean remove(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (!(o instanceof Double)) {
+            return false;
+        }
+        return this.removeByContentPrimitive((Double) o);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */

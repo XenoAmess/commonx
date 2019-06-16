@@ -86,12 +86,38 @@ public abstract class AbstractFloatList extends AbstractList<Float> implements A
     /**
      * {@inheritDoc}
      *
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws ClassCastException            {@inheritDoc}
+     * @throws NullPointerException          {@inheritDoc}
+     * @implSpec This implementation iterates over the collection looking for the
+     * specified element.  If it finds the element, it removes the element
+     * from the collection using the iterator's remove method.
+     *
+     * <p>Note that this implementation throws an
+     * {@code UnsupportedOperationException} if the iterator returned by this
+     * collection's iterator method does not implement the {@code remove}
+     * method and this collection contains the specified object.
+     */
+    @Override
+    public final boolean remove(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (!(o instanceof Float)) {
+            return false;
+        }
+        return this.removeByContentPrimitive((Float) o);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @implSpec This implementation always throws an
      * {@code UnsupportedOperationException}.
      */
     @Override
     public final Float remove(int index) {
-        return this.removeByIndexPrimitive(index);
+        return this.removeByIndex(index);
     }
 
     /**
@@ -102,6 +128,17 @@ public abstract class AbstractFloatList extends AbstractList<Float> implements A
      */
     @Override
     public final boolean contains(Object o) {
+        return FloatList.super.contains(o);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @implSpec This implementation iterates over the elements in the collection,
+     * checking each element in turn for equality with the specified element.
+     */
+    @Override
+    public final boolean contains(float o) {
         return FloatList.super.contains(o);
     }
 
@@ -267,6 +304,17 @@ public abstract class AbstractFloatList extends AbstractList<Float> implements A
      *
      * @see #remove(int index)
      */
+    public final Float removeByIndex(int index) {
+        return this.removeByIndexPrimitive(index);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Primitive replacement of remove(int index)
+     *
+     * @see #remove(int index)
+     */
     @Override
     public float removeByIndexPrimitive(int index) {
         throw new UnsupportedOperationException();
@@ -274,6 +322,40 @@ public abstract class AbstractFloatList extends AbstractList<Float> implements A
 
 
     // Search Operations
+
+    /**
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     *
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @throws ClassCastException   if the type of the specified element
+     *                              is incompatible with this list
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException if the specified element is null and this
+     *                              list does not permit null elements
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     */
+    @Override
+    public final int indexOf(Object o) {
+        return FloatList.super.indexOf(o);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Primitive replacement of indexOf(Object o)
+     *
+     * @see #indexOf(Object o)
+     */
+    @Override
+    public final int indexOf(float o) {
+        return FloatList.super.indexOf(o);
+    }
 
     /**
      * {@inheritDoc}
@@ -291,6 +373,34 @@ public abstract class AbstractFloatList extends AbstractList<Float> implements A
             }
         }
         return -1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the last occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the highest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    @Override
+    public final int lastIndexOf(Object o) {
+        return FloatList.super.lastIndexOf(o);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Returns the index of the last occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the highest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     */
+    @Override
+    public final int lastIndexOf(float o) {
+        return FloatList.super.lastIndexOf(o);
     }
 
     /**
