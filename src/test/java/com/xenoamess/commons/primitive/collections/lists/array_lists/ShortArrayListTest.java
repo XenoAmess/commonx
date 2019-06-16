@@ -28,7 +28,7 @@ public class ShortArrayListTest {
         ArrayList<Short> a2 = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
-            short l = ((short) random.nextInt());
+            short l = ((short)random.nextInt());
             a1.add(l);
             a2.add(l);
         }
@@ -61,7 +61,7 @@ public class ShortArrayListTest {
         Random random = new Random();
         ShortArrayList data = new ShortArrayList();
         for (int i = 0; i < length; i++) {
-            short l = ((short) random.nextInt());
+            short l = ((short)random.nextInt());
             data.addPrimitive(l);
         }
 

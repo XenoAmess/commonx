@@ -611,12 +611,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      */
     @Override
     default boolean removeFirstOccurrence(Object o) {
@@ -636,12 +632,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @see #removeFirstOccurrence(Object o)
      */
     default boolean removeFirstOccurrence(long o) {
@@ -655,12 +647,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @see #removeFirstOccurrence(Object o)
      */
     boolean removeFirstOccurrencePrimitive(long o);
@@ -677,12 +665,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions
-     *                              ">optional</a>)
      */
     @Override
     default boolean removeLastOccurrence(Object o) {
@@ -702,12 +686,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions
-     *                              ">optional</a>)
      * @see #removeLastOccurrencePrimitive(long o)
      */
     default boolean removeLastOccurrence(long o) {
@@ -721,12 +701,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions
-     *                              ">optional</a>)
      * @see #removeLastOccurrencePrimitive(long o)
      */
     boolean removeLastOccurrencePrimitive(long o);
@@ -976,12 +952,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if an element was removed as a result of this call
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      */
     @Override
     default boolean remove(Object o) {
@@ -997,12 +969,8 @@ public interface LongDeque extends Deque<Long>, LongQueue, Primitive {
      * @return {@code true} if this deque contains the specified element
      * @throws ClassCastException   if the class of the specified element
      *                              is incompatible with this deque
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
      *                              deque does not permit null elements
-     *                              (<a href="{@docRoot}/java.base/java/util/Collection
-     *                              .html#optional-restrictions">optional</a>)
      */
     @Override
     default boolean contains(Object o) {

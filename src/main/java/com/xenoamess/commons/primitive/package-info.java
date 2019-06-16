@@ -27,12 +27,13 @@
  * These classes are aimed to run far faster than normal classes from jdk,
  * while be able to work with them.
  * <p>
- * For example, DoubleArrayList is an AbstractList<Double> and List<Double>, but in core it is primitive implement,
+ * For example, DoubleArrayList is an AbstractList&lt;Double&gt; and List&lt;Double&gt;, but in core it is primitive
+ * implement,
  * and provides primitive method choice, and is very fast.
  * <p>
  * The basic usage of such classes is:
  * 1. when you want to use a method that accept or return generic, use methodname + Primitive instead.
- * for example, add -> addPrimitive,set -> setPrimitive
+ * for example, add -&gt; addPrimitive, set -&gt; setPrimitive
  * 2. do not use foreach, use iterator and nextPrimitive instead.
  * <p>
  * Most classes in this folders are reformed from java.util, and thus follows

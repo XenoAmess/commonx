@@ -28,7 +28,7 @@ public class ByteArrayListTest {
         ArrayList<Byte> a2 = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
-            byte l = ((byte) random.nextInt());
+            byte l = ((byte)random.nextInt());
             a1.add(l);
             a2.add(l);
         }
@@ -61,7 +61,7 @@ public class ByteArrayListTest {
         Random random = new Random();
         ByteArrayList data = new ByteArrayList();
         for (int i = 0; i < length; i++) {
-            byte l = ((byte) random.nextInt());
+            byte l = ((byte)random.nextInt());
             data.addPrimitive(l);
         }
 
