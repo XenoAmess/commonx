@@ -61,7 +61,7 @@ import java.util.function.UnaryOperator;
  * The {@code List} interface provides four methods for positional (indexed)
  * access to list elements.  Lists (like Java arrays) are zero based.  Note
  * that these operations may execute in time proportional to the index value
- * for some implementations (the {@code LinkedList} class, for
+ * for some implementations (the {@code DoubleLinkedList} class, for
  * example). Thus, iterating over the elements in a list is typically
  * preferable to indexing through it if the caller does not know the
  * implementation.
@@ -142,7 +142,7 @@ import java.util.function.UnaryOperator;
  * @see Collections#nCopies(int, Object)
  * @see Collections#EMPTY_LIST
  * @see AbstractList
- * @see AbstractSequentialList
+ * @see AbstractDoubleSequentialList
  * @see List
  * @since 1.2
  */
