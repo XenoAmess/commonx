@@ -190,6 +190,7 @@ public interface AbstractLongCollection extends LongCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default long[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         long[] r = new long[size()];

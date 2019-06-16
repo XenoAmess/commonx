@@ -171,7 +171,14 @@ public class ByteArrayList extends AbstractByteList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public ByteArrayList(Collection<? extends Byte> c) {
-        this(ArrayUtils.toPrimitive((Byte[]) c.toArray()));
+        this.size = c.size();
+        if (this.size != 0) {
+            this.elementData = new byte[this.size];
+            this.addAll(c);
+        } else {
+            // replace with empty array.
+            this.elementData = EMPTY_ELEMENTDATA;
+        }
     }
 
     /**

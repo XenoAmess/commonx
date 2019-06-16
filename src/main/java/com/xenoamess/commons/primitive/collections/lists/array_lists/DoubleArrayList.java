@@ -171,7 +171,14 @@ public class DoubleArrayList extends AbstractDoubleList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public DoubleArrayList(Collection<? extends Double> c) {
-        this(ArrayUtils.toPrimitive((Double[]) c.toArray()));
+        this.size = c.size();
+        if (this.size != 0) {
+            this.elementData = new double[this.size];
+            this.addAll(c);
+        } else {
+            // replace with empty array.
+            this.elementData = EMPTY_ELEMENTDATA;
+        }
     }
 
     /**

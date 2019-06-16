@@ -171,7 +171,14 @@ public class CharArrayList extends AbstractCharList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public CharArrayList(Collection<? extends Character> c) {
-        this(ArrayUtils.toPrimitive((Character[]) c.toArray()));
+        this.size = c.size();
+        if (this.size != 0) {
+            this.elementData = new char[this.size];
+            this.addAll(c);
+        } else {
+            // replace with empty array.
+            this.elementData = EMPTY_ELEMENTDATA;
+        }
     }
 
     /**

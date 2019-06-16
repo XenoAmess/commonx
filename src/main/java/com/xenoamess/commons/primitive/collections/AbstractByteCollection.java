@@ -190,6 +190,7 @@ public interface AbstractByteCollection extends ByteCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default byte[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         byte[] r = new byte[size()];

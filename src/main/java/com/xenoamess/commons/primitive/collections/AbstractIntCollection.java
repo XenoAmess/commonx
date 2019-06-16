@@ -190,6 +190,7 @@ public interface AbstractIntCollection extends IntCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default int[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         int[] r = new int[size()];

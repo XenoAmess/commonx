@@ -190,6 +190,7 @@ public interface AbstractBooleanCollection extends BooleanCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default boolean[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         boolean[] r = new boolean[size()];

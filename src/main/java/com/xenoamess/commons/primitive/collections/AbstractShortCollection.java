@@ -190,6 +190,7 @@ public interface AbstractShortCollection extends ShortCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default short[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         short[] r = new short[size()];

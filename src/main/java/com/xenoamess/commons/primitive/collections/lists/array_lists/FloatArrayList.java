@@ -171,7 +171,14 @@ public class FloatArrayList extends AbstractFloatList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public FloatArrayList(Collection<? extends Float> c) {
-        this(ArrayUtils.toPrimitive((Float[]) c.toArray()));
+        this.size = c.size();
+        if (this.size != 0) {
+            this.elementData = new float[this.size];
+            this.addAll(c);
+        } else {
+            // replace with empty array.
+            this.elementData = EMPTY_ELEMENTDATA;
+        }
     }
 
     /**

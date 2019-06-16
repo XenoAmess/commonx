@@ -190,6 +190,7 @@ public interface AbstractFloatCollection extends FloatCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default float[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         float[] r = new float[size()];

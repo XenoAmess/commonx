@@ -190,6 +190,7 @@ public interface AbstractDoubleCollection extends DoubleCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default double[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         double[] r = new double[size()];

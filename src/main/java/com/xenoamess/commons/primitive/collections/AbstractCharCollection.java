@@ -190,6 +190,7 @@ public interface AbstractCharCollection extends CharCollection,
      * return list.toArray();
      * }</pre>
      */
+    @Override
     default char[] toArrayPrimitive() {
         // Estimate size of array; be prepared to see more or fewer elements
         char[] r = new char[size()];
