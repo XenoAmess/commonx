@@ -171,8 +171,7 @@ public class IntArrayList extends AbstractIntList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public IntArrayList(Collection<? extends Integer> c) {
-        this.size = c.size();
-        if (this.size != 0) {
+        if (c.size() != 0) {
             this.elementData = new int[this.size];
             this.addAll(c);
         } else {

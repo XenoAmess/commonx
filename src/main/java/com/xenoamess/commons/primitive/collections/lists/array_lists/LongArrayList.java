@@ -171,8 +171,7 @@ public class LongArrayList extends AbstractLongList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public LongArrayList(Collection<? extends Long> c) {
-        this.size = c.size();
-        if (this.size != 0) {
+        if (c.size() != 0) {
             this.elementData = new long[this.size];
             this.addAll(c);
         } else {

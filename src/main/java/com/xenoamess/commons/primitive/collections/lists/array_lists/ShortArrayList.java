@@ -171,8 +171,7 @@ public class ShortArrayList extends AbstractShortList
      * @throws java.lang.NullPointerException if the specified collection is null
      */
     public ShortArrayList(Collection<? extends Short> c) {
-        this.size = c.size();
-        if (this.size != 0) {
+        if (c.size() != 0) {
             this.elementData = new short[this.size];
             this.addAll(c);
         } else {
