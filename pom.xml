@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.8.3</version>
+    <version>0.8.4-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for common use.
@@ -249,12 +249,12 @@
                             <goal>preprocess-test-sources</goal>
                         </goals>
                         <configuration>
-                            <testSourceDirectory>
+                            <sourceDirectory>
                                 ${basedir}/src/test/java-templates
-                            </testSourceDirectory>
-                            <testOutputDirectory>
+                            </sourceDirectory>
+                            <outputDirectory>
                                 ${project.build.directory}/generated-test-sources/src/test/java
-                            </testOutputDirectory>
+                            </outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
