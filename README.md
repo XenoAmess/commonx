@@ -1,6 +1,7 @@
 # commonx
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.xenoamess/commonx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.xenoamess/commonx)
+[![Build Status](https://travis-ci.org/XenoAmess/commonx.svg?branch=master)](https://travis-ci.org/XenoAmess/commonx)
 
 Commonx, a package of Java utility classes for the classes that are in java's hierarchy, or are considered to be so standard as to justify existence in java.
 
