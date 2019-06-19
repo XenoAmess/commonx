@@ -22,7 +22,10 @@
  * SOFTWARE.
  */
 
-package com.xenoamess.commons;
+package com.xenoamess.commons.version;
+
+import com.xenoamess.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,16 +53,16 @@ public class Version implements Comparable<Version> {
     /**
      * <p>Constructor for Version.</p>
      *
-     * @param versionString a {@link java.lang.String} object.
+     * @param versionString a {@link String} object.
      */
     public Version(String versionString) {
-        this.versionString = versionString;
+        if (!StringUtils.isBlank(versionString)) {
+            this.versionString = versionString;
+        } else {
+            this.versionString = VERSION_MISSING;
+        }
     }
 
-    /**
-     * current version of this component.
-     */
-    public static final String VERSION = loadCurrentVersion();
     /**
      * Constant <code>VERSION_MISSING="VersionMissing"</code>
      */
@@ -68,8 +71,8 @@ public class Version implements Comparable<Version> {
     /**
      * <p>compareVersions.</p>
      *
-     * @param versionString1 a {@link java.lang.String} object.
-     * @param versionString2 a {@link java.lang.String} object.
+     * @param versionString1 a {@link String} object.
+     * @param versionString2 a {@link String} object.
      * @return a int.
      */
     public static int compareVersions(String versionString1, String versionString2) {
@@ -114,10 +117,10 @@ public class Version implements Comparable<Version> {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
+        if (o == null) {
+            return false;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Version)) {
             return false;
         }
         Version version = (Version) o;
@@ -132,14 +135,14 @@ public class Version implements Comparable<Version> {
         return Objects.hash(versionString);
     }
 
-    private static String loadCurrentVersion() {
+    public static Version loadPackageVersion(Class classObject) {
         String res;
-        res = Version.loadFile("/VERSION/" + Version.class.getPackage().getName() + ".VERSION");
-        if ("".equals(res)) {
+        res = FileUtils.loadFile(classObject, "/VERSION/" + classObject.getPackage().getName() + ".VERSION");
+        if (StringUtils.isBlank(res)) {
             res = VERSION_MISSING;
-            System.err.println("version missing!");
+            System.err.println("version missing for package " + classObject.getPackage().getName() + "!");
         }
-        return res;
+        return new Version(res);
     }
 
     /**
@@ -157,8 +160,8 @@ public class Version implements Comparable<Version> {
     /**
      * <p>loadFile.</p>
      *
-     * @param resourceFilePath a {@link java.lang.String} object.
-     * @return a {@link java.lang.String} object.
+     * @param resourceFilePath a {@link String} object.
+     * @return a {@link String} object.
      */
     @SuppressWarnings("Duplicates")
     public static String loadFile(String resourceFilePath) {
@@ -179,7 +182,7 @@ public class Version implements Comparable<Version> {
             }
             res = sb.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException(resourceFilePath, e);
         }
         return res;
     }
