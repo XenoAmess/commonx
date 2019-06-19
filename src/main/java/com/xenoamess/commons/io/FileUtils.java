@@ -308,9 +308,8 @@ public class FileUtils {
             throw new IllegalArgumentException("FileUtil.loadFile(File file) fails:" + file);
         }
         String res;
-        Path path = file.toPath();
-        try {
-            res = Files.readString(path);
+        try (FileInputStream fileInputStream = new FileInputStream(file.getAbsoluteFile())) {
+            res = loadFile(fileInputStream);
         } catch (IOException e) {
             throw new IllegalArgumentException("FileUtil.loadFile(File file) fails:" + file, e);
         }
