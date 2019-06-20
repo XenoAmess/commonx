@@ -1,6 +1,7 @@
 package com.xenoamess.commons.code_generators;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 /**
@@ -103,30 +104,23 @@ public class GeneratePrimitivesFromDouble {
 //                        line = line.replaceAll("IntegerCollection", "IntCollection");
 //                        line = line.replaceAll("IntegerIterable", "IntIterable");
 //                        line = line.replaceAll("IntegerList", "IntList");
-//                        for (char chr = 'A'; chr <= 'Z'; chr++) {
-//                            line = line.replaceAll("Integer" + chr, "Int" + chr);
-//                        }
                         line = line.replaceAll("(Integer)([a-zA-Z])", "Int$2");
-                        //test
                         line = line.replaceAll("random.nextInteger\\(\\)", "(random.nextInt())");
                         break;
                     case "byte":
-                        //test
                         line = line.replaceAll("random.nextByte\\(\\)", "((byte)random.nextInt())");
                         break;
                     case "short":
-                        //test
                         line = line.replaceAll("random.nextShort\\(\\)", "((short)random.nextInt())");
                         break;
                     case "boolean":
-//                        line = line.replaceAll("] = 0;", "] = false;");
                         line = line.replaceAll("\\(boolean\\) 0[0-9]+", "false");
                         line = line.replaceAll("\\(boolean\\) [0-9]+", "true");
                         line = line.replaceAll("new boolean\\[]\\{1, 2}", "new boolean\\[]\\{false, true}");
                         line = line.replaceAll("\\(boolean\\) i", "false");
                         line = line.replaceAll("\\(boolean\\) w+ ", "false ");
                         break;
-
+                    default:
                 }
 
                 tempStream.write(line);
@@ -161,7 +155,11 @@ public class GeneratePrimitivesFromDouble {
         for (String fileName : banFiles) {
             File nowFile = new File(fileName);
             if (nowFile.exists()) {
-                nowFile.delete();
+                try {
+                    Files.delete(nowFile.toPath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
