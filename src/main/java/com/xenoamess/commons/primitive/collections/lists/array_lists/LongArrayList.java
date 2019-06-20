@@ -1303,7 +1303,7 @@ public class LongArrayList extends AbstractLongList
      * instance is emitted (int), followed by all of its elements
      * (each an {@code Object}) in the proper order.
      */
-    public void writeObject(java.io.ObjectOutputStream s)
+    private void writeObject(java.io.ObjectOutputStream s)
             throws java.io.IOException {
         // Write out element count, and any hidden stuff
         int expectedModCount = modCount;
@@ -1330,7 +1330,7 @@ public class LongArrayList extends AbstractLongList
      * @throws java.io.IOException              if an I/O error occurs
      * @throws java.lang.ClassNotFoundException if any.
      */
-    public void readObject(java.io.ObjectInputStream s)
+    private void readObject(java.io.ObjectInputStream s)
             throws java.io.IOException, ClassNotFoundException {
 
         // Read in size, and any hidden stuff

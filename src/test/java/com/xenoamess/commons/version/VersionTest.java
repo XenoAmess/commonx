@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
  * @author XenoAmess
  */
 public class VersionTest {
-    public static final int compareVersionsTest(String va, String vb) {
+    public static int compareVersionsTest(String va, String vb) {
         System.out.println("compareVersionsTest : " + va + " " + vb);
         int res = Version.compareVersions(va, vb);
         System.out.println("res : " + res);
@@ -37,7 +37,7 @@ public class VersionTest {
     }
 
     @Test
-    public final void Test() {
+    public void Test() {
         assert (compareVersionsTest("0.1.0-SNAPSHOT", "0.1.0") < 0);
         assert (compareVersionsTest("0.1.0-SNAPSHOT", "0.25.0") < 0);
         assert (compareVersionsTest("1.1.0-SNAPSHOT", "0.25.0") > 0);
