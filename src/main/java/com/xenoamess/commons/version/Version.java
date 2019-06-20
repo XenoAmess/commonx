@@ -27,10 +27,6 @@ package com.xenoamess.commons.version;
 import com.xenoamess.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -143,48 +139,6 @@ public class Version implements Comparable<Version> {
             System.err.println("version missing for package " + classObject.getPackage().getName() + "!");
         }
         return new Version(res);
-    }
-
-    /**
-     * We do have a good reason not to use FileUtil class here.
-     * Because I also use this in other projects.
-     * So.
-     *
-     * @param resourceFilePath path of the resource file
-     * @return the url returned
-     */
-    public static URL getURL(String resourceFilePath) {
-        return Version.class.getResource(resourceFilePath);
-    }
-
-    /**
-     * <p>loadFile.</p>
-     *
-     * @param resourceFilePath a {@link String} object.
-     * @return a {@link String} object.
-     */
-    @SuppressWarnings("Duplicates")
-    public static String loadFile(String resourceFilePath) {
-        String res = "";
-        try (
-                BufferedReader bufferedReader =
-                        new BufferedReader(new InputStreamReader(getURL(resourceFilePath).openStream()))
-        ) {
-            final StringBuilder sb = new StringBuilder();
-            String tmp;
-            while (true) {
-                tmp = bufferedReader.readLine();
-                if (tmp == null) {
-                    break;
-                }
-                sb.append(tmp);
-                sb.append("\n");
-            }
-            res = sb.toString();
-        } catch (IOException e) {
-            throw new IllegalArgumentException(resourceFilePath, e);
-        }
-        return res;
     }
 
     /**
