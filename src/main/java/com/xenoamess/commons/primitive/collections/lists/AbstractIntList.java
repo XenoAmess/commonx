@@ -864,7 +864,7 @@ public abstract class AbstractIntList extends AbstractList<Integer> implements A
      */
     public transient int modCount = 0;
 
-    private void rangeCheckForAdd(int index) {
+    public void rangeCheckForAdd(int index) {
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
@@ -1171,7 +1171,7 @@ public abstract class AbstractIntList extends AbstractList<Integer> implements A
             return new AbstractIntList.IntSubList(this, fromIndex, toIndex);
         }
 
-        private void rangeCheckForAdd(int index) {
+        public void rangeCheckForAdd(int index) {
             if (index < 0 || index > size) {
                 throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
             }

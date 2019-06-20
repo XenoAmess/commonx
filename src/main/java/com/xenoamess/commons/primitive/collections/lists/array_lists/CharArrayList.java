@@ -1958,7 +1958,7 @@ public class CharArrayList extends AbstractCharList
             return new CharArrayList.CharSubList(this, fromIndex, toIndex);
         }
 
-        private void rangeCheckForAdd(int index) {
+        public void rangeCheckForAdd(int index) {
             if (index < 0 || index > this.size) {
                 throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
             }

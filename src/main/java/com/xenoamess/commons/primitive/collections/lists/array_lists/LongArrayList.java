@@ -1958,7 +1958,7 @@ public class LongArrayList extends AbstractLongList
             return new LongArrayList.LongSubList(this, fromIndex, toIndex);
         }
 
-        private void rangeCheckForAdd(int index) {
+        public void rangeCheckForAdd(int index) {
             if (index < 0 || index > this.size) {
                 throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
             }

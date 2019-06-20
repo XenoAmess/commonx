@@ -1958,7 +1958,7 @@ public class BooleanArrayList extends AbstractBooleanList
             return new BooleanArrayList.BooleanSubList(this, fromIndex, toIndex);
         }
 
-        private void rangeCheckForAdd(int index) {
+        public void rangeCheckForAdd(int index) {
             if (index < 0 || index > this.size) {
                 throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
             }
