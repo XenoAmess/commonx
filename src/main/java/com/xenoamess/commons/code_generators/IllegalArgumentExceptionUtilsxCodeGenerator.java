@@ -28,7 +28,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * <p>IllegalArgumentExceptionUtilsxCodeGenerator class.</p>
@@ -44,7 +44,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
      * @param name                a {@link java.lang.String} object.
      * @param functionalInterface a {@link java.util.function.Function} object.
      */
-    public static void generateFile(String name, Function<String, String> functionalInterface) {
+    public static void generateFile(String name, UnaryOperator<String> functionalInterface) {
         String content = functionalInterface.apply(name);
         File file = new File("src/main/resources/templates/" + name + ".template");
         try {
