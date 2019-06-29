@@ -138,7 +138,7 @@ public class Version implements Comparable<Version> {
             res = VERSION_MISSING;
             System.err.println("version missing for package " + classObject.getPackage().getName() + "!");
         }
-        return new Version(res);
+        return new Version(res.trim());
     }
 
     /**

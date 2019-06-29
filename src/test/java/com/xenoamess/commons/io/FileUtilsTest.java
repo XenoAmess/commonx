@@ -48,15 +48,11 @@ public class FileUtilsTest {
             System.out.println(FileUtils.createFileIfAbsent("/d/").getAbsolutePath());
             assertTrue(false);
         } catch (IllegalArgumentException e) {
-            System.out.println("should have exception here:");
-            e.printStackTrace();
         }
         try {
             System.out.println(FileUtils.createFileIfAbsent("/a/").getAbsolutePath());
             assertTrue(false);
         } catch (IllegalArgumentException e) {
-            System.out.println("should have exception here:");
-            e.printStackTrace();
         }
     }
 }
