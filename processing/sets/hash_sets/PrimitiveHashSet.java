@@ -1,4 +1,4 @@
-package com.xenoamess.commons.primitive.collections.set.hash_sets;
+package com.xenoamess.commons.primitive.collections.sets.hash_sets;
 
 import java.util.AbstractSet;
 import java.util.Set;

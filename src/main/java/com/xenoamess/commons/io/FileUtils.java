@@ -157,8 +157,7 @@ public class FileUtils {
      * @return return
      */
     public static File getFile(Class callerClassObject, String resourceFilePath) {
-        final URL resUrl = getURL(callerClassObject, resourceFilePath);
-        return new File(resUrl.getFile().replaceAll("%20", " "));
+        return new File(getURI(callerClassObject, resourceFilePath).getPath());
     }
 
     /**
@@ -168,8 +167,7 @@ public class FileUtils {
      * @return return
      */
     public static File getFile(String resourceFilePath) {
-        final URL resUrl = getURL(FileUtils.class, resourceFilePath);
-        return new File(resUrl.getFile().replaceAll("%20", " "));
+        return new File(getURI(FileUtils.class, resourceFilePath).getPath());
     }
 
     /**
