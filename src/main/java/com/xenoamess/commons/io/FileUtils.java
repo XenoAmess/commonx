@@ -171,6 +171,26 @@ public class FileUtils {
     }
 
     /**
+     * <p>detect if file exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsFile(String resourceFilePath) {
+        boolean result = true;
+        File resultString = null;
+        try {
+            resultString = getFile(resourceFilePath);
+        } catch (Exception e) {
+            result = false;
+        }
+        if (resultString == null) {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
      * <p>getURL.</p>
      *
      * @param resourceFilePath resourceFilePath
@@ -182,6 +202,26 @@ public class FileUtils {
             throw new IllegalArgumentException("FileUtil.getURL(String resourceFilePath) fail:" + resourceFilePath);
         }
         return res;
+    }
+
+    /**
+     * <p>detect if file exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsURL(Class callerClassObject, String resourceFilePath) {
+        boolean result = true;
+        URL resultString = null;
+        try {
+            resultString = getURL(callerClassObject, resourceFilePath);
+        } catch (Exception e) {
+            result = false;
+        }
+        if (resultString == null) {
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -198,6 +238,26 @@ public class FileUtils {
             throw new IllegalArgumentException("FileUtil.getURL(String resourceFilePath) fail:" + resourceFilePath, e);
         }
         return res;
+    }
+
+    /**
+     * <p>detect if file exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsURI(Class callerClassObject, String resourceFilePath) {
+        boolean result = true;
+        URI resultString = null;
+        try {
+            resultString = getURI(callerClassObject, resourceFilePath);
+        } catch (Exception e) {
+            result = false;
+        }
+        if (resultString == null) {
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -293,6 +353,26 @@ public class FileUtils {
                     , e);
         }
         return res;
+    }
+
+    /**
+     * <p>detect if file exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsFile(Class callerClassObject, String resourceFilePath) {
+        boolean result = true;
+        String resultString = null;
+        try {
+            resultString = loadFile(callerClassObject, resourceFilePath);
+        } catch (Exception e) {
+            result = false;
+        }
+        if (resultString == null) {
+            result = false;
+        }
+        return result;
     }
 
     /**
