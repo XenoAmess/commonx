@@ -59,7 +59,7 @@
         <!---->
         <!---->
         <!--home made libraries versions-->
-        <commonx.version>0.9.8</commonx.version>
+        <commonx.version>0.10.0</commonx.version>
         <multi_language.version>0.44.3</multi_language.version>
         <x8l.version>0.48.3</x8l.version>
         <SDL_GameControllerDB_Util.version>1.1.20191011
@@ -424,6 +424,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -435,7 +436,7 @@
                     </source>
                     <target>${maven.compiler.target}
                     </target>
-                    <encoding>utf8</encoding>
+                    <encoding>utf-8</encoding>
                     <meminitial>128m</meminitial>
                     <maxmem>512m</maxmem>
                     <fork>true</fork>
