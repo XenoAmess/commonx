@@ -26,33 +26,153 @@ package com.xenoamess.commons.io;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static com.xenoamess.commons.io.FileUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author XenoAmess
  */
 public class FileUtilsTest {
+    public static final String testFilePath = "/com/xenoamess/commons/io/中文路径测试/中文路径测试/中文读取测试";
+    public static final String testFileContent = "中文读取测试";
+
     @Test
     public void test() {
-        System.out.println(FileUtils.createFolderIfAbsent("/a/a/a/a").getAbsolutePath());
-        System.out.println(FileUtils.createFolderIfAbsent("/a/a/a/a").getAbsolutePath());
-        System.out.println(FileUtils.createFolderIfAbsent("/b/b/b/b/").getAbsolutePath());
-        System.out.println(FileUtils.getFile("/"));
+        System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0")
+                .getAbsolutePath());
+        System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0")
+                .getAbsolutePath());
+        System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/b/b/b/b/").getAbsolutePath());
 //        System.out.println(FileUtils.createFolderIfAbsent("/").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/c/c/c/c").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/a/a/a/a/d").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/a/a/a/a/d").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/d").getAbsolutePath());
+        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/c/c/c/c").getAbsolutePath());
+        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0/d")
+                .getAbsolutePath());
+        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0/d")
+                .getAbsolutePath());
+        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/d").getAbsolutePath());
         System.out.println(FileUtils.createFileIfAbsent("d").getAbsolutePath());
         try {
-            System.out.println(FileUtils.createFileIfAbsent("/d/").getAbsolutePath());
+            System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/d/").getAbsolutePath());
             assertTrue(false);
         } catch (IllegalArgumentException e) {
         }
         try {
-            System.out.println(FileUtils.createFileIfAbsent("/a/").getAbsolutePath());
+            System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/").getAbsolutePath());
             assertTrue(false);
         } catch (IllegalArgumentException e) {
         }
     }
+
+    @Test
+    public void loadBufferTest() {
+        ByteBuffer byteBuffer = loadBuffer(getFile(this.getClass(), testFilePath));
+        byte[] content = new byte[byteBuffer.capacity()];
+        byteBuffer.get(content, 0, byteBuffer.limit());
+        String a = new String(content);
+        assertEquals(a, testFileContent);
+    }
+
+    @Test
+    public void loadBufferTestPath() {
+        ByteBuffer byteBuffer = loadBuffer(getPath(this.getClass(), testFilePath));
+        byte[] content = new byte[byteBuffer.capacity()];
+        byteBuffer.get(content, 0, byteBuffer.limit());
+        String a = new String(content);
+        assertEquals(a, testFileContent);
+    }
+
+    @Test
+    public void getFileTest() throws IOException {
+        assertEquals(
+                new String(Files.readAllBytes(Paths.get(getFile(testFilePath).toURI()))).intern(),
+                testFileContent
+        );
+    }
+
+    @Test
+    public void getPathTest() throws IOException {
+        assertEquals(
+                new String(Files.readAllBytes(getPath(testFilePath))).intern(),
+                testFileContent
+        );
+    }
+
+    @Test
+    public void containsFileTest() {
+        assertTrue(containsFile(testFilePath));
+    }
+
+    @Test
+    public void getURLTest() {
+        getURL(testFilePath).getPath();
+    }
+
+    @Test
+    public void containsURLTest() {
+        assertTrue(containsURL(testFilePath));
+    }
+
+    @Test
+    public void getURITest() {
+        getURI(testFilePath).getPath();
+    }
+
+    @Test
+    public void containsURITest() {
+        assertTrue(containsURI(testFilePath));
+    }
+
+    @Test
+    public void createFileIfAbsentTest() {
+        final String createFileIfAbsentTestFilePath = "/com/xenoamess/commons/io" +
+                "/中文路径测试/中文路径测试/中文路径测试/createFileIfAbsentTestFile";
+        if (containsFile(createFileIfAbsentTestFilePath)) {
+            getFile(createFileIfAbsentTestFilePath).delete();
+        }
+        File result = createFileIfAbsent(createFileIfAbsentTestFilePath);
+        assertNotNull(result);
+        result.delete();
+    }
+
+    @Test
+    public void createPathIfAbsentTest() {
+        final String createFileIfAbsentTestFilePath = "/com/xenoamess/commons/io" +
+                "/中文路径测试/中文路径测试/中文路径测试/createFileIfAbsentTestFile";
+        if (containsFile(createFileIfAbsentTestFilePath)) {
+            getFile(createFileIfAbsentTestFilePath).delete();
+        }
+        Path result = createPathIfAbsent(createFileIfAbsentTestFilePath);
+        assertNotNull(result);
+        try {
+            Files.delete(result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void loadStringTest() {
+        assertEquals(loadString(testFilePath), testFileContent);
+    }
+
+
+    @Test
+    public void saveFileTest() {
+        final String createFileIfAbsentTestFilePath = "/com/xenoamess/commons/io/中文路径测试/中文路径测试/中文路径测试/saveFileTest";
+        final String content = "一些鬼知道什么意思的中文";
+        File result = createFileIfAbsent(createFileIfAbsentTestFilePath);
+        saveFile(createFileIfAbsentTestFilePath, content);
+        String loadedContent = loadString(createFileIfAbsentTestFilePath);
+        assertEquals(content, loadedContent);
+        result.delete();
+    }
+
+
 }

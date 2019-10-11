@@ -31,6 +31,7 @@ import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.Channels;
@@ -75,10 +76,19 @@ public class FileUtils {
      * @param resourceFile the resource file to read
      * @return the resource data
      */
-    public static ByteBuffer loadFileBuffer(File resourceFile) {
-        return loadFileBuffer(resourceFile, false);
+    public static ByteBuffer loadBuffer(File resourceFile) {
+        return loadBuffer(resourceFile, false);
     }
 
+    /**
+     * Reads the specified resource and returns the raw data as a ByteBuffer.
+     *
+     * @param resourcePath the resource path to read
+     * @return the resource data
+     */
+    public static ByteBuffer loadBuffer(Path resourcePath) {
+        return loadBuffer(resourcePath, false);
+    }
 
     /**
      * Reads the specified resource and returns the raw data as a ByteBuffer.
@@ -89,12 +99,29 @@ public class FileUtils {
      * @param ifUsingMemoryUtil if using MemoryUtil here
      * @return the resource data
      */
-    public static ByteBuffer loadFileBuffer(File resourceFile, boolean ifUsingMemoryUtil) {
-        boolean success;
+    public static ByteBuffer loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) {
+        if (resourceFile == null || !resourceFile.exists() || !resourceFile.isFile()) {
+            //if is not a file.
+            throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
+                    "fails:" + resourceFile +
+                    "," + ifUsingMemoryUtil);
+        }
+        return loadBuffer(resourceFile.toPath(), ifUsingMemoryUtil);
+    }
 
+    /**
+     * Reads the specified resource and returns the raw data as a ByteBuffer.
+     * if ifUsingMemoryUtil == false, then use BufferUtil.
+     * else, allocate it using MemoryUtil.
+     *
+     * @param resourcePath      the resource path to read
+     * @param ifUsingMemoryUtil if using MemoryUtil here
+     * @return the resource data
+     */
+    public static ByteBuffer loadBuffer(Path resourcePath, boolean ifUsingMemoryUtil) {
+        boolean success;
         ByteBuffer buffer = null;
-        final String absolutePath = resourceFile.getAbsolutePath();
-        Path path = Paths.get(absolutePath);
+        Path path = resourcePath;
         if (Files.isReadable(path)) {
             try (SeekableByteChannel fc = Files.newByteChannel(path)) {
                 if (ifUsingMemoryUtil) {
@@ -120,14 +147,14 @@ public class FileUtils {
 
 
         try (
-                InputStream source = new FileInputStream(resourceFile);
+                InputStream source = Files.newInputStream(resourcePath);
                 ReadableByteChannel rbc = Channels.newChannel(source)
         ) {
 
             if (ifUsingMemoryUtil) {
-                buffer = MemoryUtil.memAlloc((int) resourceFile.length() + 1);
+                buffer = MemoryUtil.memAlloc((int) Files.size(resourcePath) + 1);
             } else {
-                buffer = BufferUtils.createByteBuffer((int) resourceFile.length() + 1);
+                buffer = BufferUtils.createByteBuffer((int) Files.size(resourcePath) + 1);
             }
 
             while (true) {
@@ -144,8 +171,9 @@ public class FileUtils {
             buffer.flip();
             return buffer.slice();
         } else {
-            throw new IllegalArgumentException("FileUtil.loadFileBuffer(File resourceFile, boolean ifUsingMemoryUtil)" +
-                    " fails:" + resourceFile + "," + ifUsingMemoryUtil);
+            throw new IllegalArgumentException("FileUtils.loadFileBuffer(File resourceFile, boolean " +
+                    "ifUsingMemoryUtil)" +
+                    " fails:" + resourcePath + "," + ifUsingMemoryUtil);
         }
     }
 
@@ -157,7 +185,17 @@ public class FileUtils {
      * @return return
      */
     public static File getFile(Class callerClassObject, String resourceFilePath) {
-        return new File(getURI(callerClassObject, resourceFilePath).getPath());
+        URL url = getURL(callerClassObject, resourceFilePath);
+        String path = url.getPath();
+        try {
+            path = URLDecoder.decode(path, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException("FileUtils.getFile(String resourceFilePath) fail:" + resourceFilePath + " , url = " + url, e);
+        }
+        if (path == null) {
+            throw new IllegalArgumentException("FileUtils.getFile(String resourceFilePath) fail:" + resourceFilePath + " , url = " + url);
+        }
+        return new File(path);
     }
 
     /**
@@ -167,7 +205,60 @@ public class FileUtils {
      * @return return
      */
     public static File getFile(String resourceFilePath) {
-        return new File(getURI(FileUtils.class, resourceFilePath).getPath());
+        return getFile(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * <p>getFile.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static Path getPath(Class callerClassObject, String resourceFilePath) {
+        URI uri = getURI(callerClassObject, resourceFilePath);
+//        String path = uri.getPath();
+//        try {
+//            path = URLDecoder.decode(path, "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            throw new IllegalArgumentException("FileUtils.getFile(String resourceFilePath) fail:" + resourceFilePath
+//            + " , url = " + url, e);
+//        }
+//        if (path == null) {
+//            throw new IllegalArgumentException("FileUtils.getFile(String resourceFilePath) fail:" + resourceFilePath
+//            + " , url = " + url);
+//        }
+        return Paths.get(uri);
+    }
+
+    /**
+     * <p>getFile.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static Path getPath(String resourceFilePath) {
+        return getPath(FileUtils.class, resourceFilePath);
+    }
+
+
+    /**
+     * <p>detect if file exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsFile(Class callerClassObject, String resourceFilePath) {
+        boolean result = true;
+        File resultFile = null;
+        try {
+            resultFile = getFile(callerClassObject, resourceFilePath);
+        } catch (Exception e) {
+            result = false;
+        }
+        if (resultFile == null || !resultFile.exists() || !resultFile.isFile()) {
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -177,17 +268,37 @@ public class FileUtils {
      * @return return
      */
     public static boolean containsFile(String resourceFilePath) {
+        return containsFile(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * <p>detect if folder exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsFolder(Class callerClassObject, String resourceFilePath) {
         boolean result = true;
-        File resultString = null;
+        File resultFile = null;
         try {
-            resultString = getFile(resourceFilePath);
+            resultFile = getFile(callerClassObject, resourceFilePath);
         } catch (Exception e) {
             result = false;
         }
-        if (resultString == null) {
+        if (resultFile == null || !resultFile.exists() || !resultFile.isDirectory()) {
             result = false;
         }
         return result;
+    }
+
+    /**
+     * <p>detect if folder exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsFolder(String resourceFilePath) {
+        return containsFolder(FileUtils.class, resourceFilePath);
     }
 
     /**
@@ -199,29 +310,49 @@ public class FileUtils {
     public static URL getURL(Class callerClassObject, String resourceFilePath) {
         URL res = callerClassObject.getResource(resourceFilePath);
         if (res == null) {
-            throw new IllegalArgumentException("FileUtil.getURL(String resourceFilePath) fail:" + resourceFilePath);
+            throw new IllegalArgumentException("FileUtils.getURL(String resourceFilePath) fail:" + resourceFilePath);
         }
         return res;
     }
 
     /**
-     * <p>detect if file exist.</p>
+     * <p>getURL.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static URL getURL(String resourceFilePath) {
+        return getURL(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * <p>detect if URL exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
      */
     public static boolean containsURL(Class callerClassObject, String resourceFilePath) {
         boolean result = true;
-        URL resultString = null;
+        URL resultURL = null;
         try {
-            resultString = getURL(callerClassObject, resourceFilePath);
+            resultURL = getURL(callerClassObject, resourceFilePath);
         } catch (Exception e) {
             result = false;
         }
-        if (resultString == null) {
+        if (resultURL == null) {
             result = false;
         }
         return result;
+    }
+
+    /**
+     * <p>detect if URL exist.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static boolean containsURL(String resourceFilePath) {
+        return containsURL(FileUtils.class, resourceFilePath);
     }
 
     /**
@@ -235,7 +366,23 @@ public class FileUtils {
         try {
             res = getURL(callerClassObject, resourceFilePath).toURI();
         } catch (URISyntaxException e) {
-            throw new IllegalArgumentException("FileUtil.getURL(String resourceFilePath) fail:" + resourceFilePath, e);
+            throw new IllegalArgumentException("FileUtils.getURL(String resourceFilePath) fail:" + resourceFilePath, e);
+        }
+        return res;
+    }
+
+    /**
+     * <p>getURI.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static URI getURI(String resourceFilePath) {
+        URI res;
+        try {
+            res = getURL(resourceFilePath).toURI();
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException("FileUtils.getURL(String resourceFilePath) fail:" + resourceFilePath, e);
         }
         return res;
     }
@@ -248,111 +395,16 @@ public class FileUtils {
      */
     public static boolean containsURI(Class callerClassObject, String resourceFilePath) {
         boolean result = true;
-        URI resultString = null;
+        URI resultRUI = null;
         try {
-            resultString = getURI(callerClassObject, resourceFilePath);
+            resultRUI = getURI(callerClassObject, resourceFilePath);
         } catch (Exception e) {
             result = false;
         }
-        if (resultString == null) {
+        if (resultRUI == null) {
             result = false;
         }
         return result;
-    }
-
-    /**
-     * <p>createFileIfAbsent.</p>
-     *
-     * @param resourceFilePath resourceFilePath
-     * @return return
-     */
-    public static File createFileIfAbsent(String resourceFilePath) {
-        File file;
-        try {
-            file = getFile(resourceFilePath);
-        } catch (IllegalArgumentException e) {
-            int indexSlash = resourceFilePath.lastIndexOf('/');
-            File parentFolder = createFolderIfAbsent(resourceFilePath.substring(0, indexSlash));
-            file = new File(parentFolder.getAbsolutePath() + resourceFilePath.substring(indexSlash));
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                throw new IllegalArgumentException("FileUtil.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath, ex);
-            }
-        }
-        if (!file.isFile()) {
-            throw new IllegalArgumentException("FileUtil.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a file.");
-        }
-        return file;
-    }
-
-    /**
-     * <p>createFolderIfAbsent.</p>
-     *
-     * @param resourceFilePath resourceFilePath
-     * @return return
-     */
-    public static File createFolderIfAbsent(String resourceFilePath) {
-        File folder;
-        try {
-            folder = getFile(resourceFilePath);
-        } catch (IllegalArgumentException e) {
-            int indexSlash = resourceFilePath.lastIndexOf('/');
-            File parentFolder = createFolderIfAbsent(resourceFilePath.substring(0, indexSlash));
-            folder = new File(parentFolder.getAbsolutePath() + resourceFilePath.substring(indexSlash));
-            folder.mkdirs();
-        }
-        if (!folder.isDirectory()) {
-            throw new IllegalArgumentException("FileUtil.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a folder.");
-        }
-        return folder;
-    }
-
-    /**
-     * <p>loadFile.</p>
-     *
-     * @param inputStream inputStream
-     * @return return
-     */
-    public static String loadFile(InputStream inputStream) {
-        assert (inputStream != null);
-        String res;
-        try (
-                BufferedReader bufferedReader =
-                        new BufferedReader(new InputStreamReader(inputStream))
-        ) {
-            final StringBuilder sb = new StringBuilder();
-            String tmp;
-            while (true) {
-                tmp = bufferedReader.readLine();
-                if (tmp == null) {
-                    break;
-                }
-                sb.append(tmp);
-                sb.append("\n");
-            }
-            res = sb.toString();
-        } catch (IOException e) {
-            throw new IllegalArgumentException("FileUtil.loadFile(InputStream inputStream) fails:" + inputStream, e);
-        }
-        return res;
-    }
-
-    /**
-     * <p>loadFile.</p>
-     *
-     * @param resourceFilePath resourceFilePath
-     * @return return
-     */
-    public static String loadFile(Class callerClassObject, String resourceFilePath) {
-        String res;
-        try (InputStream inputStream = getURL(callerClassObject, resourceFilePath).openStream()) {
-            res = loadFile(inputStream);
-        } catch (IOException e) {
-            throw new IllegalArgumentException("FileUtil.loadFile(String resourceFilePath) fails:" + resourceFilePath
-                    , e);
-        }
-        return res;
     }
 
     /**
@@ -361,35 +413,262 @@ public class FileUtils {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsFile(Class callerClassObject, String resourceFilePath) {
+    public static boolean containsURI(String resourceFilePath) {
         boolean result = true;
-        String resultString = null;
+        URI resultRUI = null;
         try {
-            resultString = loadFile(callerClassObject, resourceFilePath);
+            resultRUI = getURI(resourceFilePath);
         } catch (Exception e) {
             result = false;
         }
-        if (resultString == null) {
+        if (resultRUI == null) {
             result = false;
         }
         return result;
     }
 
     /**
+     * create file if a file is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static File createFileIfAbsent(Class callerClassObject, String resourceFilePath) {
+        File file;
+        try {
+            file = getFile(callerClassObject, resourceFilePath);
+        } catch (IllegalArgumentException e) {
+            int indexSlash = resourceFilePath.lastIndexOf('/');
+            File parentFolder = createFileDirectoryIfAbsent(callerClassObject, resourceFilePath.substring(0,
+                    indexSlash));
+            file = new File(parentFolder.getAbsolutePath() + resourceFilePath.substring(indexSlash));
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath, ex);
+            }
+        }
+        if (!file.isFile()) {
+            throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a file.");
+        }
+        return file;
+    }
+
+    /**
+     * create file if a file is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static File createFileIfAbsent(String resourceFilePath) {
+        return createFileIfAbsent(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * create folder if a folder is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static File createFileDirectoryIfAbsent(Class callerClassObject, String resourceFilePath) {
+        File folder = null;
+        try {
+            folder = getFile(callerClassObject, resourceFilePath);
+        } catch (IllegalArgumentException e) {
+            int indexSlash = resourceFilePath.lastIndexOf('/');
+            String parentFolderPath = resourceFilePath.substring(0, indexSlash);
+            if (parentFolderPath.isEmpty()) {
+                folder = getFile(parentFolderPath);
+            } else {
+                File parentFolder = createFileDirectoryIfAbsent(callerClassObject, parentFolderPath);
+                folder = new File(parentFolder.getAbsolutePath() + resourceFilePath.substring(indexSlash));
+                folder.mkdirs();
+            }
+        }
+        if (!folder.isDirectory()) {
+            throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a folder.");
+        }
+        return folder;
+    }
+
+    /**
+     * create folder if a folder is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static File createFileDirectoryIfAbsent(String resourceFilePath) {
+        return createFileDirectoryIfAbsent(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * create file if a file is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static Path createPathIfAbsent(Class callerClassObject, String resourceFilePath) {
+        Path path;
+        try {
+            path = getPath(callerClassObject, resourceFilePath);
+        } catch (IllegalArgumentException e) {
+            int indexSlash = resourceFilePath.lastIndexOf('/');
+            Path parentFolder = createPathDirectoryIfAbsent(callerClassObject, resourceFilePath.substring(0,
+                    indexSlash));
+            path = parentFolder.resolve(resourceFilePath.substring(indexSlash));
+            try {
+                Files.createFile(path);
+            } catch (IOException ex) {
+                throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath, ex);
+            }
+        }
+        if (!Files.isRegularFile(path)) {
+            throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a file.");
+        }
+        return path;
+    }
+
+    /**
+     * create file if a file is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static Path createPathIfAbsent(String resourceFilePath) {
+        return createPathIfAbsent(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * create folder if a folder is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static Path createPathDirectoryIfAbsent(Class callerClassObject, String resourceFilePath) {
+        Path folder = null;
+        try {
+            folder = getPath(callerClassObject, resourceFilePath);
+        } catch (IllegalArgumentException e) {
+            int indexSlash = resourceFilePath.lastIndexOf('/');
+            String parentFolderPath = resourceFilePath.substring(0, indexSlash);
+            if (parentFolderPath.isEmpty()) {
+                folder = getPath(parentFolderPath);
+            } else {
+                Path parentFolder = createPathDirectoryIfAbsent(callerClassObject, parentFolderPath);
+                folder = parentFolder.resolve(resourceFilePath.substring(indexSlash));
+                try {
+                    Files.createDirectory(folder);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        if (!Files.isDirectory(folder)) {
+            throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a folder.");
+        }
+        return folder;
+    }
+
+    /**
+     * create folder if a folder is not exist.
+     * absolute path is strongly suggested here.
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static Path createPathDirectoryIfAbsent(String resourceFilePath) {
+        return createPathDirectoryIfAbsent(FileUtils.class, resourceFilePath);
+    }
+
+    /**
      * <p>loadFile.</p>
+     *
+     * @param inputStream inputStream
+     * @return return
+     */
+    public static String loadString(InputStream inputStream) {
+        assert (inputStream != null);
+        String res;
+        try (
+                BufferedReader bufferedReader =
+                        new BufferedReader(new InputStreamReader(inputStream))
+        ) {
+            byte[] bytes = new byte[0];
+            bytes = new byte[inputStream.available()];
+            inputStream.read(bytes);
+            res = new String(bytes).intern();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("FileUtils.loadString(InputStream inputStream) fails:" + inputStream, e);
+        }
+        return res;
+    }
+
+    /**
+     * <p>loadString.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static String loadString(Class callerClassObject, String resourceFilePath) {
+        String res;
+        try (InputStream inputStream = getURL(callerClassObject, resourceFilePath).openStream()) {
+            res = loadString(inputStream);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("FileUtils.loadString(String resourceFilePath) fails:" + resourceFilePath
+                    , e);
+        }
+        return res;
+    }
+
+    /**
+     * <p>loadString.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @return return
+     */
+    public static String loadString(String resourceFilePath) {
+        return loadString(FileUtils.class, resourceFilePath);
+    }
+
+    /**
+     * <p>loadString.</p>
      *
      * @param file file
      * @return return
      */
-    public static String loadFile(File file) {
+    public static String loadString(File file) {
         if (file == null || !file.exists() || !file.isFile()) {
-            throw new IllegalArgumentException("FileUtil.loadFile(File file) fails:" + file);
+            throw new IllegalArgumentException("FileUtils.loadString(File file) fails:" + file);
+        }
+        URI uri = file.toURI();
+        Path path = Paths.get(uri);
+        String res = loadString(path);
+        return res;
+    }
+
+    /**
+     * <p>loadString.</p>
+     *
+     * @param path path
+     * @return return
+     */
+    public static String loadString(Path path) {
+        if (!Files.isReadable(path)) {
+            throw new IllegalArgumentException("FileUtils.loadString(Path path) fails:" + path);
         }
         String res;
-        try (FileInputStream fileInputStream = new FileInputStream(file.getAbsoluteFile())) {
-            res = loadFile(fileInputStream);
+        try {
+            byte[] bytes = Files.readAllBytes(path);
+            res = new String(bytes).intern();
         } catch (IOException e) {
-            throw new IllegalArgumentException("FileUtil.loadFile(File file) fails:" + file, e);
+            throw new IllegalArgumentException("FileUtils.loadString(File file) fails:" + path, e);
         }
         return res;
     }
@@ -400,8 +679,19 @@ public class FileUtils {
      * @param resourceFilePath resourceFilePath
      * @param contentString    a {@link String} object.
      */
+    public static void saveFile(Class callerClassObject, String resourceFilePath, String contentString) {
+        File file = createFileIfAbsent(callerClassObject, resourceFilePath);
+        saveFile(file, contentString);
+    }
+
+    /**
+     * <p>saveFile.</p>
+     *
+     * @param resourceFilePath resourceFilePath
+     * @param contentString    a {@link String} object.
+     */
     public static void saveFile(String resourceFilePath, String contentString) {
-        saveFile(getFile(resourceFilePath), contentString);
+        saveFile(FileUtils.class, resourceFilePath, contentString);
     }
 
     /**
@@ -411,9 +701,9 @@ public class FileUtils {
      * @param contentString contentString
      */
     public static void saveFile(File file, String contentString) {
-        //if is not a file.
         if (file == null || !file.exists() || !file.isFile()) {
-            throw new IllegalArgumentException("FileUtil.saveFile(File file, String contentString) fails:" + file +
+            //if is not a file.
+            throw new IllegalArgumentException("FileUtils.saveFile(File file, String contentString) fails:" + file +
                     "," + contentString);
         }
         try (
@@ -421,7 +711,7 @@ public class FileUtils {
         ) {
             fileWriter.write(contentString);
         } catch (IOException e) {
-            throw new IllegalArgumentException("FileUtil.saveFile(File file, String contentString) fails:" + file +
+            throw new IllegalArgumentException("FileUtils.saveFile(File file, String contentString) fails:" + file +
                     "," + contentString, e);
         }
     }

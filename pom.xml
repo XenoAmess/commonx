@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.9.7</version>
+    <version>0.10.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for common use.
@@ -36,6 +36,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -49,19 +50,19 @@
         <eclipse-collections.version>10.0.0.M3</eclipse-collections.version>
         <guava.version>28.1-jre</guava.version>
         <jackson.version>2.10.0.pr3</jackson.version>
-        <joml.version>1.9.17</joml.version>
+        <joml.version>1.9.18</joml.version>
         <log4j.version>2.12.1</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
-        <slf4j.version>2.0.0-alpha0</slf4j.version>
+        <slf4j.version>2.0.0-alpha1</slf4j.version>
         <steamworks4j.version>1.8.0</steamworks4j.version>
         <JXInput.version>1.0.0</JXInput.version>
         <!---->
         <!---->
         <!--home made libraries versions-->
-        <commonx.version>0.9.7</commonx.version>
-        <multi_language.version>0.44.2</multi_language.version>
-        <x8l.version>0.48.2</x8l.version>
-        <SDL_GameControllerDB_Util.version>1.1.20190925
+        <commonx.version>0.9.8</commonx.version>
+        <multi_language.version>0.44.3</multi_language.version>
+        <x8l.version>0.48.3</x8l.version>
+        <SDL_GameControllerDB_Util.version>1.1.20191011
         </SDL_GameControllerDB_Util.version>
         <!---->
         <!---->
@@ -434,6 +435,7 @@
                     </source>
                     <target>${maven.compiler.target}
                     </target>
+                    <encoding>utf8</encoding>
                     <meminitial>128m</meminitial>
                     <maxmem>512m</maxmem>
                     <fork>true</fork>

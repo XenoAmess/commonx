@@ -133,7 +133,7 @@ public class Version implements Comparable<Version> {
 
     public static Version loadPackageVersion(Class classObject) {
         String res;
-        res = FileUtils.loadFile(classObject, "/VERSION/" + classObject.getPackage().getName() + ".VERSION");
+        res = FileUtils.loadString(classObject, "/VERSION/" + classObject.getPackage().getName() + ".VERSION");
         if (StringUtils.isBlank(res)) {
             res = VERSION_MISSING;
             System.err.println("version missing for package " + classObject.getPackage().getName() + "!");
