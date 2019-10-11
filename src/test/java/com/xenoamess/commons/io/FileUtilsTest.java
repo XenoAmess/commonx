@@ -144,7 +144,7 @@ public class FileUtilsTest {
     @Test
     public void createPathIfAbsentTest() {
         final String createFileIfAbsentTestFilePath = "/com/xenoamess/commons/io" +
-                "/中文路径测试/中文路径测试/中文路径测试/createFileIfAbsentTestFile";
+                "/中文路径测试/中文路径测试/中文路径测试/createPathIfAbsentTestFile";
         if (containsFile(createFileIfAbsentTestFilePath)) {
             getFile(createFileIfAbsentTestFilePath).delete();
         }
