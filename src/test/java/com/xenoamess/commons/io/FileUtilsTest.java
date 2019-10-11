@@ -139,6 +139,12 @@ public class FileUtilsTest {
         File result = createFileIfAbsent(createFileIfAbsentTestFilePath);
         assertNotNull(result);
         result.delete();
+        try {
+            Files.delete(Paths.get("/com/xenoamess/commons/io" +
+                    "/中文路径测试"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -152,6 +158,8 @@ public class FileUtilsTest {
         assertNotNull(result);
         try {
             Files.delete(result);
+            Files.delete(Paths.get("/com/xenoamess/commons/io" +
+                    "/中文路径测试"));
         } catch (IOException e) {
             e.printStackTrace();
         }
