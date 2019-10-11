@@ -527,7 +527,7 @@ public class FileUtils {
                 throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath, ex);
             }
         }
-        if (!Files.isRegularFile(path)) {
+        if (!Files.isReadable(path)) {
             throw new IllegalArgumentException("FileUtils.createFileIfAbsent(String resourceFilePath) fail:" + resourceFilePath + " exist and is not a file.");
         }
         return path;
