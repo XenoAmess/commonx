@@ -95,9 +95,9 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
      *
      * @param protocol the protocol ("{@code ftp}",
      *                 "{@code http}", "{@code nntpp}", etc.).
-     *                 * @return a {@code URLStreamHandler} for the secific protocol, or {@code
-     *                 null} if this factory cannot create a handler for the specific
-     *                 protocol
+     * @return a {@code URLStreamHandler} for the secific protocol, or {@code
+     * null} if this factory cannot create a handler for the specific
+     * protocol
      * @see URLStreamHandler
      * @see #generateSortedURLStreamHandlerFactoryList
      */
@@ -271,9 +271,6 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
      *
      * @param protocol the protocol ("{@code ftp}",
      *                 "{@code http}", "{@code nntp}", etc.).
-     * @return a {@code URLStreamHandler} for the specific protocol, or {@code
-     * null} if this factory cannot create a handler for the specific
-     * protocol
      * @see URLStreamHandler
      */
     private void refuseHandleProtocolRegister(String protocol) {
