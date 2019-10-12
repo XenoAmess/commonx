@@ -541,7 +541,7 @@ public class FileUtils {
      *
      * @param resourceFilePath resourceFilePath
      * @return return
-     * @Deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
+     * @deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
     @Deprecated
@@ -555,7 +555,7 @@ public class FileUtils {
      *
      * @param resourceFilePath resourceFilePath
      * @return return
-     * @Deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
+     * @deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
     @Deprecated
@@ -590,7 +590,7 @@ public class FileUtils {
      *
      * @param resourceFilePath resourceFilePath
      * @return return
-     * @Deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
+     * @deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
     @Deprecated
