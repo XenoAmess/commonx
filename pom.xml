@@ -50,7 +50,7 @@
         <eclipse-collections.version>10.0.0.M3</eclipse-collections.version>
         <guava.version>28.1-jre</guava.version>
         <jackson.version>2.10.0.pr3</jackson.version>
-        <joml.version>1.9.18</joml.version>
+        <joml.version>1.9.19</joml.version>
         <log4j.version>2.12.1</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
         <slf4j.version>2.0.0-alpha1</slf4j.version>
