@@ -9,6 +9,7 @@ import java.net.URLStreamHandlerFactory;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.function.BiFunction;
 
 
 /**
@@ -138,7 +139,15 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
      */
     public List<ImmutablePair<String, Double>> generateSortedURLStreamHandlerFactoryList(String protocol) {
         Map<String, Double> priorityMap = new HashMap<>(defaultPriorityMap);
-        priorityMap.putAll(this.specialPriorityMap.get(protocol));
+        this.specialPriorityMap.computeIfPresent(protocol, new BiFunction<String, Map<String, Double>, Map<String,
+                Double>>() {
+            @Override
+            public Map<String, Double> apply(String s, Map<String, Double> stringDoubleMap) {
+                priorityMap.putAll(stringDoubleMap);
+                return stringDoubleMap;
+            }
+        });
+
         List<ImmutablePair<String, Double>> result = new ArrayList<>();
         for (Map.Entry<String, Double> entry : priorityMap.entrySet()) {
             result.add(new ImmutablePair<>(entry.getKey(), entry.getValue()));
