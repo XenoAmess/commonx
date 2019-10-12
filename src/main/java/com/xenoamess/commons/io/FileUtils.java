@@ -45,8 +45,10 @@ import java.nio.file.Paths;
  * <p>FileUtil class.</p>
  *
  * @author XenoAmess
- * @version 0.143.0
+ * @deprecated This class is of low quality and is badly designed. And it only works 100% right on Windows. I do not
+ * recommend anybody use it.
  */
+@Deprecated
 public class FileUtils {
     /**
      * Don't let anyone instantiate this class.
@@ -539,7 +541,10 @@ public class FileUtils {
      *
      * @param resourceFilePath resourceFilePath
      * @return return
+     * @Deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
+     * functions in this class, so finally I decided just deprecate this whole class instead.
      */
+    @Deprecated
     public static Path createPathIfAbsent(String resourceFilePath) {
         return createPathIfAbsent(FileUtils.class, resourceFilePath);
     }
@@ -550,7 +555,10 @@ public class FileUtils {
      *
      * @param resourceFilePath resourceFilePath
      * @return return
+     * @Deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
+     * functions in this class, so finally I decided just deprecate this whole class instead.
      */
+    @Deprecated
     public static Path createPathDirectoryIfAbsent(Class callerClassObject, String resourceFilePath) {
         Path folder = null;
         try {
@@ -582,7 +590,10 @@ public class FileUtils {
      *
      * @param resourceFilePath resourceFilePath
      * @return return
+     * @Deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
+     * functions in this class, so finally I decided just deprecate this whole class instead.
      */
+    @Deprecated
     public static Path createPathDirectoryIfAbsent(String resourceFilePath) {
         return createPathDirectoryIfAbsent(FileUtils.class, resourceFilePath);
     }
