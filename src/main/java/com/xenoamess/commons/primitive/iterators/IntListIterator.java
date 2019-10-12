@@ -49,7 +49,7 @@ import java.util.ListIterator;
  * operate on the last element returned by a call to {@link #next} or
  * {@link #previous()}.
  *
- * This interface is a member of the
+ * <p>This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *

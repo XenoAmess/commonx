@@ -51,7 +51,7 @@ public final class ShortSpliterators implements Primitive {
     /**
      * Creates an empty {@code ShortSpliterator.ShortOfShort}
      *
-     * The empty spliterator reports {@link java.util.Spliterator#SIZED} and
+     * <p>The empty spliterator reports {@link java.util.Spliterator#SIZED} and
      * {@link java.util.Spliterator#SUBSIZED}.  Calls to
      * {@link java.util.Spliterator#trySplit()} always return {@code null}.
      *
@@ -70,13 +70,13 @@ public final class ShortSpliterators implements Primitive {
 //     * Creates a {@code Spliterator} covering the elements of a given array,
 //     * using a customized set of spliterator characteristics.
 //     *
-//     * This method is provided as an implementation convenience for
+//     * <p>This method is provided as an implementation convenience for
 //     * Spliterators which store portions of their elements in arrays, and need
 //     * fine control over Spliterator characteristics.  Most other situations in
 //     * which a Spliterator for an array is needed should use
 //     * {@link Arrays#spliterator(Object[])}.
 //     *
-//     * The returned spliterator always reports the characteristics
+//     * <p>The returned spliterator always reports the characteristics
 //     * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
 //     * characteristics for the spliterator to report; it is common to
 //     * additionally specify {@code IMMUTABLE} and {@code ORDERED}.
@@ -99,13 +99,13 @@ public final class ShortSpliterators implements Primitive {
 //     * Creates a {@code Spliterator} covering a range of elements of a given
 //     * array, using a customized set of spliterator characteristics.
 //     *
-//     * This method is provided as an implementation convenience for
+//     * <p>This method is provided as an implementation convenience for
 //     * Spliterators which store portions of their elements in arrays, and need
 //     * fine control over Spliterator characteristics.  Most other situations in
 //     * which a Spliterator for an array is needed should use
 //     * {@link Arrays#spliterator(Object[])}.
 //     *
-//     * The returned spliterator always reports the characteristics
+//     * <p>The returned spliterator always reports the characteristics
 //     * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
 //     * characteristics for the spliterator to report; it is common to
 //     * additionally specify {@code IMMUTABLE} and {@code ORDERED}.
@@ -134,11 +134,11 @@ public final class ShortSpliterators implements Primitive {
      * Creates a {@code ShortSpliterator.ShortOfShort} covering the elements of a given array,
      * using a customized set of spliterator characteristics.
      *
-     * This method is provided as an implementation convenience for
+     * <p>This method is provided as an implementation convenience for
      * Spliterators which store portions of their elements in arrays, and need
      * fine control over Spliterator characteristics.
      *
-     * The returned spliterator always reports the characteristics
+     * <p>The returned spliterator always reports the characteristics
      * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
      * characteristics for the spliterator to report; it is common to
      * additionally specify {@code IMMUTABLE} and {@code ORDERED}.
@@ -159,11 +159,11 @@ public final class ShortSpliterators implements Primitive {
      * Creates a {@code ShortSpliterator.ShortOfShort} covering a range of elements of a
      * given array, using a customized set of spliterator characteristics.
      *
-     * This method is provided as an implementation convenience for
+     * <p>This method is provided as an implementation convenience for
      * Spliterators which store portions of their elements in arrays, and need
      * fine control over Spliterator characteristics.
      *
-     * The returned spliterator always reports the characteristics
+     * <p>The returned spliterator always reports the characteristics
      * {@code SIZED} and {@code SUBSIZED}.  The caller may provide additional
      * characteristics for the spliterator to report.  (For example, if it is
      * known the array will not be further modified, specify {@code IMMUTABLE};
@@ -221,7 +221,7 @@ public final class ShortSpliterators implements Primitive {
      * {@link java.util.Collection#iterator()} as the source of elements, and
      * reporting its {@link java.util.Collection#size()} as its initial size.
      *
-     * The spliterator is
+     * <p>The spliterator is
      * <em><a href="Spliterator.html#binding">late-binding</a></em>, inherits
      * the <em>fail-fast</em> properties of the collection's iterator, and
      * implements {@code trySplit} to permit limited parallelism.
@@ -243,12 +243,12 @@ public final class ShortSpliterators implements Primitive {
 //     * Creates a {@code Spliterator} using a given {@code Iterator}
 //     * as the source of elements, and with a given initially reported size.
 //     *
-//     * The spliterator is not
+//     * <p>The spliterator is not
 //     * <em><a href="Spliterator.html#binding">late-binding</a></em>, inherits
 //     * the <em>fail-fast</em> properties of the iterator, and implements
 //     * {@code trySplit} to permit limited parallelism.
 //     *
-//     * Traversal of elements should be accomplished through the ShortSpliterator.
+//     * <p>Traversal of elements should be accomplished through the ShortSpliterator.
 //     * The behaviour of splitting and traversal is undefined if the iterator is
 //     * operated on after the spliterator is returned, or the initially reported
 //     * size is not equal to the actual number of elements in the source.
@@ -274,12 +274,12 @@ public final class ShortSpliterators implements Primitive {
 //     * Creates a {@code Spliterator} using a given {@code Iterator}
 //     * as the source of elements, with no initial size estimate.
 //     *
-//     * The spliterator is not
+//     * <p>The spliterator is not
 //     * <em><a href="Spliterator.html#binding">late-binding</a></em>, inherits
 //     * the <em>fail-fast</em> properties of the iterator, and implements
 //     * {@code trySplit} to permit limited parallelism.
 //     *
-//     * Traversal of elements should be accomplished through the ShortSpliterator.
+//     * <p>Traversal of elements should be accomplished through the ShortSpliterator.
 //     * The behaviour of splitting and traversal is undefined if the iterator is
 //     * operated on after the spliterator is returned.
 //     *
@@ -302,12 +302,12 @@ public final class ShortSpliterators implements Primitive {
      * {@code ShortStream.ShortIterator} as the source of elements, and with a
      * given initially reported size.
      *
-     * The spliterator is not
+     * <p>The spliterator is not
      * <em><a href="Spliterator.html#binding">late-binding</a></em>, inherits
      * the <em>fail-fast</em> properties of the iterator, and implements
      * {@code trySplit} to permit limited parallelism.
      *
-     * Traversal of elements should be accomplished through the ShortSpliterator.
+     * <p>Traversal of elements should be accomplished through the ShortSpliterator.
      * The behaviour of splitting and traversal is undefined if the iterator is
      * operated on after the spliterator is returned, or the initially reported
      * size is not equal to the actual number of elements in the source.
@@ -333,12 +333,12 @@ public final class ShortSpliterators implements Primitive {
      * {@code ShortStream.ShortIterator} as the source of elements, with no
      * initial size estimate.
      *
-     * The spliterator is not
+     * <p>The spliterator is not
      * <em><a href="Spliterator.html#binding">late-binding</a></em>, inherits
      * the <em>fail-fast</em> properties of the iterator, and implements
      * {@code trySplit} to permit limited parallelism.
      *
-     * Traversal of elements should be accomplished through the ShortSpliterator.
+     * <p>Traversal of elements should be accomplished through the ShortSpliterator.
      * The behaviour of splitting and traversal is undefined if the iterator is
      * operated on after the spliterator is returned.
      *
@@ -359,7 +359,7 @@ public final class ShortSpliterators implements Primitive {
     /**
      * Creates an {@code Iterator} from a {@code Spliterator}.
      *
-     * Traversal of elements should be accomplished through the iterator.
+     * <p>Traversal of elements should be accomplished through the iterator.
      * The behaviour of traversal is undefined if the spliterator is operated
      * after the iterator is returned.
      *
@@ -405,7 +405,7 @@ public final class ShortSpliterators implements Primitive {
      * Creates an {@code ShortIterator} from a
      * {@code ShortSpliterator.ShortOfShort}.
      *
-     * Traversal of elements should be accomplished through the iterator.
+     * <p>Traversal of elements should be accomplished through the iterator.
      * The behaviour of traversal is undefined if the spliterator is operated
      * after the iterator is returned.
      *

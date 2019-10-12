@@ -4,7 +4,7 @@ import java.util.AbstractSet;
 import java.util.Set;
 
 /**
- * Abstract PrimitiveHashSet class.</p>
+ * <p>Abstract PrimitiveHashSet class.</p>
  *
  * @author XenoAmess
  * @version 0.8.0

@@ -62,7 +62,7 @@ public class ShortRandomAccessSpliterator implements ShortSpliterator, Primitive
     private int expectedModCount; // initialized when fence set
 
     /**
-     * Constructor for ShortRandomAccessSpliterator.</p>
+     * <p>Constructor for ShortRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.ShortList} object.
      */

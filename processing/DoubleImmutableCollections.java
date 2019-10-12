@@ -1119,14 +1119,14 @@ final class CollSer implements Serializable {
      * They can thus be used by future implementations without
      * causing compatibility issues.
      *
-     * The tag value also determines the interpretation of the
+     * <p>The tag value also determines the interpretation of the
      * transient {@code Object[] array} field.
      * For {@code List} and {@code Set}, the array's length is the size
      * of the collection, and the array contains the elements of the collection.
      * Null elements are not allowed. For {@code Set}, duplicate elements
      * are not allowed.
      *
-     * For {@code Map}, the array's length is twice the number of mappings
+     * <p>For {@code Map}, the array's length is twice the number of mappings
      * present in the map. The array length is necessarily even.
      * The array contains a succession of key and value pairs:
      * {@code k1, v1, k2, v2, ..., kN, vN.} Nulls are not allowed,

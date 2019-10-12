@@ -29,7 +29,7 @@ import java.lang.reflect.Field;
 import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.*;
 
 /**
- * AsFinalFieldUtils class.</p>
+ * <p>AsFinalFieldUtils class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0

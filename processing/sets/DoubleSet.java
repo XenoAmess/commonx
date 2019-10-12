@@ -80,12 +80,12 @@ public interface DoubleSet extends Set<Double>, DoubleCollection, Primitive {
      * are returned by its iterator, this method must return the
      * elements in the same order.
      *
-     * The returned array will be "safe" in that no references to it
+     * <p>The returned array will be "safe" in that no references to it
      * are maintained by this set.  (In other words, this method must
      * allocate a new array even if this set is backed by an array).
      * The caller is thus free to modify the returned array.
      *
-     * This method acts as bridge between array-based and collection-based
+     * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
      * @return an array containing all the elements in this set
@@ -100,23 +100,23 @@ public interface DoubleSet extends Set<Double>, DoubleCollection, Primitive {
      * Otherwise, a new array is allocated with the runtime type of the
      * specified array and the size of this set.
      *
-     * If this set fits in the specified array with room to spare
+     * <p>If this set fits in the specified array with room to spare
      * (i.e., the array has more elements than this set), the element in
      * the array immediately following the end of the set is set to
      * {@code null}.  (This is useful in determining the length of this
      * set <i>only</i> if the caller knows that this set does not contain
      * any null elements.)
      *
-     * If this set makes any guarantees as to what order its elements
+     * <p>If this set makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements
      * in the same order.
      *
-     * Like the {@link #toArray()} method, this method acts as bridge between
+     * <p>Like the {@link #toArray()} method, this method acts as bridge between
      * array-based and collection-based APIs.  Further, this method allows
      * precise control over the runtime type of the output array, and may,
      * under certain circumstances, be used to save allocation costs.
      *
-     * Suppose {@code x} is a set known to contain only strings.
+     * <p>Suppose {@code x} is a set known to contain only strings.
      * The following code can be used to dump the set into a newly allocated
      * array of {@code String}:
      *
@@ -152,7 +152,7 @@ public interface DoubleSet extends Set<Double>, DoubleCollection, Primitive {
      * restriction on constructors, this ensures that sets never contain
      * duplicate elements.
      *
-     * The stipulation above does not imply that sets must accept all
+     * <p>The stipulation above does not imply that sets must accept all
      * elements; sets may refuse to add any particular element, including
      * {@code null}, and throw an exception, as described in the
      * specification for {@link Collection#add Collection.add}.
@@ -207,7 +207,7 @@ public interface DoubleSet extends Set<Double>, DoubleCollection, Primitive {
     /**
      * Creates a {@code Spliterator} over the elements in this set.
      *
-     * The {@code Spliterator} reports {@link Spliterator#DISTINCT}.
+     * <p>The {@code Spliterator} reports {@link Spliterator#DISTINCT}.
      * Implementations should document the reporting of additional
      * characteristic values.
      *

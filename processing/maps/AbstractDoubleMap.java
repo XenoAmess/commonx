@@ -8,28 +8,28 @@ import java.util.*;
  * This class provides a skeletal implementation of the {@code Map}
  * interface, to minimize the effort required to implement this interface.
  *
- * To implement an unmodifiable map, the programmer needs only to extend this
+ * <p>To implement an unmodifiable map, the programmer needs only to extend this
  * class and provide an implementation for the {@code entrySet} method, which
  * returns a set-view of the map's mappings.  Typically, the returned set
  * will, in turn, be implemented atop {@code AbstractSet}.  This set should
  * not support the {@code add} or {@code remove} methods, and its iterator
  * should not support the {@code remove} method.
  *
- * To implement a modifiable map, the programmer must additionally override
+ * <p>To implement a modifiable map, the programmer must additionally override
  * this class's {@code put} method (which otherwise throws an
  * {@code UnsupportedOperationException}), and the iterator returned by
  * {@code entrySet().iterator()} must additionally implement its
  * {@code remove} method.
  *
- * The programmer should generally provide a void (no argument) and map
+ * <p>The programmer should generally provide a void (no argument) and map
  * constructor, as per the recommendation in the {@code Map} interface
  * specification.
  *
- * The documentation for each non-abstract method in this class describes its
+ * <p>The documentation for each non-abstract method in this class describes its
  * implementation in detail.  Each of these methods may be overridden if the
  * map being implemented admits a more efficient implementation.
  *
- * This class is a member of the
+ * <p>This class is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -174,7 +174,7 @@ public abstract class AbstractDoubleMap<V> extends AbstractMap<Double, V> implem
      * returned.  Note that this implementation requires linear time in the
      * size of the map; many implementations will override this method.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} if the {@code entrySet}
      * iterator does not support the {@code remove} method and this map
      * contains a mapping for the specified key.
@@ -218,7 +218,7 @@ public abstract class AbstractDoubleMap<V> extends AbstractMap<Double, V> implem
      * {@code entrySet()} collection, and calls this map's {@code put}
      * operation once for each entry returned by the iteration.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} if this map does not support
      * the {@code put} operation and the specified map is nonempty.
      */
@@ -233,7 +233,7 @@ public abstract class AbstractDoubleMap<V> extends AbstractMap<Double, V> implem
      * @throws UnsupportedOperationException {@inheritDoc}
      * @implSpec This implementation calls {@code entrySet().clear()}.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} if the {@code entrySet}
      * does not support the {@code clear} operation.
      */
@@ -249,12 +249,12 @@ public abstract class AbstractDoubleMap<V> extends AbstractMap<Double, V> implem
      * appropriate view the first time this view is requested.  The views are
      * stateless, so there's no reason to create more than one of each.
      *
-     * Since there is no synchronization performed while accessing these fields,
+     * <p>Since there is no synchronization performed while accessing these fields,
      * it is expected that java.util.Map view classes using these fields have
      * no non-final fields (or any fields at all except for outer-this). Adhering
      * to this rule would make the races on these fields benign.
      *
-     * It is also imperative that implementations read the field only once,
+     * <p>It is also imperative that implementations read the field only once,
      * as in:
      *
      * <pre> {@code
@@ -281,7 +281,7 @@ public abstract class AbstractDoubleMap<V> extends AbstractMap<Double, V> implem
      * {@code contains} method delegates to this map's
      * {@code containsKey} method.
      *
-     * The set is created the first time this method is called,
+     * <p>The set is created the first time this method is called,
      * and returned in response to all subsequent calls.  No synchronization
      * is performed, so there is a slight chance that multiple calls to this
      * method will not all return the same set.
@@ -339,7 +339,7 @@ public abstract class AbstractDoubleMap<V> extends AbstractMap<Double, V> implem
      * method and the {@code contains} method delegates to this map's
      * {@code containsValue} method.
      *
-     * The collection is created the first time this method is called, and
+     * <p>The collection is created the first time this method is called, and
      * returned in response to all subsequent calls.  No synchronization is
      * performed, so there is a slight chance that multiple calls to this
      * method will not all return the same collection.

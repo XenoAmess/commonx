@@ -32,7 +32,7 @@ import com.xenoamess.commons.primitive.functions.IntConsumer;
  * An abstract {@code IntSpliterator.IntOfInteger} that implements
  * {@code trySplit} to permit limited parallelism.
  *
- * To implement a spliterator an extending class need only
+ * <p>To implement a spliterator an extending class need only
  * implement {@link #tryAdvance(IntConsumer)
  * tryAdvance}.  The extending class should override
  * {@link #forEachRemaining(IntConsumer) forEachRemaining}
@@ -44,7 +44,7 @@ import com.xenoamess.commons.primitive.functions.IntConsumer;
  * possible or difficult to efficiently partition elements in a manner
  * allowing balanced parallel computation.
  *
- * An alternative to using this class, that also permits limited
+ * <p>An alternative to using this class, that also permits limited
  * parallelism, is to create a spliterator from an iterator
  * (see {@link com.xenoamess.commons.primitive.iterators.IntSpliterators#spliterator(IntIterator, long, int)}.
  * Depending on the circumstances using an iterator may be easier or more

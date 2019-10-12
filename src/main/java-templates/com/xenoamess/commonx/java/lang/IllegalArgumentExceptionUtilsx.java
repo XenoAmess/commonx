@@ -46,7 +46,7 @@ public class IllegalArgumentExceptionUtilsx {
     //-----------------------------------------------------------------------
 
     /**
-     * Checks if any of the parameters are null.</p>
+     * <p>Checks if any of the parameters are null.</p>
      *
      * <pre>
      * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams());
@@ -65,14 +65,14 @@ public class IllegalArgumentExceptionUtilsx {
     #include "generateIsAnyNullInParams.template"
 
     /**
-     * If any of the parameters are null, throw an IllegalArgumentException about it.</p>
+     * <p>If any of the parameters are null, throw an IllegalArgumentException about it.</p>
      *
      * @author XenoAmess
      */
     #include "generateIsAnyNullInParamsThenThrowIllegalArgumentException.template"
 
     /**
-     * Checks if none of the parameters are null.</p>
+     * <p>Checks if none of the parameters are null.</p>
      *
      * <pre>
      * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams());
@@ -93,7 +93,7 @@ public class IllegalArgumentExceptionUtilsx {
     #include "generateIsNoneNullInParams.template"
 
     /**
-     * Checks if all of the parameters are null.</p>
+     * <p>Checks if all of the parameters are null.</p>
      *
      * @return {@code true} if all of the parameters are null
      * @author XenoAmess
@@ -101,7 +101,7 @@ public class IllegalArgumentExceptionUtilsx {
     #include "generateIsAllNullInParams.template"
 
     /**
-     * If all of the parameters are null, throw an IllegalArgumentException about it.</p>
+     * <p>If all of the parameters are null, throw an IllegalArgumentException about it.</p>
      *
      * @author XenoAmess
      */
@@ -111,7 +111,7 @@ public class IllegalArgumentExceptionUtilsx {
     //-----------------------------------------------------------------------
 
     /**
-     * If the object's class not be classObject, then throw an IllegalArgumentException about that.</p>
+     * <p>If the object's class not be classObject, then throw an IllegalArgumentException about that.</p>
      *
      * @param object           the object.
      * @param classObject      the class.
@@ -127,7 +127,7 @@ public class IllegalArgumentExceptionUtilsx {
     }
 
     /**
-     * If the object's class not be classObject, then throw an IllegalArgumentException about that.</p>
+     * <p>If the object's class not be classObject, then throw an IllegalArgumentException about that.</p>
      *
      * @param object      the object.
      * @param classObject the class.

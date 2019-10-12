@@ -37,7 +37,7 @@ import java.util.function.IntBinaryOperator;
 import java.util.function.LongBinaryOperator;
 
 /**
- * Arraysx class.</p>
+ * <p>Arraysx class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0
@@ -45,9 +45,9 @@ import java.util.function.LongBinaryOperator;
  */
 public class Arraysx {
     /**
-     * Instances of this class should NOT be constructed in standard programming.
+     * <p>Instances of this class should NOT be constructed in standard programming.
      *
-     * This constructor is public to permit tools that require a JavaBean instance
+     * <p>This constructor is public to permit tools that require a JavaBean instance
      * to operate.
      */
     public Arraysx() {
@@ -65,7 +65,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -85,7 +85,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -106,7 +106,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -126,7 +126,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -147,7 +147,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -167,7 +167,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -188,7 +188,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -208,7 +208,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -229,7 +229,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -249,7 +249,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -270,7 +270,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * The {@code <} relation does not provide a total order on all float
+     * <p>The {@code <} relation does not provide a total order on all float
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -278,7 +278,7 @@ public class Arraysx {
      * {@code 0.0f} and {@code Float.NaN} is considered greater than any
      * other value and all {@code Float.NaN} values are considered equal.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -298,7 +298,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * The {@code <} relation does not provide a total order on all float
+     * <p>The {@code <} relation does not provide a total order on all float
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -306,7 +306,7 @@ public class Arraysx {
      * {@code 0.0f} and {@code Float.NaN} is considered greater than any
      * other value and all {@code Float.NaN} values are considered equal.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -327,7 +327,7 @@ public class Arraysx {
     /**
      * Sorts the specified array into ascending numerical order.
      *
-     * The {@code <} relation does not provide a total order on all double
+     * <p>The {@code <} relation does not provide a total order on all double
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -335,7 +335,7 @@ public class Arraysx {
      * {@code 0.0d} and {@code Double.NaN} is considered greater than any
      * other value and all {@code Double.NaN} values are considered equal.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -355,7 +355,7 @@ public class Arraysx {
      * the index {@code toIndex}, exclusive. If {@code fromIndex == toIndex},
      * the range to be sorted is empty.
      *
-     * The {@code <} relation does not provide a total order on all double
+     * <p>The {@code <} relation does not provide a total order on all double
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -363,7 +363,7 @@ public class Arraysx {
      * {@code 0.0d} and {@code Double.NaN} is considered greater than any
      * other value and all {@code Double.NaN} values are considered equal.
      *
-     * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
+     * <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
      * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
      * offers O(n log(n)) performance on many data sets that cause other
      * quicksorts to degrade to quadratic performance, and is typically
@@ -641,7 +641,7 @@ public class Arraysx {
      *
      * @param a the array to be sorted
      * @return the original array
-     * The {@code <} relation does not provide a total order on all float
+     * <p>The {@code <} relation does not provide a total order on all float
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -675,7 +675,7 @@ public class Arraysx {
      * @param fromIndex the index of the first element, inclusive, to be sorted
      * @param toIndex   the index of the last element, exclusive, to be sorted
      * @return the original array
-     * The {@code <} relation does not provide a total order on all float
+     * <p>The {@code <} relation does not provide a total order on all float
      * values: {@code -0.0f == 0.0f} is {@code true} and a {@code Float.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -706,7 +706,7 @@ public class Arraysx {
      *
      * @param a the array to be sorted
      * @return the original array
-     * The {@code <} relation does not provide a total order on all double
+     * <p>The {@code <} relation does not provide a total order on all double
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -736,7 +736,7 @@ public class Arraysx {
      * inclusive, to the index {@code toIndex}, exclusive. If
      * {@code fromIndex == toIndex}, the range to be sorted is empty.
      *
-     * The {@code <} relation does not provide a total order on all double
+     * <p>The {@code <} relation does not provide a total order on all double
      * values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
      * value compares neither less than, greater than, nor equal to any value,
      * even itself. This method uses the total order imposed by the method
@@ -776,7 +776,7 @@ public class Arraysx {
      * not throw a {@code ClassCastException} for any elements {@code e1}
      * and {@code e2} in the array).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
      * @param a   the array to be sorted
@@ -817,7 +817,7 @@ public class Arraysx {
      * {@code ClassCastException} for any elements {@code e1} and
      * {@code e2} in the array).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
      * @param a         the array to be sorted
@@ -859,7 +859,7 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the array).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
      * @param <T> component type of the array to be sorted
@@ -899,7 +899,7 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
      * @param <T>       component type of the array to be sorted
@@ -950,10 +950,10 @@ public class Arraysx {
      * not throw a {@code ClassCastException} for any elements {@code e1}
      * and {@code e2} in the array).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -963,13 +963,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -1002,10 +1002,10 @@ public class Arraysx {
      * {@code ClassCastException} for any elements {@code e1} and
      * {@code e2} in the array).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -1015,13 +1015,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -1054,10 +1054,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the array).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -1067,13 +1067,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -1107,10 +1107,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -1120,13 +1120,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -1935,7 +1935,7 @@ public class Arraysx {
     // Extra
 
     /**
-     * Fill a array with creating new instances of the component class
+     * <p>Fill a array with creating new instances of the component class
      * using constructor that accept 0 arguments.
      *
      * <pre>
@@ -1993,7 +1993,7 @@ public class Arraysx {
     }
 
     /**
-     * Fill a array with creating new instances of the component class
+     * <p>Fill a array with creating new instances of the component class
      * using constructor that accept 0 arguments.
      *
      * <pre>
@@ -2051,10 +2051,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2064,13 +2064,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2112,10 +2112,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2125,13 +2125,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2173,10 +2173,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2186,13 +2186,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2234,10 +2234,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2247,13 +2247,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2295,10 +2295,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2308,13 +2308,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2356,10 +2356,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2369,13 +2369,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2418,10 +2418,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2431,13 +2431,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -2479,10 +2479,10 @@ public class Arraysx {
      * {@code c.compare(e1, e2)} must not throw a {@code ClassCastException}
      * for any elements {@code e1} and {@code e2} in the range).
      *
-     * This sort is guaranteed to be <i>stable</i>:  equal elements will
+     * <p>This sort is guaranteed to be <i>stable</i>:  equal elements will
      * not be reordered as a result of the sort.
      *
-     * Implementation note: This implementation is a stable, adaptive,
+     * <p>Implementation note: This implementation is a stable, adaptive,
      * iterative mergesort that requires far fewer than n lg(n) comparisons
      * when the input array is partially sorted, while offering the
      * performance of a traditional mergesort when the input array is
@@ -2492,13 +2492,13 @@ public class Arraysx {
      * input arrays to n/2 object references for randomly ordered input
      * arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the

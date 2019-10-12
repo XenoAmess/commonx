@@ -34,7 +34,7 @@ import java.util.function.Consumer;
  * result. Unlike most other functional interfaces, {@code Consumer} is expected
  * to operate via side-effects.
  *
- * This is a <a href="package-summary.html">functional interface</a>
+ * <p>This is a <a href="package-summary.html">functional interface</a>
  * whose functional method is {@link #accept(Double)}.
  *
  * @author XenoAmess

@@ -62,11 +62,11 @@ import java.util.*;
  * equals(Object)} method(s):<pre>
  *     {(x, y) such that x.equals(y)}. </pre>
  *
- * Unlike {@code Comparable}, a comparator may optionally permit
+ * <p>Unlike {@code Comparable}, a comparator may optionally permit
  * comparison of null arguments, while maintaining the requirements for
  * an equivalence relation.
  *
- * This interface is a member of the
+ * <p>This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *

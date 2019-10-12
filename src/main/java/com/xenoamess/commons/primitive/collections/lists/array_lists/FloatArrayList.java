@@ -503,11 +503,11 @@ public class FloatArrayList extends AbstractFloatList
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
-     * The returned array will be "safe" in that no references to it are
+     * <p>The returned array will be "safe" in that no references to it are
      * maintained by this list.  (In other words, this method must allocate
      * a new array).  The caller is thus free to modify the returned array.
      *
-     * This method acts as bridge between array-based and collection-based
+     * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      */
     @Override
@@ -521,11 +521,11 @@ public class FloatArrayList extends AbstractFloatList
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
-     * The returned array will be "safe" in that no references to it are
+     * <p>The returned array will be "safe" in that no references to it are
      * maintained by this list.  (In other words, this method must allocate
      * a new array).  The caller is thus free to modify the returned array.
      *
-     * This method acts as bridge between array-based and collection-based
+     * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      */
     @Override
@@ -543,7 +543,7 @@ public class FloatArrayList extends AbstractFloatList
      * allocated with the runtime type of the specified array and the size of
      * this list.
      *
-     * If the list fits in the specified array with room to spare
+     * <p>If the list fits in the specified array with room to spare
      * (i.e., the array has more elements than the list), the element in
      * the array immediately following the end of the collection is set to
      * {@code null}.  (This is useful in determining the length of the
@@ -574,7 +574,7 @@ public class FloatArrayList extends AbstractFloatList
      * allocated with the runtime type of the specified array and the size of
      * this list.
      *
-     * If the list fits in the specified array with room to spare
+     * <p>If the list fits in the specified array with room to spare
      * (i.e., the array has more elements than the list), the element in
      * the array immediately following the end of the collection is set to
      * {@code null}.  (This is useful in determining the length of the
@@ -599,7 +599,7 @@ public class FloatArrayList extends AbstractFloatList
      * allocated with the runtime type of the specified array and the size of
      * this list.
      *
-     * If the list fits in the specified array with room to spare
+     * <p>If the list fits in the specified array with room to spare
      * (i.e., the array has more elements than the list), the element in
      * the array immediately following the end of the collection is set to
      * {@code null}.  (This is useful in determining the length of the
@@ -623,7 +623,7 @@ public class FloatArrayList extends AbstractFloatList
 
     /**
      * get the raw content array from the FloatArrayList.
-     * This method acts as bridge between array-based and collection-based APIs.
+     * <p>This method acts as bridge between array-based and collection-based APIs.
      *
      * @return this.elementData
      */
@@ -1217,7 +1217,7 @@ public class FloatArrayList extends AbstractFloatList
     }
 
     /**
-     * batchRemove.</p>
+     * <p>batchRemove.</p>
      *
      * @param c          a {@link java.util.Collection} object.
      * @param complement a boolean.
@@ -1366,7 +1366,7 @@ public class FloatArrayList extends AbstractFloatList
      * An initial call to {@link FloatListIterator#previous previous} would
      * return the element with the specified index minus one.
      *
-     * The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
     public FloatListIterator listIterator(int index) {
@@ -1380,7 +1380,7 @@ public class FloatArrayList extends AbstractFloatList
      * Returns a list iterator over the elements in this list (in proper
      * sequence).
      *
-     * The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      *
      * @see #listIterator(int)
      */
@@ -1394,7 +1394,7 @@ public class FloatArrayList extends AbstractFloatList
      * <p>
      * Returns an iterator over the elements in this list in proper sequence.
      *
-     * The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
      */
     @Override
     public FloatIterator iterator() {
@@ -1556,7 +1556,7 @@ public class FloatArrayList extends AbstractFloatList
      * changes in the returned list are reflected in this list, and vice-versa.
      * The returned list supports all of the optional list operations.
      *
-     * This method eliminates the need for explicit range operations (of
+     * <p>This method eliminates the need for explicit range operations (of
      * the sort that commonly exist for arrays).  Any operation that expects
      * a list can be used as a range operation by passing a subList view
      * instead of a whole list.  For example, the following idiom
@@ -1568,7 +1568,7 @@ public class FloatArrayList extends AbstractFloatList
      * {@link #lastIndexOf(Object)}, and all of the algorithms in the
      * {@link Collections} class can be applied to a subList.
      *
-     * The semantics of the list returned by this method become undefined if
+     * <p>The semantics of the list returned by this method become undefined if
      * the backing list (i.e., this list) is <i>structurally modified</i> in
      * any way other than via the returned list.  (Structural modifications are
      * those that change the size of this list, or otherwise perturb it in such
@@ -2089,7 +2089,7 @@ public class FloatArrayList extends AbstractFloatList
      * and <em>fail-fast</em> {@link Spliterator} over the elements in this
      * list.
      *
-     * The {@code Spliterator} reports {@link Spliterator#SIZED},
+     * <p>The {@code Spliterator} reports {@link Spliterator#SIZED},
      * {@link Spliterator#SUBSIZED}, and {@link Spliterator#ORDERED}.
      * Overriding implementations should document the reporting of additional
      * characteristic values.
@@ -2323,7 +2323,7 @@ public class FloatArrayList extends AbstractFloatList
     }
 
     /**
-     * sort.</p>
+     * <p>sort.</p>
      *
      * @param c a {@link com.xenoamess.commons.primitive.comparators.FloatComparator} object.
      */

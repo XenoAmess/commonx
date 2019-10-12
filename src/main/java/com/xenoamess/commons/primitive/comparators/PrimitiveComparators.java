@@ -10,9 +10,9 @@ import com.xenoamess.commons.primitive.Primitive;
  */
 public class PrimitiveComparators implements Primitive {
     /**
-     * Instances of this class should NOT be constructed in standard programming.
+     * <p>Instances of this class should NOT be constructed in standard programming.
      *
-     * This constructor is public to permit tools that require a JavaBean instance
+     * <p>This constructor is public to permit tools that require a JavaBean instance
      * to operate.
      */
     public PrimitiveComparators() {

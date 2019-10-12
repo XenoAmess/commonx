@@ -46,7 +46,7 @@ import java.util.function.Consumer;
  * <li> Method names have been improved.
  * </ul>
  *
- * This interface is a member of the
+ * <p>This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -95,7 +95,7 @@ public interface LongIterator extends Iterator<Long>, Primitive {
      * Subsequent behavior of an iterator is unspecified if the action throws an
      * exception.
      *
-     * @implSpec The default implementation behaves as if:
+     * @implSpec <p>The default implementation behaves as if:
      * <pre>{@code
      *     while (hasNext())
      *         action.accept(next());

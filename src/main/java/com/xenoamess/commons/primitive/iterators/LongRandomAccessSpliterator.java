@@ -62,7 +62,7 @@ public class LongRandomAccessSpliterator implements LongSpliterator, Primitive {
     private int expectedModCount; // initialized when fence set
 
     /**
-     * Constructor for LongRandomAccessSpliterator.</p>
+     * <p>Constructor for LongRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.LongList} object.
      */

@@ -62,7 +62,7 @@ public class IntRandomAccessSpliterator implements IntSpliterator, Primitive {
     private int expectedModCount; // initialized when fence set
 
     /**
-     * Constructor for IntRandomAccessSpliterator.</p>
+     * <p>Constructor for IntRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.IntList} object.
      */

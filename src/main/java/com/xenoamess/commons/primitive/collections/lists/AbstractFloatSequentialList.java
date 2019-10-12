@@ -84,7 +84,7 @@ public abstract class AbstractFloatSequentialList extends AbstractFloatList impl
     /**
      * Returns the element at the specified position in this list.
      *
-     * This implementation first gets a list iterator pointing to the
+     * <p>This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it gets
      * the element using {@code ListIterator.next} and returns it.
      *
@@ -103,12 +103,12 @@ public abstract class AbstractFloatSequentialList extends AbstractFloatList impl
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
      *
-     * This implementation first gets a list iterator pointing to the
+     * <p>This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it gets
      * the current element using {@code ListIterator.next} and replaces it
      * with {@code ListIterator.set}.
      *
-     * Note that this implementation will throw an
+     * <p>Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator does not
      * implement the {@code set} operation.
      *
@@ -136,11 +136,11 @@ public abstract class AbstractFloatSequentialList extends AbstractFloatList impl
      * (if any) and any subsequent elements to the right (adds one to their
      * indices).
      *
-     * This implementation first gets a list iterator pointing to the
+     * <p>This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it
      * inserts the specified element with {@code ListIterator.add}.
      *
-     * Note that this implementation will throw an
+     * <p>Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator does not
      * implement the {@code add} operation.
      *
@@ -165,11 +165,11 @@ public abstract class AbstractFloatSequentialList extends AbstractFloatList impl
      * from their indices).  Returns the element that was removed from the
      * list.
      *
-     * This implementation first gets a list iterator pointing to the
+     * <p>This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it removes
      * the element with {@code ListIterator.remove}.
      *
-     * Note that this implementation will throw an
+     * <p>Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator does not
      * implement the {@code remove} operation.
      *
@@ -201,14 +201,14 @@ public abstract class AbstractFloatSequentialList extends AbstractFloatList impl
      * operation is in progress.  (Note that this will occur if the specified
      * collection is this list, and it's nonempty.)
      *
-     * This implementation gets an iterator over the specified collection and
+     * <p>This implementation gets an iterator over the specified collection and
      * a list iterator over this list pointing to the indexed element (with
      * {@code listIterator(index)}).  Then, it iterates over the specified
      * collection, inserting the elements obtained from the iterator into this
      * list, one at a time, using {@code ListIterator.add} followed by
      * {@code ListIterator.next} (to skip over the added element).
      *
-     * Note that this implementation will throw an
+     * <p>Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator returned by
      * the {@code listIterator} method does not implement the {@code add}
      * operation.

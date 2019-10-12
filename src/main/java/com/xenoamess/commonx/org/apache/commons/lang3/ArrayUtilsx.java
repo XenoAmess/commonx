@@ -21,7 +21,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.Random;
 
 /**
- * ArrayUtilsx class.</p>
+ * <p>ArrayUtilsx class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0
@@ -29,9 +29,9 @@ import java.util.Random;
  */
 public class ArrayUtilsx extends ArrayUtils {
     /**
-     * Instances of this class should NOT be constructed in standard programming.
+     * <p>Instances of this class should NOT be constructed in standard programming.
      *
-     * This constructor is public to permit tools that require a JavaBean instance
+     * <p>This constructor is public to permit tools that require a JavaBean instance
      * to operate.
      */
     public ArrayUtilsx() {
@@ -42,11 +42,11 @@ public class ArrayUtilsx extends ArrayUtils {
     //-----------------------------------------------------------------------
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * There is no special handling for multi-dimensional arrays.
+     * <p>There is no special handling for multi-dimensional arrays.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @param <T>   a T object.
@@ -59,9 +59,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -73,9 +73,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -87,9 +87,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -101,9 +101,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -115,9 +115,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -129,9 +129,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -143,9 +143,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -157,9 +157,9 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Reverses the order of the given array.
+     * <p>Reverses the order of the given array.
      *
-     * This method does nothing for a {@code null} input array.
+     * <p>This method does nothing for a {@code null} input array.
      *
      * @param array the array to reverse, may be {@code null}
      * @return the original array
@@ -386,7 +386,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -415,7 +415,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given long array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -443,7 +443,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given int array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -471,7 +471,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given short array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -499,7 +499,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given char array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -527,7 +527,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given byte array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -555,7 +555,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given double array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -583,7 +583,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given float array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -611,7 +611,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps two elements in the given boolean array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for a {@code null} or empty input array or for overflow indices.
      * Negative indices are promoted to 0(zero).</p>
      * <p>
@@ -639,7 +639,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given boolean array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -670,7 +670,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given byte array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -701,7 +701,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given char array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -732,7 +732,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given double array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -763,7 +763,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given float array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -794,7 +794,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given int array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -825,7 +825,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given long array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -856,7 +856,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given short array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -887,7 +887,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Swaps a series of elements in the given array.
      *
-     * This method does nothing for a {@code null} or empty input array or
+     * <p>This method does nothing for a {@code null} or empty input array or
      * for overflow indices. Negative indices are promoted to 0(zero). If any
      * of the sub-arrays to swap falls outside of the given array, then the
      * swap is stopped at the end of the array and as many as possible elements
@@ -923,7 +923,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -943,7 +943,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given long array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -962,7 +962,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given int array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -981,7 +981,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given short array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -1000,7 +1000,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given char array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -1019,7 +1019,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given byte array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -1038,7 +1038,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given double array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -1057,7 +1057,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given float array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -1076,7 +1076,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of the given boolean array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array  the array to shift, may be {@code null}
@@ -1095,7 +1095,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given boolean array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1121,7 +1121,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given byte array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1146,7 +1146,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given char array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1171,7 +1171,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given double array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1196,7 +1196,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given float array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1221,7 +1221,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given int array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1246,7 +1246,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given long array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1271,7 +1271,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1297,7 +1297,7 @@ public class ArrayUtilsx extends ArrayUtils {
     /**
      * Shifts the order of a series of elements in the given short array.
      *
-     * There is no special handling for multi-dimensional arrays. This method
+     * <p>There is no special handling for multi-dimensional arrays. This method
      * does nothing for {@code null} or empty input arrays.</p>
      *
      * @param array               the array to shift, may be {@code null}
@@ -1586,10 +1586,10 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Checks whether several arrays are the same length, treating
+     * <p>Checks whether several arrays are the same length, treating
      * {@code null} arrays as length {@code 0}.
      *
-     * Any multi-dimensional aspects of the arrays are ignored.
+     * <p>Any multi-dimensional aspects of the arrays are ignored.
      *
      * @param arrays arrays of the arrays, must not be {@code null}
      * @return {@code true} if length of all arrays matches, treating
@@ -1609,7 +1609,7 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Checks if an array is empty or {@code null}.
+     * <p>Checks if an array is empty or {@code null}.
      *
      * @param array the array to test
      * @return {@code true} if the array is empty or {@code null}
@@ -1620,7 +1620,7 @@ public class ArrayUtilsx extends ArrayUtils {
     }
 
     /**
-     * Checks if an array of Objects is not empty and not {@code null}.
+     * <p>Checks if an array of Objects is not empty and not {@code null}.
      *
      * @param array the array to test
      * @return {@code true} if the array is not empty and not {@code null}

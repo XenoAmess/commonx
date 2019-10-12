@@ -84,7 +84,7 @@ import java.util.function.UnaryOperator;
  * extreme caution is advised: the {@code equals} and {@code hashCode}
  * methods are no longer well defined on such a list.
  *
- * Some list implementations have restrictions on the elements that
+ * <p>Some list implementations have restrictions on the elements that
  * they may contain.  For example, some implementations prohibit null elements,
  * and some have restrictions on the types of their elements.  Attempting to
  * add an ineligible element throws an unchecked exception, typically
@@ -99,7 +99,7 @@ import java.util.function.UnaryOperator;
  * interface.
  *
  * <h2><a id="unmodifiable">Unmodifiable Lists</a></h2>
- * The {@link java.util.List#of(Object...) List.of} and
+ * <p>The {@link java.util.List#of(Object...) List.of} and
  * {@link java.util.List#copyOf List.copyOf} static factory methods
  * provide a convenient way to create unmodifiable lists. The {@code List}
  * instances created by these methods have the following characteristics:
@@ -125,7 +125,7 @@ import java.util.function.UnaryOperator;
  * page.
  * </ul>
  *
- * This interface is a member of the
+ * <p>This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -151,12 +151,12 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
      * Returns an array containing all of the elements in this list in proper
      * sequence (from first to last element).
      *
-     * The returned array will be "safe" in that no references to it are
+     * <p>The returned array will be "safe" in that no references to it are
      * maintained by this list.  (In other words, this method must
      * allocate a new array even if this list is backed by an array).
      * The caller is thus free to modify the returned array.
      *
-     * This method acts as bridge between array-based and collection-based
+     * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
      * @return an array containing all of the elements in this list in proper
@@ -229,7 +229,7 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
 //     * Appends the specified element to the end of this list (optional
 //     * operation).
 //     *
-//     * Lists that support this operation may place limitations on what
+//     * <p>Lists that support this operation may place limitations on what
 //     * elements may be added to this list.  In particular, some
 //     * lists will refuse to add null elements, and others will impose
 //     * restrictions on the type of elements that may be added.  List
@@ -267,7 +267,7 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
 //     *                                       prevents it from being added to this list
 //     * @implSpec This implementation calls {@code add(size(), e)}.
 //     *
-//     * Note that this implementation throws an
+//     * <p>Note that this implementation throws an
 //     * {@code UnsupportedOperationException} unless
 //     * {@link #add(int, Object) add(int, E)} is overridden.
 //     * @see #add(Byte e)
@@ -292,7 +292,7 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
 //     *                                       prevents it from being added to this list
 //     * @implSpec This implementation calls {@code add(size(), e)}.
 //     *
-//     * Note that this implementation throws an
+//     * <p>Note that this implementation throws an
 //     * {@code UnsupportedOperationException} unless
 //     * {@link #add(int, Object) add(int, E)} is overridden.
 //     * @see #add(Byte e)
@@ -530,16 +530,16 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
      * {@link Comparator}.  The sort is <i>stable</i>: this method must not
      * reorder equal elements.
      *
-     * All elements in this list must be <i>mutually comparable</i> using the
+     * <p>All elements in this list must be <i>mutually comparable</i> using the
      * specified comparator (that is, {@code c.compare(e1, e2)} must not throw
      * a {@code ClassCastException} for any elements {@code e1} and {@code e2}
      * in the list).
      *
-     * If the specified comparator is {@code null} then all elements in this
+     * <p>If the specified comparator is {@code null} then all elements in this
      * list must implement the {@link Comparable} interface and the elements'
      * {@linkplain Comparable natural ordering} should be used.
      *
-     * This list must be modifiable, but need not be resizable.
+     * <p>This list must be modifiable, but need not be resizable.
      *
      * @implSpec The default implementation obtains an array containing all elements in
      * this list, sorts the array, and iterates over this list resetting each
@@ -555,13 +555,13 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
      * for nearly sorted input arrays to n/2 object references for randomly
      * ordered input arrays.
      *
-     * The implementation takes equal advantage of ascending and
+     * <p>The implementation takes equal advantage of ascending and
      * descending order in its input array, and can take advantage of
      * ascending and descending order in different parts of the same
      * input array.  It is well-suited to merging two or more sorted arrays:
      * simply concatenate the arrays and sort the resulting array.
      *
-     * The implementation was adapted from Tim Peters's list sort for Python
+     * <p>The implementation was adapted from Tim Peters's list sort for Python
      * (<a href="http://svn.python.org/projects/python/trunk/Objects/listsort.txt">
      * TimSort</a>).  It uses techniques from Peter McIlroy's "Optimistic
      * Sorting and Information Theoretic Complexity", in Proceedings of the
@@ -917,7 +917,7 @@ public interface ByteList extends List<Byte>, ByteCollection, Primitive {
      * <p>
      * Creates a {@link Spliterator} over the elements in this list.
      *
-     * The {@code Spliterator} reports {@link Spliterator#SIZED} and
+     * <p>The {@code Spliterator} reports {@link Spliterator#SIZED} and
      * {@link Spliterator#ORDERED}.  Implementations should document the
      * reporting of additional characteristic values.
      *

@@ -27,7 +27,7 @@ package com.xenoamess.commons.as_final_field;
 import java.lang.reflect.Field;
 
 /**
- * AsFinalFieldExceptionType class.</p>
+ * <p>AsFinalFieldExceptionType class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0

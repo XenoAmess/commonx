@@ -42,7 +42,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * FileUtil class.</p>
+ * <p>FileUtil class.</p>
  *
  * @author XenoAmess
  * @deprecated This class is of low quality and is badly designed. And it only works 100% right on Windows. I do not
@@ -181,7 +181,7 @@ public class FileUtils {
 
 
     /**
-     * getFile.</p>
+     * <p>getFile.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -201,7 +201,7 @@ public class FileUtils {
     }
 
     /**
-     * getFile.</p>
+     * <p>getFile.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -211,7 +211,7 @@ public class FileUtils {
     }
 
     /**
-     * getFile.</p>
+     * <p>getFile.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -233,7 +233,7 @@ public class FileUtils {
     }
 
     /**
-     * getFile.</p>
+     * <p>getFile.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -244,7 +244,7 @@ public class FileUtils {
 
 
     /**
-     * detect if file exist.</p>
+     * <p>detect if file exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -264,7 +264,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if file exist.</p>
+     * <p>detect if file exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -274,7 +274,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if folder exist.</p>
+     * <p>detect if folder exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -294,7 +294,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if folder exist.</p>
+     * <p>detect if folder exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -304,7 +304,7 @@ public class FileUtils {
     }
 
     /**
-     * getURL.</p>
+     * <p>getURL.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -318,7 +318,7 @@ public class FileUtils {
     }
 
     /**
-     * getURL.</p>
+     * <p>getURL.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -328,7 +328,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if URL exist.</p>
+     * <p>detect if URL exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -348,7 +348,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if URL exist.</p>
+     * <p>detect if URL exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -358,7 +358,7 @@ public class FileUtils {
     }
 
     /**
-     * getURI.</p>
+     * <p>getURI.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -374,7 +374,7 @@ public class FileUtils {
     }
 
     /**
-     * getURI.</p>
+     * <p>getURI.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -390,7 +390,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if file exist.</p>
+     * <p>detect if file exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -410,7 +410,7 @@ public class FileUtils {
     }
 
     /**
-     * detect if file exist.</p>
+     * <p>detect if file exist.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -599,7 +599,7 @@ public class FileUtils {
     }
 
     /**
-     * loadFile.</p>
+     * <p>loadFile.</p>
      *
      * @param inputStream inputStream
      * @return return
@@ -622,7 +622,7 @@ public class FileUtils {
     }
 
     /**
-     * loadString.</p>
+     * <p>loadString.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -639,7 +639,7 @@ public class FileUtils {
     }
 
     /**
-     * loadString.</p>
+     * <p>loadString.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @return return
@@ -649,7 +649,7 @@ public class FileUtils {
     }
 
     /**
-     * loadString.</p>
+     * <p>loadString.</p>
      *
      * @param file file
      * @return return
@@ -665,7 +665,7 @@ public class FileUtils {
     }
 
     /**
-     * loadString.</p>
+     * <p>loadString.</p>
      *
      * @param path path
      * @return return
@@ -685,7 +685,7 @@ public class FileUtils {
     }
 
     /**
-     * saveFile.</p>
+     * <p>saveFile.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @param contentString    a {@link String} object.
@@ -696,7 +696,7 @@ public class FileUtils {
     }
 
     /**
-     * saveFile.</p>
+     * <p>saveFile.</p>
      *
      * @param resourceFilePath resourceFilePath
      * @param contentString    a {@link String} object.
@@ -706,7 +706,7 @@ public class FileUtils {
     }
 
     /**
-     * saveFile.</p>
+     * <p>saveFile.</p>
      *
      * @param file          a {@link File} object.
      * @param contentString contentString

@@ -19,21 +19,21 @@ import java.util.function.Consumer;
  * access data (such as a linked list), {@link java.util.AbstractSequentialList} should
  * be used in preference to this class.
  *
- * To implement an unmodifiable list, the programmer needs only to extend
+ * <p>To implement an unmodifiable list, the programmer needs only to extend
  * this class and provide implementations for the {@link #get(int)} and
  * {@link java.util.List#size() size()} methods.
  *
- * To implement a modifiable list, the programmer must additionally
+ * <p>To implement a modifiable list, the programmer must additionally
  * override the {@link #set(int, Short) set(int, E)} method (which otherwise
  * throws an {@code UnsupportedOperationException}).  If the list is
  * variable-size the programmer must additionally override the
  * {@link #add(int, Short) add(int, E)} and {@link #remove(int)} methods.
  *
- * The programmer should generally provide a void (no argument) and collection
+ * <p>The programmer should generally provide a void (no argument) and collection
  * constructor, as per the recommendation in the {@link java.util.Collection} interface
  * specification.
  *
- * Unlike the other abstract collection implementations, the programmer does
+ * <p>Unlike the other abstract collection implementations, the programmer does
  * <i>not</i> have to provide an iterator implementation; the iterator and
  * list iterator are implemented by this class, on top of the "random access"
  * methods:
@@ -42,11 +42,11 @@ import java.util.function.Consumer;
  * {@link #add(int, Short) add(int, E)} and
  * {@link #remove(int)}.
  *
- * The documentation for each non-abstract method in this class describes its
+ * <p>The documentation for each non-abstract method in this class describes its
  * implementation in detail.  Each of these methods may be overridden if the
  * collection being implemented admits a more efficient implementation.
  *
- * This class is a member of the
+ * <p>This class is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -93,7 +93,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * specified element.  If it finds the element, it removes the element
      * from the collection using the iterator's remove method.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} if the iterator returned by this
      * collection's iterator method does not implement the {@code remove}
      * method and this collection contains the specified object.
@@ -155,7 +155,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * called only as an optimization hint; the correct result is returned
      * even if the iterator returns a different number of elements.
      *
-     * This method is equivalent to:
+     * <p>This method is equivalent to:
      *
      * <pre> {@code
      * List<E> list = new ArrayList<E>(size());
@@ -177,7 +177,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * Appends the specified element to the end of this list (optional
      * operation).
      *
-     * Lists that support this operation may place limitations on what
+     * <p>Lists that support this operation may place limitations on what
      * elements may be added to this list.  In particular, some
      * lists will refuse to add null elements, and others will impose
      * restrictions on the type of elements that may be added.  List
@@ -186,7 +186,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      *
      * @implSpec This implementation calls {@code add(size(), e)}.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} unless
      * {@link #add(int, Short) add(int, E)} is overridden.
      */
@@ -214,7 +214,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      *
      * @implSpec This implementation calls {@code add(size(), e)}.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} unless
      * {@link #add(int, Short) add(int, E)} is overridden.
      * @see #add(Short e)
@@ -432,7 +432,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      *
      * @implSpec This implementation calls {@code removeRange(0, size())}.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} unless {@code remove(int
      * index)} or {@code removeRange(int fromIndex, int toIndex)} is
      * overridden.
@@ -451,7 +451,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * using {@code add(int, E)}.
      * Many implementations will override this method for efficiency.
      *
-     * Note that this implementation throws an
+     * <p>Note that this implementation throws an
      * {@code UnsupportedOperationException} unless
      * {@link #add(int, Short) add(int, E)} is overridden.
      */
@@ -488,12 +488,12 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * iterator interface, relying on the backing list's {@code size()},
      * {@code get(int)}, and {@code remove(int)} methods.
      *
-     * Note that the iterator returned by this method will throw an
+     * <p>Note that the iterator returned by this method will throw an
      * {@link java.lang.UnsupportedOperationException} in response to its
      * {@code remove} method unless the list's {@code remove(int)} method is
      * overridden.
      *
-     * This implementation can be made to throw runtime exceptions in the
+     * <p>This implementation can be made to throw runtime exceptions in the
      * face of concurrent modification, as described in the specification
      * for the (protected) {@link #modCount} field.
      */
@@ -523,13 +523,13 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * {@code get(int)}, {@code set(int, E)}, {@code add(int, E)}
      * and {@code remove(int)} methods.
      *
-     * Note that the list iterator returned by this implementation will
+     * <p>Note that the list iterator returned by this implementation will
      * throw an {@link java.lang.UnsupportedOperationException} in response to its
      * {@code remove}, {@code set} and {@code add} methods unless the
      * list's {@code remove(int)}, {@code set(int, E)}, and
      * {@code add(int, E)} methods are overridden.
      *
-     * This implementation can be made to throw runtime exceptions in the
+     * <p>This implementation can be made to throw runtime exceptions in the
      * face of concurrent modification, as described in the specification for
      * the (protected) {@link #modCount} field.
      */
@@ -682,7 +682,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * If this list implements {@code RandomAccess} the returned list will
      * be an instance of the subclass that implements {@code RandomAccess}.
      *
-     * The subclass's {@code set(int, E)}, {@code get(int)},
+     * <p>The subclass's {@code set(int, E)}, {@code get(int)},
      * {@code add(int, E)}, {@code remove(int)}, {@code addAll(int,
      * Collection)} and {@code removeRange(int, int)} methods all
      * delegate to the corresponding methods on the backing abstract list,
@@ -690,13 +690,13 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * {@code addAll(Collection c)} method merely returns {@code addAll(size,
      * c)}.
      *
-     * The {@code listIterator(int)} method returns a "wrapper object"
+     * <p>The {@code listIterator(int)} method returns a "wrapper object"
      * over a list iterator on the backing list, which is created with the
      * corresponding method on the backing list.  The {@code iterator} method
      * merely returns {@code listIterator()}, and the {@code size} method
      * merely returns the subclass's {@code size} field.
      *
-     * All methods first check to see if the actual {@code modCount} of
+     * <p>All methods first check to see if the actual {@code modCount} of
      * the backing list is equal to its expected value, and throw a
      * {@code ConcurrentModificationException} if it is not.
      */
@@ -815,7 +815,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * This call shortens the list by {@code (toIndex - fromIndex)} elements.
      * (If {@code toIndex==fromIndex}, this operation has no effect.)
      *
-     * This method is called by the {@code clear} operation on this list
+     * <p>This method is called by the {@code clear} operation on this list
      * and its subLists.  Overriding this method to take advantage of
      * the internals of the list implementation can <i>substantially</i>
      * improve the performance of the {@code clear} operation on this list
@@ -842,7 +842,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * list, or otherwise perturb it in such a fashion that iterations in
      * progress may yield incorrect results.
      *
-     * This field is used by the iterator and list iterator implementation
+     * <p>This field is used by the iterator and list iterator implementation
      * returned by the {@code iterator} and {@code listIterator} methods.
      * If the value of this field changes unexpectedly, the iterator (or list
      * iterator) will throw a {@code ConcurrentModificationException} in
@@ -1232,7 +1232,7 @@ public abstract class AbstractShortList extends AbstractList<Short> implements A
      * as it is
      * only since java 9.
      *
-     * The {@code index} is defined to be out of bounds if any of the
+     * <p>The {@code index} is defined to be out of bounds if any of the
      * following inequalities is true:
      * <ul>
      * <li>{@code index < 0}</li>

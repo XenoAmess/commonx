@@ -1,7 +1,7 @@
 package com.xenoamess.commons.primitive.collections.maps.hash_maps;
 
 /**
- * Abstract PrimitiveHashMap class.</p>
+ * <p>Abstract PrimitiveHashMap class.</p>
  *
  * @author XenoAmess
  * @version 0.8.0

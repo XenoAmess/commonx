@@ -32,7 +32,7 @@ import java.util.function.Predicate;
 /**
  * Represents a predicate (boolean-valued function) of one argument.
  *
- * This is a <a href="package-summary.html">functional interface</a>
+ * <p>This is a <a href="package-summary.html">functional interface</a>
  * whose functional method is {@link #test(Double)}.
  *
  * @author XenoAmess
@@ -84,7 +84,7 @@ public interface DoublePredicate extends Predicate<Double>, Primitive {
      * predicate, if this predicate is {@code false}, then the {@code other}
      * predicate is not evaluated.
      *
-     * Any exceptions thrown during evaluation of either predicate are relayed
+     * <p>Any exceptions thrown during evaluation of either predicate are relayed
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.
      */
@@ -117,7 +117,7 @@ public interface DoublePredicate extends Predicate<Double>, Primitive {
      * predicate, if this predicate is {@code true}, then the {@code other}
      * predicate is not evaluated.
      *
-     * Any exceptions thrown during evaluation of either predicate are relayed
+     * <p>Any exceptions thrown during evaluation of either predicate are relayed
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.
      */

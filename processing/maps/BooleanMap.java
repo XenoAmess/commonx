@@ -75,7 +75,7 @@
 //        /**
 //         * Returns a comparator that compares {@link Map.Entry} in natural order on key.
 //         *
-//         * The returned comparator is serializable and throws {@link
+//         * <p>The returned comparator is serializable and throws {@link
 //         * NullPointerException} when comparing an entry with a null key.
 //         *
 //         * @param <V> the type of the map values
@@ -94,7 +94,7 @@
 //         * Returns a comparator that compares {@link Map.Entry} by key using the given
 //         * {@link Comparator}.
 //         *
-//         * The returned comparator is serializable if the specified comparator
+//         * <p>The returned comparator is serializable if the specified comparator
 //         * is also serializable.
 //         *
 //         * @param <V> the type of the map values
@@ -112,7 +112,7 @@
 //         * Returns a comparator that compares {@link Map.Entry} by value using the given
 //         * {@link Comparator}.
 //         *
-//         * The returned comparator is serializable if the specified comparator
+//         * <p>The returned comparator is serializable if the specified comparator
 //         * is also serializable.
 //         *
 //         * @param <V> the type of the map values

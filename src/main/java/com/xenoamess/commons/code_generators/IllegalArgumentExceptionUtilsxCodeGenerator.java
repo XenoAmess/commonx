@@ -31,7 +31,7 @@ import java.io.IOException;
 import java.util.function.UnaryOperator;
 
 /**
- * IllegalArgumentExceptionUtilsxCodeGenerator class.</p>
+ * <p>IllegalArgumentExceptionUtilsxCodeGenerator class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0
@@ -39,7 +39,7 @@ import java.util.function.UnaryOperator;
 public class IllegalArgumentExceptionUtilsxCodeGenerator {
 
     /**
-     * generateFile.</p>
+     * <p>generateFile.</p>
      *
      * @param name                a {@link java.lang.String} object.
      * @param functionalInterface a {@link java.util.function.Function} object.
@@ -60,7 +60,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * main.</p>
+     * <p>main.</p>
      *
      * @param args an array of {@link java.lang.String} objects.
      */
@@ -88,14 +88,14 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAnyNullInParams.</p>
+     * <p>generateIsAnyNullInParams.</p>
      *
      * @param name a {@link java.lang.String} object.
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAnyNullInParams(String name) {
         String javadocHeader = "    /**\n" +
-                "     * Checks if any of the parameters are null.</p>\n" +
+                "     * <p>Checks if any of the parameters are null.</p>\n" +
                 "     *\n" +
                 "     * <pre>\n" +
                 "     * Assertions.assertFalse(IllegalArgumentExceptionUtilsx.isAnyNullInParams());\n" +
@@ -125,7 +125,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAnyNullInParams.</p>
+     * <p>generateIsAnyNullInParams.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
      * @param paramNum      a int.
@@ -160,14 +160,14 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
+     * <p>generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
      *
      * @param name a {@link java.lang.String} object.
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAnyNullInParamsThenThrowIllegalArgumentException(String name) {
         String javadocHeader = "    /**\n" +
-                "     * If any of the parameters are null, throw an IllegalArgumentException about it.</p>\n" +
+                "     * <p>If any of the parameters are null, throw an IllegalArgumentException about it.</p>\n" +
                 "     *\n" +
                 "     * @author XenoAmess\n" +
                 "     */\n";
@@ -184,7 +184,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
+     * <p>generateIsAnyNullInParamsThenThrowIllegalArgumentException.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
      * @param paramNum      a int.
@@ -236,14 +236,14 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsNoneNullInParams.</p>
+     * <p>generateIsNoneNullInParams.</p>
      *
      * @param name a {@link java.lang.String} object.
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsNoneNullInParams(String name) {
         String javadocHeader = "    /**\n" +
-                "     * Checks if none of the parameters are null.</p>\n" +
+                "     * <p>Checks if none of the parameters are null.</p>\n" +
                 "     *\n" +
                 "     * <pre>\n" +
                 "     * Assertions.assertTrue(IllegalArgumentExceptionUtilsx.isNoneNullInParams());\n" +
@@ -278,7 +278,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsNoneNullInParams.</p>
+     * <p>generateIsNoneNullInParams.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
      * @param paramNum      a int.
@@ -310,14 +310,14 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
 
 
     /**
-     * generateIsAllNullInParams.</p>
+     * <p>generateIsAllNullInParams.</p>
      *
      * @param name a {@link java.lang.String} object.
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAllNullInParams(String name) {
         String javadocHeader = "    /**\n" +
-                "     * Checks if all of the parameters are null.</p>\n" +
+                "     * <p>Checks if all of the parameters are null.</p>\n" +
                 "     *\n" +
                 "     * @return {@code true} if all of the parameters are null\n" +
                 "     * @author XenoAmess\n" +
@@ -335,7 +335,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAllNullInParams.</p>
+     * <p>generateIsAllNullInParams.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
      * @param paramNum      a int.
@@ -370,14 +370,14 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
+     * <p>generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
      *
      * @param name a {@link java.lang.String} object.
      * @return a {@link java.lang.String} object.
      */
     public static String generateIsAllNullInParamsThenThrowIllegalArgumentException(String name) {
         String javadocHeader = "    /**\n" +
-                "     * If all of the parameters are null, throw an IllegalArgumentException about it.</p>\n" +
+                "     * <p>If all of the parameters are null, throw an IllegalArgumentException about it.</p>\n" +
                 "     *\n" +
                 "     * @author XenoAmess\n" +
                 "     */\n";
@@ -394,7 +394,7 @@ public class IllegalArgumentExceptionUtilsxCodeGenerator {
     }
 
     /**
-     * generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
+     * <p>generateIsAllNullInParamsThenThrowIllegalArgumentException.</p>
      *
      * @param stringBuilder a {@link java.lang.StringBuilder} object.
      * @param paramNum      a int.
