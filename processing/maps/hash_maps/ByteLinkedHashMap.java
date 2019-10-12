@@ -35,7 +35,7 @@
 //import java.util.function.Consumer;
 //
 ///**
-// * <p>Hash table and linked list implementation of the {@code Map} interface,
+// * Hash table and linked list implementation of the {@code Map} interface,
 // * with predictable iteration order.  This implementation differs from
 // * {@code HashMap} in that it maintains a doubly-linked list running through
 // * all of its entries.  This linked list defines the iteration ordering,
@@ -46,7 +46,7 @@
 // * {@code m.containsKey(k)} would return {@code true} immediately prior to
 // * the invocation.)
 // *
-// * <p>This implementation spares its clients from the unspecified, generally
+// * This implementation spares its clients from the unspecified, generally
 // * chaotic ordering provided by {@link HashMap} (and {@link Hashtable}),
 // * without incurring the increased cost associated with {@link TreeMap}.  It
 // * can be used to produce a copy of a map that has the same order as the
@@ -62,7 +62,7 @@
 // * the copy.  (Clients generally appreciate having things returned in the same
 // * order they were presented.)
 // *
-// * <p>A special {@link #ByteLinkedHashMap(int, float, boolean) constructor} is
+// * A special {@link #ByteLinkedHashMap(int, float, boolean) constructor} is
 // * provided to create a linked hash map whose order of iteration is the order
 // * in which its entries were last accessed, from least-recently accessed to
 // * most-recently (<i>access-order</i>).  This kind of map is well-suited to
@@ -78,11 +78,11 @@
 // * on collection-views do <i>not</i> affect the order of iteration of the
 // * backing map.
 // *
-// * <p>The {@link #removeEldestEntry(Map.Entry)} method may be overridden to
+// * The {@link #removeEldestEntry(Map.Entry)} method may be overridden to
 // * impose a policy for removing stale mappings automatically when new mappings
 // * are added to the map.
 // *
-// * <p>This class provides all of the optional {@code Map} operations, and
+// * This class provides all of the optional {@code Map} operations, and
 // * permits null elements.  Like {@code HashMap}, it provides constant-time
 // * performance for the basic operations ({@code add}, {@code contains} and
 // * {@code remove}), assuming the hash function disperses elements
@@ -94,7 +94,7 @@
 // * is likely to be more expensive, requiring time proportional to its
 // * <i>capacity</i>.
 // *
-// * <p>A linked hash map has two parameters that affect its performance:
+// * A linked hash map has two parameters that affect its performance:
 // * <i>initial capacity</i> and <i>load factor</i>.  They are defined precisely
 // * as for {@code HashMap}.  Note, however, that the penalty for choosing an
 // * excessively high value for initial capacity is less severe for this class
@@ -121,7 +121,7 @@
 // * merely querying the map with {@code get} is a structural modification.
 // * </strong>)
 // *
-// * <p>The iterators returned by the {@code iterator} method of the collections
+// * The iterators returned by the {@code iterator} method of the collections
 // * returned by all of this class's collection view methods are
 // * <em>fail-fast</em>: if the map is structurally modified at any time after
 // * the iterator is created, in any way except through the iterator's own
@@ -130,7 +130,7 @@
 // * modification, the iterator fails quickly and cleanly, rather than risking
 // * arbitrary, non-deterministic behavior at an undetermined time in the future.
 // *
-// * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
+// * Note that the fail-fast behavior of an iterator cannot be guaranteed
 // * as it is, generally speaking, impossible to make any hard guarantees in the
 // * presence of unsynchronized concurrent modification.  Fail-fast iterators
 // * throw {@code ConcurrentModificationException} on a best-effort basis.
@@ -138,12 +138,12 @@
 // * exception for its correctness:   <i>the fail-fast behavior of iterators
 // * should be used only to detect bugs.</i>
 // *
-// * <p>The spliterators returned by the spliterator method of the collections
+// * The spliterators returned by the spliterator method of the collections
 // * returned by all of this class's collection view methods are
 // * <em><a href="Spliterator.html#binding">late-binding</a></em>,
 // * <em>fail-fast</em>, and additionally report {@link Spliterator#ORDERED}.
 // *
-// * <p>This class is a member of the
+// * This class is a member of the
 // * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
 // * Java Collections Framework</a>.
 // *
@@ -428,12 +428,12 @@
 //     * Returns the value to which the specified key is mapped,
 //     * or {@code null} if this map contains no mapping for the key.
 //     *
-//     * <p>More formally, if this map contains a mapping from a key
+//     * More formally, if this map contains a mapping from a key
 //     * {@code k} to a value {@code v} such that {@code (key==null ? k==null :
 //     * key.equals(k))}, then this method returns {@code v}; otherwise
 //     * it returns {@code null}.  (There can be at most one such mapping.)
 //     *
-//     * <p>A return value of {@code null} does not <i>necessarily</i>
+//     * A return value of {@code null} does not <i>necessarily</i>
 //     * indicate that the map contains no mapping for the key; it's also
 //     * possible that the map explicitly maps the key to {@code null}.
 //     * The {@link #containsKey containsKey} operation may be used to
@@ -482,7 +482,7 @@
 //     * is added.  This is useful if the map represents a cache: it allows
 //     * the map to reduce memory consumption by deleting stale entries.
 //     *
-//     * <p>Sample use: this override will allow the map to grow up to 100
+//     * Sample use: this override will allow the map to grow up to 100
 //     * entries and then delete the eldest entry each time a new entry is
 //     * added, maintaining a steady state of 100 entries.
 //     * <pre>
@@ -493,7 +493,7 @@
 //     *     }
 //     * </pre>
 //     *
-//     * <p>This method typically does not modify the map in any way,
+//     * This method typically does not modify the map in any way,
 //     * instead allowing the map to modify itself as directed by its
 //     * return value.  It <i>is</i> permitted for this method to modify
 //     * the map directly, but if it does so, it <i>must</i> return
@@ -501,7 +501,7 @@
 //     * further modification).  The effects of returning {@code true}
 //     * after modifying the map from within this method are unspecified.
 //     *
-//     * <p>This implementation merely returns {@code false} (so that this
+//     * This implementation merely returns {@code false} (so that this
 //     * map acts like a normal map - the eldest element is never removed).
 //     *
 //     * @param eldest The least recently inserted entry in the map, or if

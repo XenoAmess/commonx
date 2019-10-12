@@ -81,7 +81,7 @@ import java.util.Queue;
  * </tbody>
  * </table>
  *
- * <p>Queues typically, but do not necessarily, order elements in a
+ * Queues typically, but do not necessarily, order elements in a
  * FIFO (first-in-first-out) manner.  Among the exceptions are
  * priority queues, which order elements according to a supplied
  * comparator, or the elements' natural ordering, and LIFO queues (or
@@ -93,7 +93,7 @@ import java.util.Queue;
  * different placement rules.  Every {@code Queue} implementation
  * must specify its ordering properties.
  *
- * <p>The {@link #offer offer} method inserts an element if possible,
+ * The {@link #offer offer} method inserts an element if possible,
  * otherwise returning {@code false}.  This differs from the {@link
  * java.util.Collection#add Collection.add} method, which can fail to
  * add an element only by throwing an unchecked exception.  The
@@ -101,7 +101,7 @@ import java.util.Queue;
  * rather than exceptional occurrence, for example, in fixed-capacity
  * (or &quot;bounded&quot;) queues.
  *
- * <p>The {@link #remove()} and {@link #poll()} methods remove and
+ * The {@link #remove()} and {@link #poll()} methods remove and
  * return the head of the queue.
  * Exactly which element is removed from the queue is a
  * function of the queue's ordering policy, which differs from
@@ -110,10 +110,10 @@ import java.util.Queue;
  * queue is empty: the {@code remove()} method throws an exception,
  * while the {@code poll()} method returns {@code null}.
  *
- * <p>The {@link #element()} and {@link #peek()} methods return, but do
+ * The {@link #element()} and {@link #peek()} methods return, but do
  * not remove, the head of the queue.
  *
- * <p>The {@code Queue} interface does not define the <i>blocking queue
+ * The {@code Queue} interface does not define the <i>blocking queue
  * methods</i>, which are common in concurrent programming.  These methods,
  * which wait for elements to appear or for space to become available, are
  * defined in the {@link java.util.concurrent.BlockingQueue} interface, which
@@ -134,7 +134,7 @@ import java.util.Queue;
  * always well-defined for queues with the same elements but different
  * ordering properties.
  *
- * <p>This interface is a member of the
+ * This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *

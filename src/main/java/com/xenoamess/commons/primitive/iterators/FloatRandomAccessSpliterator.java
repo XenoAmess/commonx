@@ -62,7 +62,7 @@ public class FloatRandomAccessSpliterator implements FloatSpliterator, Primitive
     private int expectedModCount; // initialized when fence set
 
     /**
-     * <p>Constructor for FloatRandomAccessSpliterator.</p>
+     * Constructor for FloatRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.FloatList} object.
      */

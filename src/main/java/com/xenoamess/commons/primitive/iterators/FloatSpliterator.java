@@ -38,11 +38,11 @@ import java.util.function.Consumer;
  * of elements covered by a Spliterator could be, for example, an array, a
  * {@link java.util.Collection}, an IO channel, or a generator function.
  *
- * <p>A Spliterator may traverse elements individually ({@link
+ * A Spliterator may traverse elements individually ({@link
  * #tryAdvance tryAdvance()}) or sequentially in bulk
  * ({@link #forEachRemaining forEachRemaining()}).
  *
- * <p>A Spliterator may also partition off some of its elements (using
+ * A Spliterator may also partition off some of its elements (using
  * {@link #trySplit}) as another Spliterator, to be used in
  * possibly-parallel operations.  Operations using a Spliterator that
  * cannot split, or does so in a highly imbalanced or inefficient
@@ -50,7 +50,7 @@ import java.util.function.Consumer;
  * and splitting exhaust elements; each Spliterator is useful for only a single
  * bulk computation.
  *
- * <p>A Spliterator also reports a set of {@link #characteristics()} of its
+ * A Spliterator also reports a set of {@link #characteristics()} of its
  * structure, source, and elements from among {@link #ORDERED},
  * {@link #DISTINCT}, {@link #SORTED}, {@link #SIZED}, {@link #NONNULL},
  * {@link #IMMUTABLE}, {@link #CONCURRENT}, and {@link #SUBSIZED}. These may
@@ -84,7 +84,7 @@ import java.util.function.Consumer;
  * after all elements have been traversed, rather than checking per-element and
  * failing immediately.
  *
- * <p>Spliterators can provide an estimate of the number of remaining elements
+ * Spliterators can provide an estimate of the number of remaining elements
  * via the {@link #estimateSize} method.  Ideally, as reflected in characteristic
  * {@link #SIZED}, this value corresponds exactly to the number of elements
  * that would be encountered in a successful traversal.  However, even when not
@@ -92,7 +92,7 @@ import java.util.function.Consumer;
  * being performed on the source, such as helping to determine whether it is
  * preferable to split further or traverse the remaining elements sequentially.
  *
- * <p>Despite their obvious utility in parallel algorithms, spliterators are not
+ * Despite their obvious utility in parallel algorithms, spliterators are not
  * expected to be thread-safe; instead, implementations of parallel algorithms
  * using spliterators should ensure that the spliterator is only used by one
  * thread at a time.  This is generally easy to attain via <em>serial
@@ -110,7 +110,7 @@ import java.util.function.Consumer;
  *
  * @author XenoAmess
  * @version 0.8.0
- * @apiNote <p>Spliterators, like {@code Iterator}s, are for traversing the elements of
+ * @apiNote Spliterators, like {@code Iterator}s, are for traversing the elements of
  * a source.  The {@code Spliterator} API was designed to support efficient
  * parallel traversal in addition to sequential traversal, by supporting
  * decomposition as well as single-element iteration.  In addition, the
@@ -119,13 +119,13 @@ import java.util.function.Consumer;
  * race involved in having separate methods for {@code hasNext()} and
  * {@code next()}.
  *
- * <p>For mutable sources, arbitrary and non-deterministic behavior may occur if
+ * For mutable sources, arbitrary and non-deterministic behavior may occur if
  * the source is structurally interfered with (elements added, replaced, or
  * removed) between the time that the Spliterator binds to its data source and
  * the end of traversal.  For example, such interference will produce arbitrary,
  * non-deterministic results when using the {@code java.util.stream} framework.
  *
- * <p>Structural interference of a source can be managed in the following ways
+ * Structural interference of a source can be managed in the following ways
  * (in approximate order of decreasing desirability):
  * <ul>
  * <li>The source cannot be structurally interfered with.
@@ -226,7 +226,7 @@ import java.util.function.Consumer;
  *   }
  * }}</pre>
  *
- * <p>As an example how a parallel computation framework, such as the
+ * As an example how a parallel computation framework, such as the
  * {@code java.util.stream} package, would use Spliterator in a parallel
  * computation, here is one way to implement an associated parallel forEach,
  * that illustrates the primary usage idiom of splitting off subtasks until
@@ -282,10 +282,10 @@ public interface FloatSpliterator extends Spliterator<Float>, Primitive {
      * covering elements, that will, upon return from this method, not
      * be covered by this Spliterator.
      *
-     * <p>If this Spliterator is {@link #ORDERED}, the returned Spliterator
+     * If this Spliterator is {@link #ORDERED}, the returned Spliterator
      * must cover a strict prefix of the elements.
      *
-     * <p>Unless this Spliterator covers an infinite number of elements,
+     * Unless this Spliterator covers an infinite number of elements,
      * repeated calls to {@code trySplit()} must eventually return {@code null}.
      * Upon non-null return:
      * <ul>
@@ -298,7 +298,7 @@ public interface FloatSpliterator extends Spliterator<Float>, Primitive {
      * splitting.</li>
      * </ul>
      *
-     * <p>This method may return {@code null} for any reason,
+     * This method may return {@code null} for any reason,
      * including emptiness, inability to split after traversal has
      * commenced, data structure constraints, and efficiency
      * considerations.

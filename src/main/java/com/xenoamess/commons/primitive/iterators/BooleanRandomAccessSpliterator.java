@@ -62,7 +62,7 @@ public class BooleanRandomAccessSpliterator implements BooleanSpliterator, Primi
     private int expectedModCount; // initialized when fence set
 
     /**
-     * <p>Constructor for BooleanRandomAccessSpliterator.</p>
+     * Constructor for BooleanRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.BooleanList} object.
      */

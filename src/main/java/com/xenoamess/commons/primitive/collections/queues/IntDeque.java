@@ -52,7 +52,7 @@ import java.util.Stack;
  * they may contain, but this interface supports capacity-restricted
  * deques as well as those with no fixed size limit.
  *
- * <p>This interface defines methods to access the elements at both
+ * This interface defines methods to access the elements at both
  * ends of the deque.  Methods are provided to insert, remove, and
  * examine the element.  Each of these methods exists in two forms:
  * one throws an exception if the operation fails, the other returns a
@@ -62,7 +62,7 @@ import java.util.Stack;
  * {@code Deque} implementations; in most implementations, insert
  * operations cannot fail.
  *
- * <p>The twelve methods described above are summarized in the
+ * The twelve methods described above are summarized in the
  * following table:
  *
  * <table class="striped">
@@ -105,7 +105,7 @@ import java.util.Stack;
  * </tbody>
  * </table>
  *
- * <p>This interface extends the {@link IntQueue} interface.  When a deque is
+ * This interface extends the {@link IntQueue} interface.  When a deque is
  * used as a queue, FIFO (First-In-First-Out) behavior results.  Elements are
  * added at the end of the deque and removed from the beginning.  The methods
  * inherited from the {@code Queue} interface are precisely equivalent to
@@ -147,7 +147,7 @@ import java.util.Stack;
  * </tbody>
  * </table>
  *
- * <p>Deques can also be used as LIFO (Last-In-First-Out) stacks.  This
+ * Deques can also be used as LIFO (Last-In-First-Out) stacks.  This
  * interface should be used in preference to the legacy {@link Stack} class.
  * When a deque is used as a stack, elements are pushed and popped from the
  * beginning of the deque.  Stack methods are equivalent to {@code Deque}
@@ -177,18 +177,18 @@ import java.util.Stack;
  * </tbody>
  * </table>
  *
- * <p>Note that the {@link #peek peek} method works equally well when
+ * Note that the {@link #peek peek} method works equally well when
  * a deque is used as a queue or a stack; in either case, elements are
  * drawn from the beginning of the deque.
  *
- * <p>This interface provides two methods to remove interior
+ * This interface provides two methods to remove interior
  * elements, {@link #removeFirstOccurrence removeFirstOccurrence} and
  * {@link #removeLastOccurrence removeLastOccurrence}.
  *
- * <p>Unlike the {@link IntList} interface, this interface does not
+ * Unlike the {@link IntList} interface, this interface does not
  * provide support for indexed access to elements.
  *
- * <p>While {@code Deque} implementations are not strictly required
+ * While {@code Deque} implementations are not strictly required
  * to prohibit the insertion of null elements, they are strongly
  * encouraged to do so.  Users of any {@code Deque} implementations
  * that do allow null elements are strongly encouraged <i>not</i> to
@@ -201,7 +201,7 @@ import java.util.Stack;
  * methods, but instead inherit the identity-based versions from class
  * {@code Object}.
  *
- * <p>This interface is a member of the
+ * This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -273,7 +273,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * available.  When using a capacity-restricted deque, it is generally
      * preferable to use method {@link #offerLast}.
      *
-     * <p>This method is equivalent to {@link #add}.
+     * This method is equivalent to {@link #add}.
      *
      * @param e the element to add
      * @throws IllegalStateException    if the element cannot be added at this
@@ -718,7 +718,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * When using a capacity-restricted deque, it is generally preferable to
      * use {@link #offer(Integer) offer}.
      *
-     * <p>This method is equivalent to {@link #addLast}.
+     * This method is equivalent to {@link #addLast}.
      *
      * @param e the element to add
      * @return {@code true} (as specified by {@link Collection#add})
@@ -745,7 +745,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * generally preferable to the {@link #add} method, which can fail to
      * insert an element only by throwing an exception.
      *
-     * <p>This method is equivalent to {@link #offerLast}.
+     * This method is equivalent to {@link #offerLast}.
      *
      * @param e the element to add
      * @return {@code true} if the element was added to this deque, else
@@ -768,7 +768,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * This method differs from {@link #poll() poll()} only in that it
      * throws an exception if this deque is empty.
      *
-     * <p>This method is equivalent to {@link #removeFirst()}.
+     * This method is equivalent to {@link #removeFirst()}.
      *
      * @return the head of the queue represented by this deque
      * @throws NoSuchElementException if this deque is empty
@@ -783,7 +783,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * (in other words, the first element of this deque), or returns
      * {@code null} if this deque is empty.
      *
-     * <p>This method is equivalent to {@link #pollFirst()}.
+     * This method is equivalent to {@link #pollFirst()}.
      *
      * @return the first element of this deque, or {@code null} if
      * this deque is empty
@@ -799,7 +799,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * This method differs from {@link #peek peek} only in that it throws an
      * exception if this deque is empty.
      *
-     * <p>This method is equivalent to {@link #getFirst()}.
+     * This method is equivalent to {@link #getFirst()}.
      *
      * @return the head of the queue represented by this deque
      * @throws NoSuchElementException if this deque is empty
@@ -814,7 +814,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * this deque (in other words, the first element of this deque), or
      * returns {@code null} if this deque is empty.
      *
-     * <p>This method is equivalent to {@link #peekFirst()}.
+     * This method is equivalent to {@link #peekFirst()}.
      *
      * @return the head of the queue represented by this deque, or
      * {@code null} if this deque is empty
@@ -829,10 +829,10 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * of this deque, as if by calling {@link #addLast} on each one,
      * in the order that they are returned by the collection's iterator.
      *
-     * <p>When using a capacity-restricted deque, it is generally preferable
+     * When using a capacity-restricted deque, it is generally preferable
      * to call {@link #offer(Integer) offer} separately on each element.
      *
-     * <p>An exception encountered while trying to add an element may result
+     * An exception encountered while trying to add an element may result
      * in only some of the elements having been successfully added when
      * the associated exception is thrown.
      *
@@ -859,7 +859,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * immediately without violating capacity restrictions, throwing an
      * {@code IllegalStateException} if no space is currently available.
      *
-     * <p>This method is equivalent to {@link #addFirst}.
+     * This method is equivalent to {@link #addFirst}.
      *
      * @param e the element to push
      * @throws IllegalStateException    if the element cannot be added at this
@@ -914,7 +914,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * Pops an element from the stack represented by this deque.  In other
      * words, removes and returns the first element of this deque.
      *
-     * <p>This method is equivalent to {@link #removeFirst()}.
+     * This method is equivalent to {@link #removeFirst()}.
      *
      * @return the element at the front of this deque (which is the top
      * of the stack represented by this deque)
@@ -946,7 +946,7 @@ public interface IntDeque extends Deque<Integer>, IntQueue, Primitive {
      * Returns {@code true} if this deque contained the specified element
      * (or equivalently, if this deque changed as a result of the call).
      *
-     * <p>This method is equivalent to {@link #removeFirstOccurrence(Object)}.
+     * This method is equivalent to {@link #removeFirstOccurrence(Object)}.
      *
      * @param o element to be removed from this deque, if present
      * @return {@code true} if an element was removed as a result of this call

@@ -49,7 +49,7 @@
 // * the order of the map; in particular, it does not guarantee that the order
 // * will remain constant over time.
 // *
-// * <p>This implementation provides constant-time performance for the basic
+// * This implementation provides constant-time performance for the basic
 // * operations ({@code get} and {@code put}), assuming the hash function
 // * disperses the elements properly among the buckets.  Iteration over
 // * collection views requires time proportional to the "capacity" of the
@@ -58,7 +58,7 @@
 // * capacity too high (or the load factor too low) if iteration performance is
 // * important.
 // *
-// * <p>An instance of {@code LongHashMap} has two parameters that affect its
+// * An instance of {@code LongHashMap} has two parameters that affect its
 // * performance: <i>initial capacity</i> and <i>load factor</i>.  The
 // * <i>capacity</i> is the number of buckets in the hash table, and the initial
 // * capacity is simply the capacity at the time the hash table is created.  The
@@ -69,7 +69,7 @@
 // * structures are rebuilt) so that the hash table has approximately twice the
 // * number of buckets.
 // *
-// * <p>As a general rule, the default load factor (.75) offers a good
+// * As a general rule, the default load factor (.75) offers a good
 // * tradeoff between time and space costs.  Higher values decrease the
 // * space overhead but increase the lookup cost (reflected in most of
 // * the operations of the {@code LongHashMap} class, including
@@ -80,7 +80,7 @@
 // * maximum number of entries divided by the load factor, no rehash
 // * operations will ever occur.
 // *
-// * <p>If many mappings are to be stored in a {@code LongHashMap}
+// * If many mappings are to be stored in a {@code LongHashMap}
 // * instance, creating it with a sufficiently large capacity will allow
 // * the mappings to be stored more efficiently than letting it perform
 // * automatic rehashing as needed to grow the table.  Note that using
@@ -104,7 +104,7 @@
 // * unsynchronized access to the map:<pre>
 // *   Map m = Collections.synchronizedMap(new LongHashMap(...));</pre>
 // *
-// * <p>The iterators returned by all of this class's "collection view methods"
+// * The iterators returned by all of this class's "collection view methods"
 // * are <i>fail-fast</i>: if the map is structurally modified at any time after
 // * the iterator is created, in any way except through the iterator's own
 // * {@code remove} method, the iterator will throw a
@@ -113,7 +113,7 @@
 // * arbitrary, non-deterministic behavior at an undetermined time in the
 // * future.
 // *
-// * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
+// * Note that the fail-fast behavior of an iterator cannot be guaranteed
 // * as it is, generally speaking, impossible to make any hard guarantees in the
 // * presence of unsynchronized concurrent modification.  Fail-fast iterators
 // * throw {@code ConcurrentModificationException} on a best-effort basis.
@@ -121,7 +121,7 @@
 // * exception for its correctness: <i>the fail-fast behavior of iterators
 // * should be used only to detect bugs.</i>
 // *
-// * <p>This class is a member of the
+// * This class is a member of the
 // * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
 // * Java Collections Framework</a>.
 // *
@@ -593,12 +593,12 @@
 //     * Returns the value to which the specified key is mapped,
 //     * or {@code null} if this map contains no mapping for the key.
 //     *
-//     * <p>More formally, if this map contains a mapping from a key
+//     * More formally, if this map contains a mapping from a key
 //     * {@code k} to a value {@code v} such that {@code (key==null ? k==null :
 //     * key.equals(k))}, then this method returns {@code v}; otherwise
 //     * it returns {@code null}.  (There can be at most one such mapping.)
 //     *
-//     * <p>A return value of {@code null} does not <i>necessarily</i>
+//     * A return value of {@code null} does not <i>necessarily</i>
 //     * indicate that the map contains no mapping for the key; it's also
 //     * possible that the map explicitly maps the key to {@code null}.
 //     * The {@link #containsKey containsKey} operation may be used to
@@ -1385,7 +1385,7 @@
 //    /**
 //     * {@inheritDoc}
 //     *
-//     * <p>This method will, on a best-effort basis, throw a
+//     * This method will, on a best-effort basis, throw a
 //     * {@link ConcurrentModificationException} if it is detected that the
 //     * mapping function modifies this map during computation.
 //     *
@@ -1458,7 +1458,7 @@
 //    /**
 //     * {@inheritDoc}
 //     *
-//     * <p>This method will, on a best-effort basis, throw a
+//     * This method will, on a best-effort basis, throw a
 //     * {@link ConcurrentModificationException} if it is detected that the
 //     * remapping function modifies this map during computation.
 //     *
@@ -1495,7 +1495,7 @@
 //    /**
 //     * {@inheritDoc}
 //     *
-//     * <p>This method will, on a best-effort basis, throw a
+//     * This method will, on a best-effort basis, throw a
 //     * {@link ConcurrentModificationException} if it is detected that the
 //     * remapping function modifies this map during computation.
 //     *
@@ -1567,7 +1567,7 @@
 //    /**
 //     * {@inheritDoc}
 //     *
-//     * <p>This method will, on a best-effort basis, throw a
+//     * This method will, on a best-effort basis, throw a
 //     * {@link ConcurrentModificationException} if it is detected that the
 //     * remapping function modifies this map during computation.
 //     *

@@ -143,7 +143,7 @@ public interface AbstractIntCollection extends IntCollection,
      * called only as an optimization hint; the correct result is returned
      * even if the iterator returns a different number of elements.
      *
-     * <p>This method is equivalent to:
+     * This method is equivalent to:
      *
      * <pre> {@code
      * List<E> list = new ArrayList<E>(size());
@@ -181,7 +181,7 @@ public interface AbstractIntCollection extends IntCollection,
      * called only as an optimization hint; the correct result is returned
      * even if the iterator returns a different number of elements.
      *
-     * <p>This method is equivalent to:
+     * This method is equivalent to:
      *
      * <pre> {@code
      * List<E> list = new ArrayList<E>(size());
@@ -220,7 +220,7 @@ public interface AbstractIntCollection extends IntCollection,
      * called only as an optimization hint; the correct result is returned
      * even if the iterator returns a different number of elements.
      *
-     * <p>This method is equivalent to:
+     * This method is equivalent to:
      *
      * <pre> {@code
      * List<E> list = new ArrayList<E>(size());
@@ -278,7 +278,7 @@ public interface AbstractIntCollection extends IntCollection,
      * called only as an optimization hint; the correct result is returned
      * even if the iterator returns a different number of elements.
      *
-     * <p>This method is equivalent to:
+     * This method is equivalent to:
      *
      * <pre> {@code
      * List<E> list = new ArrayList<E>(size());
@@ -382,7 +382,7 @@ public interface AbstractIntCollection extends IntCollection,
     }
 
     /**
-     * <p>hugeCapacity.</p>
+     * hugeCapacity.</p>
      *
      * @param minCapacity a int.
      * @return a int.
@@ -410,7 +410,7 @@ public interface AbstractIntCollection extends IntCollection,
      * specified element.  If it finds the element, it removes the element
      * from the collection using the iterator's remove method.
      *
-     * <p>Note that this implementation throws an
+     * Note that this implementation throws an
      * {@code UnsupportedOperationException} if the iterator returned by this
      * collection's iterator method does not implement the {@code remove}
      * method and this collection contains the specified object.
@@ -433,7 +433,7 @@ public interface AbstractIntCollection extends IntCollection,
      * specified element.  If it finds the element, it removes the element
      * from the collection using the iterator's remove method.
      *
-     * <p>Note that this implementation throws an
+     * Note that this implementation throws an
      * {@code UnsupportedOperationException} if the iterator returned by this
      * collection's iterator method does not implement the {@code remove}
      * method and this collection contains the specified object.
@@ -488,7 +488,7 @@ public interface AbstractIntCollection extends IntCollection,
      * @implSpec This implementation iterates over the specified collection, and adds
      * each object returned by the iterator to this collection, in turn.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} unless {@code add} is
      * overridden (assuming the specified collection is non-empty).
      * @see #add(Integer)
@@ -522,7 +522,7 @@ public interface AbstractIntCollection extends IntCollection,
      * in the specified collection.  If it's so contained, it's removed from
      * this collection with the iterator's {@code remove} method.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the iterator returned by the
      * {@code iterator} method does not implement the {@code remove} method
      * and this collection contains one or more elements in common with the
@@ -562,7 +562,7 @@ public interface AbstractIntCollection extends IntCollection,
      * in the specified collection.  If it's not so contained, it's removed
      * from this collection with the iterator's {@code remove} method.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the iterator returned by the
      * {@code iterator} method does not implement the {@code remove} method
      * and this collection contains one or more elements not present in the
@@ -602,7 +602,7 @@ public interface AbstractIntCollection extends IntCollection,
      * implementations will probably choose to override this method for
      * efficiency.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the iterator returned by this
      * collection's {@code iterator} method does not implement the
      * {@code remove} method and this collection is non-empty.

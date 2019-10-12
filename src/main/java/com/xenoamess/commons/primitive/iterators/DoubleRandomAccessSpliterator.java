@@ -62,7 +62,7 @@ public class DoubleRandomAccessSpliterator implements DoubleSpliterator, Primiti
     private int expectedModCount; // initialized when fence set
 
     /**
-     * <p>Constructor for DoubleRandomAccessSpliterator.</p>
+     * Constructor for DoubleRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.DoubleList} object.
      */

@@ -50,7 +50,7 @@ import java.util.stream.StreamSupport;
  * <p><i>Bags</i> or <i>multisets</i> (unordered collections that may contain
  * duplicate elements) should implement this interface directly.
  *
- * <p>All general-purpose {@code Collection} implementation classes (which
+ * All general-purpose {@code Collection} implementation classes (which
  * typically implement {@code Collection} indirectly through one of its
  * subinterfaces) should provide two "standard" constructors: a void (no
  * arguments) constructor, which creates an empty collection, and a
@@ -62,7 +62,7 @@ import java.util.stream.StreamSupport;
  * constructors) but all of the general-purpose {@code Collection}
  * implementations in the Java platform libraries comply.
  *
- * <p>Certain methods are specified to be
+ * Certain methods are specified to be
  * <i>optional</i>. If a collection implementation doesn't implement a
  * particular operation, it should define the corresponding method to throw
  * {@code UnsupportedOperationException}. Such methods are marked "optional
@@ -83,7 +83,7 @@ import java.util.stream.StreamSupport;
  * Such exceptions are marked as "optional" in the specification for this
  * interface.
  *
- * <p>It is up to each collection to determine its own synchronization
+ * It is up to each collection to determine its own synchronization
  * policy.  In the absence of a stronger guarantee by the
  * implementation, undefined behavior may result from the invocation
  * of any method on a collection that is being mutated by another
@@ -91,7 +91,7 @@ import java.util.stream.StreamSupport;
  * a method that might perform invocations, and using an existing
  * iterator to examine the collection.
  *
- * <p>Many methods in Collections Framework interfaces are defined in
+ * Many methods in Collections Framework interfaces are defined in
  * terms of the {@link java.lang.Object#equals(Object) equals} method.  For example,
  * the specification for the {@link #contains(Object) contains(Object o)}
  * method says: "returns {@code true} if and only if this collection
@@ -108,7 +108,7 @@ import java.util.stream.StreamSupport;
  * the specified behavior of underlying {@link java.lang.Object} methods wherever the
  * implementor deems it appropriate.
  *
- * <p>Some collection operations which perform recursive traversal of the
+ * Some collection operations which perform recursive traversal of the
  * collection may fail with an exception for self-referential instances where
  * the collection directly or indirectly contains itself. This includes the
  * {@code clone()}, {@code equals()}, {@code hashCode()} and {@code toString()}
@@ -117,7 +117,7 @@ import java.util.stream.StreamSupport;
  *
  * <h2><a id="view">View Collections</a></h2>
  *
- * <p>Most collections manage storage for elements they contain. By contrast, <i>view
+ * Most collections manage storage for elements they contain. By contrast, <i>view
  * collections</i> themselves do not store elements, but instead they rely on a
  * backing collection to store the actual elements. Operations that are not handled
  * by the view collection itself are delegated to the backing collection. Examples of
@@ -140,7 +140,7 @@ import java.util.stream.StreamSupport;
  *
  * <h2><a id="unmodifiable">Unmodifiable Collections</a></h2>
  *
- * <p>Certain methods of this interface are considered "destructive" and are called
+ * Certain methods of this interface are considered "destructive" and are called
  * "mutator" methods in that they modify the group of objects contained within
  * the collection on which they operate. They can be specified to throw
  * {@code UnsupportedOperationException} if this collection implementation
@@ -155,7 +155,7 @@ import java.util.stream.StreamSupport;
  * unconditionally, as throwing only in certain cases can lead to
  * programming errors.
  *
- * <p>An <i>unmodifiable collection</i> is a collection, all of whose
+ * An <i>unmodifiable collection</i> is a collection, all of whose
  * mutator methods (as defined above) are specified to throw
  * {@code UnsupportedOperationException}. Such a collection thus cannot be
  * modified by calling any methods on it. For a collection to be properly
@@ -163,7 +163,7 @@ import java.util.stream.StreamSupport;
  * For example, if a List is unmodifiable, the List returned by
  * {@link java.util.List#subList List.subList} is also unmodifiable.
  *
- * <p>An unmodifiable collection is not necessarily immutable. If the
+ * An unmodifiable collection is not necessarily immutable. If the
  * contained elements are mutable, the entire collection is clearly
  * mutable, even though it might be unmodifiable. For example, consider
  * two unmodifiable lists containing mutable elements. The result of calling
@@ -174,7 +174,7 @@ import java.util.stream.StreamSupport;
  *
  * <h2><a id="unmodview">Unmodifiable View Collections</a></h2>
  *
- * <p>An <i>unmodifiable view collection</i> is a collection that is unmodifiable
+ * An <i>unmodifiable view collection</i> is a collection that is unmodifiable
  * and that is also a view onto a backing collection. Its mutator methods throw
  * {@code UnsupportedOperationException}, as described above, while
  * reading and querying methods are delegated to the backing collection.
@@ -187,14 +187,14 @@ import java.util.stream.StreamSupport;
  * {@link java.util.Collections#unmodifiableList Collections.unmodifiableList}, and
  * related methods.
  *
- * <p>Note that changes to the backing collection might still be possible,
+ * Note that changes to the backing collection might still be possible,
  * and if they occur, they are visible through the unmodifiable view. Thus,
  * an unmodifiable view collection is not necessarily immutable. However,
  * if the backing collection of an unmodifiable view is effectively immutable,
  * or if the only reference to the backing collection is through an
  * unmodifiable view, the view can be considered effectively immutable.
  *
- * <p>This interface is a member of the
+ * This interface is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -295,7 +295,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * the same order. The returned array's {@linkplain Class#getComponentType
      * runtime component type} is {@code float}.
      *
-     * <p>The returned array will be "safe" in that no references to it are
+     * The returned array will be "safe" in that no references to it are
      * maintained by this collection.  (In other words, this method must
      * allocate a new array even if this collection is backed by an array).
      * The caller is thus free to modify the returned array.
@@ -317,14 +317,14 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * Otherwise, a new array is allocated with the runtime type of the
      * specified array and the size of this float collection.
      *
-     * <p>If this collection fits in the specified array with room to spare
+     * If this collection fits in the specified array with room to spare
      * (i.e., the array has more elements than this collection), the element
      * in the array immediately following the end of the collection is set to
      * {@code null}.  (This is useful in determining the length of this
      * collection <i>only</i> if the caller knows that this collection does
      * not contain any {@code null} elements.)
      *
-     * <p>If this float collection makes any guarantees as to what order its elements
+     * If this float collection makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements in
      * the same order.
      *
@@ -342,7 +342,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * or use {@link #toArray(IntFunction)} to control the runtime type of
      * the array.
      *
-     * <p>Suppose {@code x} is a float collection.
+     * Suppose {@code x} is a float collection.
      * The following code can be used to dump the collection into a previously
      * allocated {@code float} array:
      *
@@ -351,11 +351,11 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      *     ...
      *     y = x.toArray(y);</pre>
      *
-     * <p>The return value is reassigned to the variable {@code y}, because a
+     * The return value is reassigned to the variable {@code y}, because a
      * new array will be allocated and returned if the collection {@code x} has
      * too many elements to fit into the existing array {@code y}.
      *
-     * <p>Note that {@code toArray(new Object[0])} is identical in function to
+     * Note that {@code toArray(new Object[0])} is identical in function to
      * {@code toArray()}.
      */
     default float[] toArray(float[] a) {
@@ -369,14 +369,14 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * Otherwise, a new array is allocated with the runtime type of the
      * specified array and the size of this float collection.
      *
-     * <p>If this collection fits in the specified array with room to spare
+     * If this collection fits in the specified array with room to spare
      * (i.e., the array has more elements than this collection), the element
      * in the array immediately following the end of the collection is set to
      * {@code null}.  (This is useful in determining the length of this
      * collection <i>only</i> if the caller knows that this collection does
      * not contain any {@code null} elements.)
      *
-     * <p>If this float collection makes any guarantees as to what order its elements
+     * If this float collection makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements in
      * the same order.
      *
@@ -394,7 +394,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * or use {@link #toArray(IntFunction)} to control the runtime type of
      * the array.
      *
-     * <p>Suppose {@code x} is a float collection.
+     * Suppose {@code x} is a float collection.
      * The following code can be used to dump the collection into a previously
      * allocated {@code float} array:
      *
@@ -403,11 +403,11 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      *     ...
      *     y = x.toArray(y);</pre>
      *
-     * <p>The return value is reassigned to the variable {@code y}, because a
+     * The return value is reassigned to the variable {@code y}, because a
      * new array will be allocated and returned if the collection {@code x} has
      * too many elements to fit into the existing array {@code y}.
      *
-     * <p>Note that {@code toArray(new Object[0])} is identical in function to
+     * Note that {@code toArray(new Object[0])} is identical in function to
      * {@code toArray()}.
      */
     float[] toArrayPrimitive(float[] a);
@@ -418,7 +418,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * Returns an array containing all of the elements in this collection,
      * using the provided {@code generator} function to allocate the returned array.
      *
-     * <p>If this collection makes any guarantees as to what order its elements
+     * If this collection makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements in
      * the same order.
      *
@@ -427,7 +427,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * {@link #toArray()} to create an array whose runtime type is {@code Object[]},
      * or use {@link #toArray(Object[]) toArray(T[])} to reuse an existing array.
      *
-     * <p>Suppose {@code x} is a collection known to contain only strings.
+     * Suppose {@code x} is a collection known to contain only strings.
      * The following code can be used to dump the collection into a newly
      * allocated array of {@code String}:
      *
@@ -447,7 +447,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * Returns an array containing all of the elements in this float collection,
      * using the provided {@code generator} function to allocate the returned array.
      *
-     * <p>If this float collection makes any guarantees as to what order its elements
+     * If this float collection makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements in
      * the same order.
      *
@@ -456,7 +456,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * {@link #toArrayPrimitive()} to create an array whose runtime type is {@code float[]},
      * or use {@link #toArrayPrimitive(float[])} to reuse an existing array.
      *
-     * <p>Suppose {@code x} is a collection known to contain only strings.
+     * Suppose {@code x} is a collection known to contain only strings.
      * The following code can be used to dump the collection into a newly
      * allocated array of {@code float}:
      *
@@ -650,7 +650,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * if the spliterator reports {@link Spliterator#SIZED} and this collection
      * contains no elements.
      *
-     * <p>The default implementation should be overridden by subclasses that
+     * The default implementation should be overridden by subclasses that
      * can return a more efficient spliterator.  In order to
      * preserve expected laziness behavior for the {@link #stream()} and
      * {@link #parallelStream()} methods, spliterators should either have the
@@ -664,7 +664,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * <pre>{@code
      *     Stream<E> s = StreamSupport.stream(() -> spliterator(), spliteratorCharacteristics)
      * }</pre>
-     * <p>These requirements ensure that streams produced by the
+     * These requirements ensure that streams produced by the
      * {@link #stream()} and {@link #parallelStream()} methods will reflect the
      * contents of the collection as of initiation of the terminal stream
      * operation.
@@ -678,7 +678,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * @implNote The created {@code Spliterator} additionally reports
      * {@link java.util.Spliterator#SUBSIZED}.
      *
-     * <p>If a spliterator covers no elements then the reporting of additional
+     * If a spliterator covers no elements then the reporting of additional
      * characteristic values, beyond that of {@code SIZED} and {@code SUBSIZED},
      * does not aid clients to control, specialize or simplify computation.
      * However, this does enable shared use of an immutable and empty
@@ -697,7 +697,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * <p>
      * Returns a sequential {@code Stream} with this collection as its source.
      *
-     * <p>This method should be overridden when the {@link #spliterator()}
+     * This method should be overridden when the {@link #spliterator()}
      * method cannot return a spliterator that is {@code IMMUTABLE},
      * {@code CONCURRENT}, or <em>late-binding</em>. (See {@link #spliterator()}
      * for details.)
@@ -717,7 +717,7 @@ public interface FloatCollection extends Collection<Float>, FloatIterable, Primi
      * Returns a possibly parallel {@code Stream} with this collection as its
      * source.  It is allowable for this method to return a sequential stream.
      *
-     * <p>This method should be overridden when the {@link #spliterator()}
+     * This method should be overridden when the {@link #spliterator()}
      * method cannot return a spliterator that is {@code IMMUTABLE},
      * {@code CONCURRENT}, or <em>late-binding</em>. (See {@link #spliterator()}
      * for details.)

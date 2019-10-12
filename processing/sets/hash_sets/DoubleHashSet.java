@@ -37,7 +37,7 @@ import java.util.*;
  * order will remain constant over time.  This class permits the {@code null}
  * element.
  *
- * <p>This class offers constant time performance for the basic operations
+ * This class offers constant time performance for the basic operations
  * ({@code add}, {@code remove}, {@code contains} and {@code size}),
  * assuming the hash function disperses the elements properly among the
  * buckets.  Iterating over this set requires time proportional to the sum of
@@ -58,7 +58,7 @@ import java.util.*;
  * unsynchronized access to the set:<pre>
  *   Set s = Collections.synchronizedSet(new HashSet(...));</pre>
  *
- * <p>The iterators returned by this class's {@code iterator} method are
+ * The iterators returned by this class's {@code iterator} method are
  * <i>fail-fast</i>: if the set is modified at any time after the iterator is
  * created, in any way except through the iterator's own {@code remove}
  * method, the Iterator throws a {@link ConcurrentModificationException}.
@@ -66,7 +66,7 @@ import java.util.*;
  * and cleanly, rather than risking arbitrary, non-deterministic behavior at
  * an undetermined time in the future.
  *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
+ * Note that the fail-fast behavior of an iterator cannot be guaranteed
  * as it is, generally speaking, impossible to make any hard guarantees in the
  * presence of unsynchronized concurrent modification.  Fail-fast iterators
  * throw {@code ConcurrentModificationException} on a best-effort basis.
@@ -74,7 +74,7 @@ import java.util.*;
  * exception for its correctness: <i>the fail-fast behavior of iterators
  * should be used only to detect bugs.</i>
  *
- * <p>This class is a member of the
+ * This class is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -342,7 +342,7 @@ public class DoubleHashSet extends PrimitiveHashSet<Double> {
      * and <em>fail-fast</em> {@link Spliterator} over the elements in this
      * set.
      *
-     * <p>The {@code Spliterator} reports {@link Spliterator#SIZED} and
+     * The {@code Spliterator} reports {@link Spliterator#SIZED} and
      * {@link Spliterator#DISTINCT}.  Overriding implementations should document
      * the reporting of additional characteristic values.
      *

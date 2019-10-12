@@ -34,9 +34,9 @@ import org.junit.jupiter.api.Test;
  */
 public class IllegalArgumentExceptionUtilsxTest {
     /**
-     * <p>Instances of this class should NOT be constructed in standard programming.
+     * Instances of this class should NOT be constructed in standard programming.
      *
-     * <p>This constructor is public to permit tools that require a JavaBean instance
+     * This constructor is public to permit tools that require a JavaBean instance
      * to operate.
      */
     public IllegalArgumentExceptionUtilsxTest() {
@@ -78,7 +78,7 @@ public class IllegalArgumentExceptionUtilsxTest {
 
 
 //    /**
-//     * <p>Checks if none of the CharSequences are empty ("") or null.</p>
+//     * Checks if none of the CharSequences are empty ("") or null.</p>
 //     *
 //     * <pre>
 //     * StringUtils.isNoneEmpty((String) null)    = false
@@ -102,7 +102,7 @@ public class IllegalArgumentExceptionUtilsxTest {
 //    }
 //
 //    /**
-//     * <p>Checks if all of the CharSequences are empty ("") or null.</p>
+//     * Checks if all of the CharSequences are empty ("") or null.</p>
 //     *
 //     * <pre>
 //     * StringUtils.isAllEmpty(null)             = true
@@ -133,9 +133,9 @@ public class IllegalArgumentExceptionUtilsxTest {
 //    }
 //
 //    /**
-//     * <p>Checks if a CharSequence is not empty (""), not null and not whitespace only.</p>
+//     * Checks if a CharSequence is not empty (""), not null and not whitespace only.</p>
 //     *
-//     * <p>Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
+//     * Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
 //     *
 //     * <pre>
 //     * StringUtils.isNotBlank(null)      = false
@@ -156,9 +156,9 @@ public class IllegalArgumentExceptionUtilsxTest {
 //    }
 //
 //    /**
-//     * <p>Checks if any of the CharSequences are empty ("") or null or whitespace only.</p>
+//     * Checks if any of the CharSequences are empty ("") or null or whitespace only.</p>
 //     *
-//     * <p>Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
+//     * Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
 //     *
 //     * <pre>
 //     * StringUtils.isAnyBlank((String) null)    = true
@@ -191,9 +191,9 @@ public class IllegalArgumentExceptionUtilsxTest {
 //    }
 //
 //    /**
-//     * <p>Checks if none of the CharSequences are empty (""), null or whitespace only.</p>
+//     * Checks if none of the CharSequences are empty (""), null or whitespace only.</p>
 //     *
-//     * <p>Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
+//     * Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
 //     *
 //     * <pre>
 //     * StringUtils.isNoneBlank((String) null)    = false
@@ -218,9 +218,9 @@ public class IllegalArgumentExceptionUtilsxTest {
 //    }
 //
 //    /**
-//     * <p>Checks if all of the CharSequences are empty (""), null or whitespace only.</p>
+//     * Checks if all of the CharSequences are empty (""), null or whitespace only.</p>
 //     *
-//     * <p>Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
+//     * Whitespace is defined by {@link Character#isWhitespace(char)}.</p>
 //     *
 //     * <pre>
 //     * StringUtils.isAllBlank(null)             = true

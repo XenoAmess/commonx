@@ -47,7 +47,7 @@ public class Version implements Comparable<Version> {
     private final String versionString;
 
     /**
-     * <p>Constructor for Version.</p>
+     * Constructor for Version.</p>
      *
      * @param versionString a {@link String} object.
      */
@@ -65,7 +65,7 @@ public class Version implements Comparable<Version> {
     public static final String VERSION_MISSING = "VersionMissing";
 
     /**
-     * <p>compareVersions.</p>
+     * compareVersions.</p>
      *
      * @param versionString1 a {@link String} object.
      * @param versionString2 a {@link String} object.

@@ -44,7 +44,7 @@ import java.util.function.Consumer;
  * interfaces.  Implements all optional list operations, and permits all
  * elements (including {@code null}).
  *
- * <p>All of the operations perform as could be expected for a doubly-linked
+ * All of the operations perform as could be expected for a doubly-linked
  * list.  Operations that index into the list will traverse the list from
  * the beginning or the end, whichever is closer to the specified index.
  *
@@ -63,7 +63,7 @@ import java.util.function.Consumer;
  * unsynchronized access to the list:<pre>
  *   List list = Collections.synchronizedList(new DoubleLinkedList(...));</pre>
  *
- * <p>The iterators returned by this class's {@code iterator} and
+ * The iterators returned by this class's {@code iterator} and
  * {@code listIterator} methods are <i>fail-fast</i>: if the list is
  * structurally modified at any time after the iterator is created, in
  * any way except through the Iterator's own {@code remove} or
@@ -73,7 +73,7 @@ import java.util.function.Consumer;
  * risking arbitrary, non-deterministic behavior at an undetermined
  * time in the future.
  *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
+ * Note that the fail-fast behavior of an iterator cannot be guaranteed
  * as it is, generally speaking, impossible to make any hard guarantees in the
  * presence of unsynchronized concurrent modification.  Fail-fast iterators
  * throw {@code ConcurrentModificationException} on a best-effort basis.
@@ -81,7 +81,7 @@ import java.util.function.Consumer;
  * exception for its correctness:   <i>the fail-fast behavior of iterators
  * should be used only to detect bugs.</i>
  *
- * <p>This class is a member of the
+ * This class is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
  *
@@ -451,7 +451,7 @@ public class DoubleLinkedList
     /**
      * Appends the specified element to the end of this list.
      *
-     * <p>This method is equivalent to {@link #add}.
+     * This method is equivalent to {@link #add}.
      *
      * @param e the element to add
      */
@@ -463,7 +463,7 @@ public class DoubleLinkedList
     /**
      * Appends the specified element to the end of this list.
      *
-     * <p>This method is equivalent to {@link #add}.
+     * This method is equivalent to {@link #add}.
      *
      * @param e the element to add
      */
@@ -475,7 +475,7 @@ public class DoubleLinkedList
     /**
      * Appends the specified element to the end of this list.
      *
-     * <p>This method is equivalent to {@link #add}.
+     * This method is equivalent to {@link #add}.
      *
      * @param e the element to add
      */
@@ -511,7 +511,7 @@ public class DoubleLinkedList
     /**
      * Appends the specified element to the end of this list.
      *
-     * <p>This method is equivalent to {@link #addLast}.
+     * This method is equivalent to {@link #addLast}.
      *
      * @param e element to be appended to this list
      * @return {@code true} (as specified by {@link Collection#add})
@@ -1175,7 +1175,7 @@ public class DoubleLinkedList
      * Pushes an element onto the stack represented by this list.  In other
      * words, inserts the element at the front of this list.
      *
-     * <p>This method is equivalent to {@link #addFirst}.
+     * This method is equivalent to {@link #addFirst}.
      *
      * @param e the element to push
      * @since 1.6
@@ -1189,7 +1189,7 @@ public class DoubleLinkedList
      * Pushes an element onto the stack represented by this list.  In other
      * words, inserts the element at the front of this list.
      *
-     * <p>This method is equivalent to {@link #addFirst}.
+     * This method is equivalent to {@link #addFirst}.
      *
      * @param e the element to push
      * @since 1.6
@@ -1203,7 +1203,7 @@ public class DoubleLinkedList
      * Pushes an element onto the stack represented by this list.  In other
      * words, inserts the element at the front of this list.
      *
-     * <p>This method is equivalent to {@link #addFirst}.
+     * This method is equivalent to {@link #addFirst}.
      *
      * @param e the element to push
      * @since 1.6
@@ -1217,7 +1217,7 @@ public class DoubleLinkedList
      * Pops an element from the stack represented by this list.  In other
      * words, removes and returns the first element of this list.
      *
-     * <p>This method is equivalent to {@link #removeFirst()}.
+     * This method is equivalent to {@link #removeFirst()}.
      *
      * @return the element at the front of this list (which is the top
      * of the stack represented by this list)
@@ -1233,7 +1233,7 @@ public class DoubleLinkedList
      * Pops an element from the stack represented by this list.  In other
      * words, removes and returns the first element of this list.
      *
-     * <p>This method is equivalent to {@link #removeFirst()}.
+     * This method is equivalent to {@link #removeFirst()}.
      *
      * @return the element at the front of this list (which is the top
      * of the stack represented by this list)
@@ -1568,11 +1568,11 @@ public class DoubleLinkedList
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
-     * <p>The returned array will be "safe" in that no references to it are
+     * The returned array will be "safe" in that no references to it are
      * maintained by this list.  (In other words, this method must allocate
      * a new array).  The caller is thus free to modify the returned array.
      *
-     * <p>This method acts as bridge between array-based and collection-based
+     * This method acts as bridge between array-based and collection-based
      * APIs.
      *
      * @return an array containing all of the elements in this list
@@ -1592,11 +1592,11 @@ public class DoubleLinkedList
      * Returns an array containing all of the elements in this list
      * in proper sequence (from first to last element).
      *
-     * <p>The returned array will be "safe" in that no references to it are
+     * The returned array will be "safe" in that no references to it are
      * maintained by this list.  (In other words, this method must allocate
      * a new array).  The caller is thus free to modify the returned array.
      *
-     * <p>This method acts as bridge between array-based and collection-based
+     * This method acts as bridge between array-based and collection-based
      * APIs.
      *
      * @return an array containing all of the elements in this list
@@ -1620,18 +1620,18 @@ public class DoubleLinkedList
      * array is allocated with the runtime type of the specified array and
      * the size of this list.
      *
-     * <p>If the list fits in the specified array with room to spare (i.e.,
+     * If the list fits in the specified array with room to spare (i.e.,
      * the array has more elements than the list), the element in the array
      * immediately following the end of the list is set to {@code null}.
      * (This is useful in determining the length of the list <i>only</i> if
      * the caller knows that the list does not contain any null elements.)
      *
-     * <p>Like the {@link #toArray()} method, this method acts as bridge between
+     * Like the {@link #toArray()} method, this method acts as bridge between
      * array-based and collection-based APIs.  Further, this method allows
      * precise control over the runtime type of the output array, and may,
      * under certain circumstances, be used to save allocation costs.
      *
-     * <p>Suppose {@code x} is a list known to contain only strings.
+     * Suppose {@code x} is a list known to contain only strings.
      * The following code can be used to dump the list into a newly
      * allocated array of {@code String}:
      *
@@ -1678,18 +1678,18 @@ public class DoubleLinkedList
      * array is allocated with the runtime type of the specified array and
      * the size of this list.
      *
-     * <p>If the list fits in the specified array with room to spare (i.e.,
+     * If the list fits in the specified array with room to spare (i.e.,
      * the array has more elements than the list), the element in the array
      * immediately following the end of the list is set to {@code null}.
      * (This is useful in determining the length of the list <i>only</i> if
      * the caller knows that the list does not contain any null elements.)
      *
-     * <p>Like the {@link #toArray()} method, this method acts as bridge between
+     * Like the {@link #toArray()} method, this method acts as bridge between
      * array-based and collection-based APIs.  Further, this method allows
      * precise control over the runtime type of the output array, and may,
      * under certain circumstances, be used to save allocation costs.
      *
-     * <p>Suppose {@code x} is a list known to contain only strings.
+     * Suppose {@code x} is a list known to contain only strings.
      * The following code can be used to dump the list into a newly
      * allocated array of {@code String}:
      *
@@ -1773,7 +1773,7 @@ public class DoubleLinkedList
      * and <em>fail-fast</em> {@link Spliterator} over the elements in this
      * list.
      *
-     * <p>The {@code Spliterator} reports {@link Spliterator#SIZED} and
+     * The {@code Spliterator} reports {@link Spliterator#SIZED} and
      * {@link Spliterator#ORDERED}.  Overriding implementations should document
      * the reporting of additional characteristic values.
      *

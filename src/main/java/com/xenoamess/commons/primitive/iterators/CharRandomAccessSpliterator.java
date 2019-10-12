@@ -62,7 +62,7 @@ public class CharRandomAccessSpliterator implements CharSpliterator, Primitive {
     private int expectedModCount; // initialized when fence set
 
     /**
-     * <p>Constructor for CharRandomAccessSpliterator.</p>
+     * Constructor for CharRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.CharList} object.
      */

@@ -84,7 +84,7 @@ public abstract class AbstractDoubleSequentialList extends AbstractDoubleList im
     /**
      * Returns the element at the specified position in this list.
      *
-     * <p>This implementation first gets a list iterator pointing to the
+     * This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it gets
      * the element using {@code ListIterator.next} and returns it.
      *
@@ -103,12 +103,12 @@ public abstract class AbstractDoubleSequentialList extends AbstractDoubleList im
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
      *
-     * <p>This implementation first gets a list iterator pointing to the
+     * This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it gets
      * the current element using {@code ListIterator.next} and replaces it
      * with {@code ListIterator.set}.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator does not
      * implement the {@code set} operation.
      *
@@ -136,11 +136,11 @@ public abstract class AbstractDoubleSequentialList extends AbstractDoubleList im
      * (if any) and any subsequent elements to the right (adds one to their
      * indices).
      *
-     * <p>This implementation first gets a list iterator pointing to the
+     * This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it
      * inserts the specified element with {@code ListIterator.add}.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator does not
      * implement the {@code add} operation.
      *
@@ -165,11 +165,11 @@ public abstract class AbstractDoubleSequentialList extends AbstractDoubleList im
      * from their indices).  Returns the element that was removed from the
      * list.
      *
-     * <p>This implementation first gets a list iterator pointing to the
+     * This implementation first gets a list iterator pointing to the
      * indexed element (with {@code listIterator(index)}).  Then, it removes
      * the element with {@code ListIterator.remove}.
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator does not
      * implement the {@code remove} operation.
      *
@@ -201,14 +201,14 @@ public abstract class AbstractDoubleSequentialList extends AbstractDoubleList im
      * operation is in progress.  (Note that this will occur if the specified
      * collection is this list, and it's nonempty.)
      *
-     * <p>This implementation gets an iterator over the specified collection and
+     * This implementation gets an iterator over the specified collection and
      * a list iterator over this list pointing to the indexed element (with
      * {@code listIterator(index)}).  Then, it iterates over the specified
      * collection, inserting the elements obtained from the iterator into this
      * list, one at a time, using {@code ListIterator.add} followed by
      * {@code ListIterator.next} (to skip over the added element).
      *
-     * <p>Note that this implementation will throw an
+     * Note that this implementation will throw an
      * {@code UnsupportedOperationException} if the list iterator returned by
      * the {@code listIterator} method does not implement the {@code add}
      * operation.

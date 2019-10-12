@@ -32,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntBinaryOperator;
 
 /**
- * <p>AtomicBooleanUtilsx class.</p>
+ * AtomicBooleanUtilsx class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0
@@ -40,9 +40,9 @@ import java.util.function.IntBinaryOperator;
  */
 public class AtomicBooleanUtilsx {
     /**
-     * <p>Instances of this class should NOT be constructed in standard programming.
+     * Instances of this class should NOT be constructed in standard programming.
      *
-     * <p>This constructor is public to permit tools that require a JavaBean instance
+     * This constructor is public to permit tools that require a JavaBean instance
      * to operate.
      */
     public AtomicBooleanUtilsx() {

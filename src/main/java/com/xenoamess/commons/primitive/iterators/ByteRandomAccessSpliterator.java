@@ -62,7 +62,7 @@ public class ByteRandomAccessSpliterator implements ByteSpliterator, Primitive {
     private int expectedModCount; // initialized when fence set
 
     /**
-     * <p>Constructor for ByteRandomAccessSpliterator.</p>
+     * Constructor for ByteRandomAccessSpliterator.</p>
      *
      * @param list a {@link com.xenoamess.commons.primitive.collections.lists.ByteList} object.
      */

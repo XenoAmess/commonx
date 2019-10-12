@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 /**
- * <p>GeneratePrimitivesFromDouble class.</p>
+ * GeneratePrimitivesFromDouble class.</p>
  *
  * @author XenoAmess
  * @version 0.6.0
@@ -35,7 +35,7 @@ public class GeneratePrimitivesFromDouble {
             "Boolean"};
 
     /**
-     * <p>generatePrimitivesFromFile.</p>
+     * generatePrimitivesFromFile.</p>
      *
      * @param sourcePath a {@link java.lang.String} object.
      */
@@ -46,7 +46,7 @@ public class GeneratePrimitivesFromDouble {
     }
 
     /**
-     * <p>generateSinglePrimitivesFromFile.</p>
+     * generateSinglePrimitivesFromFile.</p>
      *
      * @param sourcePath         a {@link java.lang.String} object.
      * @param replaceStringIndex a int.
@@ -133,7 +133,7 @@ public class GeneratePrimitivesFromDouble {
     }
 
     /**
-     * <p>main.</p>
+     * main.</p>
      *
      * @param args an array of {@link java.lang.String} objects.
      */

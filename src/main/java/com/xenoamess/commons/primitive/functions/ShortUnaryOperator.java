@@ -35,7 +35,7 @@ import java.util.function.UnaryOperator;
  * same type as its operand.  This is a specialization of {@code Function} for
  * the case where the operand and result are of the same type.
  *
- * <p>This is a <a href="package-summary.html">functional interface</a>
+ * This is a <a href="package-summary.html">functional interface</a>
  * whose functional method is {@link #apply(Short)}.
  *
  * @author XenoAmess
