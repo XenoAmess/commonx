@@ -15,11 +15,31 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * @author XenoAmess
  */
 public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
+    public static final Double DEFAULT_DEFAULT_PRIORITY = 5.0;
 
+    /**
+     * If using refuseHandleProtocolSet
+     *
+     * @see #refuseHandleProtocolSet
+     */
     private boolean useRefuseHandleProtocolSet;
 
+    /**
+     * key: urlStreamHandlerFactoryName
+     * value: URLStreamHandlerFactory
+     */
     private final Map<String, URLStreamHandlerFactory> urlStreamHandlerMap = new ConcurrentHashMap<>();
+
+    /**
+     * key: urlStreamHandlerFactoryName
+     * value: defaultPriority
+     */
     private final Map<String, Double> defaultPriorityMap = new ConcurrentHashMap<>();
+
+    /**
+     * key: urlStreamHandlerFactoryName
+     * value: specialPriority
+     */
     private final Map<String, Map<String, Double>> specialPriorityMap =
             new ConcurrentHashMap<>();
 
@@ -35,34 +55,53 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
 
     private static final Object streamHandlerLock = new Object();
 
-    public static void wrapURLStreamHandlerFactory() throws NoSuchFieldException, IllegalAccessException {
+    /**
+     * Create a new URLStreamHandlerFactorySet and set it as URL.factory.
+     * Will try to invoke URL.setURLStreamHandlerFactory() first.
+     * If success then return the created URLStreamHandlerFactorySet.
+     * Otherwise will try to use reflex,
+     * and the current URL.factory will be registered in the new created URLStreamHandlerFactorySet with name
+     * "original" and default priority 5.0
+     *
+     * @throws IllegalAccessException
+     */
+    public static URLStreamHandlerFactorySet wrapURLStreamHandlerFactory() throws IllegalAccessException {
         URLStreamHandlerFactorySet newFactory = new URLStreamHandlerFactorySet();
         try {
             URL.setURLStreamHandlerFactory(newFactory);
         } catch (Error e) {
             synchronized (streamHandlerLock) {
-                Field factoryField = URL.class.getDeclaredField("factory");
-                factoryField.setAccessible(true);
-                URLStreamHandlerFactory factory = (URLStreamHandlerFactory) factoryField.get(null);
-                newFactory.register(factory);
-                factoryField.set(null, newFactory);
+                try {
+                    Field factoryField = URL.class.getDeclaredField("factory");
+                    factoryField.setAccessible(true);
+                    URLStreamHandlerFactory factory = (URLStreamHandlerFactory) factoryField.get(null);
+                    newFactory.register("original", factory);
+                    factoryField.set(null, newFactory);
+                } catch (NoSuchFieldException ex) {
+                    throw new RuntimeException("field URL.factory disappeared.", ex);
+                }
             }
         }
+        return newFactory;
     }
 
     /**
      * Creates a new {@code URLStreamHandler} instance with the specified
      * protocol.
+     * <p>
+     * Will try to use the highest priority urlStreamHandlerFactory of this protocol to generate URLStreamHandler.
+     * <p>
+     * The rule used in calculating priorities is described at {@code generateSortedURLStreamHandlerFactoryList}.
      *
      * @param protocol the protocol ("{@code ftp}",
-     *                 "{@code http}", "{@code nntp}", etc.).
-     * @return a {@code URLStreamHandler} for the specific protocol, or {@code
-     * null} if this factory cannot create a handler for the specific
-     * protocol
+     *                 "{@code http}", "{@code nntpp}", etc.).
+     *                 * @return a {@code URLStreamHandler} for the secific protocol, or {@code
+     *                 null} if this factory cannot create a handler for the specific
+     *                 protocol
      * @see URLStreamHandler
+     * @see #generateSortedURLStreamHandlerFactoryList
      */
     @Override
-
     public URLStreamHandler createURLStreamHandler(String protocol) {
         if (this.useRefuseHandleProtocolSet && this.refuseHandleProtocolSet.contains(protocol)) {
             return null;
@@ -84,6 +123,19 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
         return null;
     }
 
+    /**
+     * First we generate all priority of all urlStreamHandlerFactories registered and of this protocol.
+     * A priority of a urlStreamHandlerFactory of a protocol is calculated as such:
+     * If there exist specialPriorityMap.get(protocol).get(urlStreamHandlerFactoryName) then it is the priority.
+     * Otherwise we use defaultPriorityMap.get(urlStreamHandlerFactoryName) as the priority.
+     * <p>
+     * Second we sort this list as high priority first and low priority last.
+     * <p>
+     * return the list.
+     *
+     * @param protocol
+     * @return
+     */
     public List<ImmutablePair<String, Double>> generateSortedURLStreamHandlerFactoryList(String protocol) {
         Map<String, Double> priorityMap = new HashMap<>(defaultPriorityMap);
         priorityMap.putAll(this.specialPriorityMap.get(protocol));
@@ -100,14 +152,37 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
         return result;
     }
 
+    /**
+     * register a urlStreamHandlerFactory
+     * <p>
+     * name : urlStreamHandlerFactory.getClass().getCanonicalName()
+     * priority : DEFAULT_DEFAULT_PRIORITY
+     *
+     * @see #DEFAULT_DEFAULT_PRIORITY
+     */
     public void register(URLStreamHandlerFactory urlStreamHandlerFactory) {
-        this.register(urlStreamHandlerFactory.getClass().getCanonicalName(), urlStreamHandlerFactory, 1.0);
+        this.register(urlStreamHandlerFactory.getClass().getCanonicalName(), urlStreamHandlerFactory,
+                DEFAULT_DEFAULT_PRIORITY);
     }
 
+    /**
+     * register a urlStreamHandlerFactory
+     * <p>
+     * name : urlStreamHandlerFactoryName
+     * priority : DEFAULT_DEFAULT_PRIORITY
+     *
+     * @see #DEFAULT_DEFAULT_PRIORITY
+     */
     public void register(String urlStreamHandlerFactoryName, URLStreamHandlerFactory urlStreamHandlerFactory) {
-        this.register(urlStreamHandlerFactoryName, urlStreamHandlerFactory, 1.0);
+        this.register(urlStreamHandlerFactoryName, urlStreamHandlerFactory, DEFAULT_DEFAULT_PRIORITY);
     }
 
+    /**
+     * register a urlStreamHandlerFactory
+     * <p>
+     * name : urlStreamHandlerFactoryName
+     * priority : priority
+     */
     public void register(String urlStreamHandlerFactoryName, URLStreamHandlerFactory urlStreamHandlerFactory,
                          double priority) {
         if (urlStreamHandlerMap.containsKey(urlStreamHandlerFactoryName)) {
@@ -123,15 +198,37 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
         this.setPriority(urlStreamHandlerFactoryName, priority);
     }
 
+    /**
+     * set a specialPriority of this urlStreamHandlerFactory of this protocol.
+     *
+     * @param urlStreamHandlerFactoryName
+     * @param protocol
+     * @param priority
+     * @see #generateSortedURLStreamHandlerFactoryList
+     */
     public void setPriority(String urlStreamHandlerFactoryName, String protocol, double priority) {
         Map<String, Double> urlStreamHandlerMap = specialPriorityMap.putIfAbsent(protocol, new ConcurrentHashMap<>());
         urlStreamHandlerMap.put(urlStreamHandlerFactoryName, priority);
     }
 
+    /**
+     * set a defaultPriority of this urlStreamHandlerFactory.
+     *
+     * @param urlStreamHandlerFactoryName
+     * @param priority
+     * @see #generateSortedURLStreamHandlerFactoryList
+     */
     public void setPriority(String urlStreamHandlerFactoryName, double priority) {
         defaultPriorityMap.put(urlStreamHandlerFactoryName, priority);
     }
 
+    /**
+     * get the specialPriority of this urlStreamHandlerFactory.
+     *
+     * @param urlStreamHandlerFactoryName
+     * @param protocol
+     * @see #generateSortedURLStreamHandlerFactoryList
+     */
     public double getPriority(String urlStreamHandlerFactoryName, String protocol) {
         Map<String, Double> urlStreamHandlerMap = specialPriorityMap.putIfAbsent(protocol, new ConcurrentHashMap<>());
         Double result = urlStreamHandlerMap.get(urlStreamHandlerFactoryName);
@@ -141,6 +238,12 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
         return result;
     }
 
+    /**
+     * set the defaultPriority of this urlStreamHandlerFactory.
+     *
+     * @param urlStreamHandlerFactoryName
+     * @see #generateSortedURLStreamHandlerFactoryList
+     */
     public double getPriority(String urlStreamHandlerFactoryName) {
         return defaultPriorityMap.get(urlStreamHandlerFactoryName);
     }
@@ -186,10 +289,21 @@ public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
 
 
     //getters and setters
+
+    /**
+     * If using refuseHandleProtocolSet
+     *
+     * @see #refuseHandleProtocolSet
+     */
     public boolean isUseRefuseHandleProtocolSet() {
         return useRefuseHandleProtocolSet;
     }
 
+    /**
+     * Set if using refuseHandleProtocolSet
+     *
+     * @see #refuseHandleProtocolSet
+     */
     public void setUseRefuseHandleProtocolSet(boolean useRefuseHandleProtocolSet) {
         this.useRefuseHandleProtocolSet = useRefuseHandleProtocolSet;
     }
