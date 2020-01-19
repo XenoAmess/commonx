@@ -24,6 +24,8 @@
 
 package com.xenoamess.commons.io;
 
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystemException;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.system.MemoryUtil;
 
@@ -109,6 +111,49 @@ public class FileUtils {
                     "," + ifUsingMemoryUtil);
         }
         return loadBuffer(resourceFile.toPath(), ifUsingMemoryUtil);
+    }
+
+    /**
+     * Reads the specified resource and returns the raw data as a ByteBuffer.
+     * if ifUsingMemoryUtil == false, then use BufferUtil.
+     * else, allocate it using MemoryUtil.
+     *
+     * @param resourceFileObject the resource file object to read
+     * @param ifUsingMemoryUtil  if using MemoryUtil here
+     * @return the resource data
+     */
+    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
+        try {
+            if (resourceFileObject == null || !resourceFileObject.isFile()) {
+                //if is not a file.
+                throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
+                        "fails:" + resourceFileObject +
+                        "," + ifUsingMemoryUtil);
+            }
+
+            try {
+                File file = Paths.get(resourceFileObject.getURL().toURI()).toFile();
+                return loadBuffer(file, ifUsingMemoryUtil);
+            } catch (Exception e) {
+                byte[] bytes = null;
+                try {
+                    bytes = resourceFileObject.getContent().getByteArray();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                if (bytes == null) {
+                    return null;
+                }
+                if (ifUsingMemoryUtil) {
+                    return MemoryUtil.memAlloc(bytes.length).put(bytes);
+                } else {
+                    return ByteBuffer.allocateDirect(bytes.length).put(bytes);
+                }
+            }
+        } catch (FileSystemException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

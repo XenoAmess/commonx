@@ -13,7 +13,15 @@ import java.util.function.BiFunction;
 
 
 /**
- * @author XenoAmess
+ * This class defines a factory set for containing several {@code URLStreamHandlerFactory}s.
+ * <p>
+ * When a protocol comes, it will try to invoke the {@code URLStreamHandlerFactory}s it contains one by one as high
+ * priority first and low priority last.
+ * <p>
+ * It will stop only if it find one {@code URLStreamHandlerFactory} that can return a non-null {@code URLStreamHandler}
+ *
+ * @see java.net.URL
+ * @see java.net.URLStreamHandler
  */
 public class URLStreamHandlerFactorySet implements URLStreamHandlerFactory {
     public static final Double DEFAULT_DEFAULT_PRIORITY = 5.0;
