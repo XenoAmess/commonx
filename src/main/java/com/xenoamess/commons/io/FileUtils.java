@@ -772,4 +772,7 @@ public class FileUtils {
         }
     }
 
+    public File getFileFromFileObject(FileObject fileObject) throws FileSystemException, URISyntaxException {
+        return new File(fileObject.getURL().toURI());
+    }
 }

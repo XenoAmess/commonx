@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.10.4</version>
+    <version>0.10.5</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for common use.
@@ -19,7 +19,7 @@
     </licenses>
     <developers>
         <developer>
-            <name>Jin Xu</name>
+            <name>XenoAmess</name>
             <email>xenoamess@gmail.com</email>
             <organization>XenoAmess</organization>
             <url>https://github.com/xenoamess</url>
@@ -67,7 +67,7 @@
         <!---->
         <!---->
         <!--maven plugins versions-->
-        <junit-jupiter.version>5.6.0-RC1</junit-jupiter.version>
+        <junit-jupiter.version>5.6.0</junit-jupiter.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
