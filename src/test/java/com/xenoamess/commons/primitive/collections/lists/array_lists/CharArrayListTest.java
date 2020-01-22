@@ -114,6 +114,5 @@ public class CharArrayListTest {
 //        }
         System.out.println("large deleted");
         System.out.println("performance checks started:");
-        performanceChecks(100000);
     }
 }
