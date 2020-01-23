@@ -122,7 +122,7 @@ public class FileUtils {
      * @param ifUsingMemoryUtil  if using MemoryUtil here
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) throws FileSystemException {
+    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
         if (resourceFileObject == null) {
             //if is not a file.
             throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
