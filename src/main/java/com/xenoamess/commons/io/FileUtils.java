@@ -122,38 +122,33 @@ public class FileUtils {
      * @param ifUsingMemoryUtil  if using MemoryUtil here
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
-        try {
-            if (resourceFileObject == null || !resourceFileObject.isFile()) {
-                //if is not a file.
-                throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
-                        "fails:" + resourceFileObject +
-                        "," + ifUsingMemoryUtil);
-            }
-
-            try {
-                File file = Paths.get(resourceFileObject.getURL().toURI()).toFile();
-                return loadBuffer(file, ifUsingMemoryUtil);
-            } catch (Exception e) {
-                byte[] bytes = null;
-                try {
-                    bytes = resourceFileObject.getContent().getByteArray();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                if (bytes == null) {
-                    return null;
-                }
-                if (ifUsingMemoryUtil) {
-                    return MemoryUtil.memAlloc(bytes.length).put(bytes);
-                } else {
-                    return ByteBuffer.allocateDirect(bytes.length).put(bytes);
-                }
-            }
-        } catch (FileSystemException e) {
-            e.printStackTrace();
+    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) throws FileSystemException {
+        if (resourceFileObject == null) {
+            //if is not a file.
+            throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
+                    "fails:" + resourceFileObject +
+                    "," + ifUsingMemoryUtil);
         }
-        return null;
+
+        try {
+            File file = toFile(resourceFileObject);
+            return loadBuffer(file, ifUsingMemoryUtil);
+        } catch (Exception e) {
+            byte[] bytes = null;
+            try {
+                bytes = resourceFileObject.getContent().getByteArray();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            if (bytes == null) {
+                return null;
+            }
+            if (ifUsingMemoryUtil) {
+                return MemoryUtil.memAlloc(bytes.length).put(bytes);
+            } else {
+                return ByteBuffer.allocateDirect(bytes.length).put(bytes);
+            }
+        }
     }
 
     /**
@@ -770,5 +765,9 @@ public class FileUtils {
             throw new IllegalArgumentException("FileUtils.saveFile(File file, String contentString) fails:" + file +
                     "," + contentString, e);
         }
+    }
+
+    public static File toFile(FileObject fileObject) throws FileSystemException {
+        return new File(fileObject.getName().getPathDecoded());
     }
 }
