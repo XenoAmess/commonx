@@ -752,7 +752,7 @@ public class FileUtils {
      * @param contentString contentString
      */
     public static void saveFile(File file, String contentString) {
-        if (file == null || !file.exists() || !file.isFile()) {
+        if (file == null) {
             //if is not a file.
             throw new IllegalArgumentException("FileUtils.saveFile(File file, String contentString) fails:" + file +
                     "," + contentString);
