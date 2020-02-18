@@ -14,6 +14,8 @@ matrix:
     - os: linux
       jdk: openjdk8
     - os: linux
+      jdk: openjdk9
+    - os: linux
       jdk: openjdk10
     - os: linux
       jdk: openjdk11
@@ -23,6 +25,11 @@ matrix:
       jdk: openjdk13
     - os: linux
       jdk: openjdk14
+    - os: linux
+      jdk: openjdk-ea
+  allow_failures:
+    - jdk: openjdk9
+    - jdk: openjdk-ea
 script:
   - "git clone https://github.com/XenoAmess/commonx_additional_tests.git"
   - "cp -frap ./commonx_additional_tests/src/test/* ./src/test/ "
