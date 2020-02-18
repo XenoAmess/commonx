@@ -1592,8 +1592,8 @@ public class ArrayUtilsx extends ArrayUtils {
      * <p>Any multi-dimensional aspects of the arrays are ignored.
      *
      * @param arrays arrays of the arrays, must not be {@code null}
-     * @return {@code true} if length of all arrays matches, treating
-     * {@code null} as an empty array
+     * @return {@code true} if length of all arrays matches
+     * @throws IllegalArgumentException if any object in arrays argument is not an array.
      */
     public static boolean isSameLength(final Object... arrays) {
         if (arrays.length <= 1) {
