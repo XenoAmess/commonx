@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.10.9</version>
+    <version>0.10.10</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for common use.
@@ -328,22 +328,40 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--            <plugin>-->
+            <!--                <artifactId>maven-resources-plugin</artifactId>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>copy-annotations</id>-->
+            <!--                        <phase>prepare-package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>copy-resources</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <resources>-->
+            <!--                                <resource>-->
+            <!--                                    <directory>target/generated-sources/src/main/java</directory>-->
+            <!--                                </resource>-->
+            <!--                            </resources>-->
+            <!--                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>copy-annotations</id>
-                        <phase>prepare-package</phase>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>copy-resources</goal>
+                            <goal>add-source</goal>
                         </goals>
                         <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>target/generated-sources/src/main/java</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/src/main/java/</source>
+                            </sources>
                         </configuration>
                     </execution>
                 </executions>
