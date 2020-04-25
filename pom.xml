@@ -43,27 +43,14 @@
         <!---->
         <!---->
         <!--libraries versions-->
-        <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.6</commons-io.version>
         <commons-lang3.version>3.10</commons-lang3.version>
         <commons-vfs2.version>2.6.0</commons-vfs2.version>
-        <dom4j.version>2.1.1</dom4j.version>
-        <eclipse-collections.version>10.0.0.M3</eclipse-collections.version>
-        <guava.version>28.2-jre</guava.version>
-        <jackson.version>2.10.2</jackson.version>
-        <joml.version>1.9.21</joml.version>
         <log4j.version>2.13.2</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <steamworks4j.version>1.8.0</steamworks4j.version>
-        <JXInput.version>1.0.0</JXInput.version>
         <!---->
         <!---->
         <!--home made libraries versions-->
-        <commonx.version>0.10.8</commonx.version>
-        <multi_language.version>0.45.4</multi_language.version>
-        <x8l.version>0.53.0</x8l.version>
-        <SDL_GameControllerDB_Util.version>1.1.20200214</SDL_GameControllerDB_Util.version>
         <!---->
         <!---->
         <!--maven plugins versions-->
@@ -78,8 +65,6 @@
         <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
-        <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-        <templating-maven-plugin.version>1.0.0</templating-maven-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
     </properties>
 
@@ -345,7 +330,9 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.build.directory}/generated-sources/src/main/java/</source>
+                                <source>
+                                    ${project.build.directory}/generated-sources/src/main/java/
+                                </source>
                             </sources>
                         </configuration>
                     </execution>
