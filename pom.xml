@@ -45,14 +45,14 @@
         <!--libraries versions-->
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.6</commons-io.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-lang3.version>3.10</commons-lang3.version>
         <commons-vfs2.version>2.6.0</commons-vfs2.version>
         <dom4j.version>2.1.1</dom4j.version>
         <eclipse-collections.version>10.0.0.M3</eclipse-collections.version>
         <guava.version>28.2-jre</guava.version>
         <jackson.version>2.10.2</jackson.version>
         <joml.version>1.9.21</joml.version>
-        <log4j.version>2.13.0</log4j.version>
+        <log4j.version>2.13.2</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
         <slf4j.version>1.7.30</slf4j.version>
         <steamworks4j.version>1.8.0</steamworks4j.version>
@@ -67,7 +67,7 @@
         <!---->
         <!---->
         <!--maven plugins versions-->
-        <junit-jupiter.version>5.6.0</junit-jupiter.version>
+        <junit-jupiter.version>5.7.0-M1</junit-jupiter.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
