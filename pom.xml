@@ -244,26 +244,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <artifactId>maven-resources-plugin</artifactId>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>copy-annotations</id>-->
-            <!--                        <phase>prepare-package</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>copy-resources</goal>-->
-            <!--                        </goals>-->
-            <!--                        <configuration>-->
-            <!--                            <resources>-->
-            <!--                                <resource>-->
-            <!--                                    <directory>target/generated-sources/src/main/java</directory>-->
-            <!--                                </resource>-->
-            <!--                            </resources>-->
-            <!--                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -391,22 +371,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-compiler-plugin</artifactId>-->
-            <!--                <version>${maven-compiler-plugin.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <source>${maven.compiler.source}-->
-            <!--                    </source>-->
-            <!--                    <target>${maven.compiler.target}-->
-            <!--                    </target>-->
-            <!--                    <encoding>utf-8</encoding>-->
-            <!--                    <meminitial>128m</meminitial>-->
-            <!--                    <maxmem>512m</maxmem>-->
-            <!--                    <fork>true</fork>-->
-            <!--                    <compilerVersion>${java.version}</compilerVersion>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
