@@ -36,8 +36,6 @@
 package com.xenoamess.commonx.java.util.concurrent.atomic;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.IntBinaryOperator;
 
 
 /**
@@ -54,21 +52,10 @@ public class AtomicBooleanx extends AtomicBoolean {
     /**
      * Flip the AtomicBoolean.
      * Sets the boolean value to false if it is true, and to true if it is false
-     * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
      *
      * @return new boolean value of AtomicBoolean
-     * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
      */
     public final boolean flip() {
-        boolean prev = get(), next = false;
-        for (boolean haveNext = false; ; ) {
-            if (!haveNext) {
-                next = !prev;
-            }
-            if (weakCompareAndSetVolatile(prev, next)) {
-                return next;
-            }
-            haveNext = (prev == (prev = get()));
-        }
+        return AtomicBooleanUtilsx.flip(this);
     }
 }

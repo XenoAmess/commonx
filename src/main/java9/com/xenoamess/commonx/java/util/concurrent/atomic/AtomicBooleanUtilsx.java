@@ -24,7 +24,12 @@
 
 package com.xenoamess.commonx.java.util.concurrent.atomic;
 
+import org.apache.commons.lang3.JavaVersion;
+import org.apache.commons.lang3.SystemUtils;
+
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.IntBinaryOperator;
 
 /**
  * <p>AtomicBooleanUtilsx class.</p>
@@ -47,12 +52,24 @@ public class AtomicBooleanUtilsx {
     /**
      * Flip the AtomicBoolean.
      * Sets the boolean value to false if it is true, and to true if it is false
+     * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
      *
      * @param atomicBoolean atomicBoolean
      * @return new boolean value of AtomicBoolean
+     * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
+     * @since 9
      */
     public static boolean flip(AtomicBoolean atomicBoolean) {
-        return flipForJava8(atomicBoolean);
+        boolean prev = atomicBoolean.get(), next = false;
+        for (boolean haveNext = false; ; ) {
+            if (!haveNext) {
+                next = !prev;
+            }
+            if (atomicBoolean.weakCompareAndSetVolatile(prev, next)) {
+                return next;
+            }
+            haveNext = (prev == (prev = atomicBoolean.get()));
+        }
     }
 
     /**
@@ -61,10 +78,16 @@ public class AtomicBooleanUtilsx {
      * <p>
      * Flip the AtomicBoolean.
      * <p>
+     * this is a implement that does not use {@link java.lang.invoke.VarHandle#setVolatile} and
+     * {@link java.util.concurrent.atomic.AtomicBoolean#weakCompareAndSetVolatile}.
+     * Sets the boolean value to false if it is true, and to true if it is false
+     * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
+     *
      * @param atomicBoolean atomicBoolean
      * @return new boolean value of AtomicBoolean
+     * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
      */
-    private static boolean flipForJava8(AtomicBoolean atomicBoolean) {
+    public static boolean flipForJava8(AtomicBoolean atomicBoolean) {
         boolean v;
         do {
             v = atomicBoolean.get();

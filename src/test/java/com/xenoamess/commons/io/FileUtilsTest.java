@@ -34,8 +34,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.xenoamess.commons.io.FileUtils.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.xenoamess.commons.io.FileUtils.containsFile;
+import static com.xenoamess.commons.io.FileUtils.containsURI;
+import static com.xenoamess.commons.io.FileUtils.containsURL;
+import static com.xenoamess.commons.io.FileUtils.createFileIfAbsent;
+import static com.xenoamess.commons.io.FileUtils.createPathIfAbsent;
+import static com.xenoamess.commons.io.FileUtils.getFile;
+import static com.xenoamess.commons.io.FileUtils.getPath;
+import static com.xenoamess.commons.io.FileUtils.getURI;
+import static com.xenoamess.commons.io.FileUtils.getURL;
+import static com.xenoamess.commons.io.FileUtils.loadBuffer;
+import static com.xenoamess.commons.io.FileUtils.loadString;
+import static com.xenoamess.commons.io.FileUtils.saveFile;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author XenoAmess
@@ -59,16 +73,14 @@ public class FileUtilsTest {
                 .getAbsolutePath());
         System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/d").getAbsolutePath());
         System.out.println(FileUtils.createFileIfAbsent("d").getAbsolutePath());
-        try {
-            System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/d/").getAbsolutePath());
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-        }
-        try {
-            System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/").getAbsolutePath());
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-        }
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/d/").getAbsolutePath()
+        );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/").getAbsolutePath()
+        );
     }
 
     @Test

@@ -1244,7 +1244,6 @@ public abstract class AbstractLongList extends AbstractList<Long> implements Abs
      * @param length the upper-bound (exclusive) of the range
      * @return {@code index} if it is within bounds of the range
      * @throws java.lang.IndexOutOfBoundsException if the {@code index} is out of bounds
-     * @see java.util.Objects#checkIndex(int index, int length)
      * @since 8
      */
     public static int checkIndex(int index, int length) {
