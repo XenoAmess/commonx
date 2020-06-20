@@ -3,9 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.xenoamess</groupId>
     <artifactId>commonx</artifactId>
-    <version>0.11.1-SNAPSHOT</version>
+    <version>0.11.1</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>Commonx, a package of Java utility classes for common use.
@@ -33,9 +32,9 @@
     </scm>
 
     <parent>
-        <groupId>com.meterware</groupId>
+        <groupId>com.xenoamess</groupId>
         <artifactId>multirelease-parent</artifactId>
-        <version>1.0</version>
+        <version>1.2.0</version>
     </parent>
 
     <properties>
@@ -73,66 +72,10 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.1.0</build-helper-maven-plugin.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>ossrh</id>
-            <!-- GPG mvn clean deploy -P release -Dgpg.passphrase=YourPassphase -->
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>update</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>versions-maven-plugin</artifactId>
-                        <version>${versions-maven-plugin.version}</version>
-                        <configuration>
-                            <allowSnapshots>false</allowSnapshots>
-                            <excludes>
-                                <exclude>org.slf4j:*</exclude>
-                            </excludes>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>update-properties</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -145,10 +88,17 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.lwjgl</groupId>
             <artifactId>lwjgl</artifactId>
             <version>${lwjgl.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -247,6 +197,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>add-source</id>

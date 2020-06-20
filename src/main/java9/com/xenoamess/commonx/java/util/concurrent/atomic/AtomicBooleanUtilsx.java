@@ -68,27 +68,4 @@ public class AtomicBooleanUtilsx {
             haveNext = (prev == (prev = atomicBoolean.get()));
         }
     }
-
-    /**
-     * <p>
-     * notice: Shall only use this in java 8.
-     * <p>
-     * Flip the AtomicBoolean.
-     * <p>
-     * this is a implement that does not use {@link java.lang.invoke.VarHandle#setVolatile} and
-     * {@link java.util.concurrent.atomic.AtomicBoolean#weakCompareAndSetVolatile}.
-     * Sets the boolean value to false if it is true, and to true if it is false
-     * with memory effects as specified by {@link java.lang.invoke.VarHandle#setVolatile}.
-     *
-     * @param atomicBoolean atomicBoolean
-     * @return new boolean value of AtomicBoolean
-     * @see AtomicInteger#accumulateAndGet(int x, IntBinaryOperator accumulatorFunction)
-     */
-    public static boolean flipForJava8(AtomicBoolean atomicBoolean) {
-        boolean v;
-        do {
-            v = atomicBoolean.get();
-        } while (!atomicBoolean.compareAndSet(v, !v));
-        return !v;
-    }
 }

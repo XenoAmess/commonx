@@ -52,19 +52,6 @@ public class AtomicBooleanUtilsx {
      * @return new boolean value of AtomicBoolean
      */
     public static boolean flip(AtomicBoolean atomicBoolean) {
-        return flipForJava8(atomicBoolean);
-    }
-
-    /**
-     * <p>
-     * notice: Shall only use this in java 8.
-     * <p>
-     * Flip the AtomicBoolean.
-     * <p>
-     * @param atomicBoolean atomicBoolean
-     * @return new boolean value of AtomicBoolean
-     */
-    private static boolean flipForJava8(AtomicBoolean atomicBoolean) {
         boolean v;
         do {
             v = atomicBoolean.get();
