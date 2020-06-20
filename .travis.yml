@@ -33,5 +33,5 @@ matrix:
 script:
   - "git clone https://github.com/XenoAmess/commonx_additional_tests.git"
   - "cp -frap ./commonx_additional_tests/src/test/* ./src/test/ "
-  - "./mvnw clean install -U -Dmaven.javadoc.skip=false -P !multi-jar"
+  - "./mvnw clean install -U -Dmaven.javadoc.skip=false -P !multi_release-jar"
   - "if [ \"$TRAVIS_JDK_VERSION\" = \"openjdk12\" ]; then ./mvnw sonar:sonar -Dsonar.projectKey=commonx -Dsonar.organization=xenoamess-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.log.level=DEBUG -Dsonar.sources=src/main/java -Dsonar.language=java -Dsonar.java.source=1.8 -Dsonar.sourceEncoding=UTF-8 -Dsonar.java.binaries=target/classes/ -Dsonar.java.test.binaries=target/test-classes/ -Dsonar.tests=src/test/ -Dsonar.java.coveragePlugin=jacoco -Dsonar.jacoco.reportPaths=target/jacoco.exec -Dsonar.junit.reportPaths=target/surefire-reports/ -Dsonar.login=98a6d1650ab33a15e5843ce5e5f50f53bc775e49 ; fi"
