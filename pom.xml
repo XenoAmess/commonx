@@ -49,7 +49,7 @@
         <!---->
         <!---->
         <!--libraries versions-->
-        <commons-lang3.version>3.10</commons-lang3.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
         <commons-vfs2.version>2.6.0</commons-vfs2.version>
         <log4j.version>2.13.3</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
