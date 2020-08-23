@@ -348,6 +348,23 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin.version}</version>
             </plugin>
+            <plugin>
+                <groupId>com.xenoamess</groupId>
+                <artifactId>add-from-repo-maven-plugin</artifactId>
+                <version>0.0.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>addTestsFromRepo</goal>
+                        </goals>
+                        <configuration>
+                            <repoGitUri>https://github.com/XenoAmess/commonx_additional_tests</repoGitUri>
+                            <relativeDirectory>/src/test</relativeDirectory>
+                            <outputDirectory>${project.build.directory}/generated-test-sources/src/test</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <reporting>
