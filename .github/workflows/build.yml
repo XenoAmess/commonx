@@ -42,4 +42,4 @@ jobs:
       - name: Build with mvnw
         run: |
           chmod 777 ./mvnw
-          ./mvnw clean install -U -Dmaven.javadoc.skip=false -P !multi_release-jar
+          ./mvnw clean install -U -P !multi_release-jar
