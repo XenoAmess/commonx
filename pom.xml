@@ -158,7 +158,7 @@
             <plugin>
                 <groupId>com.xenoamess</groupId>
                 <artifactId>jcpp-maven-plugin</artifactId>
-                <version>0.2.2</version>
+                <version>0.2.3</version>
                 <executions>
                     <execution>
                         <id>preprocess-sources</id>
