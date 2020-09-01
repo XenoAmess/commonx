@@ -29,7 +29,6 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.IntCollection;
 import com.xenoamess.commons.primitive.comparators.IntComparator;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
-
 import java.util.Spliterator;
 import java.util.function.Consumer;
 

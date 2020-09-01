@@ -25,8 +25,9 @@
 package com.xenoamess.commons.as_final_field;
 
 import java.lang.reflect.Field;
-
-import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.*;
+import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.ALREADY_HAVE_VALUE;
+import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.FIELD_NOT_EXIST;
+import static com.xenoamess.commons.as_final_field.AsFinalFieldExceptionType.ILLEGAL_ACCESS;
 
 /**
  * <p>AsFinalFieldUtils class.</p>

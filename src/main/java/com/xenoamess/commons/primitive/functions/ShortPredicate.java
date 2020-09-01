@@ -25,7 +25,6 @@
 package com.xenoamess.commons.primitive.functions;
 
 import com.xenoamess.commons.primitive.Primitive;
-
 import java.util.Objects;
 import java.util.function.Predicate;
 

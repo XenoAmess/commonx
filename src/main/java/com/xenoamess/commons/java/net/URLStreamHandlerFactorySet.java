@@ -1,15 +1,19 @@
 package com.xenoamess.commons.java.net;
 
-import org.apache.commons.lang3.tuple.ImmutablePair;
-
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.function.BiFunction;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 
 /**

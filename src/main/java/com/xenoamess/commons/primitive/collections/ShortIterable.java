@@ -29,7 +29,6 @@ import com.xenoamess.commons.primitive.functions.ShortConsumer;
 import com.xenoamess.commons.primitive.iterators.ShortIterator;
 import com.xenoamess.commons.primitive.iterators.ShortSpliterator;
 import com.xenoamess.commons.primitive.iterators.ShortSpliterators;
-
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.Consumer;

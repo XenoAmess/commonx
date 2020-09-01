@@ -1,6 +1,9 @@
 package com.xenoamess.commons.main_thread_only;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * If the annotation {@code @MainThreadOnly} is present on the declaration

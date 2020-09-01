@@ -35,8 +35,15 @@ import com.xenoamess.commons.primitive.iterators.CharIterator;
 import com.xenoamess.commons.primitive.iterators.CharListIterator;
 import com.xenoamess.commons.primitive.iterators.CharSpliterator;
 import com.xenoamess.commons.primitive.iterators.CharSpliterators;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.ConcurrentModificationException;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**

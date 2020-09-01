@@ -29,8 +29,11 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.DoubleCollection;
 import com.xenoamess.commons.primitive.iterators.DoubleIterator;
 import com.xenoamess.commons.primitive.iterators.DoubleListIterator;
-
-import java.util.*;
+import java.util.AbstractCollection;
+import java.util.AbstractList;
+import java.util.Collection;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * This class provides a skeletal implementation of the {@code List}
