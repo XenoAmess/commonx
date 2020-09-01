@@ -25,6 +25,7 @@
 package com.xenoamess.commons.io;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -146,6 +147,21 @@ public class FileUtils {
         byte[] bytes = null;
         try {
             bytes = resourceFileObject.getContent().getByteArray();
+        } catch (FileSystemException fileSystemException) {
+            try {
+                InputStream inputStream = resourceFileObject.getContent().getInputStream();
+
+                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                int nRead;
+                byte[] data = new byte[16384];
+                while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+                    buffer.write(data, 0, nRead);
+                }
+                buffer.flush();
+                bytes = buffer.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
