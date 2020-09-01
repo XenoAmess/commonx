@@ -50,6 +50,7 @@
         <!---->
         <!--libraries versions-->
         <commons-lang3.version>3.11</commons-lang3.version>
+        <commons-io.version>2.7</commons-io.version>
         <commons-vfs2.version>2.6.0</commons-vfs2.version>
         <log4j.version>2.13.3</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
@@ -92,6 +93,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.lwjgl</groupId>

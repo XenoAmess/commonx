@@ -25,7 +25,6 @@
 package com.xenoamess.commons.io;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,6 +43,7 @@ import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
 import org.lwjgl.BufferUtils;
@@ -150,29 +150,26 @@ public class FileUtils {
         } catch (FileSystemException fileSystemException) {
             try {
                 InputStream inputStream = resourceFileObject.getContent().getInputStream();
-
-                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-                int nRead;
-                byte[] data = new byte[16384];
-                while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
-                    buffer.write(data, 0, nRead);
-                }
-                buffer.flush();
-                bytes = buffer.toByteArray();
+                bytes = IOUtils.toByteArray(inputStream);
             } catch (IOException e) {
                 e.printStackTrace();
+                throw new IllegalArgumentException("Cannot load from " + resourceFileObject, e);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
+            throw new IllegalArgumentException("Cannot load from " + resourceFileObject, ex);
         }
         if (bytes == null) {
-            return null;
+            throw new IllegalArgumentException("Cannot load from " + resourceFileObject);
         }
+        ByteBuffer buffer;
         if (ifUsingMemoryUtil) {
-            return MemoryUtil.memAlloc(bytes.length).put(bytes);
+            buffer = MemoryUtil.memAlloc(bytes.length).put(bytes);
         } else {
-            return ByteBuffer.allocateDirect(bytes.length).put(bytes);
+            buffer = ByteBuffer.allocateDirect(bytes.length).put(bytes);
         }
+        buffer.flip();
+        return buffer.slice();
     }
 
     /**
