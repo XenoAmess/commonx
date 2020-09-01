@@ -24,12 +24,13 @@
 
 package com.xenoamess.commons.io;
 
-import org.apache.commons.vfs2.FileObject;
-import org.apache.commons.vfs2.FileSystemException;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.system.MemoryUtil;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -42,6 +43,10 @@ import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystemException;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.system.MemoryUtil;
 
 /**
  * <p>FileUtil class.</p>
@@ -132,22 +137,25 @@ public class FileUtils {
 
         try {
             File file = toFile(resourceFileObject);
-            return loadBuffer(file, ifUsingMemoryUtil);
-        } catch (Exception e) {
-            byte[] bytes = null;
-            try {
-                bytes = resourceFileObject.getContent().getByteArray();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            if (file != null) {
+                return loadBuffer(file, ifUsingMemoryUtil);
             }
-            if (bytes == null) {
-                return null;
-            }
-            if (ifUsingMemoryUtil) {
-                return MemoryUtil.memAlloc(bytes.length).put(bytes);
-            } else {
-                return ByteBuffer.allocateDirect(bytes.length).put(bytes);
-            }
+        } catch (Exception ignored) {
+
+        }
+        byte[] bytes = null;
+        try {
+            bytes = resourceFileObject.getContent().getByteArray();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        if (bytes == null) {
+            return null;
+        }
+        if (ifUsingMemoryUtil) {
+            return MemoryUtil.memAlloc(bytes.length).put(bytes);
+        } else {
+            return ByteBuffer.allocateDirect(bytes.length).put(bytes);
         }
     }
 
@@ -213,9 +221,10 @@ public class FileUtils {
             buffer.flip();
             return buffer.slice();
         } else {
-            throw new IllegalArgumentException("FileUtils.loadFileBuffer(File resourceFile, boolean " +
-                    "ifUsingMemoryUtil)" +
-                    " fails:" + resourcePath + "," + ifUsingMemoryUtil);
+            throw new IllegalArgumentException(
+                    "FileUtils.loadFileBuffer(File resourceFile, boolean ifUsingMemoryUtil) fails:" +
+                            resourcePath + "," + ifUsingMemoryUtil
+            );
         }
     }
 
@@ -768,6 +777,9 @@ public class FileUtils {
     }
 
     public static File toFile(FileObject fileObject) throws FileSystemException {
+        if (fileObject == null || !"file".equals(fileObject.getURL().getProtocol())) {
+            return null;
+        }
         return new File(fileObject.getName().getPathDecoded());
     }
 }

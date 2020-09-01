@@ -42,8 +42,6 @@ replay_pid*
 
 /lwjgl3-master/
 
-/resources
-
 /run_build.lnk
 /test*
 /src/main/java/org/lwjgl/demo
