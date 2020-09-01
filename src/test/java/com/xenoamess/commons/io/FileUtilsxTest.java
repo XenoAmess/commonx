@@ -34,18 +34,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.xenoamess.commons.io.FileUtils.containsFile;
-import static com.xenoamess.commons.io.FileUtils.containsURI;
-import static com.xenoamess.commons.io.FileUtils.containsURL;
-import static com.xenoamess.commons.io.FileUtils.createFileIfAbsent;
-import static com.xenoamess.commons.io.FileUtils.createPathIfAbsent;
-import static com.xenoamess.commons.io.FileUtils.getFile;
-import static com.xenoamess.commons.io.FileUtils.getPath;
-import static com.xenoamess.commons.io.FileUtils.getURI;
-import static com.xenoamess.commons.io.FileUtils.getURL;
-import static com.xenoamess.commons.io.FileUtils.loadBuffer;
-import static com.xenoamess.commons.io.FileUtils.loadString;
-import static com.xenoamess.commons.io.FileUtils.saveFile;
+import static com.xenoamess.commons.io.FileUtilsx.containsFile;
+import static com.xenoamess.commons.io.FileUtilsx.containsURI;
+import static com.xenoamess.commons.io.FileUtilsx.containsURL;
+import static com.xenoamess.commons.io.FileUtilsx.createFileIfAbsent;
+import static com.xenoamess.commons.io.FileUtilsx.createPathIfAbsent;
+import static com.xenoamess.commons.io.FileUtilsx.getFile;
+import static com.xenoamess.commons.io.FileUtilsx.getPath;
+import static com.xenoamess.commons.io.FileUtilsx.getURI;
+import static com.xenoamess.commons.io.FileUtilsx.getURL;
+import static com.xenoamess.commons.io.FileUtilsx.loadBuffer;
+import static com.xenoamess.commons.io.FileUtilsx.loadString;
+import static com.xenoamess.commons.io.FileUtilsx.saveFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -54,32 +54,32 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * @author XenoAmess
  */
-public class FileUtilsTest {
+public class FileUtilsxTest {
     public static final String testFilePath = "/com/xenoamess/commons/io/中文路径测试/中文路径测试/中文读取测试";
     public static final String testFileContent = "中文读取测试";
 
     @Test
     public void test() {
-        System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0")
+        System.out.println(FileUtilsx.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0")
                 .getAbsolutePath());
-        System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0")
+        System.out.println(FileUtilsx.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0")
                 .getAbsolutePath());
-        System.out.println(FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/b/b/b/b/").getAbsolutePath());
+        System.out.println(FileUtilsx.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/b/b/b/b/").getAbsolutePath());
 //        System.out.println(FileUtils.createFolderIfAbsent("/").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/c/c/c/c").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0/d")
+        System.out.println(FileUtilsx.createFileIfAbsent("/com/xenoamess/commons/io/c/c/c/c").getAbsolutePath());
+        System.out.println(FileUtilsx.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0/d")
                 .getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0/d")
+        System.out.println(FileUtilsx.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/中文测试0/中文测试0/中文测试0/d")
                 .getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/d").getAbsolutePath());
-        System.out.println(FileUtils.createFileIfAbsent("d").getAbsolutePath());
+        System.out.println(FileUtilsx.createFileIfAbsent("/com/xenoamess/commons/io/d").getAbsolutePath());
+        System.out.println(FileUtilsx.createFileIfAbsent("d").getAbsolutePath());
         assertThrows(
                 IllegalArgumentException.class,
-                () -> FileUtils.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/d/").getAbsolutePath()
+                () -> FileUtilsx.createFileDirectoryIfAbsent("/com/xenoamess/commons/io/d/").getAbsolutePath()
         );
         assertThrows(
                 IllegalArgumentException.class,
-                () -> FileUtils.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/").getAbsolutePath()
+                () -> FileUtilsx.createFileIfAbsent("/com/xenoamess/commons/io/中文测试0/").getAbsolutePath()
         );
     }
 

@@ -19,12 +19,12 @@ on: [ push ]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
-        java: [ 8, 11, 13 ]
+        os: [ ubuntu-latest , windows-latest , macos-latest ]
+        java: [ 8, 11, 14 ]
         experimental: [ false ]
 
     steps:
@@ -36,12 +36,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Set up JDK ${{ matrix.java }}
-        uses: actions/setup-java@v1.4.0
+        uses: actions/setup-java@v1.4.2
         with:
           java-version: ${{ matrix.java }}
       - name: Build with mvnw
         run: |
-          git clone https://github.com/XenoAmess/commonx_additional_tests.git
-          cp -frap ./commonx_additional_tests/src/test/* ./src/test/
           chmod 777 ./mvnw
-          ./mvnw clean install -U -Dmaven.javadoc.skip=false -P !multi_release-jar
+          ./mvnw clean install -U -P !multi_release-jar

@@ -24,12 +24,13 @@
 
 package com.xenoamess.commons.io;
 
-import org.apache.commons.vfs2.FileObject;
-import org.apache.commons.vfs2.FileSystemException;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.system.MemoryUtil;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -42,6 +43,10 @@ import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystemException;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.system.MemoryUtil;
 
 /**
  * <p>FileUtil class.</p>
@@ -50,12 +55,11 @@ import java.nio.file.Paths;
  * @deprecated This class is of low quality and is badly designed. And it only works 100% right on Windows. I do not
  * recommend anybody use it.
  */
-@Deprecated
-public class FileUtils {
+public class FileUtilsx {
     /**
      * Don't let anyone instantiate this class.
      */
-    private FileUtils() {
+    private FileUtilsx() {
     }
 
     /**
@@ -111,44 +115,6 @@ public class FileUtils {
                     "," + ifUsingMemoryUtil);
         }
         return loadBuffer(resourceFile.toPath(), ifUsingMemoryUtil);
-    }
-
-    /**
-     * Reads the specified resource and returns the raw data as a ByteBuffer.
-     * if ifUsingMemoryUtil == false, then use BufferUtil.
-     * else, allocate it using MemoryUtil.
-     *
-     * @param resourceFileObject the resource file object to read
-     * @param ifUsingMemoryUtil  if using MemoryUtil here
-     * @return the resource data
-     */
-    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
-        if (resourceFileObject == null) {
-            //if is not a file.
-            throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
-                    "fails:" + resourceFileObject +
-                    "," + ifUsingMemoryUtil);
-        }
-
-        try {
-            File file = toFile(resourceFileObject);
-            return loadBuffer(file, ifUsingMemoryUtil);
-        } catch (Exception e) {
-            byte[] bytes = null;
-            try {
-                bytes = resourceFileObject.getContent().getByteArray();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            if (bytes == null) {
-                return null;
-            }
-            if (ifUsingMemoryUtil) {
-                return MemoryUtil.memAlloc(bytes.length).put(bytes);
-            } else {
-                return ByteBuffer.allocateDirect(bytes.length).put(bytes);
-            }
-        }
     }
 
     /**
@@ -213,9 +179,10 @@ public class FileUtils {
             buffer.flip();
             return buffer.slice();
         } else {
-            throw new IllegalArgumentException("FileUtils.loadFileBuffer(File resourceFile, boolean " +
-                    "ifUsingMemoryUtil)" +
-                    " fails:" + resourcePath + "," + ifUsingMemoryUtil);
+            throw new IllegalArgumentException(
+                    "FileUtils.loadFileBuffer(File resourceFile, boolean ifUsingMemoryUtil) fails:" +
+                            resourcePath + "," + ifUsingMemoryUtil
+            );
         }
     }
 
@@ -247,7 +214,7 @@ public class FileUtils {
      * @return return
      */
     public static File getFile(String resourceFilePath) {
-        return getFile(FileUtils.class, resourceFilePath);
+        return getFile(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -279,7 +246,7 @@ public class FileUtils {
      * @return return
      */
     public static Path getPath(String resourceFilePath) {
-        return getPath(FileUtils.class, resourceFilePath);
+        return getPath(FileUtilsx.class, resourceFilePath);
     }
 
 
@@ -310,7 +277,7 @@ public class FileUtils {
      * @return return
      */
     public static boolean containsFile(String resourceFilePath) {
-        return containsFile(FileUtils.class, resourceFilePath);
+        return containsFile(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -340,7 +307,7 @@ public class FileUtils {
      * @return return
      */
     public static boolean containsFolder(String resourceFilePath) {
-        return containsFolder(FileUtils.class, resourceFilePath);
+        return containsFolder(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -364,7 +331,7 @@ public class FileUtils {
      * @return return
      */
     public static URL getURL(String resourceFilePath) {
-        return getURL(FileUtils.class, resourceFilePath);
+        return getURL(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -394,7 +361,7 @@ public class FileUtils {
      * @return return
      */
     public static boolean containsURL(String resourceFilePath) {
-        return containsURL(FileUtils.class, resourceFilePath);
+        return containsURL(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -505,7 +472,7 @@ public class FileUtils {
      * @return return
      */
     public static File createFileIfAbsent(String resourceFilePath) {
-        return createFileIfAbsent(FileUtils.class, resourceFilePath);
+        return createFileIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -544,7 +511,7 @@ public class FileUtils {
      * @return return
      */
     public static File createFileDirectoryIfAbsent(String resourceFilePath) {
-        return createFileDirectoryIfAbsent(FileUtils.class, resourceFilePath);
+        return createFileDirectoryIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -586,7 +553,7 @@ public class FileUtils {
      */
     @Deprecated
     public static Path createPathIfAbsent(String resourceFilePath) {
-        return createPathIfAbsent(FileUtils.class, resourceFilePath);
+        return createPathIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -635,7 +602,7 @@ public class FileUtils {
      */
     @Deprecated
     public static Path createPathDirectoryIfAbsent(String resourceFilePath) {
-        return createPathDirectoryIfAbsent(FileUtils.class, resourceFilePath);
+        return createPathDirectoryIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -685,7 +652,7 @@ public class FileUtils {
      * @return return
      */
     public static String loadString(String resourceFilePath) {
-        return loadString(FileUtils.class, resourceFilePath);
+        return loadString(FileUtilsx.class, resourceFilePath);
     }
 
     /**
@@ -742,7 +709,7 @@ public class FileUtils {
      * @param contentString    a {@link String} object.
      */
     public static void saveFile(String resourceFilePath, String contentString) {
-        saveFile(FileUtils.class, resourceFilePath, contentString);
+        saveFile(FileUtilsx.class, resourceFilePath, contentString);
     }
 
     /**
@@ -767,7 +734,22 @@ public class FileUtils {
         }
     }
 
+    /**
+     * Reads the specified resource and returns the raw data as a ByteBuffer.
+     * if ifUsingMemoryUtil == false, then use BufferUtil.
+     * else, allocate it using MemoryUtil.
+     *
+     * @param resourceFileObject the resource file object to read
+     * @param ifUsingMemoryUtil  if using MemoryUtil here
+     * @return the resource data
+     */
+    @Deprecated
+    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
+        return FileObjectUtilsx.loadBuffer(resourceFileObject, ifUsingMemoryUtil);
+    }
+
+    @Deprecated
     public static File toFile(FileObject fileObject) throws FileSystemException {
-        return new File(fileObject.getName().getPathDecoded());
+        return FileObjectUtilsx.toFile(fileObject);
     }
 }

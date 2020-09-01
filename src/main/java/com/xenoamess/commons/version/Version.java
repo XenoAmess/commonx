@@ -24,7 +24,7 @@
 
 package com.xenoamess.commons.version;
 
-import com.xenoamess.commons.io.FileUtils;
+import com.xenoamess.commons.io.FileUtilsx;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
@@ -133,7 +133,7 @@ public class Version implements Comparable<Version> {
 
     public static Version loadPackageVersion(Class classObject) {
         String res;
-        res = FileUtils.loadString(classObject, "/VERSION/" + classObject.getPackage().getName() + ".VERSION");
+        res = FileUtilsx.loadString(classObject, "/VERSION/" + classObject.getPackage().getName() + ".VERSION");
         if (StringUtils.isBlank(res)) {
             res = VERSION_MISSING;
             System.err.println("version missing for package " + classObject.getPackage().getName() + "!");
