@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.ShortCollection;
 import com.xenoamess.commons.primitive.comparators.ShortComparator;
 import com.xenoamess.commons.primitive.functions.ShortConsumer;
+
 import java.util.Spliterator;
 import java.util.function.Consumer;
 

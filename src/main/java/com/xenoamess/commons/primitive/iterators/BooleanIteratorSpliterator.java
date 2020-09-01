@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.BooleanCollection;
 import com.xenoamess.commons.primitive.comparators.BooleanComparator;
 import com.xenoamess.commons.primitive.functions.BooleanConsumer;
+
 import java.util.Spliterator;
 import java.util.function.Consumer;
 

@@ -25,8 +25,9 @@
 package com.xenoamess.commons.version;
 
 import com.xenoamess.commons.io.FileUtilsx;
-import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Objects;
 
 /**
  * A version class that represent a package's version.

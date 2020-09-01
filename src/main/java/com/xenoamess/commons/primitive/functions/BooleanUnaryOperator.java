@@ -26,6 +26,7 @@
 package com.xenoamess.commons.primitive.functions;
 
 import com.xenoamess.commons.primitive.Primitive;
+
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 

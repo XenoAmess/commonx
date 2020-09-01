@@ -38,6 +38,7 @@ package com.xenoamess.commons.primitive.collections.queues;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.DoubleList;
 import com.xenoamess.commons.primitive.iterators.DoubleIterator;
+
 import java.util.Collection;
 import java.util.Deque;
 import java.util.NoSuchElementException;

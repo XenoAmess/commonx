@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractFloatList;
 import com.xenoamess.commons.primitive.collections.lists.FloatList;
 import com.xenoamess.commons.primitive.functions.FloatConsumer;
+
 import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import java.util.RandomAccess;

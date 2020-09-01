@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.functions.ByteConsumer;
 import com.xenoamess.commons.primitive.iterators.ByteIterator;
 import com.xenoamess.commons.primitive.iterators.ByteSpliterator;
 import com.xenoamess.commons.primitive.iterators.ByteSpliterators;
+
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.Consumer;

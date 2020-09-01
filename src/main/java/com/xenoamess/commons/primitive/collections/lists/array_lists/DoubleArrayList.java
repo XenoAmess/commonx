@@ -34,24 +34,12 @@ import com.xenoamess.commons.primitive.iterators.DoubleIterator;
 import com.xenoamess.commons.primitive.iterators.DoubleListIterator;
 import com.xenoamess.commons.primitive.iterators.DoubleSpliterator;
 import com.xenoamess.commonx.java.util.Arraysx;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.RandomAccess;
-import java.util.Spliterator;
-import java.util.Vector;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
-import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * An resizable-array implementation of the {@code List} interface.

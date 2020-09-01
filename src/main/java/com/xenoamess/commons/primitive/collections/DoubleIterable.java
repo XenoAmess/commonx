@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.functions.DoubleConsumer;
 import com.xenoamess.commons.primitive.iterators.DoubleIterator;
 import com.xenoamess.commons.primitive.iterators.DoubleSpliterator;
 import com.xenoamess.commons.primitive.iterators.DoubleSpliterators;
+
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.Consumer;

@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.functions.FloatConsumer;
 import com.xenoamess.commons.primitive.iterators.FloatIterator;
 import com.xenoamess.commons.primitive.iterators.FloatSpliterator;
 import com.xenoamess.commons.primitive.iterators.FloatSpliterators;
+
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.Consumer;

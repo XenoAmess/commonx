@@ -29,11 +29,8 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.IntCollection;
 import com.xenoamess.commons.primitive.iterators.IntIterator;
 import com.xenoamess.commons.primitive.iterators.IntListIterator;
-import java.util.AbstractCollection;
-import java.util.AbstractList;
-import java.util.Collection;
-import java.util.List;
-import java.util.NoSuchElementException;
+
+import java.util.*;
 
 /**
  * This class provides a skeletal implementation of the {@code List}

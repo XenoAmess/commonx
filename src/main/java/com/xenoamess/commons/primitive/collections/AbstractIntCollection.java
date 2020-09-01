@@ -27,6 +27,7 @@ package com.xenoamess.commons.primitive.collections;
 
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.iterators.IntIterator;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;

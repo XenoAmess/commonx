@@ -38,6 +38,7 @@ package com.xenoamess.commons.primitive.collections.queues;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.ByteCollection;
 import com.xenoamess.commons.primitive.collections.lists.linked_lists.ByteLinkedList;
+
 import java.util.NoSuchElementException;
 import java.util.Queue;
 

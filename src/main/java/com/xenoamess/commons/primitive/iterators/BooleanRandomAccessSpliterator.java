@@ -29,6 +29,7 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractBooleanList;
 import com.xenoamess.commons.primitive.collections.lists.BooleanList;
 import com.xenoamess.commons.primitive.functions.BooleanConsumer;
+
 import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import java.util.RandomAccess;

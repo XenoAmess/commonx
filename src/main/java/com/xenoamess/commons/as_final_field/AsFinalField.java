@@ -24,11 +24,7 @@
 
 package com.xenoamess.commons.as_final_field;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * If the annotation {@code @AsFinalField} is present on the declaration

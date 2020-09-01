@@ -35,15 +35,8 @@ import com.xenoamess.commons.primitive.iterators.FloatIterator;
 import com.xenoamess.commons.primitive.iterators.FloatListIterator;
 import com.xenoamess.commons.primitive.iterators.FloatSpliterator;
 import com.xenoamess.commons.primitive.iterators.FloatSpliterators;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.ConcurrentModificationException;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.Spliterator;
+
+import java.util.*;
 import java.util.function.Consumer;
 
 /**

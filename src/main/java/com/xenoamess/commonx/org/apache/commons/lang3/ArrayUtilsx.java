@@ -16,8 +16,9 @@
  */
 package com.xenoamess.commonx.org.apache.commons.lang3;
 
-import java.util.Random;
 import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.Random;
 
 /**
  * <p>ArrayUtilsx class.</p>

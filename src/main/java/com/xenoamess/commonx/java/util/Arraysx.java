@@ -24,22 +24,9 @@
  */
 package com.xenoamess.commonx.java.util;
 
-import com.xenoamess.commons.primitive.comparators.BooleanComparator;
-import com.xenoamess.commons.primitive.comparators.ByteComparator;
-import com.xenoamess.commons.primitive.comparators.CharComparator;
-import com.xenoamess.commons.primitive.comparators.DoubleComparator;
-import com.xenoamess.commons.primitive.comparators.FloatComparator;
-import com.xenoamess.commons.primitive.comparators.IntComparator;
-import com.xenoamess.commons.primitive.comparators.LongComparator;
-import com.xenoamess.commons.primitive.comparators.ShortComparator;
-import com.xenoamess.commons.primitive.sorts.BooleanTimSort;
-import com.xenoamess.commons.primitive.sorts.ByteTimSort;
-import com.xenoamess.commons.primitive.sorts.CharTimSort;
-import com.xenoamess.commons.primitive.sorts.DoubleTimSort;
-import com.xenoamess.commons.primitive.sorts.FloatTimSort;
-import com.xenoamess.commons.primitive.sorts.IntTimSort;
-import com.xenoamess.commons.primitive.sorts.LongTimSort;
-import com.xenoamess.commons.primitive.sorts.ShortTimSort;
+import com.xenoamess.commons.primitive.comparators.*;
+import com.xenoamess.commons.primitive.sorts.*;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
