@@ -58,10 +58,13 @@
         <!---->
         <!---->
         <!--home made libraries versions-->
+        <jcpp-maven-plugin.version>0.2.3</jcpp-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
+        <add-from-repo-maven-plugin.version>0.0.8</add-from-repo-maven-plugin.version>
         <!---->
         <!---->
         <!--maven plugins versions-->
-        <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <junit-jupiter.version>5.8.0-M1</junit-jupiter.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
@@ -164,7 +167,7 @@
             <plugin>
                 <groupId>com.xenoamess</groupId>
                 <artifactId>jcpp-maven-plugin</artifactId>
-                <version>0.2.3</version>
+                <version>${jcpp-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>preprocess-sources</id>
@@ -333,7 +336,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.6</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -357,7 +360,7 @@
             <plugin>
                 <groupId>com.xenoamess</groupId>
                 <artifactId>add-from-repo-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>${add-from-repo-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -378,6 +381,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
