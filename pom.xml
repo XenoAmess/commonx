@@ -55,6 +55,8 @@
         <log4j.version>2.14.1</log4j.version>
         <lwjgl.version>3.2.3</lwjgl.version>
         <slf4j.version>1.7.30</slf4j.version>
+        <jcip-annotations.version>1.0</jcip-annotations.version>
+        <annotations.version>20.1.0</annotations.version>
         <!---->
         <!---->
         <!--home made libraries versions-->
@@ -79,6 +81,21 @@
     </properties>
 
     <dependencies>
+        <!--annotation start-->
+        <dependency>
+            <!--licensed under https://creativecommons.org/licenses/by/2.5/-->
+            <groupId>net.jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
+            <version>${jcip-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--annotation end-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -367,7 +384,7 @@
                             <goal>addTestsFromRepo</goal>
                         </goals>
                         <configuration>
-                            <repoGitUri>https://github.com/XenoAmess/commonx_additional_tests</repoGitUri>
+                            <repoGitUri>git://github.com/XenoAmess/commonx_additional_tests</repoGitUri>
                             <relativeDirectory>/src/test</relativeDirectory>
                             <outputDirectory>${project.build.directory}/generated-test-sources/src/test</outputDirectory>
                         </configuration>

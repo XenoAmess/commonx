@@ -7,6 +7,8 @@ import java.nio.ByteBuffer;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
 public class FileObjectUtilsx {
@@ -20,7 +22,8 @@ public class FileObjectUtilsx {
      * @param ifUsingMemoryUtil  if using MemoryUtil here
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
+    @NotNull
+    public static ByteBuffer loadBuffer(@Nullable FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
         if (resourceFileObject == null) {
             //if is not a file.
             throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
@@ -30,9 +33,7 @@ public class FileObjectUtilsx {
 
         try {
             File file = toFile(resourceFileObject);
-            if (file != null) {
-                return FileUtilsx.loadBuffer(file, ifUsingMemoryUtil);
-            }
+            return FileUtilsx.loadBuffer(file, ifUsingMemoryUtil);
         } catch (Exception ignored) {
 
         }
@@ -64,10 +65,11 @@ public class FileObjectUtilsx {
         return buffer.slice();
     }
 
-    public static File toFile(FileObject fileObject) throws FileSystemException {
-        if (fileObject == null || !"file".equals(fileObject.getURL().getProtocol())) {
+    @Nullable
+    public static File toFile(@Nullable FileObject fileObject) throws FileSystemException {
+        if (fileObject == null) {
             return null;
         }
-        return new File(fileObject.getName().getPathDecoded());
+        return fileObject.getPath().toFile();
     }
 }
