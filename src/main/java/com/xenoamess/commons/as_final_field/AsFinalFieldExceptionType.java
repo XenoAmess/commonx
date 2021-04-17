@@ -71,8 +71,7 @@ public enum AsFinalFieldExceptionType {
                         "object: " + object.toString() + ",field: " + fieldName;
             }
         }
-    },
-    ;
+    };
 
     abstract String produceMessage(Object object, Field field, String fieldName);
 }

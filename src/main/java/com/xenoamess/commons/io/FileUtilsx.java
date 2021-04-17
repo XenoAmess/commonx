@@ -197,6 +197,7 @@ public class FileUtilsx {
     /**
      * <p>getFile.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -229,6 +230,7 @@ public class FileUtilsx {
     /**
      * <p>getFile.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -264,6 +266,7 @@ public class FileUtilsx {
     /**
      * <p>detect if file exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -294,6 +297,7 @@ public class FileUtilsx {
     /**
      * <p>detect if folder exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -324,6 +328,7 @@ public class FileUtilsx {
     /**
      * <p>getURL.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -350,6 +355,7 @@ public class FileUtilsx {
     /**
      * <p>detect if URL exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -376,6 +382,7 @@ public class FileUtilsx {
     /**
      * <p>getURI.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -410,6 +417,7 @@ public class FileUtilsx {
     /**
      * <p>detect if file exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -451,6 +459,7 @@ public class FileUtilsx {
      * create file if a file is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -492,6 +501,7 @@ public class FileUtilsx {
      * create folder if a folder is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -533,6 +543,7 @@ public class FileUtilsx {
      * create file if a file is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -577,8 +588,9 @@ public class FileUtilsx {
      * create folder if a folder is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
-     * @return return
+     * @return path
      * @deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
@@ -650,6 +662,7 @@ public class FileUtilsx {
     /**
      * <p>loadString.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
@@ -659,8 +672,10 @@ public class FileUtilsx {
         try (InputStream inputStream = getURL(callerClassObject, resourceFilePath).openStream()) {
             res = loadString(inputStream);
         } catch (Exception e) {
-            throw new IllegalArgumentException("FileUtils.loadString(String resourceFilePath) fails:" + resourceFilePath
-                    , e);
+            throw new IllegalArgumentException(
+                    "FileUtils.loadString(String resourceFilePath) fails:" + resourceFilePath,
+                    e
+            );
         }
         return res;
     }
@@ -717,11 +732,15 @@ public class FileUtilsx {
     /**
      * <p>saveFile.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @param contentString    a {@link String} object.
      */
-    public static void saveFile(@NotNull Class callerClassObject, @NotNull String resourceFilePath,
-                                @NotNull String contentString) {
+    public static void saveFile(
+            @NotNull Class callerClassObject,
+            @NotNull String resourceFilePath,
+            @NotNull String contentString
+    ) {
         File file = createFileIfAbsent(callerClassObject, resourceFilePath);
         saveFile(file, contentString);
     }

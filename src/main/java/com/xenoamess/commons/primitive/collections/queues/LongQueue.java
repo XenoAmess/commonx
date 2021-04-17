@@ -38,7 +38,6 @@ package com.xenoamess.commons.primitive.collections.queues;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.LongCollection;
 import com.xenoamess.commons.primitive.collections.lists.linked_lists.LongLinkedList;
-
 import java.util.NoSuchElementException;
 import java.util.Queue;
 

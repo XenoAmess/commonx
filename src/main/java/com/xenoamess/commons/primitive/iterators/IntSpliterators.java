@@ -28,7 +28,6 @@ package com.xenoamess.commons.primitive.iterators;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.IntCollection;
 import com.xenoamess.commons.primitive.functions.IntConsumer;
-
 import java.util.NoSuchElementException;
 import java.util.Objects;
 

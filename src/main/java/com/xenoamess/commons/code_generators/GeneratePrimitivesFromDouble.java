@@ -1,6 +1,11 @@
 package com.xenoamess.commons.code_generators;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.CharArrayWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -14,8 +19,16 @@ public class GeneratePrimitivesFromDouble {
     /**
      * Constant <code>PRIMITIVE_TYPES</code>
      */
-    public static final String[] PRIMITIVE_TYPES = {"Long", "Int", "Short", "Char", "Byte", "Double", "Float"
-            , "Boolean"};
+    public static final String[] PRIMITIVE_TYPES = {
+            "Long",
+            "Int",
+            "Short",
+            "Char",
+            "Byte",
+            "Double",
+            "Float",
+            "Boolean"
+    };
     /**
      * Constant <code>PRIMITIVE_TYPES_EXCLUDE_DOUBLE</code>
      */

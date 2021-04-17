@@ -26,7 +26,6 @@
 package com.xenoamess.commons.primitive.iterators;
 
 import com.xenoamess.commons.primitive.Primitive;
-
 import java.util.ListIterator;
 
 /**

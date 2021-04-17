@@ -28,7 +28,6 @@ package com.xenoamess.commons.primitive.iterators;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.DoubleCollection;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
-
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
