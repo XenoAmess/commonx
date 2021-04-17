@@ -67,9 +67,9 @@ public class FileObjectUtilsx {
 
     @Nullable
     public static File toFile(@Nullable FileObject fileObject) throws FileSystemException {
-        if (fileObject == null) {
+        if (fileObject == null || !"file".equals(fileObject.getURL().getProtocol())) {
             return null;
         }
-        return fileObject.getPath().toFile();
+        return new File(fileObject.getName().getPathDecoded());
     }
 }
