@@ -29,7 +29,6 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractDoubleList;
 import com.xenoamess.commons.primitive.collections.lists.DoubleList;
 import com.xenoamess.commons.primitive.functions.DoubleConsumer;
-
 import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import java.util.RandomAccess;

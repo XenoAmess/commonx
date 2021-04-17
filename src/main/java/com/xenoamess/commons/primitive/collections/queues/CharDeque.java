@@ -38,7 +38,6 @@ package com.xenoamess.commons.primitive.collections.queues;
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.CharList;
 import com.xenoamess.commons.primitive.iterators.CharIterator;
-
 import java.util.Collection;
 import java.util.Deque;
 import java.util.NoSuchElementException;

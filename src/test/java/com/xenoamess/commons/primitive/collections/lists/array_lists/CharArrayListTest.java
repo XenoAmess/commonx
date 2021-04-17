@@ -1,10 +1,8 @@
 package com.xenoamess.commons.primitive.collections.lists.array_lists;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Random;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,7 +26,7 @@ public class CharArrayListTest {
         ArrayList<Character> a2 = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
-            char l = ((char)random.nextInt());
+            char l = ((char) random.nextInt());
             a1.add(l);
             a2.add(l);
         }
@@ -61,7 +59,7 @@ public class CharArrayListTest {
         Random random = new Random();
         CharArrayList data = new CharArrayList();
         for (int i = 0; i < length; i++) {
-            char l = ((char)random.nextInt());
+            char l = ((char) random.nextInt());
             data.addPrimitive(l);
         }
 

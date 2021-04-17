@@ -27,7 +27,6 @@ package com.xenoamess.commons.primitive.iterators;
 
 import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.functions.BooleanConsumer;
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;

@@ -45,6 +45,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.system.MemoryUtil;
 
@@ -71,7 +73,8 @@ public class FileUtilsx {
      * @param newCapacity new buffer's capacity
      * @return resized new buffer
      */
-    public static ByteBuffer resizeBuffer(ByteBuffer buffer, int newCapacity) {
+    @NotNull
+    public static ByteBuffer resizeBuffer(@NotNull ByteBuffer buffer, int newCapacity) {
         final ByteBuffer newBuffer = ByteBuffer.allocateDirect(newCapacity).order(ByteOrder.nativeOrder());
         buffer.flip();
         newBuffer.put(buffer);
@@ -84,7 +87,8 @@ public class FileUtilsx {
      * @param resourceFile the resource file to read
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(File resourceFile) {
+    @NotNull
+    public static ByteBuffer loadBuffer(@NotNull File resourceFile) {
         return loadBuffer(resourceFile, false);
     }
 
@@ -94,7 +98,8 @@ public class FileUtilsx {
      * @param resourcePath the resource path to read
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(Path resourcePath) {
+    @NotNull
+    public static ByteBuffer loadBuffer(@NotNull Path resourcePath) {
         return loadBuffer(resourcePath, false);
     }
 
@@ -107,7 +112,8 @@ public class FileUtilsx {
      * @param ifUsingMemoryUtil if using MemoryUtil here
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) {
+    @NotNull
+    public static ByteBuffer loadBuffer(@Nullable File resourceFile, boolean ifUsingMemoryUtil) {
         if (resourceFile == null || !resourceFile.exists() || !resourceFile.isFile()) {
             //if is not a file.
             throw new IllegalArgumentException("FileUtils.loadBuffer(File resourceFile, boolean ifUsingMemoryUtil) " +
@@ -126,12 +132,12 @@ public class FileUtilsx {
      * @param ifUsingMemoryUtil if using MemoryUtil here
      * @return the resource data
      */
-    public static ByteBuffer loadBuffer(Path resourcePath, boolean ifUsingMemoryUtil) {
+    @NotNull
+    public static ByteBuffer loadBuffer(@NotNull Path resourcePath, boolean ifUsingMemoryUtil) {
         boolean success;
         ByteBuffer buffer = null;
-        Path path = resourcePath;
-        if (Files.isReadable(path)) {
-            try (SeekableByteChannel fc = Files.newByteChannel(path)) {
+        if (Files.isReadable(resourcePath)) {
+            try (SeekableByteChannel fc = Files.newByteChannel(resourcePath)) {
                 if (ifUsingMemoryUtil) {
                     buffer = MemoryUtil.memAlloc((int) fc.size() + 1);
                 } else {
@@ -139,6 +145,7 @@ public class FileUtilsx {
                 }
 
                 while (fc.read(buffer) != -1) {
+                    // do nothing
                 }
                 success = true;
             } catch (IOException e) {
@@ -190,10 +197,12 @@ public class FileUtilsx {
     /**
      * <p>getFile.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static File getFile(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static File getFile(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         URL url = getURL(callerClassObject, resourceFilePath);
         String path = url.getPath();
         try {
@@ -213,17 +222,20 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static File getFile(String resourceFilePath) {
+    @NotNull
+    public static File getFile(@NotNull String resourceFilePath) {
         return getFile(FileUtilsx.class, resourceFilePath);
     }
 
     /**
      * <p>getFile.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static Path getPath(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static Path getPath(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         URI uri = getURI(callerClassObject, resourceFilePath);
 //        String path = uri.getPath();
 //        try {
@@ -245,7 +257,8 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static Path getPath(String resourceFilePath) {
+    @NotNull
+    public static Path getPath(@NotNull String resourceFilePath) {
         return getPath(FileUtilsx.class, resourceFilePath);
     }
 
@@ -253,10 +266,11 @@ public class FileUtilsx {
     /**
      * <p>detect if file exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsFile(Class callerClassObject, String resourceFilePath) {
+    public static boolean containsFile(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         boolean result = true;
         File resultFile = null;
         try {
@@ -276,17 +290,18 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsFile(String resourceFilePath) {
+    public static boolean containsFile(@NotNull String resourceFilePath) {
         return containsFile(FileUtilsx.class, resourceFilePath);
     }
 
     /**
      * <p>detect if folder exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsFolder(Class callerClassObject, String resourceFilePath) {
+    public static boolean containsFolder(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         boolean result = true;
         File resultFile = null;
         try {
@@ -306,17 +321,19 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsFolder(String resourceFilePath) {
+    public static boolean containsFolder(@NotNull String resourceFilePath) {
         return containsFolder(FileUtilsx.class, resourceFilePath);
     }
 
     /**
      * <p>getURL.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static URL getURL(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static URL getURL(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         URL res = callerClassObject.getResource(resourceFilePath);
         if (res == null) {
             throw new IllegalArgumentException("FileUtils.getURL(String resourceFilePath) fail:" + resourceFilePath);
@@ -330,25 +347,23 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static URL getURL(String resourceFilePath) {
+    @NotNull
+    public static URL getURL(@NotNull String resourceFilePath) {
         return getURL(FileUtilsx.class, resourceFilePath);
     }
 
     /**
      * <p>detect if URL exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsURL(Class callerClassObject, String resourceFilePath) {
+    public static boolean containsURL(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         boolean result = true;
-        URL resultURL = null;
         try {
-            resultURL = getURL(callerClassObject, resourceFilePath);
+            getURL(callerClassObject, resourceFilePath);
         } catch (Exception e) {
-            result = false;
-        }
-        if (resultURL == null) {
             result = false;
         }
         return result;
@@ -360,17 +375,19 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsURL(String resourceFilePath) {
+    public static boolean containsURL(@NotNull String resourceFilePath) {
         return containsURL(FileUtilsx.class, resourceFilePath);
     }
 
     /**
      * <p>getURI.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static URI getURI(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static URI getURI(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         URI res;
         try {
             res = getURL(callerClassObject, resourceFilePath).toURI();
@@ -386,7 +403,8 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static URI getURI(String resourceFilePath) {
+    @NotNull
+    public static URI getURI(@NotNull String resourceFilePath) {
         URI res;
         try {
             res = getURL(resourceFilePath).toURI();
@@ -399,10 +417,11 @@ public class FileUtilsx {
     /**
      * <p>detect if file exist.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsURI(Class callerClassObject, String resourceFilePath) {
+    public static boolean containsURI(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         boolean result = true;
         URI resultRUI = null;
         try {
@@ -422,7 +441,7 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static boolean containsURI(String resourceFilePath) {
+    public static boolean containsURI(@NotNull String resourceFilePath) {
         boolean result = true;
         URI resultRUI = null;
         try {
@@ -440,10 +459,12 @@ public class FileUtilsx {
      * create file if a file is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static File createFileIfAbsent(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static File createFileIfAbsent(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         File file;
         try {
             file = getFile(callerClassObject, resourceFilePath);
@@ -471,7 +492,8 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static File createFileIfAbsent(String resourceFilePath) {
+    @NotNull
+    public static File createFileIfAbsent(@NotNull String resourceFilePath) {
         return createFileIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
@@ -479,10 +501,12 @@ public class FileUtilsx {
      * create folder if a folder is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static File createFileDirectoryIfAbsent(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static File createFileDirectoryIfAbsent(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         File folder = null;
         try {
             folder = getFile(callerClassObject, resourceFilePath);
@@ -510,7 +534,8 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static File createFileDirectoryIfAbsent(String resourceFilePath) {
+    @NotNull
+    public static File createFileDirectoryIfAbsent(@NotNull String resourceFilePath) {
         return createFileDirectoryIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
@@ -518,10 +543,12 @@ public class FileUtilsx {
      * create file if a file is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static Path createPathIfAbsent(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static Path createPathIfAbsent(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         Path path;
         try {
             path = getPath(callerClassObject, resourceFilePath);
@@ -552,7 +579,8 @@ public class FileUtilsx {
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
     @Deprecated
-    public static Path createPathIfAbsent(String resourceFilePath) {
+    @NotNull
+    public static Path createPathIfAbsent(@NotNull String resourceFilePath) {
         return createPathIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
@@ -560,13 +588,15 @@ public class FileUtilsx {
      * create folder if a folder is not exist.
      * absolute path is strongly suggested here.
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
-     * @return return
+     * @return path
      * @deprecated this function works weirdly on Linux. I know how to fix it but fixing it will cause we change all
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
     @Deprecated
-    public static Path createPathDirectoryIfAbsent(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static Path createPathDirectoryIfAbsent(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         Path folder = null;
         try {
             folder = getPath(callerClassObject, resourceFilePath);
@@ -601,7 +631,8 @@ public class FileUtilsx {
      * functions in this class, so finally I decided just deprecate this whole class instead.
      */
     @Deprecated
-    public static Path createPathDirectoryIfAbsent(String resourceFilePath) {
+    @NotNull
+    public static Path createPathDirectoryIfAbsent(@NotNull String resourceFilePath) {
         return createPathDirectoryIfAbsent(FileUtilsx.class, resourceFilePath);
     }
 
@@ -611,8 +642,8 @@ public class FileUtilsx {
      * @param inputStream inputStream
      * @return return
      */
-    public static String loadString(InputStream inputStream) {
-        assert (inputStream != null);
+    @NotNull
+    public static String loadString(@NotNull InputStream inputStream) {
         String res;
         try (
                 BufferedReader bufferedReader =
@@ -631,16 +662,20 @@ public class FileUtilsx {
     /**
      * <p>loadString.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static String loadString(Class callerClassObject, String resourceFilePath) {
+    @NotNull
+    public static String loadString(@NotNull Class callerClassObject, @NotNull String resourceFilePath) {
         String res;
         try (InputStream inputStream = getURL(callerClassObject, resourceFilePath).openStream()) {
             res = loadString(inputStream);
         } catch (Exception e) {
-            throw new IllegalArgumentException("FileUtils.loadString(String resourceFilePath) fails:" + resourceFilePath
-                    , e);
+            throw new IllegalArgumentException(
+                    "FileUtils.loadString(String resourceFilePath) fails:" + resourceFilePath,
+                    e
+            );
         }
         return res;
     }
@@ -651,7 +686,8 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @return return
      */
-    public static String loadString(String resourceFilePath) {
+    @NotNull
+    public static String loadString(@NotNull String resourceFilePath) {
         return loadString(FileUtilsx.class, resourceFilePath);
     }
 
@@ -661,7 +697,8 @@ public class FileUtilsx {
      * @param file file
      * @return return
      */
-    public static String loadString(File file) {
+    @NotNull
+    public static String loadString(@Nullable File file) {
         if (file == null || !file.exists() || !file.isFile()) {
             throw new IllegalArgumentException("FileUtils.loadString(File file) fails:" + file);
         }
@@ -677,7 +714,8 @@ public class FileUtilsx {
      * @param path path
      * @return return
      */
-    public static String loadString(Path path) {
+    @NotNull
+    public static String loadString(@NotNull Path path) {
         if (!Files.isReadable(path)) {
             throw new IllegalArgumentException("FileUtils.loadString(Path path) fails:" + path);
         }
@@ -694,10 +732,15 @@ public class FileUtilsx {
     /**
      * <p>saveFile.</p>
      *
+     * @param callerClassObject callerClassObject
      * @param resourceFilePath resourceFilePath
      * @param contentString    a {@link String} object.
      */
-    public static void saveFile(Class callerClassObject, String resourceFilePath, String contentString) {
+    public static void saveFile(
+            @NotNull Class callerClassObject,
+            @NotNull String resourceFilePath,
+            @NotNull String contentString
+    ) {
         File file = createFileIfAbsent(callerClassObject, resourceFilePath);
         saveFile(file, contentString);
     }
@@ -708,7 +751,7 @@ public class FileUtilsx {
      * @param resourceFilePath resourceFilePath
      * @param contentString    a {@link String} object.
      */
-    public static void saveFile(String resourceFilePath, String contentString) {
+    public static void saveFile(@NotNull String resourceFilePath, @NotNull String contentString) {
         saveFile(FileUtilsx.class, resourceFilePath, contentString);
     }
 
@@ -718,7 +761,7 @@ public class FileUtilsx {
      * @param file          a {@link File} object.
      * @param contentString contentString
      */
-    public static void saveFile(File file, String contentString) {
+    public static void saveFile(@Nullable File file, @NotNull String contentString) {
         if (file == null) {
             //if is not a file.
             throw new IllegalArgumentException("FileUtils.saveFile(File file, String contentString) fails:" + file +
@@ -744,12 +787,14 @@ public class FileUtilsx {
      * @return the resource data
      */
     @Deprecated
-    public static ByteBuffer loadBuffer(FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
+    @NotNull
+    public static ByteBuffer loadBuffer(@Nullable FileObject resourceFileObject, boolean ifUsingMemoryUtil) {
         return FileObjectUtilsx.loadBuffer(resourceFileObject, ifUsingMemoryUtil);
     }
 
     @Deprecated
-    public static File toFile(FileObject fileObject) throws FileSystemException {
+    @Nullable
+    public static File toFile(@Nullable FileObject fileObject) throws FileSystemException {
         return FileObjectUtilsx.toFile(fileObject);
     }
 }

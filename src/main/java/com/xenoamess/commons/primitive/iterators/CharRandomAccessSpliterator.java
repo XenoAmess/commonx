@@ -29,7 +29,6 @@ import com.xenoamess.commons.primitive.Primitive;
 import com.xenoamess.commons.primitive.collections.lists.AbstractCharList;
 import com.xenoamess.commons.primitive.collections.lists.CharList;
 import com.xenoamess.commons.primitive.functions.CharConsumer;
-
 import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import java.util.RandomAccess;
