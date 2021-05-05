@@ -61,7 +61,7 @@
         <!---->
         <!--home made libraries versions-->
         <jcpp-maven-plugin.version>0.2.3</jcpp-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <add-from-repo-maven-plugin.version>0.0.8</add-from-repo-maven-plugin.version>
         <!---->
         <!---->
